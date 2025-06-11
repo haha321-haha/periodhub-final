@@ -7,9 +7,75 @@ import { Download, FileText, Users, GraduationCap, Heart, CheckCircle, Clipboard
 import DownloadButton from '@/components/DownloadButton';
 import NavigationTabs from '@/components/NavigationTabs';
 import ImagePlaceholder from '@/components/ImagePlaceholder';
+import ClientImage from '@/components/ClientImage';
 import SearchBox from '@/components/SearchBox';
 
 import { Locale, locales } from '@/i18n';
+
+// Function to get article-specific image URLs based on content and category
+function getCategoryImageUrl(category: string, articleSlug?: string): string {
+  // Specific images for known articles - diverse, relevant healthcare images
+  const specificImages: { [key: string]: string } = {
+    // Immediate Relief Articles
+    '5-minute-period-pain-relief': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Woman with heating pad - comfort
+    'heat-therapy-complete-guide': 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Wellness and self-care
+    'hidden-culprits-of-menstrual-pain': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthcare education
+
+    // Natural Therapy Articles
+    'natural-physical-therapy-comprehensive-guide': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Yoga pose
+    'zhan-zhuang-baduanjin-for-menstrual-pain-relief': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Meditation/exercise
+    'global-traditional-menstrual-pain-relief': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Herbal tea
+    'magnesium-gut-health-comprehensive-guide': 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthy food/nutrition
+    'essential-oils-aromatherapy-menstrual-pain-guide': 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Essential oils/aromatherapy
+
+    // Nutrition Articles
+    'anti-inflammatory-diet-period-pain': 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Fresh healthy food
+    'period-friendly-recipes': 'https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Cooking/recipes
+
+    // Medical Articles
+    'menstrual-pain-medical-guide': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Medical consultation
+    'comprehensive-medical-guide-to-dysmenorrhea': 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Women's health focus
+    'comprehensive-iud-guide': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthcare education
+    'nsaid-menstrual-pain-professional-guide': 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Medicine/pharmacy
+    'specific-menstrual-pain-management-guide': 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Wellness care
+    'menstrual-pain-complications-management': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Medical consultation
+    'menstrual-pain-vs-other-abdominal-pain-guide': 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthcare diagnosis
+
+    // Health Management Articles
+    'when-to-see-doctor-period-pain': 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthcare consultation
+    'when-to-seek-medical-care-comprehensive-guide': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthcare education
+    'understanding-your-cycle': 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Young woman healthcare
+
+    // Educational Articles
+    'recommended-reading-list': 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Books/reading
+    'menstrual-pain-faq-expert-answers': 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthcare consultation
+
+
+  };
+
+  // If we have a specific image for this article, use it
+  if (articleSlug && specificImages[articleSlug]) {
+    return specificImages[articleSlug];
+  }
+
+  // Category-based images as fallback - diverse healthcare themes
+  const categoryImages: { [key: string]: string } = {
+    'immediate-relief': 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Woman with heating pad
+    'natural-therapies': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Herbal tea
+    'medical-guide': 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Medical consultation
+    'health-management': 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Women's health focus
+    'lifestyle': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Yoga
+    'nutrition': 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Healthy food
+    'exercise': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Exercise/meditation
+    'stress-management': 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Meditation
+    'teen-health': 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Young woman
+    'pain-management': 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Wellness
+    'educational': 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80', // Books/education
+    'default': 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80' // Healthcare
+  };
+
+  return categoryImages[category] || categoryImages['default'];
+}
 
 
 
@@ -594,108 +660,7 @@ export default function ArticlesPage({
           </div>
         </div>
 
-        {/* 精选文章 */}
-        <div className="space-y-6">
-          <div className="text-center">
-            <h3 className="text-xl font-semibold text-neutral-800 mb-2">
-              {locale === 'zh' ? '⭐ 精选重点文章' : '⭐ Featured Articles'}
-            </h3>
-            <p className="text-neutral-600">
-              {locale === 'zh'
-                ? '编辑精选的重要文章，涵盖痛经管理的核心内容'
-                : 'Editor-selected important articles covering core content of menstrual pain management'
-              }
-            </p>
-          </div>
 
-          {articles.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {articles.filter(article =>
-                ['natural-physical-therapy-comprehensive-guide',
-                 'menstrual-pain-medical-guide',
-                 'nsaid-menstrual-pain-professional-guide',
-                 'anti-inflammatory-diet-period-pain',
-                 '5-minute-period-pain-relief',
-                 'when-to-see-doctor-period-pain'].includes(article.slug)
-              ).map((article) => (
-              <Link
-                key={article.slug}
-                href={`/${locale}/articles/${article.slug}`}
-                className="group block bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
-              >
-                <div className="p-6">
-                  {/* Article Category Cover Image */}
-                  <div className="w-full h-48 rounded-lg mb-4 overflow-hidden">
-                    <ImagePlaceholder
-                      filename={`category-${article.category || 'medical-guide'}-cover.jpg`}
-                      alt={`Cover image for ${article.category || 'medical guide'} category article`}
-                      width={400}
-                      height={200}
-                      className="w-full h-full border-0"
-                      description={`Professional healthcare setting for ${article.category || 'medical'} content, soft natural lighting, pink and blue accents`}
-                    />
-                  </div>
-
-                  {/* Article Content */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-sm text-neutral-500">
-                      <span>{article.date}</span>
-                      <span>{locale === 'zh' ? article.reading_time_zh : article.reading_time}</span>
-                    </div>
-
-                    <h3 className="text-xl font-semibold text-neutral-900 group-hover:text-primary-600 transition-colors">
-                      {locale === 'zh' ? article.title_zh || article.title : article.title}
-                    </h3>
-
-                    <p className="text-neutral-600 line-clamp-3">
-                      {locale === 'zh' ? article.summary_zh || article.summary : article.summary}
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex flex-wrap gap-2">
-                        {(locale === 'zh' ? (article.tags_zh || article.tags) : article.tags)?.slice(0, 2).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-1 text-xs bg-primary-100 text-primary-700 rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <span className="text-primary-500 group-hover:text-primary-600 font-medium text-sm">
-                        {commonT('readMore')} →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white p-8 rounded-lg shadow-sm">
-            <div className="text-center py-12">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-16 w-16 mx-auto text-primary-300 mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                />
-              </svg>
-              <p className="text-neutral-600 text-lg">
-                {articleListT('noArticles')}
-              </p>
-            </div>
-          </div>
-        )}
-        </div>
 
         {/* 全部文章 */}
         <div className="space-y-6">
@@ -722,13 +687,13 @@ export default function ArticlesPage({
                   <div className="p-6">
                     {/* Article Category Cover Image */}
                     <div className="w-full h-48 rounded-lg mb-4 overflow-hidden">
-                      <ImagePlaceholder
-                        filename={`category-${article.category || 'medical-guide'}-cover.jpg`}
-                        alt={`Cover image for ${article.category || 'medical guide'} category article`}
+                      <ClientImage
+                        src={getCategoryImageUrl(article.category || 'medical-guide', article.slug)}
+                        alt={`Cover image for ${article.title}`}
                         width={400}
                         height={200}
-                        className="w-full h-full border-0"
-                        description={`Professional healthcare setting for ${article.category || 'medical'} content, soft natural lighting, pink and blue accents`}
+                        className="w-full h-full object-cover border-0"
+                        fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80"
                       />
                     </div>
 
