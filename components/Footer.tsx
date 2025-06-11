@@ -48,10 +48,10 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <h3 className="font-semibold text-neutral-800 mb-4">{locale === 'en' ? 'Contact' : '联系我们'}</h3>
             <a
-              href="mailto:support@periodhub.com"
+              href="mailto:tiyibaofu@outlook.com"
               className="text-sm text-neutral-600 hover:text-primary-600 transition-colors"
             >
-              support@periodhub.com
+              tiyibaofu@outlook.com
             </a>
             
             {/* Social Media Links (placeholders) */}
