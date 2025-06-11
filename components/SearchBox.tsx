@@ -31,14 +31,19 @@ export default function SearchBox({ articles, locale, placeholder, className = '
     const query = searchQuery.toLowerCase();
     const searchResults: SearchResult[] = [];
 
+
+
     articles.forEach(article => {
       const title = article.title.toLowerCase();
       const summary = article.summary.toLowerCase();
       const tags = article.tags.map(tag => tag.toLowerCase());
       const content = article.content.toLowerCase();
 
+
+
       // 标题匹配（最高优先级）
       if (title.includes(query)) {
+
         searchResults.push({
           ...article,
           matchType: 'title',
@@ -49,11 +54,12 @@ export default function SearchBox({ articles, locale, placeholder, className = '
 
       // 摘要匹配
       if (summary.includes(query)) {
+
         const matchIndex = summary.indexOf(query);
         const start = Math.max(0, matchIndex - 50);
         const end = Math.min(summary.length, matchIndex + query.length + 50);
         const matchText = '...' + article.summary.substring(start, end) + '...';
-        
+
         searchResults.push({
           ...article,
           matchType: 'summary',
@@ -65,6 +71,7 @@ export default function SearchBox({ articles, locale, placeholder, className = '
       // 标签匹配
       const matchingTag = tags.find(tag => tag.includes(query));
       if (matchingTag) {
+
         searchResults.push({
           ...article,
           matchType: 'tag',
@@ -75,11 +82,12 @@ export default function SearchBox({ articles, locale, placeholder, className = '
 
       // 内容匹配（最低优先级）
       if (content.includes(query)) {
+
         const matchIndex = content.indexOf(query);
         const start = Math.max(0, matchIndex - 100);
         const end = Math.min(content.length, matchIndex + query.length + 100);
         const matchText = '...' + article.content.substring(start, end).replace(/[#*]/g, '') + '...';
-        
+
         searchResults.push({
           ...article,
           matchType: 'content',
@@ -87,6 +95,8 @@ export default function SearchBox({ articles, locale, placeholder, className = '
         });
       }
     });
+
+
 
     // 按匹配类型排序：title > summary > tag > content
     const priorityOrder = { title: 4, summary: 3, tag: 2, content: 1 };
