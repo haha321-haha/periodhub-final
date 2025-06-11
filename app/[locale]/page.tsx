@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
@@ -7,6 +6,7 @@ import ImagePlaceholder from '@/components/ImagePlaceholder';
 import SearchBox from '@/components/SearchBox';
 import { getAllArticles } from '@/lib/articles';
 import StructuredData from '@/components/StructuredData';
+import ClientImage from '@/components/ClientImage';
 
 // Lazy load non-critical components
 const UserSuccessStories = dynamic(() => import('@/components/UserSuccessStories'), {
@@ -144,26 +144,15 @@ export default async function HomePage({
             </div>
             {/* 📱 移动端优化图片区域 */}
             <div className="relative h-48 sm:h-56 md:h-80 lg:h-96 rounded-lg md:rounded-xl overflow-hidden shadow-lg order-first md:order-last">
-              {/* Hero image placeholder - shows required image specifications */}
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-100 to-secondary-100">
-                <ImagePlaceholder
-                  filename="hero-main-banner.jpg"
-                  alt="Professional healthcare illustration showing diverse women in comfortable poses, conveying comfort and medical trust"
-                  width={800}
-                  height={450}
-                  className="w-full h-full border-0"
-                  description="Warm and professional healthcare illustration, young diverse women in comfortable poses, soft pink and blue gradient background, modern minimalist style"
-                />
-              </div>
-              {/* TODO: Replace with actual image when available */}
-              {/* <Image
+              {/* Hero image - now using actual uploaded image */}
+              <ClientImage
                 src="/images/hero/hero-main-banner.jpg"
-                alt={t('hero.imageAlt')}
+                alt="Professional healthcare illustration showing diverse women in comfortable poses, conveying comfort and medical trust"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
                 className="object-cover"
-              /> */}
+              />
             </div>
           </div>
         </div>
