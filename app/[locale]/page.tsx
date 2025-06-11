@@ -422,7 +422,7 @@ export default async function HomePage({
               </article>
             </Link>
             
-            <Link href={`/${locale}/articles/nutrition-and-periods`} className="card group block">
+            <Link href={`/${locale}/articles/anti-inflammatory-diet-period-pain`} className="card group block">
               <article>
                 <h3 className="text-xl font-semibold text-primary-600 group-hover:text-primary-700 mb-2">
                   {locale === 'zh' ? '营养与经期健康' : 'Nutrition & Menstrual Health'}
