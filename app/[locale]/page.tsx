@@ -134,7 +134,7 @@ export default async function HomePage({
 
               {/* 📱 移动端优化按钮组 */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-                <Link href={`/${locale}/immediate-relief`} className="btn-primary w-full sm:w-auto mobile-touch-target">
+                <Link href={`/${locale}/scenario-solutions`} className="btn-primary w-full sm:w-auto mobile-touch-target">
                   {t('hero.ctaExplore')}
                 </Link>
                 <Link href={`/${locale}/interactive-tools`} className="btn-outline w-full sm:w-auto mobile-touch-target">
