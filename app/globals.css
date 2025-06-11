@@ -286,16 +286,18 @@ main {
 
   /* 次要按钮 - 移动端优化 */
   .btn-outline {
-    @apply inline-flex items-center justify-center border border-primary-600 rounded-md text-primary-600 bg-transparent hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors;
+    @apply inline-flex items-center justify-center border-2 border-white rounded-md text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all duration-300;
     padding: 0.75rem 1rem; /* 12px 16px */
     font-size: 0.875rem; /* 14px */
     min-height: 44px;
+    font-weight: 600;
   }
 
   @media (min-width: 768px) {
     .btn-outline {
       padding: 0.75rem 1.25rem; /* 12px 20px */
       font-size: 1rem; /* 16px */
+      @apply transform hover:scale-105;
     }
   }
 
