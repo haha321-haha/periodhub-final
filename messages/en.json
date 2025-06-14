@@ -79,6 +79,20 @@
     "notFoundTitle": "Therapy Not Found",
     "notFoundDescription": "Sorry, we could not find the therapy you are looking for."
   },
+  "SpecialTherapiesPage": {
+    "title": "Special Therapies",
+    "description": "Explore traditional and modern special therapies to provide more options for your menstrual health.",
+    "introduction": "Special therapies combine traditional wisdom with modern science to provide unique relief methods for menstrual discomfort. These therapies focus on holistic health, helping you find the most suitable treatment approach for yourself.",
+    "therapyCards": {
+      "title": "Featured Therapies",
+      "viewAll": "View All"
+    },
+    "videoSection": {
+      "title": "Therapy Demonstration Videos",
+      "description": "Learn proper therapy techniques and precautions through professional video demonstrations."
+    },
+    "disclaimer": "The therapy information provided here is for reference only and cannot replace professional medical advice. Please consult medical professionals before trying any new treatment methods."
+  },
   "immediateReliefPage": {
     "title": "Immediate Relief Solutions for Period Pain",
     "description": "Explore quick and effective methods to find relief from period pain when you need it most. Learn about techniques you can apply right now.",
@@ -875,6 +889,10 @@
   "teenHealth": {
     "title": "Teen Menstrual Health Zone",
     "description": "Specialized menstrual health guidance designed for teenagers, covering physical development, emotional support, and campus life management.",
+    "meta": {
+      "title": "Teen Menstrual Health Zone - Period Hub",
+      "description": "Specialized menstrual health guidance designed for teenagers, covering physical development, emotional support, and campus life management."
+    },
     "campusGuide": {
       "title": "Campus Life Guide",
       "description": "Practical advice and strategies for managing periods in school environments."

@@ -79,6 +79,20 @@
     "notFoundTitle": "疗法未找到",
     "notFoundDescription": "抱歉，我们找不到您要查找的疗法。"
   },
+  "SpecialTherapiesPage": {
+    "title": "特殊疗法",
+    "description": "探索传统和现代的特殊疗法，为您的经期健康提供更多选择。",
+    "introduction": "特殊疗法结合了传统智慧和现代科学，为经期不适提供独特的缓解方法。这些疗法注重整体健康，帮助您找到最适合自己的治疗方式。",
+    "therapyCards": {
+      "title": "精选疗法",
+      "viewAll": "查看全部"
+    },
+    "videoSection": {
+      "title": "疗法演示视频",
+      "description": "通过专业视频演示，学习正确的疗法技巧和注意事项。"
+    },
+    "disclaimer": "此处提供的疗法信息仅供参考，不能替代专业医疗建议。在尝试任何新的治疗方法之前，请咨询医疗专业人士。"
+  },
   "immediateReliefPage": {
     "title": "经期疼痛即时缓解方案",
     "description": "探索在您最需要时快速有效缓解痛经的方法。了解您可以立即尝试的技巧。",
@@ -832,6 +846,10 @@
   "teenHealth": {
     "title": "青少年经期健康专区",
     "description": "专为青少年设计的经期健康指南，涵盖生理发育、情感支持和校园生活管理。",
+    "meta": {
+      "title": "青少年经期健康专区 - Period Hub",
+      "description": "专为青少年设计的经期健康指南，涵盖生理发育、情感支持和校园生活管理。"
+    },
     "campusGuide": {
       "title": "校园生活指南",
       "description": "在学校环境中管理经期的实用建议和策略。"
