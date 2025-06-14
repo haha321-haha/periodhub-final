@@ -96,8 +96,18 @@ export default async function InteractiveToolsPage({
                   alt="Woman using digital health assessment tool on tablet in comfortable home setting"
                   width={400}
                   height={300}
+                  quality={95}
                   className="w-full h-auto rounded-lg shadow-md"
-                  fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80t('tools.div')container-custom">
+                  fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=95"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Tools Grid */}
+      <section className="container-custom">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {tools.map((tool) => (
             <div key={tool.title} className="card flex flex-col items-center text-center h-full p-4 sm:p-6">
@@ -113,7 +123,17 @@ export default async function InteractiveToolsPage({
               {tool.href === "#" ? (
                  <span className="btn-disabled w-full mobile-touch-target text-sm sm:text-base px-4 py-3">{tool.cta}</span>
               ) : (
-                <Link href={tool.href} className={`w-full mobile-touch-target text-sm sm:text-base px-4 py-3 text-center ${tool.title.includes("Symptom") || tool.title.includes(t('health.symptoms')) ? 'btn-primary' : 'btn-secondary'}t('tools.toolcta')breathing-exercise" className="container-custom">
+                <Link href={tool.href} className={`w-full mobile-touch-target text-sm sm:text-base px-4 py-3 text-center ${tool.title.includes("Symptom") || tool.title.includes(t('health.symptoms')) ? 'btn-primary' : 'btn-secondary'}`}>
+                  {tool.cta}
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Breathing Exercise Section */}
+      <section id="breathing-exercise" className="container-custom">
         <div className="space-y-4 sm:space-y-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8">
         <div className="text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full mb-4 sm:mb-6">

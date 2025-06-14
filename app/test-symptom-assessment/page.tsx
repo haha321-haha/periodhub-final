@@ -41,22 +41,7 @@ export default function TestSymptomAssessment() {
     if (currentQuestionIndex >= totalQuestions - 1) {
       console.log('Completing assessment...');
       const result = completeAssessment();
-      console.log('Result:', result);
-    } else {
-      goToNextQuestion();
-    }
-  };
-
-  const handleQuickComplete = () => {
-    // 快速填写所有答案进行测试
-    if (!currentSession) {
-      handleStart();
-      return;
-    }
-
-    // 模拟回答所有问题
-    const mockAnswers = [
-      { questionId: 'age_range', value: '18-25' },
+      console.log('Result:t('common.result')age_range', value: '18-25' },
       { questionId: 'cycle_regularity', value: 'mostly_regular' },
       { questionId: 'pain_severity', value: 7 },
       { questionId: 'pain_duration', value: 'one_day' },
@@ -67,20 +52,7 @@ export default function TestSymptomAssessment() {
       { questionId: 'stress_level', value: 6 },
       { questionId: 'sleep_quality', value: 'fair' },
       { questionId: 'previous_treatment', value: ['otc_painkillers', 'heat_therapy'] },
-      { questionId: 'medical_conditions', value: ['none'] }
-    ];
-
-    // 添加所有答案
-    mockAnswers.forEach(answer => {
-      answerQuestion({
-        ...answer,
-        timestamp: new Date().toISOString()
-      });
-    });
-
-    // 完成评估
-    setTimeout(() => {
-      console.log('Quick completing assessment...');
+      { questionId: 'medical_conditions', value: ['nonet('common.添加所有答案')Quick completing assessment...');
       const result = completeAssessment();
       console.log('Quick completion result:', result);
     }, 1000);
@@ -88,11 +60,8 @@ export default function TestSymptomAssessment() {
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">症状评估测试页面</h1>
-      
-      <div className="mb-6 p-4 bg-gray-100 rounded">
-        <h2 className="text-lg font-semibold mb-2">状态信息</h2>
-        <p>当前会话: {currentSession ? '已开始' : '未开始'}</p>
+      <h1 className="text-2xl font-bold mb-6t('common.症状评估测试页面h1')mb-6 p-4 bg-gray-100 rounded">
+        <h2 className="text-lg font-semibold mb-2t('common.状态信息h2')已开始' : '未开始'}</p>
         <p>当前题目: {currentQuestionIndex + 1} / {totalQuestions}</p>
         <p>当前问题ID: {currentQuestion?.id || '无'}</p>
         <p>是否有结果: {result ? '是' : '否'}</p>
@@ -102,23 +71,10 @@ export default function TestSymptomAssessment() {
         {!currentSession && (
           <button
             onClick={handleStart}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-          >
-            开始评估
-          </button>
-        )}
-
-        {currentSession && !result && (
-          <div className="space-y-4">
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700t('common.开始评估')space-y-4">
             <button
               onClick={handleQuickComplete}
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-            >
-              快速完成评估（测试用）
-            </button>
-
-            {currentQuestion && (
-              <div className="border p-4 rounded">
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700t('common.快速完成评估测试用')border p-4 rounded">
                 <h3 className="font-semibold mb-2">{currentQuestion.title}</h3>
                 
                 {currentQuestion.type === 'single' && currentQuestion.options && (
@@ -147,15 +103,7 @@ export default function TestSymptomAssessment() {
                       max={currentQuestion.validation?.max || 10}
                       value={answers[currentQuestion.id] || 1}
                       onChange={(e) => handleAnswer(parseInt(e.target.value))}
-                      className="w-full"
-                    />
-                    <p>当前值: {answers[currentQuestion.id] || 1}</p>
-                  </div>
-                )}
-
-                <button
-                  onClick={handleNext}
-                  className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                      className="w-fullt('common.p当前值answe')mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                 >
                   {currentQuestionIndex >= totalQuestions - 1 ? '完成评估' : '下一题'}
                 </button>

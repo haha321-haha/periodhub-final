@@ -1,9 +1,5 @@
 import { MetadataRoute } from 'next'
-import { locales } from '@/i18n'
-
-// 文章数据 - 从实际文章文件中获取
-const articles = [
-  'quick-menstrual-pain-relief-guide',
+import { locales } from '@/i18nt('common.文章数据从实际文')quick-menstrual-pain-relief-guide',
   'anti-inflammatory-diet-menstrual-pain',
   'heat-therapy-complete-guide',
   'natural-physical-therapy-menstrual-pain',
@@ -13,20 +9,10 @@ const articles = [
   'menstrual-pain-content-evaluation-report',
   'comprehensive-menstrual-pain-research-summary',
   'global-traditional-menstrual-pain-relief',
-  'nsaid-menstrual-pain-professional-guide'
-];
-
-// 交互工具页面
-const interactiveTools = [
-  'symptom-assessment',
+  'nsaid-menstrual-pain-professional-guidet('common.交互工具页面con')symptom-assessment',
   'period-pain-assessment', 
   'pain-tracker',
-  'constitution-test'
-];
-
-// 主要页面
-const mainPages = [
-  '',
+  'constitution-testt('common.主要页面const')',
   'articles',
   'interactive-tools',
   'teen-health',
@@ -35,38 +21,14 @@ const mainPages = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://period-hub.com'
-  const currentDate = new Date()
-  
-  const sitemapEntries: MetadataRoute.Sitemap = []
-
-  // 为每个语言生成页面
-  locales.forEach(locale => {
-    // 主要页面
-    mainPages.forEach(page => {
-      const url = page === '' ? `${baseUrl}/${locale}` : `${baseUrl}/${locale}/${page}`
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://period-hub.comt('common.constcurr')' ? `${baseUrl}/${locale}` : `${baseUrl}/${locale}/${page}`
       sitemapEntries.push({
         url,
         lastModified: currentDate,
         changeFrequency: page === '' ? 'daily' : page === 'articles' ? 'weekly' : 'monthly',
-        priority: page === '' ? 1.0 : page === 'articles' ? 0.9 : 0.8,
-      })
-    })
-
-    // 文章页面
-    articles.forEach(article => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${locale}/articles/${article}`,
+        priority: page === '' ? 1.0 : page === 'articlest('common.0908')${baseUrl}/${locale}/articles/${article}`,
         lastModified: currentDate,
-        changeFrequency: 'monthly',
-        priority: 0.7,
-      })
-    })
-
-    // 交互工具页面
-    interactiveTools.forEach(tool => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${locale}/interactive-tools/${tool}`,
+        changeFrequency: 'monthlyt('common.priority0')${baseUrl}/${locale}/interactive-tools/${tool}`,
         lastModified: currentDate,
         changeFrequency: 'weekly',
         priority: 0.8,

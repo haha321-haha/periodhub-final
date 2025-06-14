@@ -359,8 +359,8 @@ export async function generateMetadata({
 
   if (!toolData) {
     return {
-      title: locale === 'zh' ? t('tools.工具未找到') : 'Tool Not Found',
-      description: locale === 'zh' ? t('tools.抱歉我们找不到您要查') : 'Sorry, we could not find the tool you are looking for.',
+      title: locale === 'zh' ? '工具未找到' : 'Tool Not Found',
+      description: locale === 'zh' ? '抱歉，我们找不到您要查找的工具。' : 'Sorry, we could not find the tool you are looking for.',
     };
   }
 
