@@ -1,6 +1,7 @@
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ClientImage from '@/components/ClientImage';
 import {
   Briefcase,
   Car,
@@ -192,14 +193,16 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
               key={scenario.id}
               className={`card group cursor-pointer transition-all duration-300 ${scenario.hoverColor} border-2 border-transparent hover:border-primary-200`}
             >
-              {/* Scenario Image Placeholder */}
-              <div className="mb-6">
-                <div className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-gray-400 mb-2">📷</div>
-                    <p className="text-sm text-gray-500">{scenario.title}</p>
-                  </div>
-                </div>
+              {/* Scenario Image */}
+              <div className="mb-6 relative h-48 rounded-lg overflow-hidden">
+                <ClientImage
+                  src={`/images/scenarios/scenario-${scenario.id === 'lifeStages' ? 'family' : scenario.id === 'social' ? 'dating' : scenario.id === 'sleep' ? 'sleeping' : scenario.id === 'commute' ? 'commuting' : scenario.id}.jpg`}
+                  alt={scenario.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  fallbackSrc={`https://images.unsplash.com/photo-${scenario.id === 'office' ? '1497032628192-86f99bcd76bc' : scenario.id === 'commute' ? '1544620347-c4fd4a3d5957' : scenario.id === 'exercise' ? '1571019613454-1cb2f99b2d8b' : scenario.id === 'sleep' ? '1541781774459-bb2af2f05b25' : scenario.id === 'social' ? '1529156069898-49953e39b3ac' : '1559757148-5c350d0d3c56'}?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80`}
+                />
               </div>
 
               <div className={`w-16 h-16 flex items-center justify-center rounded-full ${scenario.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
