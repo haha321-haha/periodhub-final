@@ -9,7 +9,11 @@ const nextConfig = {
 
   // 图片优化配置
   images: {
-    unoptimized: true, // 保持禁用以提高兼容性
+    unoptimized: false, // 启用图片优化以提高质量
+    quality: 90, // 设置高质量 (默认75)
+    formats: ['image/webp', 'image/avif'], // 现代格式优先
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
   // 配置尾部斜杠
