@@ -203,14 +203,16 @@ export default async function HomePage({
 
           {/* Statistics Infographic */}
           <div className="flex justify-center">
-            <ImagePlaceholder
-              filename="stats-infographic.svg"
-              alt="Medical statistics infographic showing women's health data with clean data visualization"
-              width={800}
-              height={400}
-              className="bg-white/90 backdrop-blur-sm shadow-lg rounded-lg"
-              description="Medical statistics infographic, clean data visualization, pink and blue color scheme, professional charts and graphs"
-            />
+            <div className="relative w-full max-w-4xl bg-white/90 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
+              <ClientImage
+                src="/images/infographics/stats-infographic.svg"
+                alt="Medical statistics infographic showing women's health data with clean data visualization"
+                width={800}
+                height={400}
+                className="w-full h-auto"
+                fallbackSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80"
+              />
+            </div>
           </div>
         </div>
       </section>
