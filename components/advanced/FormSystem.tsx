@@ -1,58 +1,7 @@
 'use client';
 
 import React, { useState, useCallback, useRef } from 'react';
-import { Eye, EyeOff, AlertCircle, CheckCircle, Upload, X } from 'lucide-react';
-
-// 表单字段类型
-export type FieldType = 'text' | 'email' | 'password' | 'number' | 'textarea' | 'select' | 'checkbox' | 'radio' | 'file' | 'date' | 'range';
-
-// 验证规则
-export interface ValidationRule {
-  required?: boolean;
-  minLength?: number;
-  maxLength?: number;
-  min?: number;
-  max?: number;
-  pattern?: RegExp;
-  custom?: (value: any) => string | null;
-}
-
-// 字段配置
-export interface FieldConfig {
-  name: string;
-  label: string;
-  type: FieldType;
-  placeholder?: string;
-  options?: { label: string; value: string | number }[];
-  validation?: ValidationRule;
-  disabled?: boolean;
-  className?: string;
-  description?: string;
-}
-
-// 表单状态
-export interface FormState {
-  values: Record<string, any>;
-  errors: Record<string, string>;
-  touched: Record<string, boolean>;
-  isSubmitting: boolean;
-  isValid: boolean;
-}
-
-// 表单Hook
-export const useForm = (initialValues: Record<string, any> = {}) => {
-  const [state, setState] = useState<FormState>({
-    values: initialValues,
-    errors: {},
-    touched: {},
-    isSubmitting: false,
-    isValid: true,
-  });
-
-  const validateField = useCallback((name: string, value: any, rules?: ValidationRule): string | null => {
-    if (!rules) return null;
-
-    if (rules.required && (!value || value.toString().trim() === '')) {
+import { Eye, EyeOff, AlertCircle, CheckCircle, Upload, X } from 'lucide-reactt('common.表单字段类型exp')text' | 'email' | 'password' | 'number' | 'textarea' | 'select' | 'checkbox' | 'radio' | 'file' | 'date' | 'ranget('common.验证规则expor')')) {
       return '此字段为必填项';
     }
 
@@ -210,7 +159,7 @@ export const InputField: React.FC<InputFieldProps> = ({
             disabled={config.disabled}
             className={baseInputClasses}
           >
-            <option value="">{config.placeholder || '请选择...'}</option>
+            <option value="">{config.placeholder || t('common.请选择')}</option>
             {config.options?.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -273,7 +222,7 @@ export const InputField: React.FC<InputFieldProps> = ({
               className={`${baseInputClasses} flex items-center justify-center space-x-2 cursor-pointer hover:bg-gray-50`}
             >
               <Upload className="w-4 h-4" />
-              <span>{value ? value.name : config.placeholder || '选择文件'}</span>
+              <span>{value ? value.name : config.placeholder || t('common.选择文件')}</span>
             </button>
           </div>
         );
@@ -360,29 +309,11 @@ export const InputField: React.FC<InputFieldProps> = ({
         {config.validation?.required && <span className="text-red-500 ml-1">*</span>}
       </label>
       
-      <div className="relative">
-        {renderInput()}
-        
-        {/* 状态图标 */}
-        {!['checkbox', 'radio', 'file', 'range'].includes(config.type) && (
+      <div className="relativet('common.renderInpu')checkbox', 'radio', 'file', 'range'].includes(config.type) && (
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
             {hasError && <AlertCircle className="w-4 h-4 text-red-500" />}
-            {isValid && <CheckCircle className="w-4 h-4 text-green-500" />}
-          </div>
-        )}
-      </div>
-
-      {/* 错误信息 */}
-      {hasError && (
-        <div className="flex items-center space-x-1 mt-1 text-red-600 text-sm">
-          <AlertCircle className="w-4 h-4" />
-          <span>{error}</span>
-        </div>
-      )}
-
-      {/* 描述信息 */}
-      {config.description && (
-        <p className="mt-1 text-xs text-gray-500">{config.description}</p>
+            {isValid && <CheckCircle className="w-4 h-4 text-green-500t('common.div')flex items-center space-x-1 mt-1 text-red-600 text-sm">
+          <AlertCircle className="w-4 h-4t('common.spanerrors')mt-1 text-xs text-gray-500">{config.description}</p>
       )}
     </div>
   );

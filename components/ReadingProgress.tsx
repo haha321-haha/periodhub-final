@@ -21,10 +21,7 @@ export default function ReadingProgress({ locale }: ReadingProgressProps) {
       setShowBackToTop(scrollTop > 300);
     };
 
-    window.addEventListener('scroll', updateProgress);
-    updateProgress(); // 初始化
-
-    return () => window.removeEventListener('scroll', updateProgress);
+    window.addEventListener('scrollt('common.updateProg')scroll', updateProgress);
   }, []);
 
   const scrollToTop = () => {
@@ -36,37 +33,16 @@ export default function ReadingProgress({ locale }: ReadingProgressProps) {
 
   const t = {
     zh: {
-      backToTop: '返回顶部',
-      readingProgress: '阅读进度'
+      backToTop: t('common.返回顶部'),
+      readingProgress: t('common.阅读进度')
     },
     en: {
       backToTop: 'Back to Top',
-      readingProgress: 'Reading Progress'
-    }
-  };
-
-  const text = t[locale];
-
-  return (
-    <>
-      {/* 阅读进度条 */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+      readingProgress: 'Reading Progresst('common.consttext')fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
         <div
           className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-150 ease-out"
           style={{ width: `${progress}%` }}
-          role="progressbar"
-          aria-valuenow={Math.round(progress)}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label={text.readingProgress}
-        />
-      </div>
-
-      {/* 返回顶部按钮 */}
-      {showBackToTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 w-12 h-12 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-all duration-200 z-40 flex items-center justify-center"
+          role="progressbart('common.ariavaluen')fixed bottom-6 right-6 w-12 h-12 bg-purple-600 text-white rounded-full shadow-lg hover:bg-purple-700 transition-all duration-200 z-40 flex items-center justify-center"
           aria-label={text.backToTop}
         >
           <ArrowUp className="w-5 h-5" />

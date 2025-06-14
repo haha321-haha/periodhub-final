@@ -17,13 +17,13 @@ export default function NavigationTabs({ locale }: NavigationTabsProps) {
           onClick={() => scrollToSection('articles-section')}
           className="px-6 py-2 rounded-md text-neutral-700 hover:bg-white hover:shadow-sm transition-all"
         >
-          {locale === 'en' ? '📚 Articles' : '📚 专业文章'}
+          {locale === 'en' ? '📚 Articles' : t('common.专业文章')}
         </button>
         <button
           onClick={() => scrollToSection('downloads-section')}
           className="px-6 py-2 rounded-md text-neutral-700 hover:bg-white hover:shadow-sm transition-all"
         >
-          {locale === 'en' ? '📥 PDF Downloads' : '📥 PDF下载'}
+          {locale === 'en' ? '📥 PDF Downloads' : t('common.PDF下载')}
         </button>
       </div>
     </section>

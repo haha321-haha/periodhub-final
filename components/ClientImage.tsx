@@ -13,6 +13,7 @@ interface ClientImageProps {
   width?: number;
   height?: number;
   fallbackSrc?: string;
+  quality?: number;
 }
 
 export default function ClientImage({
@@ -25,6 +26,7 @@ export default function ClientImage({
   width,
   height,
   fallbackSrc,
+  quality = 90,
   ...props
 }: ClientImageProps) {
   const [imageSrc, setImageSrc] = useState(src);
@@ -53,6 +55,7 @@ export default function ClientImage({
       className={className}
       width={width}
       height={height}
+      quality={quality}
       onError={handleError}
       {...props}
     />

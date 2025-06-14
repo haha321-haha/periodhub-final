@@ -62,12 +62,12 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
         '@type': 'MedicalWebPage',
         mainEntity: {
           '@type': 'MedicalCondition',
-          name: '痛经',
-          alternateName: ['月经疼痛', '经期疼痛', 'Menstrual Pain', 'Dysmenorrhea'],
-          description: '月经期间或前后出现的疼痛症状',
+          name: t('health.menstrualPain'),
+          alternateName: [t('common.月经疼痛'), t('common.经期疼痛'), 'Menstrual Pain', 'Dysmenorrhea'],
+          description: t('common.月经期间或前后出现的'),
           medicalSpecialty: {
             '@type': 'MedicalSpecialty',
-            name: '妇科学'
+            name: t('common.妇科学')
           }
         },
         author: {
@@ -89,8 +89,8 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
         },
         about: {
           '@type': 'MedicalCondition',
-          name: '痛经管理',
-          description: '痛经的预防、治疗和管理方法'
+          name: t('common.痛经管理'),
+          description: t('common.痛经的预防治疗和管理')
         }
       }
     }
@@ -101,12 +101,12 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
         '@type': 'HealthTopicPage',
         mainEntity: {
           '@type': 'MedicalCondition',
-          name: '女性健康',
-          description: '女性生殖健康和月经健康相关话题'
+          name: t('common.女性健康'),
+          description: t('common.女性生殖健康和月经健')
         },
         specialty: {
           '@type': 'MedicalSpecialty',
-          name: '妇科学'
+          name: t('common.妇科学')
         }
       }
     }

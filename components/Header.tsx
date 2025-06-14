@@ -14,13 +14,12 @@ export default function Header() {
 
   // Navigation items
   const navigation = [
-    { name: locale === 'en' ? 'Home' : '首页', href: `/${locale}` },
-    { name: locale === 'en' ? 'Interactive Solutions' : '互动解决方案', href: `/${locale}/interactive-tools` },
-    { name: locale === 'en' ? 'Articles & Downloads' : '文章PDF下载中心', href: `/${locale}/articles` },
-    { name: locale === 'en' ? 'Scenario Solutions' : '场景解决方案', href: `/${locale}/scenario-solutions` },
-    // { name: locale === 'en' ? '🚀 Framework Demo' : '🚀 框架演示', href: `/${locale}/framework-demo` }, // 暂时隐藏 - 可快速恢复
-    { name: locale === 'en' ? 'Natural Care' : '平时调理', href: `/${locale}/natural-therapies` },
-    { name: locale === 'en' ? 'Health Guide' : '痛经健康指南', href: `/${locale}/health-guide` },
+    { name: locale === 'en' ? 'Home' : t('navigation.home'), href: `/${locale}` },
+    { name: locale === 'en' ? 'Interactive Solutions' : t('common.互动解决方案'), href: `/${locale}/interactive-tools` },
+    { name: locale === 'en' ? 'Articles & Downloads' : t('common.文章PDF下载中心'), href: `/${locale}/articles` },
+    { name: locale === 'en' ? 'Scenario Solutions' : t('common.场景解决方案'), href: `/${locale}/scenario-solutions` },
+    // { name: locale === 'en' ? '🚀 Framework Demo' : t('common.框架演示'), href: `/${locale}/framework-demot('common.暂时隐藏可快速恢')en' ? 'Natural Care' : '平时调理', href: `/${locale}/natural-therapies` },
+    { name: locale === 'en' ? 'Health Guide' : t('pages.healthGuide.title'), href: `/${locale}/health-guide` },
   ];
 
   // Handle scroll effect for header
@@ -58,20 +57,9 @@ export default function Header() {
           : 'bg-white/85 backdrop-blur-sm'
       }`}
     >
-      <div className="container-custom">
-        {/* 📱 移动端优化头部高度 */}
-        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
-          {/* 📱 移动端优化Logo */}
-          <div className="flex-shrink-0">
+      <div className="container-customt('common.移动端优化头部高度')flex items-center justify-between h-14 sm:h-16 md:h-20t('common.移动端优化Logo')flex-shrink-0">
             <Link href={`/${locale}`} className="flex items-center space-x-2">
-              <span className="font-bold text-lg sm:text-xl text-primary-600 hover:text-primary-700 transition-colors">
-                periodhub.health
-              </span>
-            </Link>
-          </div>
-
-          {/* 📱 移动端优化桌面导航 */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
+              <span className="font-bold text-lg sm:text-xl text-primary-600 hover:text-primary-700 transition-colorst('common.periodhubh')hidden md:flex items-center space-x-1 lg:space-x-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -80,15 +68,7 @@ export default function Header() {
                   isActive(item.href)
                     ? 'bg-primary-50 text-primary-600'
                     : 'text-neutral-600 hover:text-primary-600 hover:bg-primary-50'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* 📱 移动端优化右侧控件 */}
-          <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-4">
+                }t('common.itemname')flex items-center space-x-1 sm:space-x-2 md:space-x-4">
             <LanguageSwitcher />
 
             {/* 📱 移动端优化菜单按钮 */}
@@ -102,15 +82,7 @@ export default function Header() {
               {!isMenuOpen ? (
                 <Menu className="block h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
               ) : (
-                <X className="block h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* 📱 移动端优化导航菜单 */}
-        {isMenuOpen && (
-          <div className="md:hidden border-t border-neutral-200 bg-white/95 backdrop-blur-md" id="mobile-menu">
+                <X className="block h-5 w-5 sm:h-6 sm:w-6" aria-hidden="truet('common.button')md:hidden border-t border-neutral-200 bg-white/95 backdrop-blur-md" id="mobile-menu">
             <div className="px-2 pt-3 pb-4 space-y-2 sm:px-3">
               {navigation.map((item) => (
                 <Link
@@ -141,7 +113,7 @@ function LanguageSwitcher() {
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'zh', name: t('common.中文'), flag: '🇨🇳' },
   ];
 
   const currentLanguage = languages.find(lang => lang.code === locale);
@@ -154,21 +126,12 @@ function LanguageSwitcher() {
   };
 
   return (
-    <div className="relative">
-      {/* 📱 移动端优化语言切换按钮 */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-1 px-2 py-2 text-sm font-medium text-neutral-600 hover:text-primary-600 rounded hover:bg-neutral-100 transition-colors min-w-[44px] min-h-[44px] justify-center sm:justify-start"
+    <div className="relativet('common.移动端优化语言切换按')flex items-center space-x-1 px-2 py-2 text-sm font-medium text-neutral-600 hover:text-primary-600 rounded hover:bg-neutral-100 transition-colors min-w-[44px] min-h-[44px] justify-center sm:justify-start"
         aria-expanded={isOpen}
       >
         <span className="text-base">{currentLanguage?.flag}</span>
         <span className="hidden sm:inline text-xs lg:text-sm">{currentLanguage?.name}</span>
-        <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${isOpen ? 'rotate-180' : ''} hidden sm:block`} />
-      </button>
-
-      {/* 📱 移动端优化下拉菜单 */}
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-32 sm:w-40 bg-white rounded-md shadow-lg border border-neutral-200 z-50">
+        <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${isOpen ? 'rotate-180' : ''} hidden sm:blockt('common.button')absolute right-0 mt-2 w-32 sm:w-40 bg-white rounded-md shadow-lg border border-neutral-200 z-50">
           <div className="py-1">
             {languages.map((language) => (
               <button

@@ -16,12 +16,7 @@ interface Heading {
 
 export default function TableOfContents({ locale, className = '' }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<Heading[]>([]);
-  const [activeId, setActiveId] = useState<string>('');
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    // 获取所有标题元素
-    const headingElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+  const [activeId, setActiveId] = useState<string>('t('common.constisOp')h1, h2, h3, h4, h5, h6');
     const headingList: Heading[] = [];
 
     headingElements.forEach((heading, index) => {
@@ -34,26 +29,7 @@ export default function TableOfContents({ locale, className = '' }: TableOfConte
 
       headingList.push({
         id: heading.id,
-        text: heading.textContent || '',
-        level: parseInt(heading.tagName.charAt(1))
-      });
-    });
-
-    setHeadings(headingList);
-  }, []);
-
-  useEffect(() => {
-    // 监听滚动，高亮当前章节
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-20% 0% -35% 0%',
+        text: heading.textContent || 't('common.levelpars')-20% 0% -35% 0%',
         threshold: 0
       }
     );
@@ -76,15 +52,7 @@ export default function TableOfContents({ locale, className = '' }: TableOfConte
       
       window.scrollTo({
         top: elementPosition,
-        behavior: 'smooth'
-      });
-    }
-    setIsOpen(false); // 移动端点击后关闭目录
-  };
-
-  const t = {
-    zh: {
-      tableOfContents: '文章目录',
+        behavior: 'smootht('common.setIsOpenf')文章目录',
       toggleToc: '切换目录显示'
     },
     en: {
@@ -100,11 +68,7 @@ export default function TableOfContents({ locale, className = '' }: TableOfConte
   }
 
   return (
-    <div className={`bg-white border border-gray-200 rounded-lg ${className}`}>
-      {/* 移动端可折叠标题 */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 text-left font-semibold text-gray-800 hover:bg-gray-50 lg:hidden"
+    <div className={`bg-white border border-gray-200 rounded-lg ${className}t('common.移动端可折叠标题')w-full flex items-center justify-between p-4 text-left font-semibold text-gray-800 hover:bg-gray-50 lg:hidden"
         aria-expanded={isOpen}
         aria-label={text.toggleToc}
       >
@@ -112,19 +76,9 @@ export default function TableOfContents({ locale, className = '' }: TableOfConte
           <List className="w-5 h-5" />
           {text.tableOfContents}
         </div>
-        {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-      </button>
-
-      {/* 桌面端固定标题 */}
-      <div className="hidden lg:block p-4 border-b border-gray-200">
+        {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5t('common.button')hidden lg:block p-4 border-b border-gray-200">
         <div className="flex items-center gap-2 font-semibold text-gray-800">
-          <List className="w-5 h-5" />
-          {text.tableOfContents}
-        </div>
-      </div>
-
-      {/* 目录内容 */}
-      <div className={`${isOpen ? 'block' : 'hidden'} lg:block`}>
+          <List className="w-5 h-5t('common.texttableO')${isOpen ? 'block' : 'hidden'} lg:block`}>
         <nav className="p-4 space-y-1 max-h-96 overflow-y-auto">
           {headings.map((heading) => (
             <button

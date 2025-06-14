@@ -14,51 +14,21 @@ export default function ArticleInteractions({
   articleId, 
   articleTitle, 
   locale,
-  className = '' 
-}: ArticleInteractionsProps) {
-  const [likes, setLikes] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [views, setViews] = useState(0);
-  const [showShareMenu, setShowShareMenu] = useState(false);
-  const [copySuccess, setCopySuccess] = useState(false);
-
-  // 初始化数据
-  useEffect(() => {
-    // 从 localStorage 获取数据
-    const storedLikes = localStorage.getItem(`likes_${articleId}`);
+  className = 't('common.ArticleInt')likes_${articleId}`);
     const storedIsLiked = localStorage.getItem(`liked_${articleId}`);
     const storedIsBookmarked = localStorage.getItem(`bookmarked_${articleId}`);
     const storedViews = localStorage.getItem(`views_${articleId}`);
 
     if (storedLikes) setLikes(parseInt(storedLikes));
     if (storedIsLiked) setIsLiked(storedIsLiked === 'true');
-    if (storedIsBookmarked) setIsBookmarked(storedIsBookmarked === 'true');
-    if (storedViews) {
-      setViews(parseInt(storedViews));
-    } else {
-      // 首次访问，增加浏览量
-      const newViews = Math.floor(Math.random() * 50) + 20; // 模拟初始浏览量
-      setViews(newViews);
-      localStorage.setItem(`views_${articleId}`, newViews.toString());
+    if (storedIsBookmarked) setIsBookmarked(storedIsBookmarked === 'truet('common.ifstoredV')views_${articleId}`, newViews.toString());
     }
 
     // 记录本次访问
     const currentViews = parseInt(localStorage.getItem(`views_${articleId}`) || '0');
     const newViews = currentViews + 1;
     setViews(newViews);
-    localStorage.setItem(`views_${articleId}`, newViews.toString());
-  }, [articleId]);
-
-  // 点赞功能
-  const handleLike = () => {
-    const newLikedState = !isLiked;
-    const newLikes = newLikedState ? likes + 1 : likes - 1;
-    
-    setIsLiked(newLikedState);
-    setLikes(newLikes);
-    
-    localStorage.setItem(`liked_${articleId}`, newLikedState.toString());
+    localStorage.setItem(`views_${articleId}t('common.newViewsto')liked_${articleId}`, newLikedState.toString());
     localStorage.setItem(`likes_${articleId}`, newLikes.toString());
   };
 
@@ -67,10 +37,7 @@ export default function ArticleInteractions({
     const newBookmarkedState = !isBookmarked;
     setIsBookmarked(newBookmarkedState);
     
-    localStorage.setItem(`bookmarked_${articleId}`, newBookmarkedState.toString());
-    
-    // 管理收藏列表
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+    localStorage.setItem(`bookmarked_${articleId}t('common.newBookmar')bookmarks') || '[]');
     if (newBookmarkedState) {
       if (!bookmarks.includes(articleId)) {
         bookmarks.push(articleId);
@@ -81,17 +48,7 @@ export default function ArticleInteractions({
         bookmarks.splice(index, 1);
       }
     }
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-  };
-
-  // 复制链接
-  const handleCopyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy link:', err);
+    localStorage.setItem('bookmarkst('common.JSONstring')Failed to copy link:', err);
     }
   };
 
@@ -116,20 +73,20 @@ export default function ArticleInteractions({
 
   const t = {
     zh: {
-      like: '点赞文章',
-      liked: '已点赞',
-      bookmark: '收藏',
-      bookmarked: '已收藏',
-      share: '分享',
-      views: '阅读量',
-      likes: '点赞',
-      copyLink: '复制链接',
-      copied: '已复制',
-      shareToFacebook: '分享到 Facebook',
-      shareToTwitter: '分享到 Twitter',
-      shareToLinkedIn: '分享到 LinkedIn',
-      shareToWhatsApp: '分享到 WhatsApp',
-      shareToTelegram: '分享到 Telegram'
+      like: t('common.点赞文章'),
+      liked: t('common.已点赞'),
+      bookmark: t('common.收藏'),
+      bookmarked: t('common.已收藏'),
+      share: t('common.分享'),
+      views: t('common.阅读量'),
+      likes: t('common.点赞'),
+      copyLink: t('common.复制链接'),
+      copied: t('common.已复制'),
+      shareToFacebook: t('common.分享到Facebo'),
+      shareToTwitter: t('common.分享到Twitte'),
+      shareToLinkedIn: t('common.分享到Linked'),
+      shareToWhatsApp: t('common.分享到WhatsA'),
+      shareToTelegram: t('common.分享到Telegr')
     },
     en: {
       like: 'Like Article',
@@ -152,23 +109,14 @@ export default function ArticleInteractions({
   const text = t[locale];
 
   return (
-    <div className={`bg-white border border-gray-200 rounded-lg p-4 sm:p-6 ${className}`}>
-      {/* 统计信息 */}
-      <div className="flex items-center justify-between mb-4 text-sm text-gray-600">
+    <div className={`bg-white border border-gray-200 rounded-lg p-4 sm:p-6 ${className}t('common.统计信息')flex items-center justify-between mb-4 text-sm text-gray-600">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1">
             <Eye className="w-4 h-4" />
             {views.toLocaleString()} {text.views}
           </span>
           <span className="flex items-center gap-1">
-            <Heart className="w-4 h-4" />
-            {likes} {text.likes}
-          </span>
-        </div>
-      </div>
-
-      {/* 操作按钮 */}
-      <div className="flex items-center justify-between">
+            <Heart className="w-4 h-4t('common.likestext')flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3">
           {/* 点赞按钮 */}
           <button
@@ -180,40 +128,20 @@ export default function ArticleInteractions({
             }`}
           >
             <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
-            <span className="text-sm font-medium hidden sm:inline">
-              {isLiked ? text.liked : text.like}
-            </span>
-          </button>
-
-          {/* 收藏按钮 */}
-          <button
-            onClick={handleBookmark}
-            className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 ${
+            <span className="text-sm font-medium hidden sm:inlinet('common.isLikedt')flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 ${
               isBookmarked
                 ? 'bg-blue-500 text-white hover:bg-blue-600'
                 : 'bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-600'
             }`}
           >
             <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
-            <span className="text-sm font-medium hidden sm:inline">
-              {isBookmarked ? text.bookmarked : text.bookmark}
-            </span>
-          </button>
-        </div>
-
-        {/* 分享按钮 */}
-        <div className="relative">
+            <span className="text-sm font-medium hidden sm:inlinet('common.isBookmark')relative">
           <button
             onClick={() => setShowShareMenu(!showShareMenu)}
             className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
           >
             <Share2 className="w-4 h-4" />
-            <span className="text-sm font-medium hidden sm:inline">{text.share}</span>
-          </button>
-
-          {/* 分享菜单 */}
-          {showShareMenu && (
-            <div className="absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-10 min-w-48">
+            <span className="text-sm font-medium hidden sm:inlinet('common.textshares')absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-10 min-w-48">
               <button
                 onClick={handleCopyLink}
                 className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
@@ -248,19 +176,7 @@ export default function ArticleInteractions({
               </button>
               <button
                 onClick={() => handleShare('telegram')}
-                className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50"
-              >
-                ✈️ {text.shareToTelegram}
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* 点击外部关闭分享菜单 */}
-      {showShareMenu && (
-        <div
-          className="fixed inset-0 z-0"
+                className="w-full px-4 py-2 text-left text-sm hover:bg-gray-50t('common.textshareT')fixed inset-0 z-0"
           onClick={() => setShowShareMenu(false)}
         />
       )}

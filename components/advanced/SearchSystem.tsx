@@ -2,14 +2,10 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Search, X, Filter, SortAsc, SortDesc, Clock, Bookmark } from 'lucide-react';
-import { useAppStore } from '../../lib/stores/appStore';
+import { useTranslations } from 'next-intl';
 
 // 搜索结果类型
-export interface SearchResult {
-  id: string;
-  title: string;
-  content: string;
-  type: 'article' | 'tool' | 'therapy' | 'guide';
+export type SearchResultType = 'article' | 'tool' | 'therapy' | 'guide';
   category?: string;
   tags?: string[];
   url: string;
@@ -34,20 +30,15 @@ export type SortDirection = 'asc' | 'desc';
 
 // 搜索配置
 export interface SearchConfig {
-  placeholder?: string;
-  showFilters?: boolean;
-  showSort?: boolean;
-  showHistory?: boolean;
-  maxResults?: number;
   debounceMs?: number;
+  maxResults?: number;
+  enableFilters?: boolean;
+  enableSort?: boolean;
 }
 
-// 搜索Hook
-export const useSearch = (
-  searchFunction: (query: string, filters: SearchFilters) => Promise<SearchResult[]>,
-  config: SearchConfig = {}
-) => {
-  const [query, setQuery] = useState('');
+// 搜索系统Hook
+export const useSearchSystem = (config: SearchConfig = {}) => {
+  const t = useTranslations('common');;
   const [results, setResults] = useState<SearchResult[]>([]);
   const [filters, setFilters] = useState<SearchFilters>({});
   const [sortBy, setSortBy] = useState<SortOption>('relevance');
@@ -78,27 +69,8 @@ export const useSearch = (
           setSearchHistory(prev => [searchQuery, ...prev.slice(0, 9)]); // 保留最近10条
         }
       } catch (err) {
-        setError('搜索失败，请重试');
-        console.error('Search error:', err);
-      } finally {
-        setIsLoading(false);
-      }
-    }, debounceMs),
-    [searchFunction, debounceMs, searchHistory]
-  );
-
-  // 执行搜索
-  useEffect(() => {
-    debouncedSearch(query, filters);
-  }, [query, filters, debouncedSearch]);
-
-  // 排序结果
-  const sortedResults = useMemo(() => {
-    const sorted = [...results].sort((a, b) => {
-      let comparison = 0;
-
-      switch (sortBy) {
-        case 'relevance':
+        setError(t('searchFailed'));
+        console.error('Search error:', err);relevance':
           comparison = (b.score || 0) - (a.score || 0);
           break;
         case 'date':
@@ -124,58 +96,35 @@ export const useSearch = (
     setError(null);
   }, []);
 
-  const clearHistory = useCallback(() => {
-    setSearchHistory([]);
-  }, []);
-
   return {
     query,
     setQuery,
-    results: sortedResults,
+    results,
+    isLoading,
+    error,
     filters,
     setFilters,
     sortBy,
     setSortBy,
     sortDirection,
     setSortDirection,
-    isLoading,
-    error,
     searchHistory,
     clearSearch,
-    clearHistory,
+    clearHistory: () => setSearchHistory([])
   };
 };
 
-// 防抖函数
-function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout;
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-}
-
-// 搜索框组件
-interface SearchBoxProps {
+// 搜索输入框组件
+export const SearchInput: React.FC<{
   value: string;
   onChange: (value: string) => void;
   onClear: () => void;
   placeholder?: string;
   isLoading?: boolean;
   className?: string;
-}
-
-export const SearchBox: React.FC<SearchBoxProps> = ({
-  value,
-  onChange,
-  onClear,
-  placeholder = '搜索...',
-  isLoading = false,
-  className = '',
 }) => {
+  const t = useTranslations('common');
+
   return (
     <div className={`relative ${className}`}>
       <div className="relative">
@@ -184,7 +133,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
+          placeholder={placeholder || t('searchPlaceholder')}
           className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         {value && (
@@ -206,22 +155,13 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
   );
 };
 
-// 搜索结果组件
-interface SearchResultsProps {
+// 搜索结果列表组件
+export const SearchResults: React.FC<{
   results: SearchResult[];
-  isLoading: boolean;
-  error: string | null;
   onResultClick?: (result: SearchResult) => void;
+  isLoading?: boolean;
+  error?: string | null;
   className?: string;
-}
-
-export const SearchResults: React.FC<SearchResultsProps> = ({
-  results,
-  isLoading,
-  error,
-  onResultClick,
-  className = '',
-}) => {
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'article':
@@ -238,17 +178,18 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   };
 
   const getTypeLabel = (type: string) => {
+    const t = useTranslations('common');
     switch (type) {
       case 'article':
-        return '文章';
+        return t('articles');
       case 'tool':
-        return '工具';
+        return t('tools');
       case 'therapy':
-        return '疗法';
+        return t('therapies');
       case 'guide':
-        return '指南';
+        return t('guides');
       default:
-        return '内容';
+        return t('content');
     }
   };
 
@@ -276,10 +217,11 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   }
 
   if (results.length === 0) {
+    const t = useTranslations('common');
     return (
       <div className={`text-center py-8 ${className}`}>
         <div className="text-gray-400 mb-2">🔍</div>
-        <p className="text-gray-500">没有找到相关结果</p>
+        <p className="text-gray-500">{t('noResultsFound')}</p>
       </div>
     );
   }
@@ -310,7 +252,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
               
               <div className="flex items-center space-x-4 text-xs text-gray-500">
                 {result.category && (
-                  <span>分类: {result.category}</span>
+                  <span>{result.category}</span>
                 )}
                 {result.lastModified && (
                   <span className="flex items-center space-x-1">
@@ -349,38 +291,31 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
 };
 
 // 搜索历史组件
-interface SearchHistoryProps {
+export const SearchHistory: React.FC<{
   history: string[];
   onSelect: (query: string) => void;
   onClear: () => void;
   className?: string;
-}
-
-export const SearchHistory: React.FC<SearchHistoryProps> = ({
-  history,
-  onSelect,
-  onClear,
-  className = '',
-}) => {
   if (history.length === 0) {
     return null;
   }
+
+  const t = useTranslations('common');
 
   return (
     <div className={`bg-white border border-gray-200 rounded-lg p-4 ${className}`}>
       <div className="flex items-center justify-between mb-3">
         <h4 className="text-sm font-medium text-gray-700 flex items-center space-x-1">
           <Clock className="w-4 h-4" />
-          <span>搜索历史</span>
+          <span>{t('searchHistory')}</span>
         </h4>
         <button
           onClick={onClear}
           className="text-xs text-gray-500 hover:text-gray-700"
         >
-          清除
+          {t('clear')}
         </button>
       </div>
-      
       <div className="space-y-1">
         {history.map((query, index) => (
           <button
