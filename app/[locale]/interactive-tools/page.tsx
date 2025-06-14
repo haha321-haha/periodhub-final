@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import ImagePlaceholder from '@/components/ImagePlaceholder';
+import ClientImage from '@/components/ClientImage';
 import BreathingExercise from '@/components/BreathingExercise';
 import { BarChart3, ClipboardCheck, Lightbulb, Search, User } from 'lucide-react'; // Icons for cards
 import { Locale, locales } from '@/i18n';
@@ -96,14 +97,16 @@ export default async function InteractiveToolsPage({
               </p>
             </div>
             <div className="flex justify-center order-first md:order-last">
-              <ImagePlaceholder
-                filename="assessment-illustration.jpg"
-                alt="Woman using digital health assessment tool on tablet in comfortable home setting"
-                width={400}
-                height={300}
-                description="Woman using digital health assessment tool, modern tablet interface, comfortable home setting, soft lighting"
-                className="w-full max-w-sm sm:max-w-md"
-              />
+              <div className="relative w-full max-w-sm sm:max-w-md">
+                <ClientImage
+                  src="/images/tools/assessment-illustration.jpg"
+                  alt="Woman using digital health assessment tool on tablet in comfortable home setting"
+                  width={400}
+                  height={300}
+                  className="w-full h-auto rounded-lg shadow-md"
+                  fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
+                />
+              </div>
             </div>
           </div>
         </div>
