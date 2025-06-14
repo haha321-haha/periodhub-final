@@ -23,7 +23,14 @@
     "test:translations": "jest tests/translation-system.test.js",
     "test:translations:e2e": "jest tests/e2e/translation-e2e.test.js",
     "quality:translations": "node scripts/translation-quality-check.js",
-    "check:translations": "npm run fix:translations && npm run test:translations && npm run quality:translations"
+    "check:translations": "npm run fix:translations && npm run test:translations && npm run quality:translations",
+    "healthcheck": "curl --fail https://periodhub.health || exit 1",
+    "ssl:check": "openssl s_client -connect periodhub.health:443 -servername periodhub.health",
+    "dns:check": "dig periodhub.health +trace",
+    "deploy:force": "vercel --force --prod",
+    "diagnostic": "node scripts/ssl-dns-diagnostic.js",
+    "fix:deployment": "node scripts/vercel-force-redeploy.js",
+    "fix:ssl": "npm run diagnostic && npm run fix:deployment"
   },
   "dependencies": {
     "clsx": "^2.0.0",
@@ -48,7 +55,6 @@
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
-    "archiver": "^7.0.1",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
