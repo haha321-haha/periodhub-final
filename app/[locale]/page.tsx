@@ -144,7 +144,7 @@ export default async function HomePage({
             </div>
             {/* 📱 移动端优化图片区域 */}
             <div className="relative h-48 sm:h-56 md:h-80 lg:h-96 rounded-lg md:rounded-xl overflow-hidden shadow-lg order-first md:order-last">
-              {/* Hero image - now using actual uploaded image */}
+              {/* Hero image - with fallback for better reliability */}
               <ClientImage
                 src="/images/hero/hero-main-banner.jpg"
                 alt="Professional healthcare illustration showing diverse women in comfortable poses, conveying comfort and medical trust"
@@ -152,6 +152,7 @@ export default async function HomePage({
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
                 className="object-cover"
+                fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=450&q=80"
               />
             </div>
           </div>
