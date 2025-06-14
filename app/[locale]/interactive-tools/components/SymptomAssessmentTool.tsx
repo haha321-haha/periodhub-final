@@ -25,30 +25,7 @@ interface SymptomAssessmentToolProps {
 }
 
 export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolProps) {
-  const { t } = useSafeTranslations('painTracker.assessment');
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, any>>({});
-
-  const {
-    currentSession,
-    currentQuestion,
-    currentQuestionIndex,
-    totalQuestions,
-    progress,
-    isComplete,
-    result,
-    isLoading,
-    error,
-    startAssessment,
-    answerQuestion,
-    goToPreviousQuestion,
-    goToNextQuestion,
-    completeAssessment,
-    resetAssessment
-  } = useSymptomAssessment();
-
-  // 监听result变化
-  useEffect(() => {
-    console.log('Result changed:', result);
+  const { t } = useSafeTranslations('painTracker.assessmentt('tools.constsele')Result changed:', result);
   }, [result]);
 
   const {
@@ -81,26 +58,14 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
   };
 
   const handleNext = () => {
-    console.log('handleNext called:', {
-      currentQuestionIndex,
-      totalQuestions,
-      isLastQuestion: currentQuestionIndex >= totalQuestions - 1
-    });
-
-    if (currentQuestionIndex >= totalQuestions - 1) {
-      // 已经是最后一题，完成评估
-      console.log('Completing assessment...');
+    console.log('handleNext called:t('tools.currentQue')Completing assessment...');
       const assessmentResult = completeAssessment(t);
       console.log('Assessment result:', assessmentResult);
 
       if (assessmentResult) {
         addSuccessNotification(
           t('messages.assessmentComplete'),
-          t('messages.assessmentCompleteDesc')
-        );
-        // 强制重新渲染以显示结果
-        setTimeout(() => {
-          console.log('Result should be visible now:', result);
+          t('messages.assessmentCompleteDesct('tools.强制重新渲染以显示结')Result should be visible now:', result);
         }, 100);
       } else {
         console.error('Assessment result is null');
@@ -142,38 +107,38 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
               <Brain className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t('title', {}, locale === 'en' ? 'Symptom Assessment Tool' : '症状评估工具')}
+              {t('title', {}, locale === 'en' ? 'Symptom Assessment Tool' : t('tools.症状评估工具'))}
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              {t('subtitle', {}, locale === 'en' ? 'Professional symptom analysis tool to help you understand your health condition' : '专业的症状分析工具，帮助您了解自己的健康状况')}
+              {t('subtitle', {}, locale === 'en' ? 'Professional symptom analysis tool to help you understand your health condition' : t('tools.专业的症状分析工具帮'))}
             </p>
           </div>
 
           <div className="bg-blue-50 rounded-lg p-6 mb-8">
             <h3 className="text-lg font-semibold text-blue-900 mb-4">
-              {t('start.title', {}, locale === 'en' ? 'Start Assessment' : '开始评估')}
+              {t('start.title', {}, locale === 'en' ? 'Start Assessment' : t('tools.开始评估'))}
             </h3>
             <p className="text-blue-800 mb-4">
-              {t('start.description', {}, locale === 'en' ? 'This assessment tool will help you understand the severity of your symptoms and provide personalized recommendations' : '这个评估工具将帮助您了解症状的严重程度并提供个性化建议')}
+              {t('start.description', {}, locale === 'en' ? 'This assessment tool will help you understand the severity of your symptoms and provide personalized recommendations' : t('tools.这个评估工具将帮助您'))}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {[
                 {
                   icon: Heart,
-                  text: locale === 'en' ? '12 Professional Questions' : '12个专业问题'
+                  text: locale === 'en' ? '12 Professional Questions' : t('tools.12个专业问题')
                 },
                 {
                   icon: Brain,
-                  text: locale === 'en' ? 'Personalized Recommendations' : '个性化建议'
+                  text: locale === 'en' ? 'Personalized Recommendations' : t('tools.个性化建议')
                 },
                 {
                   icon: CheckCircle,
-                  text: locale === 'en' ? 'Scientific Assessment' : '科学评估'
+                  text: locale === 'en' ? 'Scientific Assessment' : t('tools.科学评估')
                 },
                 {
                   icon: Activity,
-                  text: locale === 'en' ? 'Instant Results' : '即时结果'
+                  text: locale === 'en' ? 'Instant Results' : t('tools.即时结果')
                 }
               ].map((feature, index) => {
                 const Icon = feature.icon;
@@ -193,11 +158,11 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
               className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-colors inline-flex items-center space-x-2"
             >
               <Play className="w-5 h-5" />
-              <span>{t('start.startButton', {}, locale === 'en' ? 'Start Assessment' : '开始评估')}</span>
+              <span>{t('start.startButton', {}, locale === 'en' ? 'Start Assessment' : t('tools.开始评估'))}</span>
             </button>
 
             <p className="text-sm text-gray-500 mt-4">
-              {t('start.disclaimer', {}, locale === 'en' ? 'This tool is for reference only and cannot replace professional medical advice' : '此工具仅供参考，不能替代专业医疗建议')}
+              {t('start.disclaimer', {}, locale === 'en' ? 'This tool is for reference only and cannot replace professional medical advice' : t('tools.此工具仅供参考不能替'))}
             </p>
           </div>
         </div>
@@ -220,7 +185,7 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {t('result.title', {}, locale === 'en' ? 'Assessment Results' : '评估结果')}
+              {t('result.title', {}, locale === 'en' ? 'Assessment Results' : t('tools.评估结果'))}
             </h2>
           </div>
 
@@ -228,7 +193,7 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-lg text-center">
               <h3 className="text-sm font-medium text-gray-600 mb-2">
-                {t('result.yourScore', {}, locale === 'en' ? 'Your Score' : '您的得分')}
+                {t('result.yourScore', {}, locale === 'en' ? 'Your Score' : t('tools.您的得分'))}
               </h3>
               <p className="text-3xl font-bold text-gray-900">
                 {result.score}/{result.maxScore}
@@ -354,9 +319,7 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
 
   return (
     <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-xl p-4 sm:p-6 lg:p-8 mobile-safe-area">
-      <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 max-w-3xl mx-auto">
-        {/* Progress Bar - 移动端优化 */}
-        <div className="mb-6 sm:mb-8">
+      <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 max-w-3xl mx-autot('tools.ProgressB')mb-6 sm:mb-8">
           <div className="flex justify-between items-center mb-2">
             <span className="text-xs sm:text-sm font-medium text-gray-600">
               {t('progress.questionOf', {
@@ -371,25 +334,12 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
           <div className="w-full bg-gray-200 rounded-full h-2 sm:h-3">
             <div
               className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 sm:h-3 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Question - 移动端优化 */}
-        {currentQuestion && (
-          <div className="mb-6 sm:mb-8">
+              style={{ width: `${progress}%t('tools.div')mb-6 sm:mb-8">
             <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4 leading-tight">
               {currentQuestion.title}
             </h2>
             {currentQuestion.description && (
-              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                {currentQuestion.description}
-              </p>
-            )}
-
-            {/* Question Input - 移动端优化 */}
-            <div className="space-y-2 sm:space-y-3">
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxedt('tools.currentQue')space-y-2 sm:space-y-3">
               {currentQuestion.type === 'single' && currentQuestion.options && (
                 <div className="space-y-2 sm:space-y-3">
                   {currentQuestion.options.map((option) => (
@@ -499,69 +449,45 @@ export default function SymptomAssessmentTool({ locale }: SymptomAssessmentToolP
                       className="w-full pain-scale cursor-pointer"
                     />
                     <div className="flex justify-between text-sm text-neutral-600 mt-2">
-                      <span className="text-xs sm:text-sm">{t('painScale.levels.none', {}, locale === 'en' ? 'None' : '无痛')}</span>
-                      <span className="text-xs sm:text-sm">{t('painScale.levels.mild', {}, locale === 'en' ? 'Mild' : '轻微')}</span>
-                      <span className="text-xs sm:text-sm">{t('painScale.levels.moderate', {}, locale === 'en' ? 'Moderate' : '中等')}</span>
-                      <span className="text-xs sm:text-sm">{t('painScale.levels.severe', {}, locale === 'en' ? 'Severe' : '严重')}</span>
-                      <span className="text-xs sm:text-sm">{t('painScale.levels.extreme', {}, locale === 'en' ? 'Extreme' : '极重')}</span>
-                    </div>
-                  </div>
-
-                  {/* 当前选择的值显示 - 与中医体质测试保持一致的样式 */}
-                  <div className="text-center">
+                      <span className="text-xs sm:text-sm">{t('painScale.levels.none', {}, locale === 'en' ? 'None' : t('assessment.noPain'))}</span>
+                      <span className="text-xs sm:text-sm">{t('painScale.levels.mild', {}, locale === 'en' ? 'Mild' : t('tools.轻微'))}</span>
+                      <span className="text-xs sm:text-sm">{t('painScale.levels.moderate', {}, locale === 'en' ? 'Moderate' : t('tools.中等'))}</span>
+                      <span className="text-xs sm:text-sm">{t('painScale.levels.severe', {}, locale === 'en' ? 'Severe' : t('tools.严重'))}</span>
+                      <span className="text-xs sm:text-sm">{t('painScale.levels.extreme', {}, locale === 'en' ? 'Extreme' : t('tools.极重t('tools.span')text-center">
                     <div className="inline-flex items-center bg-gradient-to-r from-blue-100 via-blue-50 to-purple-100 px-8 py-4 rounded-2xl shadow-lg border border-blue-200">
                       <span className="text-xl font-bold text-blue-800">
-                        {t('painScale.title', {}, locale === 'en' ? 'Pain Level: ' : '疼痛程度：')}
+                        {t('painScale.title', {}, locale === 'en' ? 'Pain Level: ' : t('tools.疼痛程度'))}
                         <span className="text-3xl font-extrabold text-blue-600 mx-2">
                           {selectedAnswers[currentQuestion.id] || (currentQuestion.validation?.min || 1)}
                         </span>
                         <span className="text-base font-medium text-blue-700 ml-2">
                           ({(() => {
                             const value = selectedAnswers[currentQuestion.id] || (currentQuestion.validation?.min || 1);
-                            if (value <= 2) return t('painScale.levels.none', {}, locale === 'en' ? 'None' : '无痛');
-                            if (value <= 4) return t('painScale.levels.mild', {}, locale === 'en' ? 'Mild' : '轻微');
-                            if (value <= 6) return t('painScale.levels.moderate', {}, locale === 'en' ? 'Moderate' : '中等');
-                            if (value <= 8) return t('painScale.levels.severe', {}, locale === 'en' ? 'Severe' : '严重');
-                            return t('painScale.levels.extreme', {}, locale === 'en' ? 'Extreme' : '极重');
-                          })()})
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* 疼痛程度说明 - 与中医体质测试保持一致的样式 */}
-                  <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl overflow-hidden border border-blue-200 shadow-sm">
+                            if (value <= 2) return t('painScale.levels.none', {}, locale === 'en' ? 'None' : t('assessment.noPain'));
+                            if (value <= 4) return t('painScale.levels.mild', {}, locale === 'en' ? 'Mild' : t('tools.轻微'));
+                            if (value <= 6) return t('painScale.levels.moderate', {}, locale === 'en' ? 'Moderate' : t('tools.中等'));
+                            if (value <= 8) return t('painScale.levels.severe', {}, locale === 'en' ? 'Severe' : t('tools.严重'));
+                            return t('painScale.levels.extreme', {}, locale === 'en' ? 'Extreme' : t('tools.极重t('tools.span')bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-xl overflow-hidden border border-blue-200 shadow-sm">
                     <h4 className="font-semibold text-blue-800 mb-4 flex items-center">
                       <span>📖</span>
-                      <span className="ml-2">{t('painScale.reference', {}, locale === 'en' ? 'Pain Level Reference' : '疼痛程度参考')}</span>
+                      <span className="ml-2">{t('painScale.reference', {}, locale === 'en' ? 'Pain Level Reference' : t('tools.疼痛程度参考'))}</span>
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-blue-700">
                       <div className="flex items-start break-words bg-white p-3 rounded-lg shadow-sm">
                         <span className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span><strong>0-2:</strong> {t('painScale.descriptions.0-2', {}, locale === 'en' ? 'No pain or very mild discomfort' : '无痛或极轻微不适')}</span>
+                        <span><strong>0-2:</strong> {t('painScale.descriptions.0-2', {}, locale === 'en' ? 'No pain or very mild discomfort' : t('tools.无痛或极轻微不适'))}</span>
                       </div>
                       <div className="flex items-start break-words bg-white p-3 rounded-lg shadow-sm">
                         <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span><strong>3-4:</strong> {t('painScale.descriptions.3-4', {}, locale === 'en' ? 'Mild pain, does not affect daily activities' : '轻微疼痛，不影响日常活动')}</span>
+                        <span><strong>3-4:</strong> {t('painScale.descriptions.3-4', {}, locale === 'en' ? 'Mild pain, does not affect daily activities' : t('tools.轻微疼痛不影响日常活'))}</span>
                       </div>
                       <div className="flex items-start break-words bg-white p-3 rounded-lg shadow-sm">
                         <span className="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span><strong>5-7:</strong> {t('painScale.descriptions.5-7', {}, locale === 'en' ? 'Moderate pain, affects some activities' : '中等疼痛，影响部分活动')}</span>
+                        <span><strong>5-7:</strong> {t('painScale.descriptions.5-7', {}, locale === 'en' ? 'Moderate pain, affects some activities' : t('tools.中等疼痛影响部分活动'))}</span>
                       </div>
                       <div className="flex items-start break-words bg-white p-3 rounded-lg shadow-sm">
                         <span className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span><strong>8-10:</strong> {t('painScale.descriptions.8-10', {}, locale === 'en' ? 'Severe pain, seriously affects life' : '严重疼痛，严重影响生活')}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* Navigation - 移动端优化 */}
-        <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-0 mt-6 sm:mt-8">
+                        <span><strong>8-10:</strong> {t('painScale.descriptions.8-10', {}, locale === 'en' ? 'Severe pain, seriously affects life' : t('tools.严重疼痛严重影响生活t('tools.span')flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-0 mt-6 sm:mt-8">
           <button
             onClick={handlePrevious}
             disabled={currentQuestionIndex === 0}

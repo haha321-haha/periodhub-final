@@ -76,19 +76,12 @@ export default async function InteractiveToolsPage({
   ];
 
   return (
-    <div className="space-y-8 sm:space-y-12 mobile-safe-area">
-      {/* Page Header - 移动端优化 */}
-      <header className="text-center px-4 sm:px-0">
+    <div className="space-y-8 sm:space-y-12 mobile-safe-areat('tools.PageHeade')text-center px-4 sm:px-0">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-700 mb-3 sm:mb-4 leading-tight">
           {t('title')}
         </h1>
         <p className="text-base sm:text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-          {t('description')}
-        </p>
-      </header>
-
-      {/* Tools Introduction Section - 移动端优化 */}
-      <section className="bg-gradient-to-br from-primary-50 to-neutral-50 p-4 sm:p-6 md:p-8 rounded-xl mx-4 sm:mx-0">
+          {t('descriptiont('tools.phe')bg-gradient-to-br from-primary-50 to-neutral-50 p-4 sm:p-6 md:p-8 rounded-xl mx-4 sm:mx-0">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
             <div>
@@ -104,16 +97,7 @@ export default async function InteractiveToolsPage({
                   width={400}
                   height={300}
                   className="w-full h-auto rounded-lg shadow-md"
-                  fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tools Grid - 移动端优化 */}
-      <section className="container-custom">
+                  fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80t('tools.div')container-custom">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {tools.map((tool) => (
             <div key={tool.title} className="card flex flex-col items-center text-center h-full p-4 sm:p-6">
@@ -129,17 +113,7 @@ export default async function InteractiveToolsPage({
               {tool.href === "#" ? (
                  <span className="btn-disabled w-full mobile-touch-target text-sm sm:text-base px-4 py-3">{tool.cta}</span>
               ) : (
-                <Link href={tool.href} className={`w-full mobile-touch-target text-sm sm:text-base px-4 py-3 text-center ${tool.title.includes("Symptom") || tool.title.includes("症状") ? 'btn-primary' : 'btn-secondary'}`}>
-                  {tool.cta}
-                </Link>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Breathing Exercise Section - 移动端优化 */}
-      <section id="breathing-exercise" className="container-custom">
+                <Link href={tool.href} className={`w-full mobile-touch-target text-sm sm:text-base px-4 py-3 text-center ${tool.title.includes("Symptom") || tool.title.includes(t('health.symptoms')) ? 'btn-primary' : 'btn-secondary'}t('tools.toolcta')breathing-exercise" className="container-custom">
         <div className="space-y-4 sm:space-y-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8">
         <div className="text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full mb-4 sm:mb-6">

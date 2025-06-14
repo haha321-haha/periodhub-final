@@ -10,9 +10,9 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale }
 }): Promise<Metadata> {
-  const title = locale === 'zh' ? '何时寻求帮助 - 痛经健康指南' : 'When to Seek Help - Health Guide';
+  const title = locale === 'zh' ? t('healthGuide.何时寻求帮助痛经') : 'When to Seek Help - Health Guide';
   const description = locale === 'zh' 
-    ? '识别需要医疗关注的症状和情况，了解何时应该寻求专业医疗帮助。'
+    ? t('healthGuide.识别需要医疗关注的症')
     : 'Recognize symptoms and situations that require medical attention, understand when to seek professional medical help.';
   
   return {
@@ -39,26 +39,26 @@ export default function MedicalCarePage({
       {/* Breadcrumb */}
       <nav className="text-sm text-neutral-600">
         <Link href={`/${locale}`} className="hover:text-primary-600">
-          {locale === 'zh' ? '首页' : 'Home'}
+          {locale === 'zh' ? t('navigation.home') : 'Home'}
         </Link>
         <span className="mx-2">›</span>
         <Link href={`/${locale}/health-guide`} className="hover:text-primary-600">
-          {locale === 'zh' ? '痛经健康指南' : 'Health Guide'}
+          {locale === 'zh' ? t('pages.healthGuide.title') : 'Health Guide'}
         </Link>
         <span className="mx-2">›</span>
         <span className="text-neutral-800">
-          {locale === 'zh' ? '何时寻求帮助' : 'When to Seek Help'}
+          {locale === 'zh' ? t('healthGuide.何时寻求帮助') : 'When to Seek Help'}
         </span>
       </nav>
 
       {/* Page Header */}
       <header className="text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-primary-700 mb-4">
-          {locale === 'zh' ? '何时寻求医疗帮助' : 'When to Seek Medical Help'}
+          {locale === 'zh' ? t('healthGuide.何时寻求医疗帮助') : 'When to Seek Medical Help'}
         </h1>
         <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
           {locale === 'zh'
-            ? '识别需要医疗关注的症状和情况，了解何时应该寻求专业医疗帮助，确保您的健康安全。'
+            ? t('healthGuide.识别需要医疗关注的症')
             : 'Recognize symptoms and situations that require medical attention, understand when to seek professional medical help to ensure your health and safety.'
           }
         </p>
@@ -67,11 +67,11 @@ export default function MedicalCarePage({
       {/* Emergency Signs */}
       <section className="bg-red-50 border-l-4 border-red-500 p-6 md:p-8 rounded-r-xl">
         <h2 className="text-2xl font-semibold text-red-800 mb-6">
-          {locale === 'zh' ? '紧急警告信号' : 'Emergency Warning Signs'}
+          {locale === 'zh' ? t('healthGuide.紧急警告信号') : 'Emergency Warning Signs'}
         </h2>
         <p className="text-red-700 mb-6">
           {locale === 'zh'
-            ? '如果您出现以下任何症状，请立即寻求紧急医疗帮助：'
+            ? t('healthGuide.如果您出现以下任何症')
             : 'If you experience any of the following symptoms, seek emergency medical help immediately:'
           }
         </p>
@@ -79,40 +79,40 @@ export default function MedicalCarePage({
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-4 rounded-lg">
             <h3 className="font-semibold text-red-800 mb-3">
-              {locale === 'zh' ? '严重疼痛症状' : 'Severe Pain Symptoms'}
+              {locale === 'zh' ? t('healthGuide.严重疼痛症状') : 'Severe Pain Symptoms'}
             </h3>
             <ul className="space-y-2 text-red-700 text-sm">
               <li className="flex items-start">
                 <span className="text-red-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '突然出现的剧烈腹痛' : 'Sudden severe abdominal pain'}
+                {locale === 'zh' ? t('healthGuide.突然出现的剧烈腹痛') : 'Sudden severe abdominal pain'}
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '疼痛伴随高热（38.5°C以上）' : 'Pain with high fever (above 38.5°C)'}
+                {locale === 'zh' ? t('healthGuide.疼痛伴随高热385C') : 'Pain with high fever (above 38.5°C)'}
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '无法忍受的疼痛，影响呼吸' : 'Unbearable pain affecting breathing'}
+                {locale === 'zh' ? t('healthGuide.无法忍受的疼痛影响呼') : 'Unbearable pain affecting breathing'}
               </li>
             </ul>
           </div>
 
           <div className="bg-white p-4 rounded-lg">
             <h3 className="font-semibold text-red-800 mb-3">
-              {locale === 'zh' ? '其他紧急症状' : 'Other Emergency Symptoms'}
+              {locale === 'zh' ? t('healthGuide.其他紧急症状') : 'Other Emergency Symptoms'}
             </h3>
             <ul className="space-y-2 text-red-700 text-sm">
               <li className="flex items-start">
                 <span className="text-red-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '大量出血（每小时更换超过1片卫生巾）' : 'Heavy bleeding (changing more than 1 pad per hour)'}
+                {locale === 'zh' ? t('healthGuide.大量出血每小时更换超') : 'Heavy bleeding (changing more than 1 pad per hour)'}
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '持续呕吐，无法进食' : 'Persistent vomiting, unable to eat'}
+                {locale === 'zh' ? t('healthGuide.持续呕吐无法进食') : 'Persistent vomiting, unable to eat'}
               </li>
               <li className="flex items-start">
                 <span className="text-red-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '晕厥或意识模糊' : 'Fainting or confusion'}
+                {locale === 'zh' ? t('healthGuide.晕厥或意识模糊') : 'Fainting or confusion'}
               </li>
             </ul>
           </div>
@@ -122,7 +122,7 @@ export default function MedicalCarePage({
       {/* When to See a Doctor */}
       <section>
         <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
-          {locale === 'zh' ? '何时预约医生' : 'When to Schedule a Doctor Visit'}
+          {locale === 'zh' ? t('healthGuide.何时预约医生') : 'When to Schedule a Doctor Visit'}
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -133,13 +133,13 @@ export default function MedicalCarePage({
               </svg>
             </div>
             <h3 className="text-lg font-semibold text-neutral-800 mb-3">
-              {locale === 'zh' ? '疼痛模式改变' : 'Pain Pattern Changes'}
+              {locale === 'zh' ? t('healthGuide.疼痛模式改变') : 'Pain Pattern Changes'}
             </h3>
             <ul className="space-y-2 text-neutral-600 text-sm">
-              <li>• {locale === 'zh' ? '疼痛突然加重' : 'Pain suddenly worsens'}</li>
-              <li>• {locale === 'zh' ? '疼痛持续时间延长' : 'Pain duration increases'}</li>
-              <li>• {locale === 'zh' ? '疼痛性质发生变化' : 'Pain character changes'}</li>
-              <li>• {locale === 'zh' ? '非月经期也出现疼痛' : 'Pain occurs outside menstruation'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.疼痛突然加重') : 'Pain suddenly worsens'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.疼痛持续时间延长') : 'Pain duration increases'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.疼痛性质发生变化') : 'Pain character changes'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.非月经期也出现疼痛') : 'Pain occurs outside menstruation'}</li>
             </ul>
           </div>
 
@@ -150,13 +150,13 @@ export default function MedicalCarePage({
               </svg>
             </div>
             <h3 className="text-lg font-semibold text-neutral-800 mb-3">
-              {locale === 'zh' ? '治疗无效' : 'Treatment Ineffective'}
+              {locale === 'zh' ? t('healthGuide.治疗无效') : 'Treatment Ineffective'}
             </h3>
             <ul className="space-y-2 text-neutral-600 text-sm">
-              <li>• {locale === 'zh' ? '非处方药物无法缓解' : 'OTC medications don\'t help'}</li>
-              <li>• {locale === 'zh' ? '自然疗法效果不佳' : 'Natural therapies ineffective'}</li>
-              <li>• {locale === 'zh' ? '疼痛影响日常生活' : 'Pain affects daily life'}</li>
-              <li>• {locale === 'zh' ? '需要频繁请假' : 'Frequent absences needed'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.非处方药物无法缓解') : 'OTC medications don\'t help'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.自然疗法效果不佳') : 'Natural therapies ineffective'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.疼痛影响日常生活') : 'Pain affects daily life'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.需要频繁请假') : 'Frequent absences needed'}</li>
             </ul>
           </div>
 
@@ -167,13 +167,13 @@ export default function MedicalCarePage({
               </svg>
             </div>
             <h3 className="text-lg font-semibold text-neutral-800 mb-3">
-              {locale === 'zh' ? '伴随症状' : 'Accompanying Symptoms'}
+              {locale === 'zh' ? t('healthGuide.伴随症状') : 'Accompanying Symptoms'}
             </h3>
             <ul className="space-y-2 text-neutral-600 text-sm">
-              <li>• {locale === 'zh' ? '异常阴道分泌物' : 'Abnormal vaginal discharge'}</li>
-              <li>• {locale === 'zh' ? '月经周期不规律' : 'Irregular menstrual cycles'}</li>
-              <li>• {locale === 'zh' ? '性交疼痛' : 'Pain during intercourse'}</li>
-              <li>• {locale === 'zh' ? '排尿或排便疼痛' : 'Pain during urination/defecation'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.异常阴道分泌物') : 'Abnormal vaginal discharge'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.月经周期不规律') : 'Irregular menstrual cycles'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.性交疼痛') : 'Pain during intercourse'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.排尿或排便疼痛') : 'Pain during urination/defecation'}</li>
             </ul>
           </div>
         </div>
@@ -182,62 +182,62 @@ export default function MedicalCarePage({
       {/* Preparing for Your Visit */}
       <section className="bg-gradient-to-br from-blue-50 to-neutral-50 p-6 md:p-8 rounded-xl">
         <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
-          {locale === 'zh' ? '就诊准备' : 'Preparing for Your Visit'}
+          {locale === 'zh' ? t('healthGuide.就诊准备') : 'Preparing for Your Visit'}
         </h2>
         
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg">
             <h3 className="text-lg font-semibold text-blue-600 mb-4">
-              {locale === 'zh' ? '记录症状' : 'Track Your Symptoms'}
+              {locale === 'zh' ? t('healthGuide.记录症状') : 'Track Your Symptoms'}
             </h3>
             <ul className="space-y-2 text-neutral-600 text-sm">
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '疼痛强度（1-10分）' : 'Pain intensity (1-10 scale)'}
+                {locale === 'zh' ? t('healthGuide.疼痛强度110分') : 'Pain intensity (1-10 scale)'}
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '疼痛位置和性质' : 'Pain location and character'}
+                {locale === 'zh' ? t('healthGuide.疼痛位置和性质') : 'Pain location and character'}
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '持续时间和频率' : 'Duration and frequency'}
+                {locale === 'zh' ? t('healthGuide.持续时间和频率') : 'Duration and frequency'}
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '触发因素和缓解因素' : 'Triggers and relief factors'}
+                {locale === 'zh' ? t('healthGuide.触发因素和缓解因素') : 'Triggers and relief factors'}
               </li>
               <li className="flex items-start">
                 <span className="text-blue-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '月经周期详情' : 'Menstrual cycle details'}
+                {locale === 'zh' ? t('healthGuide.月经周期详情') : 'Menstrual cycle details'}
               </li>
             </ul>
           </div>
 
           <div className="bg-white p-6 rounded-lg">
             <h3 className="text-lg font-semibold text-green-600 mb-4">
-              {locale === 'zh' ? '准备问题' : 'Prepare Questions'}
+              {locale === 'zh' ? t('healthGuide.准备问题') : 'Prepare Questions'}
             </h3>
             <ul className="space-y-2 text-neutral-600 text-sm">
               <li className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '我的症状可能的原因是什么？' : 'What could be causing my symptoms?'}
+                {locale === 'zh' ? t('healthGuide.我的症状可能的原因是') : 'What could be causing my symptoms?'}
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '需要做哪些检查？' : 'What tests do I need?'}
+                {locale === 'zh' ? t('healthGuide.需要做哪些检查') : 'What tests do I need?'}
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '有哪些治疗选择？' : 'What treatment options are available?'}
+                {locale === 'zh' ? t('healthGuide.有哪些治疗选择') : 'What treatment options are available?'}
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '生活方式改变能帮助吗？' : 'Can lifestyle changes help?'}
+                {locale === 'zh' ? t('healthGuide.生活方式改变能帮助吗') : 'Can lifestyle changes help?'}
               </li>
               <li className="flex items-start">
                 <span className="text-green-500 mr-2 mt-1">•</span>
-                {locale === 'zh' ? '何时需要复诊？' : 'When should I follow up?'}
+                {locale === 'zh' ? t('healthGuide.何时需要复诊') : 'When should I follow up?'}
               </li>
             </ul>
           </div>
@@ -247,52 +247,52 @@ export default function MedicalCarePage({
       {/* Types of Healthcare Providers */}
       <section>
         <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
-          {locale === 'zh' ? '医疗专业人士类型' : 'Types of Healthcare Providers'}
+          {locale === 'zh' ? t('healthGuide.医疗专业人士类型') : 'Types of Healthcare Providers'}
         </h2>
         
         <div className="grid md:grid-cols-3 gap-6">
           <div className="card">
             <h3 className="text-lg font-semibold text-primary-600 mb-3">
-              {locale === 'zh' ? '全科医生' : 'General Practitioner'}
+              {locale === 'zh' ? t('healthGuide.全科医生') : 'General Practitioner'}
             </h3>
             <p className="text-neutral-600 mb-3 text-sm">
               {locale === 'zh'
-                ? '初步评估和基础治疗，适合轻度到中度症状。'
+                ? t('healthGuide.初步评估和基础治疗适')
                 : 'Initial assessment and basic treatment, suitable for mild to moderate symptoms.'
               }
             </p>
             <div className="text-xs text-neutral-500">
-              {locale === 'zh' ? '适用于：常规检查、初步诊断' : 'Good for: Routine check-ups, initial diagnosis'}
+              {locale === 'zh' ? t('healthGuide.适用于常规检查初步诊') : 'Good for: Routine check-ups, initial diagnosis'}
             </div>
           </div>
 
           <div className="card">
             <h3 className="text-lg font-semibold text-secondary-600 mb-3">
-              {locale === 'zh' ? '妇科医生' : 'Gynecologist'}
+              {locale === 'zh' ? t('healthGuide.妇科医生') : 'Gynecologist'}
             </h3>
             <p className="text-neutral-600 mb-3 text-sm">
               {locale === 'zh'
-                ? '专门处理女性生殖健康问题，适合复杂或严重症状。'
+                ? t('healthGuide.专门处理女性生殖健康')
                 : 'Specializes in women\'s reproductive health, suitable for complex or severe symptoms.'
               }
             </p>
             <div className="text-xs text-neutral-500">
-              {locale === 'zh' ? '适用于：专业诊断、手术治疗' : 'Good for: Specialized diagnosis, surgical treatment'}
+              {locale === 'zh' ? t('healthGuide.适用于专业诊断手术治') : 'Good for: Specialized diagnosis, surgical treatment'}
             </div>
           </div>
 
           <div className="card">
             <h3 className="text-lg font-semibold text-accent-600 mb-3">
-              {locale === 'zh' ? '疼痛专科医生' : 'Pain Specialist'}
+              {locale === 'zh' ? t('healthGuide.疼痛专科医生') : 'Pain Specialist'}
             </h3>
             <p className="text-neutral-600 mb-3 text-sm">
               {locale === 'zh'
-                ? '专门治疗慢性疼痛，适合难治性痛经。'
+                ? t('healthGuide.专门治疗慢性疼痛适合')
                 : 'Specializes in chronic pain treatment, suitable for refractory dysmenorrhea.'
               }
             </p>
             <div className="text-xs text-neutral-500">
-              {locale === 'zh' ? '适用于：慢性疼痛管理' : 'Good for: Chronic pain management'}
+              {locale === 'zh' ? t('healthGuide.适用于慢性疼痛管理') : 'Good for: Chronic pain management'}
             </div>
           </div>
         </div>
@@ -301,7 +301,7 @@ export default function MedicalCarePage({
       {/* What to Expect */}
       <section className="bg-neutral-50 p-6 md:p-8 rounded-xl">
         <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
-          {locale === 'zh' ? '就诊时的期望' : 'What to Expect During Your Visit'}
+          {locale === 'zh' ? t('healthGuide.就诊时的期望') : 'What to Expect During Your Visit'}
         </h2>
         
         <div className="space-y-6">
@@ -311,11 +311,11 @@ export default function MedicalCarePage({
             </div>
             <div>
               <h3 className="font-semibold text-neutral-800 mb-2">
-                {locale === 'zh' ? '病史询问' : 'Medical History'}
+                {locale === 'zh' ? t('healthGuide.病史询问') : 'Medical History'}
               </h3>
               <p className="text-neutral-600 text-sm">
                 {locale === 'zh'
-                  ? '医生会详细询问您的症状、月经史、家族史和既往治疗情况。'
+                  ? t('healthGuide.医生会详细询问您的症')
                   : 'The doctor will ask detailed questions about your symptoms, menstrual history, family history, and previous treatments.'
                 }
               </p>
@@ -328,11 +328,11 @@ export default function MedicalCarePage({
             </div>
             <div>
               <h3 className="font-semibold text-neutral-800 mb-2">
-                {locale === 'zh' ? '体格检查' : 'Physical Examination'}
+                {locale === 'zh' ? t('healthGuide.体格检查') : 'Physical Examination'}
               </h3>
               <p className="text-neutral-600 text-sm">
                 {locale === 'zh'
-                  ? '可能包括腹部检查和盆腔检查（如果需要）。'
+                  ? t('healthGuide.可能包括腹部检查和盆')
                   : 'May include abdominal examination and pelvic examination (if necessary).'
                 }
               </p>
@@ -345,11 +345,11 @@ export default function MedicalCarePage({
             </div>
             <div>
               <h3 className="font-semibold text-neutral-800 mb-2">
-                {locale === 'zh' ? '诊断和治疗计划' : 'Diagnosis and Treatment Plan'}
+                {locale === 'zh' ? t('healthGuide.诊断和治疗计划') : 'Diagnosis and Treatment Plan'}
               </h3>
               <p className="text-neutral-600 text-sm">
                 {locale === 'zh'
-                  ? '医生会解释可能的诊断，讨论治疗选择，并制定个性化治疗计划。'
+                  ? t('healthGuide.医生会解释可能的诊断')
                   : 'The doctor will explain possible diagnoses, discuss treatment options, and develop a personalized treatment plan.'
                 }
               </p>
@@ -361,24 +361,24 @@ export default function MedicalCarePage({
       {/* Red Flags */}
       <section className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg">
         <h3 className="font-semibold text-yellow-800 mb-3">
-          {locale === 'zh' ? '重要提醒' : 'Important Reminders'}
+          {locale === 'zh' ? t('healthGuide.重要提醒') : 'Important Reminders'}
         </h3>
         <ul className="space-y-2 text-yellow-700 text-sm">
           <li className="flex items-start">
             <span className="text-yellow-500 mr-2 mt-1">•</span>
-            {locale === 'zh' ? '不要因为"这是正常的"而忽视严重疼痛' : 'Don\'t ignore severe pain because "it\'s normal"'}
+            {locale === 'zh' ? t('healthGuide.不要因为t('healthGuide.这是正常的t('healthGuide.而忽视严重疼痛') : 'Don\'t ignore severe pain because "it\'s normal"'}
           </li>
           <li className="flex items-start">
             <span className="text-yellow-500 mr-2 mt-1">•</span>
-            {locale === 'zh' ? '相信自己的身体感受' : 'Trust your body\'s signals'}
+            {locale === 'zh' ? t('healthGuide.相信自己的身体感受') : 'Trust your body\'s signals'}
           </li>
           <li className="flex items-start">
             <span className="text-yellow-500 mr-2 mt-1">•</span>
-            {locale === 'zh' ? '如果第一位医生没有认真对待您的症状，寻求第二意见' : 'If the first doctor doesn\'t take your symptoms seriously, seek a second opinion'}
+            {locale === 'zh' ? t('healthGuide.如果第一位医生没有认') : 'If the first doctor doesn\'t take your symptoms seriously, seek a second opinion'}
           </li>
           <li className="flex items-start">
             <span className="text-yellow-500 mr-2 mt-1">•</span>
-            {locale === 'zh' ? '早期诊断和治疗通常效果更好' : 'Early diagnosis and treatment usually work better'}
+            {locale === 'zh' ? t('healthGuide.早期诊断和治疗通常效') : 'Early diagnosis and treatment usually work better'}
           </li>
         </ul>
       </section>
@@ -392,14 +392,14 @@ export default function MedicalCarePage({
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          {locale === 'zh' ? '上一章：生活方式管理' : 'Previous: Lifestyle Management'}
+          {locale === 'zh' ? t('healthGuide.上一章生活方式管理') : 'Previous: Lifestyle Management'}
         </Link>
         
         <Link 
           href={`/${locale}/health-guide/myths-facts`}
           className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center"
         >
-          {locale === 'zh' ? '下一章：误区与事实' : 'Next: Myths vs Facts'}
+          {locale === 'zh' ? t('healthGuide.下一章误区与事实') : 'Next: Myths vs Facts'}
           <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

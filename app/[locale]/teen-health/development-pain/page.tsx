@@ -30,9 +30,9 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'teenHealth' });
   
   return {
-    title: locale === 'zh' ? '发育期疼痛管理 - 青少年经期健康专区' : 'Developmental Pain Management - Teen Menstrual Health Zone',
+    title: locale === 'zh' ? t('common.发育期疼痛管理青') : 'Developmental Pain Management - Teen Menstrual Health Zone',
     description: locale === 'zh' 
-      ? '12-16岁专属疼痛管理建议，了解青春期痛经特点，掌握科学缓解方法。'
+      ? t('common.1216岁专属疼痛管')
       : 'Specialized pain management advice for ages 12-16, understanding adolescent period pain characteristics.',
   };
 }
@@ -47,73 +47,73 @@ export default async function DevelopmentPainPage({
   const painCharacteristics = [
     {
       icon: <Clock className="w-6 h-6" />,
-      title: locale === 'zh' ? '常见时间' : 'Common Timing',
-      description: locale === 'zh' ? '疼痛通常在月经来潮前几小时或来潮后不久开始，持续1-3天' : 'Pain usually starts a few hours before or shortly after menstruation begins, lasting 1-3 days'
+      title: locale === 'zh' ? t('common.常见时间') : 'Common Timing',
+      description: locale === 'zh' ? t('common.疼痛通常在月经来潮前') : 'Pain usually starts a few hours before or shortly after menstruation begins, lasting 1-3 days'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: locale === 'zh' ? '疼痛部位' : 'Pain Location',
-      description: locale === 'zh' ? '主要在小腹部，有时会放射到腰部、大腿内侧' : 'Mainly in the lower abdomen, sometimes radiating to the lower back and inner thighs'
+      title: locale === 'zh' ? t('common.疼痛部位') : 'Pain Location',
+      description: locale === 'zh' ? t('common.主要在小腹部有时会放') : 'Mainly in the lower abdomen, sometimes radiating to the lower back and inner thighs'
     },
     {
       icon: <Activity className="w-6 h-6" />,
-      title: locale === 'zh' ? '疼痛感觉' : 'Pain Sensation',
-      description: locale === 'zh' ? '可能是阵发性的绞痛，也可能是持续的坠胀感' : 'May be intermittent cramping or continuous aching sensation'
+      title: locale === 'zh' ? t('common.疼痛感觉') : 'Pain Sensation',
+      description: locale === 'zh' ? t('common.可能是阵发性的绞痛也') : 'May be intermittent cramping or continuous aching sensation'
     }
   ];
 
   const managementMethods = [
     {
-      category: locale === 'zh' ? '健康生活方式' : 'Healthy Lifestyle',
+      category: locale === 'zh' ? t('common.健康生活方式') : 'Healthy Lifestyle',
       icon: <Heart className="w-6 h-6" />,
       color: 'bg-pink-50 text-pink-600',
       methods: [
         {
           icon: <Utensils className="w-5 h-5" />,
-          title: locale === 'zh' ? '均衡饮食' : 'Balanced Diet',
-          description: locale === 'zh' ? '多吃富含维生素、矿物质的食物，少吃油腻、辛辣、生冷刺激的食物' : 'Eat foods rich in vitamins and minerals, avoid oily, spicy, and cold foods'
+          title: locale === 'zh' ? t('common.均衡饮食') : 'Balanced Diet',
+          description: locale === 'zh' ? t('common.多吃富含维生素矿物质') : 'Eat foods rich in vitamins and minerals, avoid oily, spicy, and cold foods'
         },
         {
           icon: <Moon className="w-5 h-5" />,
-          title: locale === 'zh' ? '充足睡眠' : 'Adequate Sleep',
-          description: locale === 'zh' ? '保证每天至少8小时的睡眠，睡前可以听听舒缓的音乐' : 'Ensure at least 8 hours of sleep daily, listen to soothing music before bed'
+          title: locale === 'zh' ? t('common.充足睡眠') : 'Adequate Sleep',
+          description: locale === 'zh' ? t('common.保证每天至少8小时的') : 'Ensure at least 8 hours of sleep daily, listen to soothing music before bed'
         },
         {
           icon: <Activity className="w-5 h-5" />,
-          title: locale === 'zh' ? '适度运动' : 'Moderate Exercise',
-          description: locale === 'zh' ? '散步、拉伸、瑜伽等低强度运动有助于改善血液循环' : 'Low-intensity exercises like walking, stretching, yoga help improve circulation'
+          title: locale === 'zh' ? t('common.适度运动') : 'Moderate Exercise',
+          description: locale === 'zh' ? t('common.散步拉伸瑜伽等低强度') : 'Low-intensity exercises like walking, stretching, yoga help improve circulation'
         }
       ]
     },
     {
-      category: locale === 'zh' ? '非药物缓解' : 'Non-Drug Relief',
+      category: locale === 'zh' ? t('common.非药物缓解') : 'Non-Drug Relief',
       icon: <Thermometer className="w-6 h-6" />,
       color: 'bg-blue-50 text-blue-600',
       methods: [
         {
           icon: <Thermometer className="w-5 h-5" />,
-          title: locale === 'zh' ? '热敷' : 'Heat Therapy',
-          description: locale === 'zh' ? '用热水袋或暖宝宝敷在小腹或腰部，温暖能放松肌肉，减轻痉挛感' : 'Apply hot water bottle or heat pad to abdomen or lower back to relax muscles'
+          title: locale === 'zh' ? t('common.热敷') : 'Heat Therapy',
+          description: locale === 'zh' ? t('common.用热水袋或暖宝宝敷在') : 'Apply hot water bottle or heat pad to abdomen or lower back to relax muscles'
         },
         {
           icon: <Heart className="w-5 h-5" />,
-          title: locale === 'zh' ? '轻柔按摩' : 'Gentle Massage',
-          description: locale === 'zh' ? '用手掌轻轻按摩小腹部，顺时针或逆时针都可以' : 'Gently massage lower abdomen with palms, clockwise or counterclockwise'
+          title: locale === 'zh' ? t('common.轻柔按摩') : 'Gentle Massage',
+          description: locale === 'zh' ? t('common.用手掌轻轻按摩小腹部') : 'Gently massage lower abdomen with palms, clockwise or counterclockwise'
         },
         {
           icon: <Moon className="w-5 h-5" />,
-          title: locale === 'zh' ? '休息和放松' : 'Rest and Relaxation',
-          description: locale === 'zh' ? '找个舒服的地方坐下或躺下，听音乐、看书，分散对疼痛的注意力' : 'Find a comfortable place to sit or lie down, listen to music, read to distract from pain'
+          title: locale === 'zh' ? t('common.休息和放松') : 'Rest and Relaxation',
+          description: locale === 'zh' ? t('common.找个舒服的地方坐下或') : 'Find a comfortable place to sit or lie down, listen to music, read to distract from pain'
         }
       ]
     }
   ];
 
   const warningSignals = [
-    locale === 'zh' ? '疼痛突然变得非常剧烈，甚至影响到站立或行走' : 'Pain suddenly becomes very severe, affecting standing or walking',
-    locale === 'zh' ? '伴随发烧、剧烈呕吐、腹泻不止、头晕、心慌' : 'Accompanied by fever, severe vomiting, persistent diarrhea, dizziness, palpitations',
-    locale === 'zh' ? '非经期也出现腹痛或出血' : 'Abdominal pain or bleeding outside of menstrual period',
-    locale === 'zh' ? '服用常规剂量的止痛药后，疼痛没有任何缓解' : 'No pain relief after taking regular doses of pain medication'
+    locale === 'zh' ? t('common.疼痛突然变得非常剧烈') : 'Pain suddenly becomes very severe, affecting standing or walking',
+    locale === 'zh' ? t('common.伴随发烧剧烈呕吐腹泻') : 'Accompanied by fever, severe vomiting, persistent diarrhea, dizziness, palpitations',
+    locale === 'zh' ? t('common.非经期也出现腹痛或出') : 'Abdominal pain or bleeding outside of menstrual period',
+    locale === 'zh' ? t('common.服用常规剂量的止痛药') : 'No pain relief after taking regular doses of pain medication'
   ];
 
   return (
@@ -121,10 +121,10 @@ export default async function DevelopmentPainPage({
       {/* Breadcrumb */}
       <nav className="flex items-center text-sm text-gray-600">
         <Link href={`/${locale}/teen-health`} className="hover:text-primary-600 transition-colors">
-          {locale === 'zh' ? '青少年专区' : 'Teen Zone'}
+          {locale === 'zh' ? t('common.青少年专区') : 'Teen Zone'}
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-gray-900">{locale === 'zh' ? '发育期疼痛管理' : 'Developmental Pain Management'}</span>
+        <span className="text-gray-900">{locale === 'zh' ? t('common.发育期疼痛管理') : 'Developmental Pain Management'}</span>
       </nav>
 
       {/* Header */}
@@ -135,11 +135,11 @@ export default async function DevelopmentPainPage({
           </div>
         </div>
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          {locale === 'zh' ? '🌱 发育期疼痛管理' : '🌱 Developmental Pain Management'}
+          {locale === 'zh' ? t('common.发育期疼痛管理') : '🌱 Developmental Pain Management'}
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           {locale === 'zh'
-            ? '欢迎来到青春期！对于12-16岁的你来说，了解这个阶段经期疼痛的特点，更有助于你科学地管理它。'
+            ? t('common.欢迎来到青春期对于1')
             : 'Welcome to adolescence! For you at ages 12-16, understanding the characteristics of period pain at this stage will help you manage it scientifically.'
           }
         </p>
@@ -153,11 +153,11 @@ export default async function DevelopmentPainPage({
           </div>
           <div>
             <h3 className="font-semibold text-gray-900 mb-2">
-              {locale === 'zh' ? '甜甜同学的经历：' : 'Tian Tian\'s Experience:'}
+              {locale === 'zh' ? t('common.甜甜同学的经历') : 'Tian Tian\'s Experience:'}
             </h3>
             <p className="text-gray-700 italic">
               {locale === 'zh'
-                ? '"我第一次来月经的时候，肚子痛得我都哭了。我妈妈说这是正常的，但我真的很担心是不是生病了。"'
+                ? 't('common.我第一次来月经的时候')'
                 : '"When I got my first period, the stomach pain made me cry. My mom said it was normal, but I was really worried if I was sick."'
               }
             </p>
@@ -168,16 +168,16 @@ export default async function DevelopmentPainPage({
       {/* Pain Characteristics */}
       <section>
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          {locale === 'zh' ? '青春期经期疼痛的"不太一样"' : 'What Makes Adolescent Period Pain "Different"'}
+          {locale === 'zh' ? t('common.青春期经期疼痛的t('common.不太一样')' : 'What Makes Adolescent Period Pain "Different"'}
         </h2>
         
         <div className="bg-blue-50 rounded-2xl p-8 mb-8">
           <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            {locale === 'zh' ? '为什么会痛？' : 'Why Does It Hurt?'}
+            {locale === 'zh' ? t('common.为什么会痛') : 'Why Does It Hurt?'}
           </h3>
           <p className="text-gray-700 leading-relaxed">
             {locale === 'zh'
-              ? '简单来说，就是子宫在努力工作，排出经血。这个过程中产生的"指挥官"——前列腺素，会引起子宫肌肉收缩，收缩得越厉害，有些人就越痛。青春期体内激素水平变化比较大，前列腺素水平也可能偏高一些，所以痛感会比较明显。'
+              ? t('common.简单来说就是子宫在努')指挥官"——前列腺素，会引起子宫肌肉收缩，收缩得越厉害，有些人就越痛。青春期体内激素水平变化比较大，前列腺素水平也可能偏高一些，所以痛感会比较明显。'
               : 'Simply put, the uterus is working hard to expel menstrual blood. During this process, "commanders" called prostaglandins cause uterine muscle contractions. The stronger the contractions, the more pain some people feel. During adolescence, hormone levels fluctuate greatly, and prostaglandin levels may be higher, making pain more noticeable.'
             }
           </p>
@@ -206,11 +206,11 @@ export default async function DevelopmentPainPage({
       <section className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {locale === 'zh' ? '🎯 评估你的痛经程度' : '🎯 Assess Your Pain Level'}
+            {locale === 'zh' ? t('common.评估你的痛经程度') : '🎯 Assess Your Pain Level'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             {locale === 'zh'
-              ? '通过简单的自测，了解你的痛经是否在正常范围内，以及是否需要寻求进一步的帮助。'
+              ? t('common.通过简单的自测了解你')
               : 'Through simple self-assessment, understand if your period pain is within normal range and whether you need to seek further help.'
             }
           </p>
@@ -224,10 +224,10 @@ export default async function DevelopmentPainPage({
       {/* Management Methods */}
       <section>
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          {locale === 'zh' ? '12-16岁专属疼痛管理建议' : 'Specialized Pain Management for Ages 12-16'}
+          {locale === 'zh' ? t('common.1216岁专属疼痛管') : 'Specialized Pain Management for Ages 12-16'}
         </h2>
         <p className="text-center text-gray-600 mb-12">
-          {locale === 'zh' ? '在这个成长关键期，建立健康的经期管理习惯非常重要' : 'During this critical growth period, establishing healthy period management habits is very important'}
+          {locale === 'zh' ? t('common.在这个成长关键期建立') : 'During this critical growth period, establishing healthy period management habits is very important'}
         </p>
         
         <div className="space-y-8">
@@ -269,28 +269,28 @@ export default async function DevelopmentPainPage({
         <div className="flex items-center mb-6">
           <Pill className="w-8 h-8 text-yellow-600 mr-3" />
           <h2 className="text-2xl font-bold text-gray-900">
-            {locale === 'zh' ? '药物使用需谨慎' : 'Careful Medication Use'}
+            {locale === 'zh' ? t('common.药物使用需谨慎') : 'Careful Medication Use'}
           </h2>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">
-              {locale === 'zh' ? '非处方止痛药：' : 'Over-the-Counter Pain Medication:'}
+              {locale === 'zh' ? t('common.非处方止痛药') : 'Over-the-Counter Pain Medication:'}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-medium">{locale === 'zh' ? '常见药物' : 'Common Medications'}</span>
-                  <p className="text-sm text-gray-600">{locale === 'zh' ? '布洛芬（Ibuprofen）或对乙酰氨基酚（Acetaminophen）' : 'Ibuprofen or Acetaminophen'}</p>
+                  <span className="font-medium">{locale === 'zh' ? t('common.常见药物') : 'Common Medications'}</span>
+                  <p className="text-sm text-gray-600">{locale === 'zh' ? t('common.布洛芬Ibuprof') : 'Ibuprofen or Acetaminophen'}</p>
                 </div>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-medium">{locale === 'zh' ? '使用原则' : 'Usage Principles'}</span>
-                  <p className="text-sm text-gray-600">{locale === 'zh' ? '一定要在家长指导下，严格按照药品说明书的剂量和时间服用' : 'Must be used under parental guidance, strictly following dosage and timing on medication labels'}</p>
+                  <span className="font-medium">{locale === 'zh' ? t('common.使用原则') : 'Usage Principles'}</span>
+                  <p className="text-sm text-gray-600">{locale === 'zh' ? t('common.一定要在家长指导下严') : 'Must be used under parental guidance, strictly following dosage and timing on medication labels'}</p>
                 </div>
               </li>
             </ul>
@@ -298,21 +298,21 @@ export default async function DevelopmentPainPage({
           
           <div>
             <h3 className="font-semibold text-gray-900 mb-4">
-              {locale === 'zh' ? '重要提醒：' : 'Important Reminders:'}
+              {locale === 'zh' ? t('common.重要提醒') : 'Important Reminders:'}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <AlertTriangle className="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-medium">{locale === 'zh' ? '何时服用' : 'When to Take'}</span>
-                  <p className="text-sm text-gray-600">{locale === 'zh' ? '最好在感觉疼痛刚开始时就服用，效果会更好' : 'Best taken when pain first begins for better effectiveness'}</p>
+                  <span className="font-medium">{locale === 'zh' ? t('common.何时服用') : 'When to Take'}</span>
+                  <p className="text-sm text-gray-600">{locale === 'zh' ? t('common.最好在感觉疼痛刚开始') : 'Best taken when pain first begins for better effectiveness'}</p>
                 </div>
               </li>
               <li className="flex items-start">
                 <AlertTriangle className="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-medium">{locale === 'zh' ? '不要长期依赖' : 'Don\'t Rely Long-term'}</span>
-                  <p className="text-sm text-gray-600">{locale === 'zh' ? '止痛药是缓解症状的手段，不能长期或大剂量使用' : 'Pain medication is for symptom relief, not for long-term or high-dose use'}</p>
+                  <span className="font-medium">{locale === 'zh' ? t('common.不要长期依赖') : 'Don\'t Rely Long-term'}</span>
+                  <p className="text-sm text-gray-600">{locale === 'zh' ? t('common.止痛药是缓解症状的手') : 'Pain medication is for symptom relief, not for long-term or high-dose use'}</p>
                 </div>
               </li>
             </ul>
@@ -325,13 +325,13 @@ export default async function DevelopmentPainPage({
         <div className="flex items-center mb-6">
           <AlertTriangle className="w-8 h-8 text-red-600 mr-3" />
           <h2 className="text-2xl font-bold text-gray-900">
-            {locale === 'zh' ? '关注身体的"报警信号"' : 'Watch for Body\'s "Warning Signals"'}
+            {locale === 'zh' ? t('common.关注身体的t('common.报警信号')' : 'Watch for Body\'s "Warning Signals"'}
           </h2>
         </div>
         
         <p className="text-gray-700 mb-6">
           {locale === 'zh'
-            ? '如果出现以下任何一种情况，请务必及时告诉家长，并尽快去看医生！'
+            ? t('common.如果出现以下任何一种')
             : 'If any of the following situations occur, be sure to tell your parents immediately and see a doctor as soon as possible!'
           }
         </p>
@@ -349,12 +349,12 @@ export default async function DevelopmentPainPage({
           <div className="flex items-center mb-3">
             <Stethoscope className="w-6 h-6 text-red-600 mr-2" />
             <h3 className="font-semibold text-gray-900">
-              {locale === 'zh' ? '记住：' : 'Remember:'}
+              {locale === 'zh' ? t('common.记住') : 'Remember:'}
             </h3>
           </div>
           <p className="text-gray-700">
             {locale === 'zh'
-              ? '发育期的疼痛绝大多数是正常的，但排除潜在的健康问题非常重要。医生会根据你的具体情况给出专业的诊断和建议。'
+              ? t('common.发育期的疼痛绝大多数')
               : 'Most developmental pain is normal, but it\'s very important to rule out potential health issues. Doctors will provide professional diagnosis and advice based on your specific situation.'
             }
           </p>
@@ -364,11 +364,11 @@ export default async function DevelopmentPainPage({
       {/* Encouragement */}
       <section className="bg-gradient-to-r from-pink-100 to-purple-100 rounded-2xl p-8 text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">
-          {locale === 'zh' ? '💪 你并不孤单' : '💪 You\'re Not Alone'}
+          {locale === 'zh' ? t('common.你并不孤单') : '💪 You\'re Not Alone'}
         </h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           {locale === 'zh'
-            ? '了解自己的身体，关注疼痛的变化，积极采取应对措施，并在需要时大胆寻求帮助，你就能更好地度过青春期的经期。记住，这是成长的一部分，你正在变得更加强大！'
+            ? t('common.了解自己的身体关注疼')
             : 'Understanding your body, monitoring pain changes, actively taking coping measures, and boldly seeking help when needed will help you better navigate adolescent periods. Remember, this is part of growing up - you\'re becoming stronger!'
           }
         </p>
@@ -381,14 +381,14 @@ export default async function DevelopmentPainPage({
           className="flex items-center text-gray-600 hover:text-primary-600 transition-colors"
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
-          {locale === 'zh' ? '上一篇：校园应急指南' : 'Previous: Campus Emergency Guide'}
+          {locale === 'zh' ? t('common.上一篇校园应急指南') : 'Previous: Campus Emergency Guide'}
         </Link>
         
         <Link
           href={`/${locale}/teen-health/emotional-support`}
           className="flex items-center text-primary-600 hover:text-primary-700 transition-colors"
         >
-          {locale === 'zh' ? '下一篇：情绪支持与心理健康' : 'Next: Emotional Support & Mental Health'}
+          {locale === 'zh' ? t('common.下一篇情绪支持与心理') : 'Next: Emotional Support & Mental Health'}
           <ArrowRight className="w-5 h-5 ml-2" />
         </Link>
       </section>

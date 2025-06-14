@@ -6,480 +6,480 @@ export const constitutionRecommendations: Record<string, Record<ConstitutionType
       acupoints: {
         primaryPoints: [
           {
-            name: '足三里',
-            location: '膝盖下3寸，胫骨外侧1横指',
-            function: '调理脾胃，增强体质',
-            method: '顺时针按揉3-5分钟'
+            name: t('tools.足三里'),
+            location: t('tools.膝盖下3寸胫骨外侧1'),
+            function: t('tools.调理脾胃增强体质'),
+            method: t('tools.顺时针按揉35分钟')
           },
           {
-            name: '关元',
-            location: '肚脐下3寸',
-            function: '培元固本，调理气血',
-            method: '温和按压2-3分钟'
+            name: t('tools.关元'),
+            location: t('tools.肚脐下3寸'),
+            function: t('tools.培元固本调理气血'),
+            method: t('tools.温和按压23分钟')
           }
         ],
         supportingPoints: [
           {
-            name: '百会',
-            location: '头顶正中',
-            function: '提神醒脑，调节情绪',
-            method: '轻柔按压1-2分钟'
+            name: t('tools.百会'),
+            location: t('tools.头顶正中'),
+            function: t('tools.提神醒脑调节情绪'),
+            method: t('tools.轻柔按压12分钟')
           }
         ],
-        massageTechnique: '温和按摩，以酸胀感为度',
-        frequency: '每日1-2次',
-        duration: '每次10-15分钟'
+        massageTechnique: t('tools.温和按摩以酸胀感为度'),
+        frequency: t('tools.每日12次'),
+        duration: t('tools.每次1015分钟')
       },
       diet: {
-        beneficial: ['五谷杂粮', '新鲜蔬果', '优质蛋白', '适量坚果'],
-        avoid: ['过度油腻', '过度辛辣', '过度生冷'],
-        principles: ['饮食均衡', '定时定量', '细嚼慢咽'],
-        sampleMeals: ['小米粥配青菜', '蒸蛋羹', '清炖鸡汤', '时令水果']
+        beneficial: [t('tools.五谷杂粮'), t('tools.新鲜蔬果'), t('tools.优质蛋白'), t('tools.适量坚果')],
+        avoid: [t('tools.过度油腻'), t('tools.过度辛辣'), t('tools.过度生冷')],
+        principles: [t('tools.饮食均衡'), t('tools.定时定量'), t('tools.细嚼慢咽')],
+        sampleMeals: [t('tools.小米粥配青菜'), t('tools.蒸蛋羹'), t('tools.清炖鸡汤'), t('tools.时令水果')]
       },
       lifestyle: {
-        exercise: ['太极拳', '八段锦', '慢跑', '瑜伽'],
-        sleep: ['规律作息', '晚上11点前入睡', '保证7-8小时睡眠'],
-        emotional: ['保持心情愉快', '适度社交', '培养兴趣爱好'],
-        seasonal: ['春季养肝', '夏季养心', '秋季养肺', '冬季养肾']
+        exercise: [t('tools.太极拳'), t('tools.八段锦'), t('tools.慢跑'), t('tools.瑜伽')],
+        sleep: [t('tools.规律作息'), t('tools.晚上11点前入睡'), t('tools.保证78小时睡眠')],
+        emotional: [t('tools.保持心情愉快'), t('tools.适度社交'), t('tools.培养兴趣爱好')],
+        seasonal: [t('tools.春季养肝'), t('tools.夏季养心'), t('tools.秋季养肺'), t('tools.冬季养肾')]
       },
       moxibustion: {
-        points: ['足三里', '关元'],
-        timing: '每周2-3次',
-        duration: '每穴15-20分钟',
-        frequency: '保健为主',
-        precautions: ['注意防烫', '孕期禁用', '饭后1小时进行']
+        points: [t('tools.足三里'), t('tools.关元')],
+        timing: t('tools.每周23次'),
+        duration: t('tools.每穴1520分钟'),
+        frequency: t('tools.保健为主'),
+        precautions: [t('tools.注意防烫'), t('tools.孕期禁用'), t('tools.饭后1小时进行')]
       }
     },
     qi_deficiency: {
       acupoints: {
         primaryPoints: [
           {
-            name: '气海',
-            location: '肚脐下1.5寸',
-            function: '补气益气，增强体力',
-            method: '顺时针按揉5-8分钟'
+            name: t('tools.气海'),
+            location: t('tools.肚脐下15寸'),
+            function: t('tools.补气益气增强体力'),
+            method: t('tools.顺时针按揉58分钟')
           },
           {
-            name: '足三里',
-            location: '膝盖下3寸，胫骨外侧1横指',
-            function: '健脾益气，增强消化',
-            method: '重点按揉5-10分钟'
+            name: t('tools.足三里'),
+            location: t('tools.膝盖下3寸胫骨外侧1'),
+            function: t('tools.健脾益气增强消化'),
+            method: t('tools.重点按揉510分钟')
           },
           {
-            name: '脾俞',
-            location: '第11胸椎棘突下旁开1.5寸',
-            function: '健脾益气，助消化',
-            method: '按压配合艾灸效果更佳'
+            name: t('tools.脾俞'),
+            location: t('tools.第11胸椎棘突下旁开'),
+            function: t('tools.健脾益气助消化'),
+            method: t('tools.按压配合艾灸效果更佳')
           }
         ],
         supportingPoints: [
           {
-            name: '百会',
-            location: '头顶正中',
-            function: '升阳举陷，提神益气',
-            method: '轻柔提拉按压'
+            name: t('tools.百会'),
+            location: t('tools.头顶正中'),
+            function: t('tools.升阳举陷提神益气'),
+            method: t('tools.轻柔提拉按压')
           },
           {
-            name: '太冲',
-            location: '足背第1、2跖骨间',
-            function: '疏肝理气，调和气血',
-            method: '按压2-3分钟'
+            name: t('tools.太冲'),
+            location: t('tools.足背第12跖骨间'),
+            function: t('tools.疏肝理气调和气血'),
+            method: t('tools.按压23分钟')
           }
         ],
-        massageTechnique: '温和持续按压，避免过度用力',
-        frequency: '每日2次，早晚各一次',
-        duration: '每次15-20分钟'
+        massageTechnique: t('tools.温和持续按压避免过度'),
+        frequency: t('tools.每日2次早晚各一次'),
+        duration: t('tools.每次1520分钟')
       },
       diet: {
-        beneficial: ['黄芪', '党参', '山药', '大枣', '桂圆', '小米', '南瓜', '胡萝卜'],
-        avoid: ['生冷食物', '过度油腻', '难消化食物', '过量生萝卜'],
-        principles: ['温补脾胃', '少食多餐', '细嚼慢咽', '避免过饱'],
-        sampleMeals: ['黄芪炖鸡汤', '山药小米粥', '红枣桂圆茶', '蒸蛋羹']
+        beneficial: [t('tools.黄芪'), t('tools.党参'), t('tools.山药'), t('tools.大枣'), t('tools.桂圆'), t('tools.小米'), t('tools.南瓜'), t('tools.胡萝卜')],
+        avoid: [t('tools.生冷食物'), t('tools.过度油腻'), t('tools.难消化食物'), t('tools.过量生萝卜')],
+        principles: [t('tools.温补脾胃'), t('tools.少食多餐'), t('tools.细嚼慢咽'), t('tools.避免过饱')],
+        sampleMeals: [t('tools.黄芪炖鸡汤'), t('tools.山药小米粥'), t('tools.红枣桂圆茶'), t('tools.蒸蛋羹')]
       },
       lifestyle: {
-        exercise: ['八段锦', '太极拳', '散步', '轻度瑜伽'],
-        sleep: ['早睡早起', '午休30分钟', '避免熬夜'],
-        emotional: ['保持乐观', '避免过度思虑', '适度放松'],
-        seasonal: ['春夏养阳', '秋冬进补', '避免过度劳累']
+        exercise: [t('tools.八段锦'), t('tools.太极拳'), t('tools.散步'), t('tools.轻度瑜伽')],
+        sleep: [t('tools.早睡早起'), t('tools.午休30分钟'), t('tools.避免熬夜')],
+        emotional: [t('tools.保持乐观'), t('tools.避免过度思虑'), t('tools.适度放松')],
+        seasonal: [t('tools.春夏养阳'), t('tools.秋冬进补'), t('tools.避免过度劳累')]
       },
       moxibustion: {
-        points: ['气海', '关元', '足三里', '脾俞'],
-        timing: '每日或隔日',
-        duration: '每穴20-30分钟',
-        frequency: '连续调理2-3个月',
-        precautions: ['温度适中', '避免烫伤', '经期减量']
+        points: [t('tools.气海'), t('tools.关元'), t('tools.足三里'), t('tools.脾俞')],
+        timing: t('tools.每日或隔日'),
+        duration: t('tools.每穴2030分钟'),
+        frequency: t('tools.连续调理23个月'),
+        precautions: [t('tools.温度适中'), t('tools.避免烫伤'), t('tools.经期减量')]
       }
     },
     yang_deficiency: {
       acupoints: {
         primaryPoints: [
           {
-            name: '命门',
-            location: '第2腰椎棘突下',
-            function: '温补肾阳，强腰健肾',
-            method: '温热按压配合艾灸'
+            name: t('tools.命门'),
+            location: t('tools.第2腰椎棘突下'),
+            function: t('tools.温补肾阳强腰健肾'),
+            method: t('tools.温热按压配合艾灸')
           },
           {
-            name: '肾俞',
-            location: '第2腰椎棘突下旁开1.5寸',
-            function: '补肾壮阳，强腰膝',
-            method: '双手同时按压'
+            name: t('tools.肾俞'),
+            location: t('tools.第2腰椎棘突下旁开1'),
+            function: t('tools.补肾壮阳强腰膝'),
+            method: t('tools.双手同时按压')
           },
           {
-            name: '关元',
-            location: '肚脐下3寸',
-            function: '温补下焦，固本培元',
-            method: '顺时针按揉配合艾灸'
+            name: t('tools.关元'),
+            location: t('tools.肚脐下3寸'),
+            function: t('tools.温补下焦固本培元'),
+            method: t('tools.顺时针按揉配合艾灸')
           }
         ],
         supportingPoints: [
           {
-            name: '涌泉',
-            location: '足底前1/3凹陷处',
-            function: '温补肾阳，引火归元',
-            method: '睡前按摩至发热'
+            name: t('tools.涌泉'),
+            location: t('tools.足底前13凹陷处'),
+            function: t('tools.温补肾阳引火归元'),
+            method: t('tools.睡前按摩至发热')
           }
         ],
-        massageTechnique: '温热按摩，配合艾灸效果更佳',
-        frequency: '每日2次',
-        duration: '每次20-30分钟'
+        massageTechnique: t('tools.温热按摩配合艾灸效果'),
+        frequency: t('tools.每日2次'),
+        duration: t('tools.每次2030分钟')
       },
       diet: {
-        beneficial: ['羊肉', '韭菜', '生姜', '肉桂', '核桃', '栗子', '黑豆', '枸杞'],
-        avoid: ['生冷食物', '寒性水果', '冰饮', '苦寒药物'],
-        principles: ['温补阳气', '忌食生冷', '适当进补', '温热为主'],
-        sampleMeals: ['当归生姜羊肉汤', '韭菜炒蛋', '核桃粥', '枸杞茶']
+        beneficial: [t('tools.羊肉'), t('tools.韭菜'), t('tools.生姜'), t('tools.肉桂'), t('tools.核桃'), t('tools.栗子'), t('tools.黑豆'), t('tools.枸杞')],
+        avoid: [t('tools.生冷食物'), t('tools.寒性水果'), t('tools.冰饮'), t('tools.苦寒药物')],
+        principles: [t('tools.温补阳气'), t('tools.忌食生冷'), t('tools.适当进补'), t('tools.温热为主')],
+        sampleMeals: [t('tools.当归生姜羊肉汤'), t('tools.韭菜炒蛋'), t('tools.核桃粥'), t('tools.枸杞茶')]
       },
       lifestyle: {
-        exercise: ['慢跑', '太极拳', '八段锦', '适度力量训练'],
-        sleep: ['保暖睡眠', '避免夜间受凉', '充足睡眠'],
-        emotional: ['保持积极心态', '避免过度忧虑'],
-        seasonal: ['春夏养阳', '秋冬重点保暖', '避免贪凉']
+        exercise: [t('tools.慢跑'), t('tools.太极拳'), t('tools.八段锦'), t('tools.适度力量训练')],
+        sleep: [t('tools.保暖睡眠'), t('tools.避免夜间受凉'), t('tools.充足睡眠')],
+        emotional: [t('tools.保持积极心态'), t('tools.避免过度忧虑')],
+        seasonal: [t('tools.春夏养阳'), t('tools.秋冬重点保暖'), t('tools.避免贪凉')]
       },
       moxibustion: {
-        points: ['命门', '肾俞', '关元', '足三里'],
-        timing: '每日艾灸',
-        duration: '每穴30-40分钟',
-        frequency: '长期调理',
-        precautions: ['注意保暖', '避免受风', '经期谨慎使用']
+        points: [t('tools.命门'), t('tools.肾俞'), t('tools.关元'), t('tools.足三里')],
+        timing: t('tools.每日艾灸'),
+        duration: t('tools.每穴3040分钟'),
+        frequency: t('tools.长期调理'),
+        precautions: [t('tools.注意保暖'), t('tools.避免受风'), t('tools.经期谨慎使用')]
       }
     },
     yin_deficiency: {
       acupoints: {
         primaryPoints: [
           {
-            name: '太溪',
-            location: '内踝后方，跟腱前凹陷处',
-            function: '滋阴补肾，清虚热',
-            method: '轻柔按揉3-5分钟'
+            name: t('tools.太溪'),
+            location: t('tools.内踝后方跟腱前凹陷处'),
+            function: t('tools.滋阴补肾清虚热'),
+            method: t('tools.轻柔按揉35分钟')
           },
           {
-            name: '三阴交',
-            location: '内踝上3寸，胫骨内侧缘后方',
-            function: '滋阴养血，调经止痛',
-            method: '按压至酸胀感'
+            name: t('tools.三阴交'),
+            location: t('tools.内踝上3寸胫骨内侧缘'),
+            function: t('tools.滋阴养血调经止痛'),
+            method: t('tools.按压至酸胀感')
           },
           {
-            name: '肾俞',
-            location: '第2腰椎棘突下旁开1.5寸',
-            function: '补肾滋阴，强腰膝',
-            method: '轻柔按压，避免过重'
+            name: t('tools.肾俞'),
+            location: t('tools.第2腰椎棘突下旁开1'),
+            function: t('tools.补肾滋阴强腰膝'),
+            method: t('tools.轻柔按压避免过重')
           }
         ],
         supportingPoints: [
           {
-            name: '神门',
-            location: '腕横纹尺侧端，尺侧腕屈肌腱桡侧凹陷处',
-            function: '宁心安神，改善睡眠',
-            method: '睡前按压2-3分钟'
+            name: t('tools.神门'),
+            location: t('tools.腕横纹尺侧端尺侧腕屈'),
+            function: t('tools.宁心安神改善睡眠'),
+            method: t('tools.睡前按压23分钟')
           }
         ],
-        massageTechnique: '轻柔按摩，避免过度刺激',
-        frequency: '每日1-2次',
-        duration: '每次10-15分钟'
+        massageTechnique: t('tools.轻柔按摩避免过度刺激'),
+        frequency: t('tools.每日12次'),
+        duration: t('tools.每次1015分钟')
       },
       diet: {
-        beneficial: ['银耳', '百合', '枸杞', '黑芝麻', '蜂蜜', '梨', '葡萄', '鸭肉'],
-        avoid: ['辛辣食物', '煎炸食品', '温燥食物', '过量咖啡'],
-        principles: ['滋阴润燥', '清淡饮食', '多饮水', '少食辛辣'],
-        sampleMeals: ['银耳莲子汤', '百合粥', '蜂蜜柠檬水', '清蒸鱼']
+        beneficial: [t('tools.银耳'), t('tools.百合'), t('tools.枸杞'), t('tools.黑芝麻'), t('tools.蜂蜜'), '梨', t('tools.葡萄'), t('tools.鸭肉')],
+        avoid: [t('tools.辛辣食物'), t('tools.煎炸食品'), t('tools.温燥食物'), t('tools.过量咖啡')],
+        principles: [t('tools.滋阴润燥'), t('tools.清淡饮食'), t('tools.多饮水'), t('tools.少食辛辣')],
+        sampleMeals: [t('tools.银耳莲子汤'), t('tools.百合粥'), t('tools.蜂蜜柠檬水'), t('tools.清蒸鱼')]
       },
       lifestyle: {
-        exercise: ['瑜伽', '太极拳', '游泳', '散步'],
-        sleep: ['规律作息', '创造安静睡眠环境', '睡前放松'],
-        emotional: ['保持心境平和', '学会释放压力', '冥想练习'],
-        seasonal: ['秋冬滋阴', '避免过度出汗', '注意补水']
+        exercise: [t('tools.瑜伽'), t('tools.太极拳'), t('tools.游泳'), t('tools.散步')],
+        sleep: [t('tools.规律作息'), t('tools.创造安静睡眠环境'), t('tools.睡前放松')],
+        emotional: [t('tools.保持心境平和'), t('tools.学会释放压力'), t('tools.冥想练习')],
+        seasonal: [t('tools.秋冬滋阴'), t('tools.避免过度出汗'), t('tools.注意补水')]
       },
       moxibustion: {
-        points: ['太溪', '三阴交'],
-        timing: '隔日进行',
-        duration: '每穴15-20分钟',
-        frequency: '温和调理',
-        precautions: ['温度不宜过高', '时间不宜过长', '注意补水']
+        points: [t('tools.太溪'), t('tools.三阴交')],
+        timing: t('tools.隔日进行'),
+        duration: t('tools.每穴1520分钟'),
+        frequency: t('tools.温和调理'),
+        precautions: [t('tools.温度不宜过高'), t('tools.时间不宜过长'), t('tools.注意补水')]
       }
     },
     phlegm_dampness: {
       acupoints: {
         primaryPoints: [
           {
-            name: '丰隆',
-            location: '外踝上8寸，胫骨前缘外侧1.5寸',
-            function: '化痰除湿，健脾和胃',
-            method: '重点按揉5-8分钟'
+            name: t('tools.丰隆'),
+            location: t('tools.外踝上8寸胫骨前缘外'),
+            function: t('tools.化痰除湿健脾和胃'),
+            method: t('tools.重点按揉58分钟')
           },
           {
-            name: '阴陵泉',
-            location: '胫骨内侧髁下方凹陷处',
-            function: '健脾利湿，消肿',
-            method: '按压至酸胀感明显'
+            name: t('tools.阴陵泉'),
+            location: t('tools.胫骨内侧髁下方凹陷处'),
+            function: t('tools.健脾利湿消肿'),
+            method: t('tools.按压至酸胀感明显')
           },
           {
-            name: '中脘',
-            location: '肚脐上4寸',
-            function: '健脾和胃，化湿消痰',
-            method: '顺时针按揉'
+            name: t('tools.中脘'),
+            location: t('tools.肚脐上4寸'),
+            function: t('tools.健脾和胃化湿消痰'),
+            method: t('tools.顺时针按揉')
           }
         ],
         supportingPoints: [
           {
-            name: '天枢',
-            location: '肚脐旁开2寸',
-            function: '调理肠胃，消除腹胀',
-            method: '双侧同时按揉'
+            name: t('tools.天枢'),
+            location: t('tools.肚脐旁开2寸'),
+            function: t('tools.调理肠胃消除腹胀'),
+            method: t('tools.双侧同时按揉')
           }
         ],
-        massageTechnique: '稍重按压，以促进气血运行',
-        frequency: '每日2-3次',
-        duration: '每次15-20分钟'
+        massageTechnique: t('tools.稍重按压以促进气血运'),
+        frequency: t('tools.每日23次'),
+        duration: t('tools.每次1520分钟')
       },
       diet: {
-        beneficial: ['薏米', '冬瓜', '白萝卜', '陈皮', '山楂', '荷叶', '绿豆'],
-        avoid: ['甜腻食物', '油炸食品', '肥肉', '奶制品过量'],
-        principles: ['清淡饮食', '少油少盐', '控制甜食', '多食化湿食物'],
-        sampleMeals: ['薏米红豆汤', '冬瓜汤', '山楂茶', '清蒸蔬菜']
+        beneficial: [t('tools.薏米'), t('tools.冬瓜'), t('tools.白萝卜'), t('tools.陈皮'), t('tools.山楂'), t('tools.荷叶'), t('tools.绿豆')],
+        avoid: [t('tools.甜腻食物'), t('tools.油炸食品'), t('tools.肥肉'), t('tools.奶制品过量')],
+        principles: [t('tools.清淡饮食'), t('tools.少油少盐'), t('tools.控制甜食'), t('tools.多食化湿食物')],
+        sampleMeals: [t('tools.薏米红豆汤'), t('tools.冬瓜汤'), t('tools.山楂茶'), t('tools.清蒸蔬菜')]
       },
       lifestyle: {
-        exercise: ['快走', '慢跑', '游泳', '有氧运动'],
-        sleep: ['避免午睡过长', '保持规律作息'],
-        emotional: ['保持积极心态', '避免过度思虑'],
-        seasonal: ['春夏祛湿', '秋冬温补', '避免潮湿环境']
+        exercise: [t('tools.快走'), t('tools.慢跑'), t('tools.游泳'), t('tools.有氧运动')],
+        sleep: [t('tools.避免午睡过长'), t('tools.保持规律作息')],
+        emotional: [t('tools.保持积极心态'), t('tools.避免过度思虑')],
+        seasonal: [t('tools.春夏祛湿'), t('tools.秋冬温补'), t('tools.避免潮湿环境')]
       },
       moxibustion: {
-        points: ['丰隆', '阴陵泉', '中脘'],
-        timing: '每日或隔日',
-        duration: '每穴20-25分钟',
-        frequency: '坚持调理',
-        precautions: ['配合运动', '控制饮食', '保持环境干燥']
+        points: [t('tools.丰隆'), t('tools.阴陵泉'), t('tools.中脘')],
+        timing: t('tools.每日或隔日'),
+        duration: t('tools.每穴2025分钟'),
+        frequency: t('tools.坚持调理'),
+        precautions: [t('tools.配合运动'), t('tools.控制饮食'), t('tools.保持环境干燥')]
       }
     },
     damp_heat: {
       acupoints: {
         primaryPoints: [
           {
-            name: '曲池',
-            location: '肘横纹外侧端，屈肘时肘横纹头',
-            function: '清热解毒，祛湿热',
-            method: '按压至酸胀感'
+            name: t('tools.曲池'),
+            location: t('tools.肘横纹外侧端屈肘时肘'),
+            function: t('tools.清热解毒祛湿热'),
+            method: t('tools.按压至酸胀感')
           },
           {
-            name: '阴陵泉',
-            location: '胫骨内侧髁下方凹陷处',
-            function: '清热利湿，健脾',
-            method: '重点按揉'
+            name: t('tools.阴陵泉'),
+            location: t('tools.胫骨内侧髁下方凹陷处'),
+            function: t('tools.清热利湿健脾'),
+            method: t('tools.重点按揉')
           },
           {
-            name: '大椎',
-            location: '第7颈椎棘突下',
-            function: '清热解表，调节免疫',
-            method: '轻柔按压'
+            name: t('tools.大椎'),
+            location: t('tools.第7颈椎棘突下'),
+            function: t('tools.清热解表调节免疫'),
+            method: t('tools.轻柔按压')
           }
         ],
         supportingPoints: [
           {
-            name: '合谷',
-            location: '手背第1、2掌骨间',
-            function: '清热解毒，调理面部',
-            method: '按压2-3分钟'
+            name: t('tools.合谷'),
+            location: t('tools.手背第12掌骨间'),
+            function: t('tools.清热解毒调理面部'),
+            method: t('tools.按压23分钟')
           }
         ],
-        massageTechnique: '适中力度，以清热为主',
-        frequency: '每日1-2次',
-        duration: '每次10-15分钟'
+        massageTechnique: t('tools.适中力度以清热为主'),
+        frequency: t('tools.每日12次'),
+        duration: t('tools.每次1015分钟')
       },
       diet: {
-        beneficial: ['绿豆', '苦瓜', '黄瓜', '西瓜', '薏米', '茯苓', '莲子心'],
-        avoid: ['辛辣食物', '油炸食品', '烧烤', '酒类', '甜腻食物'],
-        principles: ['清热利湿', '清淡饮食', '多饮水', '少食肥甘'],
-        sampleMeals: ['绿豆汤', '苦瓜炒蛋', '薏米粥', '莲子心茶']
+        beneficial: [t('tools.绿豆'), t('tools.苦瓜'), t('tools.黄瓜'), t('tools.西瓜'), t('tools.薏米'), t('tools.茯苓'), t('tools.莲子心')],
+        avoid: [t('tools.辛辣食物'), t('tools.油炸食品'), t('tools.烧烤'), t('tools.酒类'), t('tools.甜腻食物')],
+        principles: [t('tools.清热利湿'), t('tools.清淡饮食'), t('tools.多饮水'), t('tools.少食肥甘')],
+        sampleMeals: [t('tools.绿豆汤'), t('tools.苦瓜炒蛋'), t('tools.薏米粥'), t('tools.莲子心茶')]
       },
       lifestyle: {
-        exercise: ['游泳', '瑜伽', '太极拳', '避免剧烈运动'],
-        sleep: ['保持凉爽睡眠环境', '规律作息'],
-        emotional: ['保持心境平和', '避免急躁情绪'],
-        seasonal: ['夏季重点清热', '避免暴晒', '保持环境通风']
+        exercise: [t('tools.游泳'), t('tools.瑜伽'), t('tools.太极拳'), t('tools.避免剧烈运动')],
+        sleep: [t('tools.保持凉爽睡眠环境'), t('tools.规律作息')],
+        emotional: [t('tools.保持心境平和'), t('tools.避免急躁情绪')],
+        seasonal: [t('tools.夏季重点清热'), t('tools.避免暴晒'), t('tools.保持环境通风')]
       },
       moxibustion: {
-        points: ['阴陵泉'],
-        timing: '谨慎使用',
-        duration: '时间较短',
-        frequency: '以按摩为主',
-        precautions: ['避免过热', '以清热为主', '可用刮痧代替']
+        points: [t('tools.阴陵泉')],
+        timing: t('tools.谨慎使用'),
+        duration: t('tools.时间较短'),
+        frequency: t('tools.以按摩为主'),
+        precautions: [t('tools.避免过热'), t('tools.以清热为主'), t('tools.可用刮痧代替')]
       }
     },
     blood_stasis: {
       acupoints: {
         primaryPoints: [
           {
-            name: '血海',
-            location: '髌骨内上缘上2寸',
-            function: '活血化瘀，调经止痛',
-            method: '按揉至局部发热'
+            name: t('tools.血海'),
+            location: t('tools.髌骨内上缘上2寸'),
+            function: t('tools.活血化瘀调经止痛'),
+            method: t('tools.按揉至局部发热')
           },
           {
-            name: '三阴交',
-            location: '内踝上3寸，胫骨内侧缘后方',
-            function: '活血调经，化瘀止痛',
-            method: '重点按压'
+            name: t('tools.三阴交'),
+            location: t('tools.内踝上3寸胫骨内侧缘'),
+            function: t('tools.活血调经化瘀止痛'),
+            method: t('tools.重点按压')
           },
           {
-            name: '膈俞',
-            location: '第7胸椎棘突下旁开1.5寸',
-            function: '活血化瘀，宽胸理气',
-            method: '按压配合艾灸'
+            name: t('tools.膈俞'),
+            location: t('tools.第7胸椎棘突下旁开1'),
+            function: t('tools.活血化瘀宽胸理气'),
+            method: t('tools.按压配合艾灸')
           }
         ],
         supportingPoints: [
           {
-            name: '太冲',
-            location: '足背第1、2跖骨间',
-            function: '疏肝理气，活血化瘀',
-            method: '按压至酸胀感'
+            name: t('tools.太冲'),
+            location: t('tools.足背第12跖骨间'),
+            function: t('tools.疏肝理气活血化瘀'),
+            method: t('tools.按压至酸胀感')
           }
         ],
-        massageTechnique: '适度用力，以活血为主',
-        frequency: '每日2次',
-        duration: '每次15-20分钟'
+        massageTechnique: t('tools.适度用力以活血为主'),
+        frequency: t('tools.每日2次'),
+        duration: t('tools.每次1520分钟')
       },
       diet: {
-        beneficial: ['山楂', '红花', '当归', '川芎', '红糖', '黑木耳', '洋葱'],
-        avoid: ['生冷食物', '油腻食物', '过咸食物'],
-        principles: ['活血化瘀', '温通经络', '适当温补'],
-        sampleMeals: ['山楂茶', '当归炖鸡', '黑木耳炒菜', '红糖姜茶']
+        beneficial: [t('tools.山楂'), t('tools.红花'), t('tools.当归'), t('tools.川芎'), t('tools.红糖'), t('tools.黑木耳'), t('tools.洋葱')],
+        avoid: [t('tools.生冷食物'), t('tools.油腻食物'), t('tools.过咸食物')],
+        principles: [t('tools.活血化瘀'), t('tools.温通经络'), t('tools.适当温补')],
+        sampleMeals: [t('tools.山楂茶'), t('tools.当归炖鸡'), t('tools.黑木耳炒菜'), t('tools.红糖姜茶')]
       },
       lifestyle: {
-        exercise: ['慢跑', '太极拳', '瑜伽', '适度有氧运动'],
-        sleep: ['保持规律作息', '避免熬夜'],
-        emotional: ['保持心情愉快', '避免情绪郁结'],
-        seasonal: ['春季疏肝', '注意保暖', '避免受寒']
+        exercise: [t('tools.慢跑'), t('tools.太极拳'), t('tools.瑜伽'), t('tools.适度有氧运动')],
+        sleep: [t('tools.保持规律作息'), t('tools.避免熬夜')],
+        emotional: [t('tools.保持心情愉快'), t('tools.避免情绪郁结')],
+        seasonal: [t('tools.春季疏肝'), t('tools.注意保暖'), t('tools.避免受寒')]
       },
       moxibustion: {
-        points: ['血海', '三阴交', '膈俞'],
-        timing: '每日或隔日',
-        duration: '每穴20-25分钟',
-        frequency: '经期前后重点调理',
-        precautions: ['经期谨慎使用', '注意温度', '配合运动']
+        points: [t('tools.血海'), t('tools.三阴交'), t('tools.膈俞')],
+        timing: t('tools.每日或隔日'),
+        duration: t('tools.每穴2025分钟'),
+        frequency: t('tools.经期前后重点调理'),
+        precautions: [t('tools.经期谨慎使用'), t('tools.注意温度'), t('tools.配合运动')]
       }
     },
     qi_stagnation: {
       acupoints: {
         primaryPoints: [
           {
-            name: '太冲',
-            location: '足背第1、2跖骨间',
-            function: '疏肝解郁，调畅气机',
-            method: '按压至酸胀感明显'
+            name: t('tools.太冲'),
+            location: t('tools.足背第12跖骨间'),
+            function: t('tools.疏肝解郁调畅气机'),
+            method: t('tools.按压至酸胀感明显')
           },
           {
-            name: '期门',
-            location: '第6肋间隙，乳头直下',
-            function: '疏肝理气，宽胸解郁',
-            method: '轻柔按揉'
+            name: t('tools.期门'),
+            location: t('tools.第6肋间隙乳头直下'),
+            function: t('tools.疏肝理气宽胸解郁'),
+            method: t('tools.轻柔按揉')
           },
           {
-            name: '神门',
-            location: '腕横纹尺侧端',
-            function: '宁心安神，调节情绪',
-            method: '睡前重点按压'
+            name: t('tools.神门'),
+            location: t('tools.腕横纹尺侧端'),
+            function: t('tools.宁心安神调节情绪'),
+            method: t('tools.睡前重点按压')
           }
         ],
         supportingPoints: [
           {
-            name: '印堂',
-            location: '两眉头连线中点',
-            function: '宁心安神，开窍醒脑',
-            method: '轻柔按压'
+            name: t('tools.印堂'),
+            location: t('tools.两眉头连线中点'),
+            function: t('tools.宁心安神开窍醒脑'),
+            method: t('tools.轻柔按压')
           }
         ],
-        massageTechnique: '轻柔舒缓，以疏通为主',
-        frequency: '每日2-3次',
-        duration: '每次10-15分钟'
+        massageTechnique: t('tools.轻柔舒缓以疏通为主'),
+        frequency: t('tools.每日23次'),
+        duration: t('tools.每次1015分钟')
       },
       diet: {
-        beneficial: ['玫瑰花', '柠檬', '橙子', '佛手', '香橼', '薄荷', '茉莉花'],
-        avoid: ['过于油腻', '难消化食物', '过量咖啡因'],
-        principles: ['疏肝理气', '清淡饮食', '适量芳香类食物'],
-        sampleMeals: ['玫瑰花茶', '柠檬蜂蜜水', '薄荷茶', '清淡蔬菜']
+        beneficial: [t('tools.玫瑰花'), t('tools.柠檬'), t('tools.橙子'), t('tools.佛手'), t('tools.香橼'), t('tools.薄荷'), t('tools.茉莉花')],
+        avoid: [t('tools.过于油腻'), t('tools.难消化食物'), t('tools.过量咖啡因')],
+        principles: [t('tools.疏肝理气'), t('tools.清淡饮食'), t('tools.适量芳香类食物')],
+        sampleMeals: [t('tools.玫瑰花茶'), t('tools.柠檬蜂蜜水'), t('tools.薄荷茶'), t('tools.清淡蔬菜')]
       },
       lifestyle: {
-        exercise: ['瑜伽', '太极拳', '散步', '深呼吸练习'],
-        sleep: ['规律作息', '睡前放松', '创造安静环境'],
-        emotional: ['学会释放压力', '培养兴趣爱好', '适当社交'],
-        seasonal: ['春季重点疏肝', '保持心情愉快', '避免情绪波动']
+        exercise: [t('tools.瑜伽'), t('tools.太极拳'), t('tools.散步'), t('tools.深呼吸练习')],
+        sleep: [t('tools.规律作息'), t('tools.睡前放松'), t('tools.创造安静环境')],
+        emotional: [t('tools.学会释放压力'), t('tools.培养兴趣爱好'), t('tools.适当社交')],
+        seasonal: [t('tools.春季重点疏肝'), t('tools.保持心情愉快'), t('tools.避免情绪波动')]
       },
       moxibustion: {
-        points: ['太冲', '神门'],
-        timing: '情绪不佳时',
-        duration: '每穴15-20分钟',
-        frequency: '按需调理',
-        precautions: ['温和施灸', '配合情绪调节', '避免过度刺激']
+        points: [t('tools.太冲'), t('tools.神门')],
+        timing: t('tools.情绪不佳时'),
+        duration: t('tools.每穴1520分钟'),
+        frequency: t('tools.按需调理'),
+        precautions: [t('tools.温和施灸'), t('tools.配合情绪调节'), t('tools.避免过度刺激')]
       }
     },
     special_diathesis: {
       acupoints: {
         primaryPoints: [
           {
-            name: '风池',
-            location: '枕骨下，胸锁乳突肌与斜方肌间凹陷处',
-            function: '祛风解表，增强抵抗力',
-            method: '轻柔按压'
+            name: t('tools.风池'),
+            location: t('tools.枕骨下胸锁乳突肌与斜'),
+            function: t('tools.祛风解表增强抵抗力'),
+            method: t('tools.轻柔按压')
           },
           {
-            name: '足三里',
-            location: '膝盖下3寸，胫骨外侧1横指',
-            function: '调理脾胃，增强体质',
-            method: '温和按揉'
+            name: t('tools.足三里'),
+            location: t('tools.膝盖下3寸胫骨外侧1'),
+            function: t('tools.调理脾胃增强体质'),
+            method: t('tools.温和按揉')
           }
         ],
         supportingPoints: [
           {
-            name: '迎香',
-            location: '鼻翼外缘中点旁',
-            function: '通鼻窍，防过敏',
-            method: '轻柔按揉'
+            name: t('tools.迎香'),
+            location: t('tools.鼻翼外缘中点旁'),
+            function: t('tools.通鼻窍防过敏'),
+            method: t('tools.轻柔按揉')
           }
         ],
-        massageTechnique: '温和按摩，避免过度刺激',
-        frequency: '每日1次',
-        duration: '每次10分钟'
+        massageTechnique: t('tools.温和按摩避免过度刺激'),
+        frequency: t('tools.每日1次'),
+        duration: t('tools.每次10分钟')
       },
       diet: {
-        beneficial: ['益生菌食品', '新鲜蔬果', '优质蛋白', '抗过敏食物'],
-        avoid: ['已知过敏原', '添加剂多的食品', '刺激性食物'],
-        principles: ['避免过敏原', '增强免疫力', '营养均衡'],
-        sampleMeals: ['酸奶', '新鲜水果', '清淡蔬菜', '白肉类']
+        beneficial: [t('tools.益生菌食品'), t('tools.新鲜蔬果'), t('tools.优质蛋白'), t('tools.抗过敏食物')],
+        avoid: [t('tools.已知过敏原'), t('tools.添加剂多的食品'), t('tools.刺激性食物')],
+        principles: [t('tools.避免过敏原'), t('tools.增强免疫力'), t('tools.营养均衡')],
+        sampleMeals: [t('tools.酸奶'), t('tools.新鲜水果'), t('tools.清淡蔬菜'), t('tools.白肉类')]
       },
       lifestyle: {
-        exercise: ['适度运动', '避免过敏环境', '增强体质'],
-        sleep: ['保持充足睡眠', '避免过敏原'],
-        emotional: ['保持积极心态', '学会应对过敏'],
-        seasonal: ['根据季节调整', '预防过敏发作']
+        exercise: [t('tools.适度运动'), t('tools.避免过敏环境'), t('tools.增强体质')],
+        sleep: [t('tools.保持充足睡眠'), t('tools.避免过敏原')],
+        emotional: [t('tools.保持积极心态'), t('tools.学会应对过敏')],
+        seasonal: [t('tools.根据季节调整'), t('tools.预防过敏发作')]
       },
       moxibustion: {
-        points: ['足三里'],
-        timing: '谨慎使用',
-        duration: '时间较短',
-        frequency: '个体化调理',
-        precautions: ['避免过敏反应', '个体化方案', '医生指导下进行']
+        points: [t('tools.足三里')],
+        timing: t('tools.谨慎使用'),
+        duration: t('tools.时间较短'),
+        frequency: t('tools.个体化调理'),
+        precautions: [t('tools.避免过敏反应'), t('tools.个体化方案'), t('tools.医生指导下进行')]
       }
     }
   },

@@ -102,12 +102,7 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
           {t('title')}
         </h1>
         <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-          {t('description')}
-        </p>
-      </header>
-
-      {/* 青少年经期健康专区推广区域 */}
-      <section className="bg-gradient-to-r from-pink-50 via-purple-50 to-blue-50 rounded-2xl p-8 mb-8 border border-pink-100 relative overflow-hidden">
+          {t('descriptiont('common.phe')bg-gradient-to-r from-pink-50 via-purple-50 to-blue-50 rounded-2xl p-8 mb-8 border border-pink-100 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-pink-200 rounded-full opacity-20 transform translate-x-16 -translate-y-16"></div>
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-200 rounded-full opacity-20 transform -translate-x-12 translate-y-12"></div>
 
@@ -119,16 +114,16 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">
-                  {locale === 'zh' ? '🌸 青少年经期健康专区 🌸' : '🌸 Teen Menstrual Health Zone 🌸'}
+                  {locale === 'zh' ? t('common.青少年经期健康专区') : '🌸 Teen Menstrual Health Zone 🌸'}
                 </h2>
                 <p className="text-sm text-pink-600 font-medium">
-                  {locale === 'zh' ? '专为12-18岁女孩设计的贴心空间' : 'A caring space designed for girls aged 12-18'}
+                  {locale === 'zh' ? t('common.专为1218岁女孩设') : 'A caring space designed for girls aged 12-18'}
                 </p>
               </div>
             </div>
             <p className="text-gray-700 mb-6 text-lg leading-relaxed">
               {locale === 'zh'
-                ? '青春期有太多烦恼，而每个月的"那几天"更是让人担心。疼痛、情绪波动、身体变化……别担心，你不是一个人在战斗。我们为你准备了校园应急指南、发育期疼痛管理、情绪支持和沟通技巧，陪你自信地度过每一个经期。'
+                ? t('common.青春期有太多烦恼而每t('common.那几天t('common.更是让人担心疼痛情绪')
                 : 'Adolescence brings many worries, and "those days" each month can be especially concerning. Pain, mood swings, body changes... Don\'t worry, you\'re not fighting alone. We\'ve prepared campus emergency guides, developmental pain management, emotional support, and communication skills to help you confidently navigate every period.'
               }
             </p>
@@ -137,14 +132,14 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
                 href={`/${locale}/teen-health`}
                 className="inline-flex items-center bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-3 rounded-full font-medium hover:from-pink-700 hover:to-purple-700 transition-all transform hover:scale-105"
               >
-                {locale === 'zh' ? '进入专区' : 'Enter Zone'}
+                {locale === 'zh' ? t('common.进入专区') : 'Enter Zone'}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
                 href={`/${locale}/teen-health/campus-guide`}
                 className="inline-flex items-center bg-white text-pink-600 px-6 py-3 rounded-full font-medium border-2 border-pink-200 hover:bg-pink-50 transition-colors"
               >
-                {locale === 'zh' ? '校园应急指南' : 'Campus Emergency Guide'}
+                {locale === 'zh' ? t('common.校园应急指南') : 'Campus Emergency Guide'}
               </Link>
             </div>
           </div>
@@ -152,15 +147,15 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
             <div className="bg-white rounded-xl p-6 shadow-lg border border-pink-100">
               <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
                 <span className="text-pink-500 mr-2">💝</span>
-                {locale === 'zh' ? '我们能帮你什么？' : 'How Can We Help?'}
+                {locale === 'zh' ? t('common.我们能帮你什么') : 'How Can We Help?'}
               </h3>
               <div className="space-y-3">
                 {[
-                  { icon: '🏫', text: locale === 'zh' ? '校园应急指南' : 'Campus Emergency Guide' },
-                  { icon: '🌱', text: locale === 'zh' ? '发育期疼痛管理' : 'Developmental Pain Management' },
-                  { icon: '💭', text: locale === 'zh' ? '情绪支持与心理健康' : 'Emotional & Mental Support' },
-                  { icon: '💬', text: locale === 'zh' ? '与家长老师沟通' : 'Communication with Parents & Teachers' },
-                  { icon: '👭', text: locale === 'zh' ? '同龄人经验分享' : 'Peer Experience Sharing' }
+                  { icon: '🏫', text: locale === 'zh' ? t('common.校园应急指南') : 'Campus Emergency Guide' },
+                  { icon: '🌱', text: locale === 'zh' ? t('common.发育期疼痛管理') : 'Developmental Pain Management' },
+                  { icon: '💭', text: locale === 'zh' ? t('common.情绪支持与心理健康') : 'Emotional & Mental Support' },
+                  { icon: '💬', text: locale === 'zh' ? t('common.与家长老师沟通') : 'Communication with Parents & Teachers' },
+                  { icon: '👭', text: locale === 'zh' ? t('common.同龄人经验分享') : 'Peer Experience Sharing' }
                 ].map((item, index) => (
                   <div key={index} className="flex items-center text-sm text-gray-600">
                     <span className="mr-3 text-lg">{item.icon}</span>
@@ -249,18 +244,18 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
               <div className="flex items-center justify-center mb-2">
                 <Star className="w-5 h-5 text-yellow-500 mr-1" />
                 <span className="text-sm font-medium text-red-700">
-                  {locale === 'zh' ? '特别推荐' : 'Special Recommendation'}
+                  {locale === 'zh' ? t('common.特别推荐') : 'Special Recommendation'}
                 </span>
               </div>
               <h2 className="text-2xl font-semibold text-neutral-800">
-                {locale === 'zh' ? '多场景应急包清单' : 'Multi-Scenario Emergency Kit List'}
+                {locale === 'zh' ? t('common.多场景应急包清单') : 'Multi-Scenario Emergency Kit List'}
               </h2>
             </div>
           </div>
 
           <p className="text-neutral-700 text-center mb-6 leading-relaxed">
             {locale === 'zh'
-              ? '从办公室到通勤路上，从运动场到社交聚会，详细的应急包准备清单帮助你在任何场景下都能从容应对经期不适。'
+              ? t('common.从办公室到通勤路上从')
               : 'From office to commute, from sports field to social gatherings, detailed emergency kit preparation lists help you handle period discomfort confidently in any scenario.'
             }
           </p>
@@ -270,11 +265,11 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
               <div className="flex items-center mb-2">
                 <Briefcase className="w-5 h-5 text-blue-600 mr-2" />
                 <span className="font-medium text-neutral-800">
-                  {locale === 'zh' ? '办公场景' : 'Office Scenario'}
+                  {locale === 'zh' ? t('common.办公场景') : 'Office Scenario'}
                 </span>
               </div>
               <p className="text-sm text-neutral-600">
-                {locale === 'zh' ? '隐蔽热敷、止痛药、姜茶包...' : 'Discreet heat patches, pain meds, ginger tea...'}
+                {locale === 'zh' ? t('common.隐蔽热敷止痛药姜茶包') : 'Discreet heat patches, pain meds, ginger tea...'}
               </p>
             </div>
 
@@ -282,11 +277,11 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
               <div className="flex items-center mb-2">
                 <Car className="w-5 h-5 text-green-600 mr-2" />
                 <span className="font-medium text-neutral-800">
-                  {locale === 'zh' ? '通勤场景' : 'Commute Scenario'}
+                  {locale === 'zh' ? t('common.通勤场景') : 'Commute Scenario'}
                 </span>
               </div>
               <p className="text-sm text-neutral-600">
-                {locale === 'zh' ? '便携暖宝宝、耳机、温水...' : 'Portable warmers, headphones, warm water...'}
+                {locale === 'zh' ? t('common.便携暖宝宝耳机温水') : 'Portable warmers, headphones, warm water...'}
               </p>
             </div>
 
@@ -294,11 +289,11 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
               <div className="flex items-center mb-2">
                 <Users className="w-5 h-5 text-pink-600 mr-2" />
                 <span className="font-medium text-neutral-800">
-                  {locale === 'zh' ? '社交场景' : 'Social Scenario'}
+                  {locale === 'zh' ? t('common.社交场景') : 'Social Scenario'}
                 </span>
               </div>
               <p className="text-sm text-neutral-600">
-                {locale === 'zh' ? '迷你暖贴、舒适衣物、围巾...' : 'Mini heat patches, comfortable clothes, scarf...'}
+                {locale === 'zh' ? t('common.迷你暖贴舒适衣物围巾') : 'Mini heat patches, comfortable clothes, scarf...'}
               </p>
             </div>
           </div>
@@ -309,7 +304,7 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
               className="inline-flex items-center bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors"
             >
               <Package className="w-5 h-5 mr-2" />
-              {locale === 'zh' ? '查看完整应急包清单' : 'View Complete Emergency Kit List'}
+              {locale === 'zh' ? t('common.查看完整应急包清单') : 'View Complete Emergency Kit List'}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
@@ -319,11 +314,11 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
       {/* Call to Action Section */}
       <section className="bg-neutral-100 p-6 md:p-8 rounded-xl text-center">
         <h2 className="text-2xl font-semibold text-neutral-800 mb-4">
-          {locale === 'zh' ? '开始您的个性化痛经管理之旅' : 'Start Your Personalized Pain Management Journey'}
+          {locale === 'zh' ? t('common.开始您的个性化痛经管') : 'Start Your Personalized Pain Management Journey'}
         </h2>
         <p className="text-neutral-700 mb-6 max-w-2xl mx-auto">
           {locale === 'zh'
-            ? '结合我们的症状评估工具和疼痛追踪系统，为您量身定制最适合的场景化解决方案。'
+            ? t('common.结合我们的症状评估工')
             : 'Combine our symptom assessment tools and pain tracking system to create the most suitable scenario-based solutions for you.'
           }
         </p>
@@ -332,13 +327,13 @@ export default async function ScenarioSolutionsPage({ params: { locale } }: Prop
             href={`/${locale}/interactive-tools/symptom-assessment`}
             className="btn-primary"
           >
-            {locale === 'zh' ? '开始症状评估' : 'Start Symptom Assessment'}
+            {locale === 'zh' ? t('common.开始症状评估') : 'Start Symptom Assessment'}
           </Link>
           <Link
             href={`/${locale}/interactive-tools/pain-tracker`}
             className="btn-secondary"
           >
-            {locale === 'zh' ? '开始疼痛追踪' : 'Start Pain Tracking'}
+            {locale === 'zh' ? t('common.开始疼痛追踪') : 'Start Pain Tracking'}
           </Link>
         </div>
       </section>

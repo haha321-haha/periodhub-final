@@ -19,25 +19,7 @@ export interface PainEntryFormData {
   painLevel: number;
   duration?: number;
   location: string[];
-  menstrualStatus: 'period' | 'pre' | 'post' | 'ovulation' | 'other';
-  symptoms: string[];
-  remedies: string[];
-  effectiveness?: number;
-  notes?: string;
-}
-
-// 症状评估相关类型
-export interface Option {
-  value: string | number;
-  label: string;
-  icon?: string;
-  description?: string;
-  weight?: number; // 用于评分计算
-}
-
-export interface Question {
-  id: string;
-  type: 'single' | 'multiple' | 'scale' | 'text' | 'range' | 'boolean';
+  menstrualStatus: 'period' | 'pre' | 'post' | 'ovulation' | 'othert('tools.symptomss')single' | 'multiple' | 'scale' | 'text' | 'range' | 'boolean';
   title: string;
   description?: string;
   options?: Option[];
@@ -52,28 +34,7 @@ export interface Question {
     dependsOn: string;
     values: (string | number)[];
   };
-  category: 'basic' | 'pain' | 'symptoms' | 'lifestyle' | 'medical';
-  weight: number; // 问题权重
-}
-
-export interface AssessmentAnswer {
-  questionId: string;
-  value: string | number | string[] | boolean;
-  timestamp: string;
-}
-
-export interface AssessmentSession {
-  id: string;
-  answers: AssessmentAnswer[];
-  result?: AssessmentResult;
-  startedAt: string;
-  completedAt?: string;
-  locale: string;
-}
-
-export interface AssessmentResult {
-  sessionId: string;
-  type: 'normal' | 'mild' | 'moderate' | 'severe' | 'emergency';
+  category: 'basic' | 'pain' | 'symptoms' | 'lifestyle' | 'medicalt('tools.weightnum')normal' | 'mild' | 'moderate' | 'severe' | 'emergency';
   severity: 'mild' | 'moderate' | 'severe' | 'emergency';
   score: number;
   maxScore: number;
@@ -99,34 +60,7 @@ export interface Recommendation {
   resources?: {
     title: string;
     url: string;
-    type: 'article' | 'video' | 'tool' | 'external';
-  }[];
-}
-
-// 数据可视化相关类型
-export interface ChartData {
-  labels: string[];
-  datasets: ChartDataset[];
-}
-
-export interface ChartDataset {
-  label: string;
-  data: number[];
-  borderColor?: string;
-  backgroundColor?: string;
-  tension?: number;
-  fill?: boolean;
-}
-
-export interface PainStatistics {
-  totalEntries: number;
-  averagePain: number;
-  maxPain: number;
-  minPain: number;
-  mostCommonSymptoms: string[];
-  mostEffectiveRemedies: string[];
-  painFrequency: Record<string, number>;
-  trendDirection: 'improving' | 'worsening' | 'stable';
+    type: 'article' | 'video' | 'tool' | 'externalt('tools.数据可视化相关类型')improving' | 'worsening' | 'stable';
 }
 
 // 错误处理类型
@@ -174,12 +108,7 @@ export interface Notification {
 export interface NotificationAction {
   label: string;
   action: () => void;
-  style?: 'primary' | 'secondary';
-}
-
-// 用户偏好设置
-export interface UserPreferences {
-  language: 'en' | 'zh';
+  style?: 'primary' | 'secondaryt('tools.用户偏好设置exp')en' | 'zh';
   theme: 'light' | 'dark' | 'auto';
   notifications: {
     reminders: boolean;

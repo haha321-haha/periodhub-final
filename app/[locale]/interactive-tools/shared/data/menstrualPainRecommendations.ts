@@ -1,25 +1,5 @@
-import { ConstitutionType, ConstitutionAnswer } from '../types/constitution';
-
-// 痛经专项穴位建议
-export interface MenstrualPainAcupoint {
-  name: string;
-  description: string;
-}
-
-// 文章推荐接口
-export interface RecommendedArticle {
-  title: string;
-  description: string;
-  category: string;
-  link: string;
-}
-
-// 基于体质类型的痛经穴位建议
-export const menstrualPainAcupoints: Record<string, Record<ConstitutionType, MenstrualPainAcupoint[]>> = {
-  zh: {
-    balanced: [
-      { name: '三阴交', description: '调理气血，缓解轻微经期不适' },
-      { name: '血海', description: '活血调经，维持经期平衡' }
+import { ConstitutionType, ConstitutionAnswer } from '../types/constitutiont('tools.痛经专项穴位建议e')三阴交', description: '调理气血，缓解轻微经期不适' },
+      { name: t('tools.血海'), description: '活血调经，维持经期平衡' }
     ],
     qi_deficiency: [
       { name: '气海', description: '补益元气，缓解疲劳型痛经' },
@@ -28,38 +8,38 @@ export const menstrualPainAcupoints: Record<string, Record<ConstitutionType, Men
     ],
     yang_deficiency: [
       { name: '关元', description: '温阳散寒，缓解冷痛' },
-      { name: '神阙', description: '温中散寒，改善宫寒症状' },
-      { name: '肾俞', description: '补肾壮阳，温暖下焦' }
+      { name: '神阙', description: t('tools.温中散寒改善宫寒症状') },
+      { name: t('tools.肾俞'), description: t('tools.补肾壮阳温暖下焦') }
     ],
     yin_deficiency: [
-      { name: '太溪', description: '滋阴补肾，缓解燥热症状' },
-      { name: '三阴交', description: '滋阴养血，调理月经' },
-      { name: '照海', description: '滋肾阴，清虚热' }
+      { name: t('tools.太溪'), description: t('tools.滋阴补肾缓解燥热症状') },
+      { name: t('tools.三阴交'), description: t('tools.滋阴养血调理月经') },
+      { name: t('tools.照海'), description: t('tools.滋肾阴清虚热') }
     ],
     phlegm_dampness: [
-      { name: '丰隆', description: '化痰除湿，缓解腹胀' },
-      { name: '阴陵泉', description: '健脾利湿，消除水肿' },
-      { name: '中脘', description: '健脾和胃，化湿消胀' }
+      { name: t('tools.丰隆'), description: t('tools.化痰除湿缓解腹胀') },
+      { name: t('tools.阴陵泉'), description: t('tools.健脾利湿消除水肿') },
+      { name: t('tools.中脘'), description: t('tools.健脾和胃化湿消胀') }
     ],
     damp_heat: [
-      { name: '阴陵泉', description: '清热利湿，缓解湿热症状' },
-      { name: '曲池', description: '清热解毒，凉血止痛' },
-      { name: '太冲', description: '疏肝清热，调理情绪' }
+      { name: t('tools.阴陵泉'), description: t('tools.清热利湿缓解湿热症状') },
+      { name: t('tools.曲池'), description: t('tools.清热解毒凉血止痛') },
+      { name: t('tools.太冲'), description: t('tools.疏肝清热调理情绪') }
     ],
     blood_stasis: [
-      { name: '血海', description: '活血化瘀，缓解刺痛' },
-      { name: '膈俞', description: '活血化瘀，通络止痛' },
-      { name: '次髎', description: '活血通络，缓解盆腔瘀血' }
+      { name: t('tools.血海'), description: t('tools.活血化瘀缓解刺痛') },
+      { name: t('tools.膈俞'), description: t('tools.活血化瘀通络止痛') },
+      { name: t('tools.次髎'), description: t('tools.活血通络缓解盆腔瘀血') }
     ],
     qi_stagnation: [
-      { name: '太冲', description: '疏肝理气，缓解绞痛' },
-      { name: '期门', description: '疏肝解郁，调理情绪' },
-      { name: '行间', description: '疏肝泄热，缓解烦躁' }
+      { name: t('tools.太冲'), description: t('tools.疏肝理气缓解绞痛') },
+      { name: t('tools.期门'), description: t('tools.疏肝解郁调理情绪') },
+      { name: t('tools.行间'), description: t('tools.疏肝泄热缓解烦躁') }
     ],
     special_diathesis: [
-      { name: '百会', description: '调节神经，缓解过敏症状' },
-      { name: '风池', description: '疏风解表，调节免疫' },
-      { name: '合谷', description: '调气止痛，增强抵抗力' }
+      { name: t('tools.百会'), description: t('tools.调节神经缓解过敏症状') },
+      { name: t('tools.风池'), description: t('tools.疏风解表调节免疫') },
+      { name: t('tools.合谷'), description: t('tools.调气止痛增强抵抗力') }
     ]
   },
   en: {
@@ -105,16 +85,7 @@ export const menstrualPainAcupoints: Record<string, Record<ConstitutionType, Men
     special_diathesis: [
       { name: 'Baihui (GV20)', description: 'Regulates nervous system, relieves allergic symptoms' },
       { name: 'Fengchi (GB20)', description: 'Expels wind and releases exterior, regulates immunity' },
-      { name: 'Hegu (LI4)', description: 'Regulates qi and stops pain, strengthens resistance' }
-    ]
-  }
-};
-
-// 基于体质类型的生活方式建议
-export const menstrualPainLifestyleTips: Record<string, Record<ConstitutionType, string[]>> = {
-  zh: {
-    balanced: [
-      '保持规律的作息时间',
+      { name: 'Hegu (LI4)', description: 'Regulates qi and stops pain, strengthens resistancet('tools.基于体质类型的生活方')保持规律的作息时间',
       '适量运动，如散步、瑜伽',
       '经期注意保暖，避免受凉',
       '保持心情愉快，避免过度紧张'
@@ -122,50 +93,50 @@ export const menstrualPainLifestyleTips: Record<string, Record<ConstitutionType,
     qi_deficiency: [
       '充足睡眠，避免熬夜',
       '选择温和的运动，避免剧烈活动',
-      '经期多休息，减少体力消耗',
-      '注意营养补充，多吃补气食物'
+      t('tools.经期多休息减少体力消'),
+      t('tools.注意营养补充多吃补气')
     ],
     yang_deficiency: [
-      '注意保暖，特别是腹部和腰部',
-      '避免生冷食物，多喝温开水',
-      '适当进行温和的有氧运动',
-      '经期可用热水袋敷腹部'
+      t('tools.注意保暖特别是腹部和'),
+      t('tools.避免生冷食物多喝温开'),
+      t('tools.适当进行温和的有氧运'),
+      t('tools.经期可用热水袋敷腹部')
     ],
     yin_deficiency: [
-      '避免熬夜，保证充足睡眠',
-      '减少辛辣刺激性食物',
-      '多吃滋阴润燥的食物',
-      '保持情绪稳定，避免急躁'
+      t('tools.避免熬夜保证充足睡眠'),
+      t('tools.减少辛辣刺激性食物'),
+      t('tools.多吃滋阴润燥的食物'),
+      t('tools.保持情绪稳定避免急躁')
     ],
     phlegm_dampness: [
-      '控制体重，避免过度肥胖',
-      '减少甜腻食物的摄入',
-      '增加有氧运动，促进代谢',
-      '保持环境干燥，避免潮湿'
+      t('tools.控制体重避免过度肥胖'),
+      t('tools.减少甜腻食物的摄入'),
+      t('tools.增加有氧运动促进代谢'),
+      t('tools.保持环境干燥避免潮湿')
     ],
     damp_heat: [
-      '饮食清淡，避免油腻食物',
-      '多吃清热利湿的食物',
-      '保持心情舒畅，避免急躁',
-      '注意个人卫生，保持清洁'
+      t('tools.饮食清淡避免油腻食物'),
+      t('tools.多吃清热利湿的食物'),
+      t('tools.保持心情舒畅避免急躁'),
+      t('tools.注意个人卫生保持清洁')
     ],
     blood_stasis: [
-      '适当运动，促进血液循环',
-      '避免久坐不动',
-      '经期可进行轻柔按摩',
-      '保持情绪稳定，避免生气'
+      t('tools.适当运动促进血液循环'),
+      t('tools.避免久坐不动'),
+      t('tools.经期可进行轻柔按摩'),
+      t('tools.保持情绪稳定避免生气')
     ],
     qi_stagnation: [
-      '学会情绪管理，保持心情舒畅',
-      '适当进行舒缓运动，如瑜伽',
-      '避免压力过大，学会放松',
-      '可以听音乐、冥想来缓解压力'
+      t('tools.学会情绪管理保持心情'),
+      t('tools.适当进行舒缓运动如瑜'),
+      t('tools.避免压力过大学会放松'),
+      t('tools.可以听音乐冥想来缓解')
     ],
     special_diathesis: [
-      '避免接触过敏原',
-      '增强体质，提高免疫力',
-      '注意环境卫生，减少刺激',
-      '必要时寻求专业医疗建议'
+      t('tools.避免接触过敏原'),
+      t('tools.增强体质提高免疫力'),
+      t('tools.注意环境卫生减少刺激'),
+      t('tools.必要时寻求专业医疗建')
     ]
   },
   en: {
@@ -221,28 +192,14 @@ export const menstrualPainLifestyleTips: Record<string, Record<ConstitutionType,
       'Avoid contact with allergens',
       'Strengthen constitution and boost immunity',
       'Pay attention to environmental hygiene, reduce irritation',
-      'Seek professional medical advice when necessary'
-    ]
-  }
-};
-
-// 基于体质和症状的文章推荐
-export const getRecommendedArticles = (
-  constitutionType: ConstitutionType,
-  answers: ConstitutionAnswer[],
-  locale: string
-): RecommendedArticle[] => {
-  const baseArticles: Record<string, RecommendedArticle[]> = {
-    zh: [
-      {
-        title: '痛经的自然与物理疗法综合指南：15种科学验证的缓解方法',
+      'Seek professional medical advice when necessaryt('tools.基于体质和症状的文章')痛经的自然与物理疗法综合指南：15种科学验证的缓解方法',
         description: '详细介绍热敷、按摩、瑜伽等自然疗法，以及穴位按摩的具体操作方法，帮助您自然缓解痛经。',
         category: '自然疗法',
         link: '/zh/articles/natural-physical-therapy-comprehensive-guide'
       },
       {
         title: '痛经药物治疗专业指南：NSAIDs安全用药与剂量计算',
-        description: '专业的痛经药物治疗指南，包括布洛芬、萘普生等NSAIDs的安全用药方法和剂量计算。',
+        description: t('tools.专业的痛经药物治疗指'),
         category: '药物治疗',
         link: '/zh/articles/nsaid-menstrual-pain-professional-guide'
       }
@@ -258,35 +215,25 @@ export const getRecommendedArticles = (
         title: 'Professional Guide to Menstrual Pain Medication: Safe Use of NSAIDs and Dosage Calculation',
         description: 'Professional guide to menstrual pain medication, including safe use and dosage calculation of NSAIDs like ibuprofen and naproxen.',
         category: 'Medical Treatment',
-        link: '/en/articles/nsaid-menstrual-pain-professional-guide'
-      }
-    ]
-  };
-
-  // 基于体质类型添加特定文章推荐
-  const constitutionSpecificArticles: Record<string, Partial<Record<ConstitutionType, RecommendedArticle[]>>> = {
-    zh: {
-      qi_deficiency: [
-        {
-          title: '气虚体质痛经调理：补气养血的中医方案',
+        link: '/en/articles/nsaid-menstrual-pain-professional-guidet('tools.基于体质类型添加特定')气虚体质痛经调理：补气养血的中医方案',
           description: '针对气虚体质的痛经特点，提供补气养血的中医调理方案，包括食疗、穴位按摩等。',
-          category: '体质调理',
+          category: t('tools.体质调理'),
           link: '/zh/interactive-tools/constitution-test'
         }
       ],
       yang_deficiency: [
         {
-          title: '阳虚体质痛经调理：温阳散寒的调理方法',
-          description: '专门针对阳虚体质的痛经调理，重点介绍温阳散寒的方法和注意事项。',
-          category: '体质调理',
+          title: t('tools.阳虚体质痛经调理温阳'),
+          description: t('tools.专门针对阳虚体质的痛'),
+          category: t('tools.体质调理'),
           link: '/zh/interactive-tools/constitution-test'
         }
       ],
       blood_stasis: [
         {
-          title: '血瘀体质痛经调理：活血化瘀的有效方法',
-          description: '针对血瘀体质的痛经特点，提供活血化瘀的调理方案和生活指导。',
-          category: '体质调理',
+          title: t('tools.血瘀体质痛经调理活血'),
+          description: t('tools.针对血瘀体质的痛经特'),
+          category: t('tools.体质调理'),
           link: '/zh/interactive-tools/constitution-test'
         }
       ]
@@ -313,30 +260,7 @@ export const getRecommendedArticles = (
           title: 'Blood Stasis Constitution Menstrual Pain Management: Effective Blood Circulation Methods',
           description: 'Targeted solutions for blood stasis constitution menstrual pain, providing blood circulation and stasis resolution guidance.',
           category: 'Constitution Care',
-          link: '/en/interactive-tools/constitution-test'
-        }
-      ]
-    }
-  };
-
-  const articles = [...(baseArticles[locale] || baseArticles.zh)];
-  
-  // 添加体质特定的文章
-  const constitutionArticles = constitutionSpecificArticles[locale]?.[constitutionType];
-  if (constitutionArticles) {
-    articles.push(...constitutionArticles);
-  }
-
-  return articles.slice(0, 3); // 返回最多3篇文章
-};
-
-// 社交沟通模板
-export interface CommunicationTemplate {
-  scenario: string;
-  templates: {
-    title: string;
-    content: string;
-    tone: 'casual' | 'formal' | 'intimate';
+          link: '/en/interactive-tools/constitution-testt('tools.constarti')casual' | 'formal' | 'intimate';
   }[];
 }
 
@@ -356,48 +280,48 @@ export const communicationTemplates: Record<string, CommunicationTemplate[]> = {
           tone: 'intimate'
         },
         {
-          title: '请求帮助',
-          content: '我现在肚子很痛，能帮我准备一杯热水吗？或者陪我安静地待一会儿就好。',
+          title: t('tools.请求帮助'),
+          content: t('tools.我现在肚子很痛能帮我'),
           tone: 'intimate'
         }
       ]
     },
     {
-      scenario: '与朋友沟通',
+      scenario: t('tools.与朋友沟通'),
       templates: [
         {
-          title: '约会改期',
-          content: '不好意思，我今天身体不太舒服（经期疼痛），可能没办法保持最佳状态。我们能改到下次吗？',
+          title: t('tools.约会改期'),
+          content: t('tools.不好意思我今天身体不'),
           tone: 'casual'
         },
         {
-          title: '聚会参与',
-          content: '我会参加聚会，但可能需要早点回家休息。如果我看起来有点疲惫，请理解一下～',
+          title: t('tools.聚会参与'),
+          content: t('tools.我会参加聚会但可能需'),
           tone: 'casual'
         },
         {
-          title: '寻求支持',
-          content: '姐妹，我现在痛经痛得厉害，你有什么好的缓解方法吗？或者就是想找人聊聊。',
+          title: t('tools.寻求支持'),
+          content: t('tools.姐妹我现在痛经痛得厉'),
           tone: 'casual'
         }
       ]
     },
     {
-      scenario: '与同事/领导沟通',
+      scenario: t('tools.与同事领导沟通'),
       templates: [
         {
-          title: '请假申请',
-          content: '您好，我今天身体不适，可能需要请假半天/一天。我会尽快处理紧急工作，其他事务明天补上。',
+          title: t('tools.请假申请'),
+          content: t('tools.您好我今天身体不适可'),
           tone: 'formal'
         },
         {
-          title: '工作调整',
-          content: '不好意思，我今天身体有些不适，可能工作效率会受影响。如果有紧急事务，请优先安排。',
+          title: t('tools.工作调整'),
+          content: t('tools.不好意思我今天身体有'),
           tone: 'formal'
         },
         {
-          title: '会议参与',
-          content: '我可能需要在会议中途短暂离开一下，不是对会议内容不感兴趣，而是身体原因。',
+          title: t('tools.会议参与'),
+          content: t('tools.我可能需要在会议中途'),
           tone: 'formal'
         }
       ]
@@ -460,20 +384,7 @@ export const communicationTemplates: Record<string, CommunicationTemplate[]> = {
         {
           title: 'Meeting Participation',
           content: 'I might need to step out briefly during the meeting. It\'s not because I\'m not interested in the content, but due to health reasons.',
-          tone: 'formal'
-        }
-      ]
-    }
-  ]
-};
-
-// 应急包物品推荐
-export interface EmergencyKitItem {
-  category: string;
-  items: {
-    name: string;
-    reason: string;
-    priority: 'high' | 'medium' | 'low';
+          tone: 'formalt('tools.应急包物品推荐ex')high' | 'medium' | 'low';
   }[];
 }
 
@@ -481,221 +392,221 @@ export const emergencyKitRecommendations: Record<string, Record<ConstitutionType
   zh: {
     balanced: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '小包纸巾', reason: '日常清洁需要', priority: 'medium' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.小包纸巾'), reason: t('tools.日常清洁需要'), priority: 'medium' }
         ]
       },
       {
-        category: '舒缓用品',
+        category: t('tools.舒缓用品'),
         items: [
-          { name: '暖宝宝', reason: '温热缓解轻微不适', priority: 'medium' },
-          { name: '保温杯', reason: '随时补充温水', priority: 'medium' },
-          { name: '薄荷糖', reason: '提神醒脑，缓解疲劳', priority: 'low' }
+          { name: t('tools.暖宝宝'), reason: t('tools.温热缓解轻微不适'), priority: 'medium' },
+          { name: t('tools.保温杯'), reason: t('tools.随时补充温水'), priority: 'medium' },
+          { name: t('tools.薄荷糖'), reason: t('tools.提神醒脑缓解疲劳'), priority: 'low' }
         ]
       }
     ],
     qi_deficiency: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '能量小零食', reason: '及时补充体力', priority: 'high' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.能量小零食'), reason: t('tools.及时补充体力'), priority: 'high' }
         ]
       },
       {
-        category: '补气用品',
+        category: t('tools.补气用品'),
         items: [
-          { name: '红枣茶包', reason: '补气养血，缓解疲劳', priority: 'high' },
-          { name: '暖宝宝', reason: '温暖身体，提升阳气', priority: 'high' },
-          { name: '小毯子', reason: '保暖休息，避免受凉', priority: 'medium' }
+          { name: t('tools.红枣茶包'), reason: t('tools.补气养血缓解疲劳'), priority: 'high' },
+          { name: t('tools.暖宝宝'), reason: t('tools.温暖身体提升阳气'), priority: 'high' },
+          { name: t('tools.小毯子'), reason: t('tools.保暖休息避免受凉'), priority: 'medium' }
         ]
       },
       {
-        category: '应急药品',
+        category: t('tools.应急药品'),
         items: [
-          { name: '维生素B群', reason: '支持神经系统，缓解疲劳', priority: 'medium' },
-          { name: '葡萄糖片', reason: '快速补充能量', priority: 'low' }
+          { name: t('tools.维生素B群'), reason: t('tools.支持神经系统缓解疲劳'), priority: 'medium' },
+          { name: t('tools.葡萄糖片'), reason: t('tools.快速补充能量'), priority: 'low' }
         ]
       }
     ],
     yang_deficiency: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '保温杯', reason: '随时饮用热水', priority: 'high' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.保温杯'), reason: t('tools.随时饮用热水'), priority: 'high' }
         ]
       },
       {
-        category: '温阳用品',
+        category: t('tools.温阳用品'),
         items: [
-          { name: '暖宝宝', reason: '持续温暖，驱散寒气', priority: 'high' },
-          { name: '暖宫贴', reason: '专门温暖腹部', priority: 'high' },
-          { name: '生姜茶包', reason: '温中散寒，暖胃驱寒', priority: 'high' }
+          { name: t('tools.暖宝宝'), reason: t('tools.持续温暖驱散寒气'), priority: 'high' },
+          { name: t('tools.暖宫贴'), reason: t('tools.专门温暖腹部'), priority: 'high' },
+          { name: t('tools.生姜茶包'), reason: t('tools.温中散寒暖胃驱寒'), priority: 'high' }
         ]
       },
       {
-        category: '保暖用品',
+        category: t('tools.保暖用品'),
         items: [
-          { name: '薄外套', reason: '随时增添衣物保暖', priority: 'medium' },
-          { name: '暖手宝', reason: '温暖手部，促进循环', priority: 'medium' },
-          { name: '保暖袜', reason: '足部保暖，防止寒从脚起', priority: 'low' }
+          { name: t('tools.薄外套'), reason: t('tools.随时增添衣物保暖'), priority: 'medium' },
+          { name: t('tools.暖手宝'), reason: t('tools.温暖手部促进循环'), priority: 'medium' },
+          { name: t('tools.保暖袜'), reason: t('tools.足部保暖防止寒从脚起'), priority: 'low' }
         ]
       }
     ],
     yin_deficiency: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '保湿喷雾', reason: '缓解干燥，滋润肌肤', priority: 'medium' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.保湿喷雾'), reason: t('tools.缓解干燥滋润肌肤'), priority: 'medium' }
         ]
       },
       {
-        category: '滋阴用品',
+        category: t('tools.滋阴用品'),
         items: [
-          { name: '蜂蜜柠檬茶', reason: '滋阴润燥，缓解内热', priority: 'high' },
-          { name: '润喉糖', reason: '滋润咽喉，缓解干燥', priority: 'medium' },
-          { name: '保湿面膜', reason: '滋润肌肤，缓解干燥', priority: 'low' }
+          { name: t('tools.蜂蜜柠檬茶'), reason: t('tools.滋阴润燥缓解内热'), priority: 'high' },
+          { name: t('tools.润喉糖'), reason: t('tools.滋润咽喉缓解干燥'), priority: 'medium' },
+          { name: t('tools.保湿面膜'), reason: t('tools.滋润肌肤缓解干燥'), priority: 'low' }
         ]
       },
       {
-        category: '镇静用品',
+        category: t('tools.镇静用品'),
         items: [
-          { name: '薰衣草精油', reason: '舒缓情绪，帮助放松', priority: 'medium' },
-          { name: '眼罩', reason: '遮光休息，缓解疲劳', priority: 'low' }
+          { name: t('tools.薰衣草精油'), reason: t('tools.舒缓情绪帮助放松'), priority: 'medium' },
+          { name: t('tools.眼罩'), reason: t('tools.遮光休息缓解疲劳'), priority: 'low' }
         ]
       }
     ],
     phlegm_dampness: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '干爽粉', reason: '保持身体干爽', priority: 'medium' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.干爽粉'), reason: t('tools.保持身体干爽'), priority: 'medium' }
         ]
       },
       {
-        category: '化湿用品',
+        category: t('tools.化湿用品'),
         items: [
-          { name: '陈皮茶包', reason: '健脾化湿，消除胀气', priority: 'high' },
-          { name: '薄荷茶', reason: '清香化湿，提神醒脑', priority: 'medium' },
-          { name: '除湿贴', reason: '局部除湿，保持干爽', priority: 'low' }
+          { name: t('tools.陈皮茶包'), reason: t('tools.健脾化湿消除胀气'), priority: 'high' },
+          { name: t('tools.薄荷茶'), reason: t('tools.清香化湿提神醒脑'), priority: 'medium' },
+          { name: t('tools.除湿贴'), reason: t('tools.局部除湿保持干爽'), priority: 'low' }
         ]
       },
       {
-        category: '消胀用品',
+        category: t('tools.消胀用品'),
         items: [
-          { name: '消化酶片', reason: '帮助消化，减少胀气', priority: 'medium' },
-          { name: '按摩球', reason: '促进循环，消除水肿', priority: 'low' }
+          { name: t('tools.消化酶片'), reason: t('tools.帮助消化减少胀气'), priority: 'medium' },
+          { name: t('tools.按摩球'), reason: t('tools.促进循环消除水肿'), priority: 'low' }
         ]
       }
     ],
     damp_heat: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '抗菌洗手液', reason: '清洁杀菌，预防感染', priority: 'medium' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.抗菌洗手液'), reason: t('tools.清洁杀菌预防感染'), priority: 'medium' }
         ]
       },
       {
-        category: '清热用品',
+        category: t('tools.清热用品'),
         items: [
-          { name: '菊花茶包', reason: '清热解毒，降火消炎', priority: 'high' },
-          { name: '绿茶包', reason: '清热利湿，抗氧化', priority: 'medium' },
-          { name: '清凉贴', reason: '局部降温，缓解热感', priority: 'low' }
+          { name: t('tools.菊花茶包'), reason: t('tools.清热解毒降火消炎'), priority: 'high' },
+          { name: t('tools.绿茶包'), reason: t('tools.清热利湿抗氧化'), priority: 'medium' },
+          { name: t('tools.清凉贴'), reason: t('tools.局部降温缓解热感'), priority: 'low' }
         ]
       },
       {
-        category: '清洁用品',
+        category: t('tools.清洁用品'),
         items: [
-          { name: '私处清洁湿巾', reason: '专用清洁，预防炎症', priority: 'medium' },
-          { name: '漱口水', reason: '口腔清洁，去除异味', priority: 'low' }
+          { name: t('tools.私处清洁湿巾'), reason: t('tools.专用清洁预防炎症'), priority: 'medium' },
+          { name: t('tools.漱口水'), reason: t('tools.口腔清洁去除异味'), priority: 'low' }
         ]
       }
     ],
     blood_stasis: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '止痛药', reason: '缓解刺痛，改善循环', priority: 'high' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.止痛药'), reason: t('tools.缓解刺痛改善循环'), priority: 'high' }
         ]
       },
       {
-        category: '活血用品',
+        category: t('tools.活血用品'),
         items: [
-          { name: '红花茶包', reason: '活血化瘀，缓解疼痛', priority: 'high' },
-          { name: '暖宝宝', reason: '温热促循环，缓解瘀滞', priority: 'high' },
-          { name: '按摩膏', reason: '局部按摩，促进血液循环', priority: 'medium' }
+          { name: t('tools.红花茶包'), reason: t('tools.活血化瘀缓解疼痛'), priority: 'high' },
+          { name: t('tools.暖宝宝'), reason: t('tools.温热促循环缓解瘀滞'), priority: 'high' },
+          { name: t('tools.按摩膏'), reason: t('tools.局部按摩促进血液循环'), priority: 'medium' }
         ]
       },
       {
-        category: '舒缓用品',
+        category: t('tools.舒缓用品'),
         items: [
-          { name: '热敷袋', reason: '深度热敷，缓解深层疼痛', priority: 'medium' },
-          { name: '按摩球', reason: '穴位按摩，疏通经络', priority: 'low' }
+          { name: t('tools.热敷袋'), reason: t('tools.深度热敷缓解深层疼痛'), priority: 'medium' },
+          { name: t('tools.按摩球'), reason: t('tools.穴位按摩疏通经络'), priority: 'low' }
         ]
       }
     ],
     qi_stagnation: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '止痛药', reason: '缓解绞痛，舒缓情绪', priority: 'high' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.止痛药'), reason: t('tools.缓解绞痛舒缓情绪'), priority: 'high' }
         ]
       },
       {
-        category: '疏肝用品',
+        category: t('tools.疏肝用品'),
         items: [
-          { name: '玫瑰花茶包', reason: '疏肝解郁，调节情绪', priority: 'high' },
-          { name: '柠檬精油', reason: '芳香疏肝，提升心情', priority: 'medium' },
-          { name: '暖宝宝', reason: '温暖腹部，缓解痉挛', priority: 'high' }
+          { name: t('tools.玫瑰花茶包'), reason: t('tools.疏肝解郁调节情绪'), priority: 'high' },
+          { name: t('tools.柠檬精油'), reason: t('tools.芳香疏肝提升心情'), priority: 'medium' },
+          { name: t('tools.暖宝宝'), reason: t('tools.温暖腹部缓解痉挛'), priority: 'high' }
         ]
       },
       {
-        category: '情绪调节',
+        category: t('tools.情绪调节'),
         items: [
-          { name: '舒缓音乐', reason: '放松心情，缓解压力', priority: 'medium' },
-          { name: '减压玩具', reason: '转移注意力，释放压力', priority: 'low' }
+          { name: t('tools.舒缓音乐'), reason: t('tools.放松心情缓解压力'), priority: 'medium' },
+          { name: t('tools.减压玩具'), reason: t('tools.转移注意力释放压力'), priority: 'low' }
         ]
       }
     ],
     special_diathesis: [
       {
-        category: '基础必需品',
+        category: t('tools.基础必需品'),
         items: [
-          { name: '卫生巾/棉条', reason: '基本生理需求', priority: 'high' },
-          { name: '湿纸巾', reason: '保持清洁卫生', priority: 'high' },
-          { name: '抗过敏药', reason: '预防过敏反应', priority: 'high' }
+          { name: t('tools.卫生巾棉条'), reason: t('tools.基本生理需求'), priority: 'high' },
+          { name: t('tools.湿纸巾'), reason: t('tools.保持清洁卫生'), priority: 'high' },
+          { name: t('tools.抗过敏药'), reason: t('tools.预防过敏反应'), priority: 'high' }
         ]
       },
       {
-        category: '防护用品',
+        category: t('tools.防护用品'),
         items: [
-          { name: '口罩', reason: '过滤空气，减少过敏原', priority: 'high' },
-          { name: '免洗洗手液', reason: '随时清洁，减少接触', priority: 'medium' },
-          { name: '防过敏贴', reason: '皮肤保护，预防接触性过敏', priority: 'medium' }
+          { name: t('tools.口罩'), reason: t('tools.过滤空气减少过敏原'), priority: 'high' },
+          { name: t('tools.免洗洗手液'), reason: t('tools.随时清洁减少接触'), priority: 'medium' },
+          { name: t('tools.防过敏贴'), reason: t('tools.皮肤保护预防接触性过'), priority: 'medium' }
         ]
       },
       {
-        category: '应急药品',
+        category: t('tools.应急药品'),
         items: [
-          { name: '抗组胺药', reason: '快速缓解过敏症状', priority: 'high' },
-          { name: '肾上腺素笔', reason: '严重过敏时的救命药物', priority: 'medium' },
-          { name: '舒缓喷雾', reason: '缓解皮肤过敏不适', priority: 'low' }
+          { name: t('tools.抗组胺药'), reason: t('tools.快速缓解过敏症状'), priority: 'high' },
+          { name: t('tools.肾上腺素笔'), reason: t('tools.严重过敏时的救命药物'), priority: 'medium' },
+          { name: t('tools.舒缓喷雾'), reason: t('tools.缓解皮肤过敏不适'), priority: 'low' }
         ]
       }
     ]
@@ -917,25 +828,7 @@ export const emergencyKitRecommendations: Record<string, Record<ConstitutionType
         items: [
           { name: 'Antihistamines', reason: 'Quickly relieve allergy symptoms', priority: 'high' },
           { name: 'Epinephrine pen', reason: 'Life-saving medication for severe allergies', priority: 'medium' },
-          { name: 'Soothing spray', reason: 'Relieve skin allergy discomfort', priority: 'low' }
-        ]
-      }
-    ]
-  }
-};
-
-// 场景化生活建议
-export interface ScenarioAdvice {
-  scenario: string;
-  icon: string;
-  tips: string[];
-}
-
-export const scenarioBasedAdvice: Record<string, Record<ConstitutionType, ScenarioAdvice[]>> = {
-  zh: {
-    balanced: [
-      {
-        scenario: '办公场景',
+          { name: 'Soothing spray', reason: 'Relieve skin allergy discomfort', priority: 'lowt('tools.场景化生活建议ex')办公场景',
         icon: '💼',
         tips: [
           '保持良好坐姿，每小时起身活动5分钟',
@@ -945,279 +838,279 @@ export const scenarioBasedAdvice: Record<string, Record<ConstitutionType, Scenar
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
           '选择舒适的鞋子，减少足部疲劳',
-          '公共交通上可听轻音乐放松心情',
-          '避免长时间低头看手机',
-          '提前准备好保暖外套'
+          t('tools.公共交通上可听轻音乐'),
+          t('tools.避免长时间低头看手机'),
+          t('tools.提前准备好保暖外套')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '选择舒适宽松的衣物',
-          '聚会时适量饮食，避免过饱',
-          '主动选择温热的饮品',
-          '必要时可提前告知亲近朋友'
+          t('tools.选择舒适宽松的衣物'),
+          t('tools.聚会时适量饮食避免过'),
+          t('tools.主动选择温热的饮品'),
+          t('tools.必要时可提前告知亲近')
         ]
       }
     ],
     qi_deficiency: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '工作强度适中，避免过度劳累',
-          '午休时间尽量小憩15-20分钟',
-          '常备红枣茶或桂圆茶补气',
-          '重要会议前可按压足三里穴提神'
+          t('tools.工作强度适中避免过度'),
+          t('tools.午休时间尽量小憩15'),
+          t('tools.常备红枣茶或桂圆茶补'),
+          t('tools.重要会议前可按压足三')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '避免早高峰拥挤，可适当错峰出行',
-          '通勤包里备好小零食补充能量',
-          '选择有座位的交通方式',
-          '疲劳时可按压合谷穴缓解'
+          t('tools.避免早高峰拥挤可适当'),
+          t('tools.通勤包里备好小零食补'),
+          t('tools.选择有座位的交通方式'),
+          t('tools.疲劳时可按压合谷穴缓')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '聚会时间不宜过长，适时休息',
-          '选择营养丰富、易消化的食物',
-          '避免过于激烈的娱乐活动',
-          '可以坐着参与，减少站立时间'
+          t('tools.聚会时间不宜过长适时'),
+          t('tools.选择营养丰富易消化的'),
+          t('tools.避免过于激烈的娱乐活'),
+          t('tools.可以坐着参与减少站立')
         ]
       }
     ],
     yang_deficiency: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '办公室常备小毯子或暖宝宝',
-          '选择温热的午餐，避免生冷食物',
-          '座位尽量远离空调出风口',
-          '工作间隙可做暖身小运动'
+          t('tools.办公室常备小毯子或暖'),
+          t('tools.选择温热的午餐避免生'),
+          t('tools.座位尽量远离空调出风'),
+          t('tools.工作间隙可做暖身小运')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '出门前检查保暖措施是否充足',
-          '随身携带保温杯装热水',
-          '避免在寒冷环境中久待',
-          '可在包里放暖手宝'
+          t('tools.出门前检查保暖措施是'),
+          t('tools.随身携带保温杯装热水'),
+          t('tools.避免在寒冷环境中久待'),
+          t('tools.可在包里放暖手宝')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '选择温暖的聚会场所',
-          '避免冰镇饮料和生冷食物',
-          '可以带一件薄外套备用',
-          '聚会后注意保暖回家'
+          t('tools.选择温暖的聚会场所'),
+          t('tools.避免冰镇饮料和生冷食'),
+          t('tools.可以带一件薄外套备用'),
+          t('tools.聚会后注意保暖回家')
         ]
       }
     ],
     yin_deficiency: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '保持办公环境适度湿润',
-          '多喝温开水，少喝咖啡',
-          '避免长时间对着电脑屏幕',
-          '中午可以闭目养神片刻'
+          t('tools.保持办公环境适度湿润'),
+          t('tools.多喝温开水少喝咖啡'),
+          t('tools.避免长时间对着电脑屏'),
+          t('tools.中午可以闭目养神片刻')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '避免在烈日下长时间等车',
-          '可以听舒缓音乐平静心情',
-          '通勤时间可做深呼吸练习',
-          '保持心情平和，避免急躁'
+          t('tools.避免在烈日下长时间等'),
+          t('tools.可以听舒缓音乐平静心'),
+          t('tools.通勤时间可做深呼吸练'),
+          t('tools.保持心情平和避免急躁')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '避免过于嘈杂的聚会环境',
-          '选择清淡的食物，少吃辛辣',
-          '聚会时间适中，不宜过晚',
-          '保持情绪稳定，避免过度兴奋'
+          t('tools.避免过于嘈杂的聚会环'),
+          t('tools.选择清淡的食物少吃辛'),
+          t('tools.聚会时间适中不宜过晚'),
+          t('tools.保持情绪稳定避免过度')
         ]
       }
     ],
     phlegm_dampness: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '保持办公环境通风干燥',
-          '午餐选择清淡少油的食物',
-          '工作间隙可做简单伸展运动',
-          '避免久坐，定时起身活动'
+          t('tools.保持办公环境通风干燥'),
+          t('tools.午餐选择清淡少油的食'),
+          t('tools.工作间隙可做简单伸展'),
+          t('tools.避免久坐定时起身活动')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '选择透气性好的衣物',
-          '避免在潮湿环境中久留',
-          '可以做一些简单的活动筋骨',
-          '保持心情愉快，避免沉闷'
+          t('tools.选择透气性好的衣物'),
+          t('tools.避免在潮湿环境中久留'),
+          t('tools.可以做一些简单的活动'),
+          t('tools.保持心情愉快避免沉闷')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '避免过量饮食，特别是甜腻食物',
-          '选择有氧活动类型的聚会',
-          '多与朋友交流，保持活跃',
-          '聚会后可以散步消食'
+          t('tools.避免过量饮食特别是甜'),
+          t('tools.选择有氧活动类型的聚'),
+          t('tools.多与朋友交流保持活跃'),
+          t('tools.聚会后可以散步消食')
         ]
       }
     ],
     damp_heat: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '保持办公环境清洁干爽',
-          '多喝绿茶或菊花茶清热',
-          '避免辛辣刺激的外卖食物',
-          '工作压力大时可做放松练习'
+          t('tools.保持办公环境清洁干爽'),
+          t('tools.多喝绿茶或菊花茶清热'),
+          t('tools.避免辛辣刺激的外卖食'),
+          t('tools.工作压力大时可做放松')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '选择吸汗透气的衣物',
-          '避免在闷热环境中久待',
-          '保持心情平静，避免烦躁',
-          '可以听清淡的音乐舒缓情绪'
+          t('tools.选择吸汗透气的衣物'),
+          t('tools.避免在闷热环境中久待'),
+          t('tools.保持心情平静避免烦躁'),
+          t('tools.可以听清淡的音乐舒缓')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '选择清爽的聚会环境',
-          '避免油腻、辛辣、酒精类食物',
-          '聚会时间不宜过长',
-          '保持情绪稳定，避免激动'
+          t('tools.选择清爽的聚会环境'),
+          t('tools.避免油腻辛辣酒精类食'),
+          t('tools.聚会时间不宜过长'),
+          t('tools.保持情绪稳定避免激动')
         ]
       }
     ],
     blood_stasis: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '避免长时间保持同一姿势',
-          '定时做颈肩和腰部活动',
-          '工作间隙可按摩手部穴位',
-          '保持心情舒畅，避免郁闷'
+          t('tools.避免长时间保持同一姿'),
+          t('tools.定时做颈肩和腰部活动'),
+          t('tools.工作间隙可按摩手部穴'),
+          t('tools.保持心情舒畅避免郁闷')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '在车上可做简单的踝关节运动',
-          '避免紧身衣物限制血液循环',
-          '可以听欢快的音乐调节心情',
-          '到站后可以快走几分钟'
+          t('tools.在车上可做简单的踝关'),
+          t('tools.避免紧身衣物限制血液'),
+          t('tools.可以听欢快的音乐调节'),
+          t('tools.到站后可以快走几分钟')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '选择活跃一些的聚会活动',
-          '避免久坐不动的聚会形式',
-          '多与朋友交流，保持心情愉快',
-          '可以参与一些轻松的运动'
+          t('tools.选择活跃一些的聚会活'),
+          t('tools.避免久坐不动的聚会形'),
+          t('tools.多与朋友交流保持心情'),
+          t('tools.可以参与一些轻松的运')
         ]
       }
     ],
     qi_stagnation: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '工作压力大时及时调节情绪',
-          '可以在办公室放一些绿植',
-          '午休时可以到户外走走',
-          '与同事保持良好的沟通'
+          t('tools.工作压力大时及时调节'),
+          t('tools.可以在办公室放一些绿'),
+          t('tools.午休时可以到户外走走'),
+          t('tools.与同事保持良好的沟通')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '通勤时可以听喜欢的音乐',
-          '避免在拥挤时段出行',
-          '可以做深呼吸缓解压力',
-          '保持积极乐观的心态'
+          t('tools.通勤时可以听喜欢的音'),
+          t('tools.避免在拥挤时段出行'),
+          t('tools.可以做深呼吸缓解压力'),
+          t('tools.保持积极乐观的心态')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '多参与轻松愉快的聚会',
-          '与朋友分享心情，释放压力',
-          '选择开阔明亮的聚会场所',
-          '避免过于严肃的话题'
+          t('tools.多参与轻松愉快的聚会'),
+          t('tools.与朋友分享心情释放压'),
+          t('tools.选择开阔明亮的聚会场'),
+          t('tools.避免过于严肃的话题')
         ]
       }
     ],
     special_diathesis: [
       {
-        scenario: '办公场景',
+        scenario: t('tools.办公场景'),
         icon: '💼',
         tips: [
-          '注意办公环境的过敏原',
-          '保持办公用品的清洁',
-          '避免使用刺激性的清洁用品',
-          '工作压力大时注意调节'
+          t('tools.注意办公环境的过敏原'),
+          t('tools.保持办公用品的清洁'),
+          t('tools.避免使用刺激性的清洁'),
+          t('tools.工作压力大时注意调节')
         ]
       },
       {
-        scenario: '通勤路上',
+        scenario: t('tools.通勤路上'),
         icon: '🚇',
         tips: [
-          '避免接触可能的过敏原',
-          '在空气质量差时戴口罩',
-          '选择相对清洁的交通工具',
-          '随身携带必要的应急药物'
+          t('tools.避免接触可能的过敏原'),
+          t('tools.在空气质量差时戴口罩'),
+          t('tools.选择相对清洁的交通工'),
+          t('tools.随身携带必要的应急药')
         ]
       },
       {
-        scenario: '社交聚会',
+        scenario: t('tools.社交聚会'),
         icon: '👥',
         tips: [
-          '提前了解聚会环境和食物',
-          '避免接触已知的过敏原',
-          '必要时提前告知朋友注意事项',
-          '随身携带抗过敏药物'
+          t('tools.提前了解聚会环境和食'),
+          t('tools.避免接触已知的过敏原'),
+          t('tools.必要时提前告知朋友注'),
+          t('tools.随身携带抗过敏药物')
         ]
       }
     ]

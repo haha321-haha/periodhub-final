@@ -8,9 +8,9 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale }
 }): Promise<Metadata> {
-  const title = locale === 'zh' ? 'A-Z缓解方法 - 痛经健康指南' : 'A-Z Relief Methods - Health Guide';
+  const title = locale === 'zh' ? t('healthGuide.AZ缓解方法痛经') : 'A-Z Relief Methods - Health Guide';
   const description = locale === 'zh' 
-    ? '从A到Z的全面缓解方法，包括即时和长期策略，帮助您找到最适合的痛经管理方案。'
+    ? t('healthGuide.从A到Z的全面缓解方')
     : 'Comprehensive relief methods from A to Z, including immediate and long-term strategies to help you find the most suitable menstrual pain management plan.';
   
   return {
@@ -35,12 +35,12 @@ export default function ReliefMethodsPage({
       letter: 'A',
       methods: [
         {
-          name: locale === 'zh' ? '穴位按摩 (Acupressure)' : 'Acupressure',
-          description: locale === 'zh' ? '通过按压特定穴位来缓解疼痛' : 'Relieve pain by pressing specific acupoints'
+          name: locale === 'zh' ? t('healthGuide.穴位按摩Acupr') : 'Acupressure',
+          description: locale === 'zh' ? t('healthGuide.通过按压特定穴位来缓') : 'Relieve pain by pressing specific acupoints'
         },
         {
-          name: locale === 'zh' ? '芳香疗法 (Aromatherapy)' : 'Aromatherapy',
-          description: locale === 'zh' ? '使用精油进行放松和疼痛缓解' : 'Use essential oils for relaxation and pain relief'
+          name: locale === 'zh' ? t('healthGuide.芳香疗法Aroma') : 'Aromatherapy',
+          description: locale === 'zh' ? t('healthGuide.使用精油进行放松和疼') : 'Use essential oils for relaxation and pain relief'
         }
       ]
     },
@@ -48,12 +48,12 @@ export default function ReliefMethodsPage({
       letter: 'B',
       methods: [
         {
-          name: locale === 'zh' ? '呼吸练习 (Breathing Exercises)' : 'Breathing Exercises',
-          description: locale === 'zh' ? '深呼吸技巧帮助放松和减轻疼痛' : 'Deep breathing techniques help relax and reduce pain'
+          name: locale === 'zh' ? t('healthGuide.呼吸练习Breat') : 'Breathing Exercises',
+          description: locale === 'zh' ? t('healthGuide.深呼吸技巧帮助放松和') : 'Deep breathing techniques help relax and reduce pain'
         },
         {
-          name: locale === 'zh' ? '八段锦 (Baduanjin)' : 'Baduanjin',
-          description: locale === 'zh' ? '传统中医气功练习' : 'Traditional Chinese qigong practice'
+          name: locale === 'zh' ? t('healthGuide.八段锦Baduan') : 'Baduanjin',
+          description: locale === 'zh' ? t('healthGuide.传统中医气功练习') : 'Traditional Chinese qigong practice'
         }
       ]
     },
@@ -61,12 +61,12 @@ export default function ReliefMethodsPage({
       letter: 'C',
       methods: [
         {
-          name: locale === 'zh' ? '冷敷 (Cold Therapy)' : 'Cold Therapy',
-          description: locale === 'zh' ? '适用于炎症性疼痛' : 'Suitable for inflammatory pain'
+          name: locale === 'zh' ? t('healthGuide.冷敷ColdTh') : 'Cold Therapy',
+          description: locale === 'zh' ? t('healthGuide.适用于炎症性疼痛') : 'Suitable for inflammatory pain'
         },
         {
-          name: locale === 'zh' ? '认知行为疗法 (CBT)' : 'Cognitive Behavioral Therapy',
-          description: locale === 'zh' ? '改变对疼痛的认知和反应' : 'Change cognition and response to pain'
+          name: locale === 'zh' ? t('healthGuide.认知行为疗法CBT') : 'Cognitive Behavioral Therapy',
+          description: locale === 'zh' ? t('healthGuide.改变对疼痛的认知和反') : 'Change cognition and response to pain'
         }
       ]
     },
@@ -74,12 +74,12 @@ export default function ReliefMethodsPage({
       letter: 'D',
       methods: [
         {
-          name: locale === 'zh' ? '饮食调整 (Diet Modification)' : 'Diet Modification',
-          description: locale === 'zh' ? '抗炎饮食和营养补充' : 'Anti-inflammatory diet and nutritional supplements'
+          name: locale === 'zh' ? t('healthGuide.饮食调整Diet') : 'Diet Modification',
+          description: locale === 'zh' ? t('healthGuide.抗炎饮食和营养补充') : 'Anti-inflammatory diet and nutritional supplements'
         },
         {
-          name: locale === 'zh' ? '舞蹈疗法 (Dance Therapy)' : 'Dance Therapy',
-          description: locale === 'zh' ? '通过舞蹈运动缓解疼痛' : 'Relieve pain through dance movement'
+          name: locale === 'zh' ? t('healthGuide.舞蹈疗法Dance') : 'Dance Therapy',
+          description: locale === 'zh' ? t('healthGuide.通过舞蹈运动缓解疼痛') : 'Relieve pain through dance movement'
         }
       ]
     },
@@ -87,12 +87,12 @@ export default function ReliefMethodsPage({
       letter: 'E',
       methods: [
         {
-          name: locale === 'zh' ? '运动 (Exercise)' : 'Exercise',
-          description: locale === 'zh' ? '适度运动促进血液循环' : 'Moderate exercise promotes blood circulation'
+          name: locale === 'zh' ? t('healthGuide.运动Exercis') : 'Exercise',
+          description: locale === 'zh' ? t('healthGuide.适度运动促进血液循环') : 'Moderate exercise promotes blood circulation'
         },
         {
-          name: locale === 'zh' ? '精油按摩 (Essential Oil Massage)' : 'Essential Oil Massage',
-          description: locale === 'zh' ? '结合按摩和芳香疗法' : 'Combine massage and aromatherapy'
+          name: locale === 'zh' ? t('healthGuide.精油按摩Essen') : 'Essential Oil Massage',
+          description: locale === 'zh' ? t('healthGuide.结合按摩和芳香疗法') : 'Combine massage and aromatherapy'
         }
       ]
     },
@@ -100,12 +100,12 @@ export default function ReliefMethodsPage({
       letter: 'F',
       methods: [
         {
-          name: locale === 'zh' ? '足部反射疗法 (Foot Reflexology)' : 'Foot Reflexology',
-          description: locale === 'zh' ? '通过足部按摩缓解全身疼痛' : 'Relieve whole body pain through foot massage'
+          name: locale === 'zh' ? t('healthGuide.足部反射疗法Foo') : 'Foot Reflexology',
+          description: locale === 'zh' ? t('healthGuide.通过足部按摩缓解全身') : 'Relieve whole body pain through foot massage'
         },
         {
-          name: locale === 'zh' ? '纤维补充 (Fiber Supplements)' : 'Fiber Supplements',
-          description: locale === 'zh' ? '改善肠道健康，减少炎症' : 'Improve gut health and reduce inflammation'
+          name: locale === 'zh' ? t('healthGuide.纤维补充Fiber') : 'Fiber Supplements',
+          description: locale === 'zh' ? t('healthGuide.改善肠道健康减少炎症') : 'Improve gut health and reduce inflammation'
         }
       ]
     },
@@ -113,12 +113,12 @@ export default function ReliefMethodsPage({
       letter: 'G',
       methods: [
         {
-          name: locale === 'zh' ? '生姜疗法 (Ginger Therapy)' : 'Ginger Therapy',
-          description: locale === 'zh' ? '天然抗炎和止痛效果' : 'Natural anti-inflammatory and pain relief effects'
+          name: locale === 'zh' ? t('healthGuide.生姜疗法Ginge') : 'Ginger Therapy',
+          description: locale === 'zh' ? t('healthGuide.天然抗炎和止痛效果') : 'Natural anti-inflammatory and pain relief effects'
         },
         {
-          name: locale === 'zh' ? '引导冥想 (Guided Meditation)' : 'Guided Meditation',
-          description: locale === 'zh' ? '通过冥想减轻疼痛感知' : 'Reduce pain perception through meditation'
+          name: locale === 'zh' ? t('healthGuide.引导冥想Guide') : 'Guided Meditation',
+          description: locale === 'zh' ? t('healthGuide.通过冥想减轻疼痛感知') : 'Reduce pain perception through meditation'
         }
       ]
     },
@@ -126,12 +126,12 @@ export default function ReliefMethodsPage({
       letter: 'H',
       methods: [
         {
-          name: locale === 'zh' ? '热疗 (Heat Therapy)' : 'Heat Therapy',
-          description: locale === 'zh' ? '使用热敷缓解肌肉紧张' : 'Use heat to relieve muscle tension'
+          name: locale === 'zh' ? t('healthGuide.热疗HeatTh') : 'Heat Therapy',
+          description: locale === 'zh' ? t('healthGuide.使用热敷缓解肌肉紧张') : 'Use heat to relieve muscle tension'
         },
         {
-          name: locale === 'zh' ? '草药茶 (Herbal Tea)' : 'Herbal Tea',
-          description: locale === 'zh' ? '洋甘菊、薄荷等舒缓茶饮' : 'Soothing teas like chamomile and mint'
+          name: locale === 'zh' ? t('healthGuide.草药茶Herbal') : 'Herbal Tea',
+          description: locale === 'zh' ? t('healthGuide.洋甘菊薄荷等舒缓茶饮') : 'Soothing teas like chamomile and mint'
         }
       ]
     },
@@ -139,12 +139,12 @@ export default function ReliefMethodsPage({
       letter: 'I',
       methods: [
         {
-          name: locale === 'zh' ? '冰敷疗法 (Ice Therapy)' : 'Ice Therapy',
-          description: locale === 'zh' ? '减少炎症和麻痹疼痛' : 'Reduce inflammation and numb pain'
+          name: locale === 'zh' ? t('healthGuide.冰敷疗法IceT') : 'Ice Therapy',
+          description: locale === 'zh' ? t('healthGuide.减少炎症和麻痹疼痛') : 'Reduce inflammation and numb pain'
         },
         {
-          name: locale === 'zh' ? '意象疗法 (Imagery Therapy)' : 'Imagery Therapy',
-          description: locale === 'zh' ? '通过想象缓解疼痛' : 'Relieve pain through visualization'
+          name: locale === 'zh' ? t('healthGuide.意象疗法Image') : 'Imagery Therapy',
+          description: locale === 'zh' ? t('healthGuide.通过想象缓解疼痛') : 'Relieve pain through visualization'
         }
       ]
     },
@@ -152,12 +152,12 @@ export default function ReliefMethodsPage({
       letter: 'J',
       methods: [
         {
-          name: locale === 'zh' ? '日记记录 (Journaling)' : 'Journaling',
-          description: locale === 'zh' ? '记录疼痛模式和触发因素' : 'Track pain patterns and triggers'
+          name: locale === 'zh' ? t('healthGuide.日记记录Journ') : 'Journaling',
+          description: locale === 'zh' ? t('healthGuide.记录疼痛模式和触发因') : 'Track pain patterns and triggers'
         },
         {
-          name: locale === 'zh' ? '慢跑 (Jogging)' : 'Jogging',
-          description: locale === 'zh' ? '轻度有氧运动促进血液循环' : 'Light aerobic exercise promotes circulation'
+          name: locale === 'zh' ? t('healthGuide.慢跑Jogging') : 'Jogging',
+          description: locale === 'zh' ? t('healthGuide.轻度有氧运动促进血液') : 'Light aerobic exercise promotes circulation'
         }
       ]
     },
@@ -165,12 +165,12 @@ export default function ReliefMethodsPage({
       letter: 'K',
       methods: [
         {
-          name: locale === 'zh' ? '膝胸位 (Knee-to-Chest Position)' : 'Knee-to-Chest Position',
-          description: locale === 'zh' ? '缓解下腹部疼痛的体位' : 'Position to relieve lower abdominal pain'
+          name: locale === 'zh' ? t('healthGuide.膝胸位Kneeto') : 'Knee-to-Chest Position',
+          description: locale === 'zh' ? t('healthGuide.缓解下腹部疼痛的体位') : 'Position to relieve lower abdominal pain'
         },
         {
-          name: locale === 'zh' ? '昆达里尼瑜伽 (Kundalini Yoga)' : 'Kundalini Yoga',
-          description: locale === 'zh' ? '特殊的瑜伽练习形式' : 'Special form of yoga practice'
+          name: locale === 'zh' ? t('healthGuide.昆达里尼瑜伽Kun') : 'Kundalini Yoga',
+          description: locale === 'zh' ? t('healthGuide.特殊的瑜伽练习形式') : 'Special form of yoga practice'
         }
       ]
     },
@@ -178,12 +178,12 @@ export default function ReliefMethodsPage({
       letter: 'L',
       methods: [
         {
-          name: locale === 'zh' ? '薰衣草精油 (Lavender Oil)' : 'Lavender Oil',
-          description: locale === 'zh' ? '放松和镇静效果' : 'Relaxing and calming effects'
+          name: locale === 'zh' ? t('healthGuide.薰衣草精油Lave') : 'Lavender Oil',
+          description: locale === 'zh' ? t('healthGuide.放松和镇静效果') : 'Relaxing and calming effects'
         },
         {
-          name: locale === 'zh' ? '生活方式调整 (Lifestyle Changes)' : 'Lifestyle Changes',
-          description: locale === 'zh' ? '改善整体健康状况' : 'Improve overall health condition'
+          name: locale === 'zh' ? t('healthGuide.生活方式调整Lif') : 'Lifestyle Changes',
+          description: locale === 'zh' ? t('healthGuide.改善整体健康状况') : 'Improve overall health condition'
         }
       ]
     },
@@ -191,12 +191,12 @@ export default function ReliefMethodsPage({
       letter: 'M',
       methods: [
         {
-          name: locale === 'zh' ? '按摩疗法 (Massage Therapy)' : 'Massage Therapy',
-          description: locale === 'zh' ? '专业按摩缓解肌肉紧张' : 'Professional massage to relieve muscle tension'
+          name: locale === 'zh' ? t('healthGuide.按摩疗法Massa') : 'Massage Therapy',
+          description: locale === 'zh' ? t('healthGuide.专业按摩缓解肌肉紧张') : 'Professional massage to relieve muscle tension'
         },
         {
-          name: locale === 'zh' ? '正念冥想 (Mindfulness Meditation)' : 'Mindfulness Meditation',
-          description: locale === 'zh' ? '专注当下，减轻疼痛感知' : 'Focus on present moment, reduce pain perception'
+          name: locale === 'zh' ? t('healthGuide.正念冥想Mindf') : 'Mindfulness Meditation',
+          description: locale === 'zh' ? t('healthGuide.专注当下减轻疼痛感知') : 'Focus on present moment, reduce pain perception'
         }
       ]
     },
@@ -204,12 +204,12 @@ export default function ReliefMethodsPage({
       letter: 'N',
       methods: [
         {
-          name: locale === 'zh' ? '营养补充 (Nutritional Supplements)' : 'Nutritional Supplements',
-          description: locale === 'zh' ? '镁、维生素B等营养素' : 'Nutrients like magnesium and vitamin B'
+          name: locale === 'zh' ? t('healthGuide.营养补充Nutri') : 'Nutritional Supplements',
+          description: locale === 'zh' ? t('healthGuide.镁维生素B等营养素') : 'Nutrients like magnesium and vitamin B'
         },
         {
-          name: locale === 'zh' ? '自然疗法 (Natural Remedies)' : 'Natural Remedies',
-          description: locale === 'zh' ? '草药和天然治疗方法' : 'Herbal and natural treatment methods'
+          name: locale === 'zh' ? t('healthGuide.自然疗法Natur') : 'Natural Remedies',
+          description: locale === 'zh' ? t('healthGuide.草药和天然治疗方法') : 'Herbal and natural treatment methods'
         }
       ]
     },
@@ -217,12 +217,12 @@ export default function ReliefMethodsPage({
       letter: 'O',
       methods: [
         {
-          name: locale === 'zh' ? 'Omega-3脂肪酸 (Omega-3 Fatty Acids)' : 'Omega-3 Fatty Acids',
-          description: locale === 'zh' ? '抗炎和疼痛缓解效果' : 'Anti-inflammatory and pain relief effects'
+          name: locale === 'zh' ? t('healthGuide.Omega3脂肪酸') : 'Omega-3 Fatty Acids',
+          description: locale === 'zh' ? t('healthGuide.抗炎和疼痛缓解效果') : 'Anti-inflammatory and pain relief effects'
         },
         {
-          name: locale === 'zh' ? '有机食品 (Organic Foods)' : 'Organic Foods',
-          description: locale === 'zh' ? '减少化学物质摄入' : 'Reduce chemical intake'
+          name: locale === 'zh' ? t('healthGuide.有机食品Organ') : 'Organic Foods',
+          description: locale === 'zh' ? t('healthGuide.减少化学物质摄入') : 'Reduce chemical intake'
         }
       ]
     },
@@ -230,12 +230,12 @@ export default function ReliefMethodsPage({
       letter: 'P',
       methods: [
         {
-          name: locale === 'zh' ? '渐进性肌肉放松 (Progressive Muscle Relaxation)' : 'Progressive Muscle Relaxation',
-          description: locale === 'zh' ? '系统性放松肌肉群' : 'Systematically relax muscle groups'
+          name: locale === 'zh' ? t('healthGuide.渐进性肌肉放松Pr') : 'Progressive Muscle Relaxation',
+          description: locale === 'zh' ? t('healthGuide.系统性放松肌肉群') : 'Systematically relax muscle groups'
         },
         {
-          name: locale === 'zh' ? '普拉提 (Pilates)' : 'Pilates',
-          description: locale === 'zh' ? '核心力量和柔韧性训练' : 'Core strength and flexibility training'
+          name: locale === 'zh' ? t('healthGuide.普拉提Pilate') : 'Pilates',
+          description: locale === 'zh' ? t('healthGuide.核心力量和柔韧性训练') : 'Core strength and flexibility training'
         }
       ]
     },
@@ -243,12 +243,12 @@ export default function ReliefMethodsPage({
       letter: 'Q',
       methods: [
         {
-          name: locale === 'zh' ? '气功 (Qigong)' : 'Qigong',
-          description: locale === 'zh' ? '中医传统运动疗法' : 'Traditional Chinese movement therapy'
+          name: locale === 'zh' ? t('healthGuide.气功Qigong') : 'Qigong',
+          description: locale === 'zh' ? t('healthGuide.中医传统运动疗法') : 'Traditional Chinese movement therapy'
         },
         {
-          name: locale === 'zh' ? '安静休息 (Quiet Rest)' : 'Quiet Rest',
-          description: locale === 'zh' ? '在安静环境中休息恢复' : 'Rest and recover in quiet environment'
+          name: locale === 'zh' ? t('healthGuide.安静休息Quiet') : 'Quiet Rest',
+          description: locale === 'zh' ? t('healthGuide.在安静环境中休息恢复') : 'Rest and recover in quiet environment'
         }
       ]
     },
@@ -256,12 +256,12 @@ export default function ReliefMethodsPage({
       letter: 'R',
       methods: [
         {
-          name: locale === 'zh' ? '放松技巧 (Relaxation Techniques)' : 'Relaxation Techniques',
-          description: locale === 'zh' ? '各种放松身心的方法' : 'Various methods to relax body and mind'
+          name: locale === 'zh' ? t('healthGuide.放松技巧Relax') : 'Relaxation Techniques',
+          description: locale === 'zh' ? t('healthGuide.各种放松身心的方法') : 'Various methods to relax body and mind'
         },
         {
-          name: locale === 'zh' ? '反射疗法 (Reflexology)' : 'Reflexology',
-          description: locale === 'zh' ? '通过反射点缓解疼痛' : 'Relieve pain through reflex points'
+          name: locale === 'zh' ? t('healthGuide.反射疗法Refle') : 'Reflexology',
+          description: locale === 'zh' ? t('healthGuide.通过反射点缓解疼痛') : 'Relieve pain through reflex points'
         }
       ]
     },
@@ -269,12 +269,12 @@ export default function ReliefMethodsPage({
       letter: 'S',
       methods: [
         {
-          name: locale === 'zh' ? '拉伸运动 (Stretching)' : 'Stretching',
-          description: locale === 'zh' ? '温和的拉伸缓解肌肉紧张' : 'Gentle stretching to relieve muscle tension'
+          name: locale === 'zh' ? t('healthGuide.拉伸运动Stret') : 'Stretching',
+          description: locale === 'zh' ? t('healthGuide.温和的拉伸缓解肌肉紧') : 'Gentle stretching to relieve muscle tension'
         },
         {
-          name: locale === 'zh' ? '睡眠优化 (Sleep Optimization)' : 'Sleep Optimization',
-          description: locale === 'zh' ? '改善睡眠质量促进恢复' : 'Improve sleep quality to promote recovery'
+          name: locale === 'zh' ? t('healthGuide.睡眠优化Sleep') : 'Sleep Optimization',
+          description: locale === 'zh' ? t('healthGuide.改善睡眠质量促进恢复') : 'Improve sleep quality to promote recovery'
         }
       ]
     },
@@ -282,12 +282,12 @@ export default function ReliefMethodsPage({
       letter: 'T',
       methods: [
         {
-          name: locale === 'zh' ? '太极 (Tai Chi)' : 'Tai Chi',
-          description: locale === 'zh' ? '缓慢流畅的运动练习' : 'Slow and flowing movement practice'
+          name: locale === 'zh' ? t('healthGuide.太极TaiChi') : 'Tai Chi',
+          description: locale === 'zh' ? t('healthGuide.缓慢流畅的运动练习') : 'Slow and flowing movement practice'
         },
         {
-          name: locale === 'zh' ? '茶疗 (Tea Therapy)' : 'Tea Therapy',
-          description: locale === 'zh' ? '药用茶饮缓解症状' : 'Medicinal teas to relieve symptoms'
+          name: locale === 'zh' ? t('healthGuide.茶疗TeaThe') : 'Tea Therapy',
+          description: locale === 'zh' ? t('healthGuide.药用茶饮缓解症状') : 'Medicinal teas to relieve symptoms'
         }
       ]
     },
@@ -295,12 +295,12 @@ export default function ReliefMethodsPage({
       letter: 'U',
       methods: [
         {
-          name: locale === 'zh' ? '超声波疗法 (Ultrasound Therapy)' : 'Ultrasound Therapy',
-          description: locale === 'zh' ? '深层组织加热治疗' : 'Deep tissue heating treatment'
+          name: locale === 'zh' ? t('healthGuide.超声波疗法Ultr') : 'Ultrasound Therapy',
+          description: locale === 'zh' ? t('healthGuide.深层组织加热治疗') : 'Deep tissue heating treatment'
         },
         {
-          name: locale === 'zh' ? '理解教育 (Understanding Education)' : 'Understanding Education',
-          description: locale === 'zh' ? '了解痛经机制减少焦虑' : 'Understanding pain mechanisms reduces anxiety'
+          name: locale === 'zh' ? t('healthGuide.理解教育Under') : 'Understanding Education',
+          description: locale === 'zh' ? t('healthGuide.了解痛经机制减少焦虑') : 'Understanding pain mechanisms reduces anxiety'
         }
       ]
     },
@@ -308,12 +308,12 @@ export default function ReliefMethodsPage({
       letter: 'V',
       methods: [
         {
-          name: locale === 'zh' ? '可视化技巧 (Visualization)' : 'Visualization',
-          description: locale === 'zh' ? '心理意象缓解疼痛' : 'Mental imagery for pain relief'
+          name: locale === 'zh' ? t('healthGuide.可视化技巧Visu') : 'Visualization',
+          description: locale === 'zh' ? t('healthGuide.心理意象缓解疼痛') : 'Mental imagery for pain relief'
         },
         {
-          name: locale === 'zh' ? '维生素疗法 (Vitamin Therapy)' : 'Vitamin Therapy',
-          description: locale === 'zh' ? '补充必需维生素' : 'Supplement essential vitamins'
+          name: locale === 'zh' ? t('healthGuide.维生素疗法Vita') : 'Vitamin Therapy',
+          description: locale === 'zh' ? t('healthGuide.补充必需维生素') : 'Supplement essential vitamins'
         }
       ]
     },
@@ -321,12 +321,12 @@ export default function ReliefMethodsPage({
       letter: 'W',
       methods: [
         {
-          name: locale === 'zh' ? '温水浴 (Warm Bath)' : 'Warm Bath',
-          description: locale === 'zh' ? '温水浸泡放松肌肉' : 'Warm water soaking to relax muscles'
+          name: locale === 'zh' ? t('healthGuide.温水浴WarmB') : 'Warm Bath',
+          description: locale === 'zh' ? t('healthGuide.温水浸泡放松肌肉') : 'Warm water soaking to relax muscles'
         },
         {
-          name: locale === 'zh' ? '步行 (Walking)' : 'Walking',
-          description: locale === 'zh' ? '轻度运动促进血液循环' : 'Light exercise to promote circulation'
+          name: locale === 'zh' ? t('healthGuide.步行Walking') : 'Walking',
+          description: locale === 'zh' ? t('healthGuide.轻度运动促进血液循环') : 'Light exercise to promote circulation'
         }
       ]
     },
@@ -334,12 +334,12 @@ export default function ReliefMethodsPage({
       letter: 'X',
       methods: [
         {
-          name: locale === 'zh' ? 'X光检查 (X-ray Examination)' : 'X-ray Examination',
-          description: locale === 'zh' ? '排除器质性病变' : 'Rule out organic lesions'
+          name: locale === 'zh' ? t('healthGuide.X光检查Xray') : 'X-ray Examination',
+          description: locale === 'zh' ? t('healthGuide.排除器质性病变') : 'Rule out organic lesions'
         },
         {
-          name: locale === 'zh' ? '木糖醇 (Xylitol)' : 'Xylitol',
-          description: locale === 'zh' ? '天然甜味剂，减少炎症' : 'Natural sweetener, reduce inflammation'
+          name: locale === 'zh' ? t('healthGuide.木糖醇Xylito') : 'Xylitol',
+          description: locale === 'zh' ? t('healthGuide.天然甜味剂减少炎症') : 'Natural sweetener, reduce inflammation'
         }
       ]
     },
@@ -347,12 +347,12 @@ export default function ReliefMethodsPage({
       letter: 'Y',
       methods: [
         {
-          name: locale === 'zh' ? '瑜伽 (Yoga)' : 'Yoga',
-          description: locale === 'zh' ? '身心结合的练习方法' : 'Mind-body integrated practice'
+          name: locale === 'zh' ? t('healthGuide.瑜伽Yoga') : 'Yoga',
+          description: locale === 'zh' ? t('healthGuide.身心结合的练习方法') : 'Mind-body integrated practice'
         },
         {
-          name: locale === 'zh' ? '阴瑜伽 (Yin Yoga)' : 'Yin Yoga',
-          description: locale === 'zh' ? '深度放松的瑜伽形式' : 'Deep relaxation form of yoga'
+          name: locale === 'zh' ? t('healthGuide.阴瑜伽YinYo') : 'Yin Yoga',
+          description: locale === 'zh' ? t('healthGuide.深度放松的瑜伽形式') : 'Deep relaxation form of yoga'
         }
       ]
     },
@@ -360,12 +360,12 @@ export default function ReliefMethodsPage({
       letter: 'Z',
       methods: [
         {
-          name: locale === 'zh' ? '锌补充 (Zinc Supplements)' : 'Zinc Supplements',
-          description: locale === 'zh' ? '支持免疫系统和愈合' : 'Support immune system and healing'
+          name: locale === 'zh' ? t('healthGuide.锌补充ZincS') : 'Zinc Supplements',
+          description: locale === 'zh' ? t('healthGuide.支持免疫系统和愈合') : 'Support immune system and healing'
         },
         {
-          name: locale === 'zh' ? '禅修 (Zen Meditation)' : 'Zen Meditation',
-          description: locale === 'zh' ? '深度冥想练习' : 'Deep meditation practice'
+          name: locale === 'zh' ? t('healthGuide.禅修ZenMed') : 'Zen Meditation',
+          description: locale === 'zh' ? t('healthGuide.深度冥想练习') : 'Deep meditation practice'
         }
       ]
     }
@@ -376,26 +376,26 @@ export default function ReliefMethodsPage({
       {/* Breadcrumb */}
       <nav className="text-sm text-neutral-600">
         <Link href={`/${locale}`} className="hover:text-primary-600">
-          {locale === 'zh' ? '首页' : 'Home'}
+          {locale === 'zh' ? t('navigation.home') : 'Home'}
         </Link>
         <span className="mx-2">›</span>
         <Link href={`/${locale}/health-guide`} className="hover:text-primary-600">
-          {locale === 'zh' ? '痛经健康指南' : 'Health Guide'}
+          {locale === 'zh' ? t('pages.healthGuide.title') : 'Health Guide'}
         </Link>
         <span className="mx-2">›</span>
         <span className="text-neutral-800">
-          {locale === 'zh' ? 'A-Z缓解方法' : 'A-Z Relief Methods'}
+          {locale === 'zh' ? t('healthGuide.AZ缓解方法') : 'A-Z Relief Methods'}
         </span>
       </nav>
 
       {/* Page Header */}
       <header className="text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-primary-700 mb-4">
-          {locale === 'zh' ? 'A-Z缓解方法' : 'A-Z Relief Methods'}
+          {locale === 'zh' ? t('healthGuide.AZ缓解方法') : 'A-Z Relief Methods'}
         </h1>
         <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
           {locale === 'zh'
-            ? '从A到Z的全面缓解方法，包括即时和长期策略，帮助您找到最适合的痛经管理方案。'
+            ? t('healthGuide.从A到Z的全面缓解方')
             : 'Comprehensive relief methods from A to Z, including immediate and long-term strategies to help you find the most suitable menstrual pain management plan.'
           }
         </p>
@@ -404,23 +404,23 @@ export default function ReliefMethodsPage({
       {/* Introduction */}
       <section className="bg-gradient-to-br from-primary-50 to-neutral-50 p-6 md:p-8 rounded-xl">
         <h2 className="text-2xl font-semibold text-neutral-800 mb-4">
-          {locale === 'zh' ? '如何使用这个指南' : 'How to Use This Guide'}
+          {locale === 'zh' ? t('healthGuide.如何使用这个指南') : 'How to Use This Guide'}
         </h2>
         <p className="text-neutral-700 leading-relaxed mb-4">
           {locale === 'zh'
-            ? '这个A-Z指南包含了各种经过验证的痛经缓解方法。每个人的身体反应不同，建议您尝试多种方法，找到最适合自己的组合。记住，持续性和耐心是成功的关键。'
+            ? t('healthGuide.这个AZ指南包含了各')
             : 'This A-Z guide contains various proven menstrual pain relief methods. Since everyone\'s body responds differently, we recommend trying multiple approaches to find the combination that works best for you. Remember, consistency and patience are key to success.'
           }
         </p>
         <div className="bg-white p-4 rounded-lg">
           <h3 className="font-semibold text-neutral-800 mb-2">
-            {locale === 'zh' ? '使用建议：' : 'Usage Tips:'}
+            {locale === 'zh' ? t('healthGuide.使用建议') : 'Usage Tips:'}
           </h3>
           <ul className="list-disc list-inside text-neutral-600 space-y-1 text-sm">
-            <li>{locale === 'zh' ? '从简单易行的方法开始' : 'Start with simple and easy methods'}</li>
-            <li>{locale === 'zh' ? '记录哪些方法对您有效' : 'Record which methods work for you'}</li>
-            <li>{locale === 'zh' ? '结合多种方法以获得最佳效果' : 'Combine multiple methods for best results'}</li>
-            <li>{locale === 'zh' ? '如有疑问，请咨询医疗专业人士' : 'Consult healthcare professionals if in doubt'}</li>
+            <li>{locale === 'zh' ? t('healthGuide.从简单易行的方法开始') : 'Start with simple and easy methods'}</li>
+            <li>{locale === 'zh' ? t('healthGuide.记录哪些方法对您有效') : 'Record which methods work for you'}</li>
+            <li>{locale === 'zh' ? t('healthGuide.结合多种方法以获得最') : 'Combine multiple methods for best results'}</li>
+            <li>{locale === 'zh' ? t('healthGuide.如有疑问请咨询医疗专') : 'Consult healthcare professionals if in doubt'}</li>
           </ul>
         </div>
       </section>
@@ -428,7 +428,7 @@ export default function ReliefMethodsPage({
       {/* A-Z Methods */}
       <section>
         <h2 className="text-2xl font-semibold text-neutral-800 mb-8 text-center">
-          {locale === 'zh' ? '缓解方法大全' : 'Complete Relief Methods'}
+          {locale === 'zh' ? t('healthGuide.缓解方法大全') : 'Complete Relief Methods'}
         </h2>
         
         <div className="space-y-8">
@@ -463,43 +463,43 @@ export default function ReliefMethodsPage({
       {/* Quick Reference */}
       <section className="bg-secondary-50 p-6 md:p-8 rounded-xl">
         <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
-          {locale === 'zh' ? '快速参考' : 'Quick Reference'}
+          {locale === 'zh' ? t('healthGuide.快速参考') : 'Quick Reference'}
         </h2>
         
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white p-4 rounded-lg">
             <h3 className="font-semibold text-green-600 mb-2">
-              {locale === 'zh' ? '即时缓解' : 'Immediate Relief'}
+              {locale === 'zh' ? t('common.instantRelief') : 'Immediate Relief'}
             </h3>
             <ul className="text-sm text-neutral-600 space-y-1">
-              <li>• {locale === 'zh' ? '热敷' : 'Heat therapy'}</li>
-              <li>• {locale === 'zh' ? '深呼吸' : 'Deep breathing'}</li>
-              <li>• {locale === 'zh' ? '穴位按摩' : 'Acupressure'}</li>
-              <li>• {locale === 'zh' ? '温水浴' : 'Warm bath'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.热敷') : 'Heat therapy'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.深呼吸') : 'Deep breathing'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.穴位按摩') : 'Acupressure'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.温水浴') : 'Warm bath'}</li>
             </ul>
           </div>
           
           <div className="bg-white p-4 rounded-lg">
             <h3 className="font-semibold text-blue-600 mb-2">
-              {locale === 'zh' ? '中期管理' : 'Medium-term Management'}
+              {locale === 'zh' ? t('healthGuide.中期管理') : 'Medium-term Management'}
             </h3>
             <ul className="text-sm text-neutral-600 space-y-1">
-              <li>• {locale === 'zh' ? '规律运动' : 'Regular exercise'}</li>
-              <li>• {locale === 'zh' ? '瑜伽练习' : 'Yoga practice'}</li>
-              <li>• {locale === 'zh' ? '饮食调整' : 'Diet modification'}</li>
-              <li>• {locale === 'zh' ? '压力管理' : 'Stress management'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.规律运动') : 'Regular exercise'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.瑜伽练习') : 'Yoga practice'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.饮食调整') : 'Diet modification'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.压力管理') : 'Stress management'}</li>
             </ul>
           </div>
           
           <div className="bg-white p-4 rounded-lg">
             <h3 className="font-semibold text-purple-600 mb-2">
-              {locale === 'zh' ? '长期预防' : 'Long-term Prevention'}
+              {locale === 'zh' ? t('healthGuide.长期预防') : 'Long-term Prevention'}
             </h3>
             <ul className="text-sm text-neutral-600 space-y-1">
-              <li>• {locale === 'zh' ? '生活方式改变' : 'Lifestyle changes'}</li>
-              <li>• {locale === 'zh' ? '营养补充' : 'Nutritional supplements'}</li>
-              <li>• {locale === 'zh' ? '中医调理' : 'TCM conditioning'}</li>
-              <li>• {locale === 'zh' ? '定期检查' : 'Regular check-ups'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.生活方式改变') : 'Lifestyle changes'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.营养补充') : 'Nutritional supplements'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.中医调理') : 'TCM conditioning'}</li>
+              <li>• {locale === 'zh' ? t('healthGuide.定期检查') : 'Regular check-ups'}</li>
             </ul>
           </div>
         </div>
@@ -508,24 +508,24 @@ export default function ReliefMethodsPage({
       {/* Related Resources */}
       <section className="bg-accent-50 p-6 md:p-8 rounded-xl">
         <h2 className="text-2xl font-semibold text-neutral-800 mb-4">
-          {locale === 'zh' ? '相关资源' : 'Related Resources'}
+          {locale === 'zh' ? t('healthGuide.相关资源') : 'Related Resources'}
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
           <Link href={`/${locale}/scenario-solutions`} className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow">
             <h3 className="font-semibold text-primary-600 mb-2">
-              {locale === 'zh' ? '情景解决方案' : 'Scenario Solutions'}
+              {locale === 'zh' ? t('healthGuide.情景解决方案') : 'Scenario Solutions'}
             </h3>
             <p className="text-neutral-600 text-sm">
-              {locale === 'zh' ? '针对特定情况的专业解决方案' : 'Professional solutions for specific situations'}
+              {locale === 'zh' ? t('healthGuide.针对特定情况的专业解') : 'Professional solutions for specific situations'}
             </p>
           </Link>
           
           <Link href={`/${locale}/interactive-tools`} className="bg-white p-4 rounded-lg hover:shadow-md transition-shadow">
             <h3 className="font-semibold text-primary-600 mb-2">
-              {locale === 'zh' ? '互动工具' : 'Interactive Tools'}
+              {locale === 'zh' ? t('healthGuide.互动工具') : 'Interactive Tools'}
             </h3>
             <p className="text-neutral-600 text-sm">
-              {locale === 'zh' ? '个性化评估和追踪工具' : 'Personalized assessment and tracking tools'}
+              {locale === 'zh' ? t('healthGuide.个性化评估和追踪工具') : 'Personalized assessment and tracking tools'}
             </p>
           </Link>
         </div>
@@ -540,14 +540,14 @@ export default function ReliefMethodsPage({
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
-          {locale === 'zh' ? '上一章：理解痛经' : 'Previous: Understanding Pain'}
+          {locale === 'zh' ? t('healthGuide.上一章理解痛经') : 'Previous: Understanding Pain'}
         </Link>
         
         <Link 
           href={`/${locale}/health-guide/lifestyle`}
           className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center"
         >
-          {locale === 'zh' ? '下一章：生活方式管理' : 'Next: Lifestyle Management'}
+          {locale === 'zh' ? t('healthGuide.下一章生活方式管理') : 'Next: Lifestyle Management'}
           <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

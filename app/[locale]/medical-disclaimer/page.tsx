@@ -6,16 +6,15 @@ export default function MedicalDisclaimerPage() {
   const locale = useLocale();
 
   const content = locale === 'zh' ? {
-    title: '医疗免责声明',
-    lastUpdated: '最后更新：2024年4月1日',
-    intro: 'periodhub.health网站（以下简称"本网站"）提供的信息仅供一般信息和教育目的。本网站上的所有信息均本着善意提供，但我们对本网站上任何信息的准确性、充分性、有效性、可靠性、可用性或完整性不作任何明示或暗示的陈述或保证。',
+    title: t('common.医疗免责声明'),
+    lastUpdated: t('common.最后更新2024年4'),
+    intro: t('common.periodhubh')本网站t('common.提供的信息仅供一般信'),
     sections: [
       {
         title: '非专业医疗建议',
         content: `
           <div class="bg-red-50 border-l-4 border-red-500 p-6 my-6">
-            <p class="text-red-800 font-semibold mb-2">重要声明</p>
-            <p class="text-red-700">
+            <p class="text-red-800 font-semibold mb-2t('common.重要声明p')text-red-700">
               本网站包含的信息不应被理解或解释为专业医疗建议。我们不是医疗保健专业人员，
               本网站上的信息不能替代专业医疗建议、诊断或治疗。在有关医疗状况或治疗的任何问题上，
               以及在开始新的医疗保健方案之前，请务必寻求您的医生或其他合格健康提供者的建议。
@@ -24,19 +23,12 @@ export default function MedicalDisclaimerPage() {
         `
       },
       {
-        title: '无医患关系',
-        content: `
-          <p>使用本网站不会在您与periodhub.health或其运营者之间建立医患关系。</p>
-        `
+        title: t('common.无医患关系'),
+        content: t('common.p使用本网站不会在您')
       },
       {
         title: '准确性和完整性',
-        content: `
-          <p>
-            虽然我们努力提供准确和最新的信息，但我们不能保证所有信息都是完全准确、可靠、
-            最新或完整的。您对在periodhub.health上找到的信息的任何依赖都完全由您自己承担风险。
-          </p>
-        `
+        content: t('common.p')
       },
       {
         title: '无背书声明',
@@ -48,11 +40,10 @@ export default function MedicalDisclaimerPage() {
         `
       },
       {
-        title: '紧急情况',
+        title: t('common.紧急情况'),
         content: `
           <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-6">
-            <p class="text-yellow-800 font-semibold mb-2">紧急医疗情况</p>
-            <p class="text-yellow-700">
+            <p class="text-yellow-800 font-semibold mb-2t('common.紧急医疗情况p')text-yellow-700">
               如果您遇到医疗紧急情况，请立即寻求医疗救助或拨打急救电话（如美国的911）。
               不要因为您在本网站上阅读的内容而忽视专业医疗建议或延迟寻求医疗治疗。
             </p>
@@ -60,21 +51,14 @@ export default function MedicalDisclaimerPage() {
         `
       },
       {
-        title: '责任限制',
-        content: `
-          <p>
-            在任何情况下，periodhub.health或其运营者都不对因使用或依赖本网站提供的信息而产生的
-            任何损失或损害承担责任。这包括但不限于间接或后果性损失或损害，或因数据丢失或利润损失
-            而产生的任何损失或损害，无论是否与使用本网站有关。
-          </p>
-        `
+        title: t('common.责任限制'),
+        content: t('common.p')
       },
       {
         title: 'MVP性质说明',
         content: `
           <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-6">
-            <p class="text-blue-800 font-semibold mb-2">最小可行产品(MVP)阶段</p>
-            <p class="text-blue-700">
+            <p class="text-blue-800 font-semibold mb-2t('common.最小可行产品MVP阶')text-blue-700">
               请注意，periodhub.health目前处于最小可行产品(MVP)阶段。它以有限的资源运营，
               由个人而非大型医疗机构管理。虽然我们努力提供有用的信息，但内容可能不如大型、
               更成熟的医疗资源那样全面或频繁更新。
@@ -83,12 +67,8 @@ export default function MedicalDisclaimerPage() {
         `
       },
       {
-        title: '条款同意',
-        content: `
-          <p>
-            通过使用本网站，您特此同意本免责声明并同意其条款。
-          </p>
-        `
+        title: t('common.条款同意'),
+        content: t('common.p')
       }
     ]
   } : {
@@ -230,11 +210,11 @@ export default function MedicalDisclaimerPage() {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-neutral-800 mb-4">
-              {locale === 'zh' ? '有疑问？' : 'Questions?'}
+              {locale === 'zh' ? t('common.有疑问') : 'Questions?'}
             </h2>
             <p className="text-neutral-600 mb-6">
               {locale === 'zh' 
-                ? '如果您对我们的医疗免责声明有任何疑问，请随时联系我们。'
+                ? t('common.如果您对我们的医疗免')
                 : 'If you have any questions about our Medical Disclaimer, please feel free to contact us.'
               }
             </p>
@@ -242,7 +222,7 @@ export default function MedicalDisclaimerPage() {
               href="mailto:legal@periodhub.health" 
               className="btn-primary"
             >
-              {locale === 'zh' ? '联系我们' : 'Contact Us'}
+              {locale === 'zh' ? t('common.联系我们') : 'Contact Us'}
             </a>
           </div>
         </div>

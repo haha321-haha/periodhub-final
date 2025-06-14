@@ -49,7 +49,7 @@ export default function ImmediateReliefPage({
           </p>
           <p className="text-neutral-700 leading-relaxed mt-4">
             {locale === 'zh'
-              ? '我们理解快速缓解对于度过一天是至关重要的。这里建议的方法专注于容易获得的技巧和疗法，可以提供临时但急需的舒适感。'
+              ? t('common.我们理解快速缓解对于')
               : 'We understand that finding quick relief is essential for getting through your day. The approaches suggested here focus on readily available techniques and remedies that can provide temporary but much-needed comfort.'
             }
           </p>
@@ -78,7 +78,7 @@ export default function ImmediateReliefPage({
             </div>
             <p className="text-neutral-600 mb-4">
               {locale === 'zh'
-                ? '在下腹部或背部敷热可以帮助放松收缩的子宫肌肉并改善血液循环，从而缓解痉挛。'
+                ? t('common.在下腹部或背部敷热可')
                 : 'Applying heat to the lower abdomen or back can help relax contracting uterine muscles and improve blood circulation, which may alleviate cramps.'
               }
             </p>
@@ -106,7 +106,7 @@ export default function ImmediateReliefPage({
             </div>
             <p className="text-neutral-600 mb-4">
               {locale === 'zh'
-                ? '轻度拉伸、散步或特定的瑜伽姿势有时可以通过改善血液循环和肌肉放松来缓解痉挛。深呼吸技巧也有助于管理疼痛。'
+                ? t('common.轻度拉伸散步或特定的')
                 : 'Light stretching, walking, or specific yoga poses can sometimes ease cramps by improving circulation and muscle relaxation. Deep breathing techniques can also help manage pain.'
               }
             </p>
@@ -129,12 +129,12 @@ export default function ImmediateReliefPage({
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-neutral-800">
-                {locale === 'zh' ? '深呼吸练习' : 'Deep Breathing Exercise'}
+                {locale === 'zh' ? t('common.深呼吸练习') : 'Deep Breathing Exercise'}
               </h3>
             </div>
             <p className="text-neutral-600 mb-4">
               {locale === 'zh'
-                ? '通过4-7-8呼吸法激活副交感神经系统，自然降低疼痛敏感度。科学研究显示可减少40%的疼痛感知。'
+                ? t('common.通过478呼吸法激活')
                 : 'Activate the parasympathetic nervous system through 4-7-8 breathing technique to naturally reduce pain sensitivity. Research shows it can reduce pain perception by 40%.'
               }
             </p>
@@ -143,7 +143,7 @@ export default function ImmediateReliefPage({
                 href={`/${locale}/interactive-tools#breathing-exercise`}
                 className="text-blue-600 hover:text-blue-700 font-medium"
               >
-                {locale === 'zh' ? '开始练习 →' : 'Start Practice →'}
+                {locale === 'zh' ? t('common.开始练习') : 'Start Practice →'}
               </Link>
             </div>
           </div>
@@ -162,7 +162,7 @@ export default function ImmediateReliefPage({
             </div>
             <p className="text-neutral-600 mb-4">
               {locale === 'zh'
-                ? '对身体特定穴位施压可能有助于减少疼痛信号并缓解经期痉挛。'
+                ? t('common.对身体特定穴位施压可')
                 : 'Applying pressure to specific points on the body may help reduce pain signals and provide relief from menstrual cramps.'
               }
             </p>
@@ -190,7 +190,7 @@ export default function ImmediateReliefPage({
             </div>
             <p className="text-neutral-600 mb-4">
               {locale === 'zh'
-                ? '了解常见的非处方药选项及其基本机制可能会有所帮助，尽管专业医疗建议对于安全有效使用至关重要。'
+                ? t('common.了解常见的非处方药选')
                 : 'Understanding common non-prescription options and their basic mechanisms can be helpful, although professional medical advice is crucial for safe and effective use.'
               }
             </p>
@@ -216,7 +216,7 @@ export default function ImmediateReliefPage({
         </p>
         <p className="text-neutral-700 leading-relaxed mt-4">
           {locale === 'zh'
-            ? '请记住，这些方法是为了在当下管理症状。对于持续、严重或异常的疼痛，请务必咨询医疗专业人士。'
+            ? t('common.请记住这些方法是为了')
             : 'Remember, these methods are for managing symptoms in the moment. For persistent, severe, or unusual pain, always consult a healthcare professional.'
           }
         </p>
@@ -231,11 +231,11 @@ export default function ImmediateReliefPage({
         <div className="grid md:grid-cols-2 gap-6">
           <div className="card group block">
             <h3 className="text-xl font-semibold text-primary-600 group-hover:text-primary-700 mb-2">
-              {locale === 'zh' ? '工作中管理痉挛的快速技巧' : 'Quick Tips for Managing Cramps at Work'}
+              {locale === 'zh' ? t('common.工作中管理痉挛的快速') : 'Quick Tips for Managing Cramps at Work'}
             </h3>
             <p className="text-neutral-600 mb-4">
               {locale === 'zh'
-                ? '当经期疼痛来袭时，在工作日寻找缓解的实用策略。'
+                ? t('common.当经期疼痛来袭时在工')
                 : 'Practical strategies for finding relief during your workday when period pain strikes.'
               }
             </p>
@@ -246,11 +246,11 @@ export default function ImmediateReliefPage({
 
           <div className="card group block">
             <h3 className="text-xl font-semibold text-primary-600 group-hover:text-primary-700 mb-2">
-              {locale === 'zh' ? '5分钟疼痛缓解冥想' : '5-Minute Meditation for Pain Relief'}
+              {locale === 'zh' ? t('common.5分钟疼痛缓解冥想') : '5-Minute Meditation for Pain Relief'}
             </h3>
             <p className="text-neutral-600 mb-4">
               {locale === 'zh'
-                ? '专门设计用于帮助管理经期疼痛的快速引导冥想练习。'
+                ? t('common.专门设计用于帮助管理')
                 : 'A quick guided meditation practice designed specifically to help manage menstrual pain.'
               }
             </p>
@@ -265,10 +265,10 @@ export default function ImmediateReliefPage({
       <section className="bg-primary-50 border-l-4 border-primary-500 p-4 rounded-r-lg">
         <p className="text-neutral-700">
           <strong className="text-primary-700">
-            {locale === 'zh' ? '免责声明：' : 'Disclaimer:'}
+            {locale === 'zh' ? t('common.免责声明') : 'Disclaimer:'}
           </strong>
           {locale === 'zh'
-            ? '本页面提供的信息仅供教育目的，不旨在替代专业医疗建议、诊断或治疗。如有任何医疗问题，请务必咨询您的医生或其他合格的医疗保健提供者。'
+            ? t('common.本页面提供的信息仅供')
             : 'The information provided on this page is for educational purposes only and is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.'
           }
         </p>

@@ -15,13 +15,7 @@ interface PeriodPainAssessmentToolProps {
 
 const PeriodPainAssessmentTool: React.FC<PeriodPainAssessmentToolProps> = ({ locale = 'zh' }) => {
   const [intensity, setIntensity] = useState<string>('');
-  const [onset, setOnset] = useState<string>('');
-  const [severeSymptoms, setSevereSymptoms] = useState<string[]>([]);
-  const [result, setResult] = useState<AssessmentResult | null>(null);
-  const [showResult, setShowResult] = useState(false);
-
-  // 使用统一翻译Hook
-  const { t } = useInteractiveToolTranslations('periodPainAssessment');
+  const [onset, setOnset] = useState<string>('t('tools.constseve')periodPainAssessment');
 
   const handleSevereSymptomChange = (symptom: string, checked: boolean) => {
     if (checked) {
@@ -39,16 +33,9 @@ const PeriodPainAssessmentTool: React.FC<PeriodPainAssessmentToolProps> = ({ loc
 
     let advice = '';
     let needConsult = false;
-    let severity: 'low' | 'medium' | 'high' = 'low';
-
-    // 检查是否有严重症状
-    if (severeSymptoms.length > 0) {
-      advice = t('results.assessments.severe_symptoms');
+    let severity: 'low' | 'medium' | 'high' = 'lowt('tools.检查是否有严重症状')results.assessments.severe_symptoms');
       needConsult = true;
-      severity = 'high';
-    }
-    // 根据痛经强度和开始时间评估
-    else if (intensity === 'severe') {
+      severity = 'hight('tools.根据痛经强度和开始时')severe') {
       if (onset === 'late') {
         advice = t('results.assessments.severe_late');
         needConsult = true;
@@ -90,9 +77,7 @@ const PeriodPainAssessmentTool: React.FC<PeriodPainAssessmentToolProps> = ({ loc
       </div>
 
       {!showResult ? (
-        <div className="space-y-6 sm:space-y-8">
-          {/* 痛经强度 */}
-          <div className="form-group">
+        <div className="space-y-6 sm:space-y-8t('tools.痛经强度')form-group">
             <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('questions.intensity.title')}</h3>
             <div className="space-y-2 sm:space-y-3">
               {[
@@ -109,14 +94,7 @@ const PeriodPainAssessmentTool: React.FC<PeriodPainAssessmentToolProps> = ({ loc
                     onChange={(e) => setIntensity(e.target.value)}
                     className="w-5 h-5 sm:w-4 sm:h-4 text-primary"
                   />
-                  <span className="text-gray-700 text-sm sm:text-base">{option.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* 痛经开始时间 */}
-          <div className="form-group">
+                  <span className="text-gray-700 text-sm sm:text-baset('tools.optionlabe')form-group">
             <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t('questions.onset.title')}</h3>
             <div className="space-y-2 sm:space-y-3">
               {[
@@ -132,15 +110,7 @@ const PeriodPainAssessmentTool: React.FC<PeriodPainAssessmentToolProps> = ({ loc
                     onChange={(e) => setOnset(e.target.value)}
                     className="w-5 h-5 sm:w-4 sm:h-4 text-primary"
                   />
-                  <span className="text-gray-700 text-sm sm:text-base">{option.label}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* 严重症状 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">{t('questions.symptoms.title')}</h3>
+                  <span className="text-gray-700 text-sm sm:text-baset('tools.optionlabe')text-xl font-semibold mb-4">{t('questions.symptoms.title')}</h3>
             <div className="space-y-3">
               {[
                 { value: 'fever', label: t('questions.symptoms.options.fever') },

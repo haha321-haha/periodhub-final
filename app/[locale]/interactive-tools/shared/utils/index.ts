@@ -1,7 +1,4 @@
-import { PainEntry, PainStatistics, ValidationError, StorageData } from '../types';
-
-// 日期工具函数
-export const formatDate = (date: string | Date, locale: string = 'en'): string => {
+import { PainEntry, PainStatistics, ValidationError, StorageData } from '../typest('tools.日期工具函数exp')en'): string => {
   const dateObj = typeof date === 'string' ? new Date(date) : date;
   
   if (locale === 'zh') {
@@ -20,10 +17,7 @@ export const formatDate = (date: string | Date, locale: string = 'en'): string =
 };
 
 export const formatDateShort = (date: string | Date): string => {
-  const dateObj = typeof date === 'string' ? new Date(date) : date;
-  // 使用本地时间而不是UTC时间，避免时区问题
-  const year = dateObj.getFullYear();
-  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const dateObj = typeof date === 'stringt('tools.newDateda')0');
   const day = String(dateObj.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`; // YYYY-MM-DD
 };
@@ -88,25 +82,7 @@ export const validatePainEntry = (entry: Partial<PainEntry>): ValidationError[] 
     errors.push({
       field: 'effectiveness',
       message: 'Effectiveness must be between 1 and 5',
-      code: 'OUT_OF_RANGE'
-    });
-  }
-  
-  return errors;
-};
-
-// 统计计算函数
-export const calculateStatistics = (entries: PainEntry[]): PainStatistics => {
-  if (entries.length === 0) {
-    return {
-      totalEntries: 0,
-      averagePain: 0,
-      maxPain: 0,
-      minPain: 0,
-      mostCommonSymptoms: [],
-      mostEffectiveRemedies: [],
-      painFrequency: {},
-      trendDirection: 'stable'
+      code: 'OUT_OF_RANGEt('tools.returnerr')stable'
     };
   }
   
@@ -191,12 +167,7 @@ const calculateTrend = (entries: PainEntry[]): 'improving' | 'worsening' | 'stab
   
   if (difference > 0.5) return 'worsening';
   if (difference < -0.5) return 'improving';
-  return 'stable';
-};
-
-// 本地存储工具函数
-export const createStorageKey = (userId: string, dataType: string): string => {
-  return `periodhub_${dataType}_${userId || 'anonymous'}`;
+  return 'stablet('tools.本地存储工具函数e')periodhub_${dataType}_${userId || 'anonymous'}`;
 };
 
 export const saveToStorage = <T>(key: string, data: T): boolean => {
@@ -232,15 +203,7 @@ export const clearStorage = (key: string): boolean => {
     localStorage.removeItem(key);
     return true;
   } catch (error) {
-    console.error('Failed to clear localStorage:', error);
-    return false;
-  }
-};
-
-// 数据导出函数
-export const exportToCSV = (entries: PainEntry[]): string => {
-  const headers = [
-    'Date',
+    console.error('Failed to clear localStorage:t('tools.error')Date',
     'Pain Level',
     'Duration (min)',
     'Location',
@@ -273,18 +236,7 @@ export const exportToCSV = (entries: PainEntry[]): string => {
 export const downloadFile = (content: string, filename: string, mimeType: string): void => {
   const blob = new Blob([content], { type: mimeType });
   const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-};
-
-// 颜色工具函数
-export const getPainLevelColor = (level: number): string => {
-  if (level <= 3) return '#10b981'; // green
+  const link = document.createElement('at('tools.linkhref')#10b981'; // green
   if (level <= 6) return '#f59e0b'; // yellow
   return '#ef4444'; // red
 };

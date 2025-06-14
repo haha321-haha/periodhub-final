@@ -131,10 +131,7 @@ export default async function ArticlePage({
   const articleUrl = `${baseUrl}/${locale}/articles/${slug}`
 
   return (
-    <div className="min-h-screen bg-neutral-50">
-      {/* SEO结构化数据 */}
-      <StructuredData
-        type="medicalWebPage"
+    <div className="min-h-screen bg-neutral-50t('articles.SEO结构化数据')medicalWebPage"
         data={{
           title,
           description: summary || '',
@@ -144,17 +141,7 @@ export default async function ArticlePage({
           datePublished: article.date,
           dateModified: article.date,
           locale: locale,
-          keywords: (locale === 'zh' ? article.tags_zh : article.tags),
-        }}
-      />
-
-      {/* 阅读进度条和返回顶部 */}
-      <ReadingProgress locale={locale} />
-
-      {/* Load NSAID interactive components if needed */}
-      {isNSAIDArticle && <NSAIDInteractive locale={locale} />}
-
-      <div className="space-y-6 sm:space-y-8">
+          keywords: (locale === 'zht('articles.articletag')space-y-6 sm:space-y-8">
         {/* Back to Articles */}
         <div className="container-custom">
           <Link
@@ -164,7 +151,7 @@ export default async function ArticlePage({
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            {locale === 'zh' ? '返回文章列表' : 'Back to Articles'}
+            {locale === 'zh' ? t('articles.返回文章列表') : 'Back to Articles'}
           </Link>
         </div>
 
@@ -202,7 +189,7 @@ export default async function ArticlePage({
             {summary && (
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 sm:p-6 mb-6 rounded-r-lg">
                 <h2 className="text-sm sm:text-base font-semibold text-blue-800 mb-2">
-                  {locale === 'zh' ? '文章摘要' : 'Article Summary'}
+                  {locale === 'zh' ? t('articles.文章摘要') : 'Article Summary'}
                 </h2>
                 <p className="text-sm sm:text-base text-blue-700 leading-relaxed">
                   {summary}
@@ -223,7 +210,7 @@ export default async function ArticlePage({
                     {article.author || 'Period Health Team'}
                   </p>
                   <p className="text-xs sm:text-sm text-neutral-600">
-                    {locale === 'zh' ? '健康专家' : 'Health Expert'}
+                    {locale === 'zh' ? t('articles.健康专家') : 'Health Expert'}
                   </p>
                 </div>
               </div>
@@ -307,7 +294,7 @@ export default async function ArticlePage({
                 {/* Quick Actions */}
                 <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-3 text-sm">
-                    {locale === 'zh' ? '快速操作' : 'Quick Actions'}
+                    {locale === 'zh' ? t('articles.快速操作') : 'Quick Actions'}
                   </h3>
                   <div className="space-y-2">
                     <Link
@@ -317,7 +304,7 @@ export default async function ArticlePage({
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                      {locale === 'zh' ? '更多文章' : 'More Articles'}
+                      {locale === 'zh' ? t('articles.更多文章') : 'More Articles'}
                     </Link>
                   </div>
                 </div>
@@ -339,11 +326,11 @@ export default async function ArticlePage({
               </div>
               <div>
                 <h4 className="font-bold text-red-800 mb-2 text-sm sm:text-base">
-                  {locale === 'zh' ? '⚠️ 医疗免责声明' : '⚠️ Medical Disclaimer'}
+                  {locale === 'zh' ? t('articles.医疗免责声明') : '⚠️ Medical Disclaimer'}
                 </h4>
                 <p className="text-xs sm:text-sm text-red-700 leading-relaxed">
                   {locale === 'zh'
-                    ? '本文内容仅供教育和信息目的，不能替代专业医疗建议、诊断或治疗。如有任何健康问题或疑虑，请咨询合格的医疗专业人员。在做出任何健康相关决定之前，请务必寻求医生的建议。'
+                    ? t('articles.本文内容仅供教育和信')
                     : 'This content is for educational and informational purposes only and should not replace professional medical advice, diagnosis, or treatment. If you have any health concerns or questions, please consult with a qualified healthcare professional. Always seek medical advice before making any health-related decisions.'
                   }
                 </p>
@@ -359,11 +346,11 @@ export default async function ArticlePage({
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-6 sm:mb-8">
               <h2 className="text-xl sm:text-2xl font-bold text-neutral-800 mb-2">
-                {locale === 'zh' ? '📚 相关文章推荐' : '📚 Related Articles'}
+                {locale === 'zh' ? t('articles.相关文章推荐') : '📚 Related Articles'}
               </h2>
               <p className="text-sm sm:text-base text-neutral-600">
                 {locale === 'zh'
-                  ? '继续探索更多专业健康内容'
+                  ? t('articles.继续探索更多专业健康')
                   : 'Continue exploring more professional health content'
                 }
               </p>
@@ -394,7 +381,7 @@ export default async function ArticlePage({
                         {relatedSummary}
                       </p>
                       <div className="flex items-center text-primary-600 text-sm font-medium">
-                        <span>{locale === 'zh' ? '阅读全文' : 'Read More'}</span>
+                        <span>{locale === 'zh' ? t('articles.阅读全文') : 'Read More'}</span>
                         <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -411,11 +398,11 @@ export default async function ArticlePage({
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-primary-600 mb-2">
-                  {locale === 'zh' ? '更多文章即将发布' : 'More Articles Coming Soon'}
+                  {locale === 'zh' ? t('articles.更多文章即将发布') : 'More Articles Coming Soon'}
                 </h3>
                 <p className="text-neutral-600 text-sm sm:text-base">
                   {locale === 'zh'
-                    ? '我们正在准备更多高质量的健康内容，敬请期待。'
+                    ? t('articles.我们正在准备更多高质')
                     : 'We are preparing more high-quality health content. Stay tuned.'
                   }
                 </p>
@@ -423,7 +410,7 @@ export default async function ArticlePage({
                   href={`/${locale}/articles`}
                   className="inline-flex items-center mt-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium"
                 >
-                  {locale === 'zh' ? '浏览所有文章' : 'Browse All Articles'}
+                  {locale === 'zh' ? t('articles.浏览所有文章') : 'Browse All Articles'}
                   <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>

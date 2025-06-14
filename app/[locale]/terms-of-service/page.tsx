@@ -10,9 +10,9 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale }
 }): Promise<Metadata> {
-  const title = locale === 'zh' ? '服务条款' : 'Terms of Service';
+  const title = locale === 'zh' ? t('common.服务条款') : 'Terms of Service';
   const description = locale === 'zh' 
-    ? '了解使用periodhub.health的条款和条件，包括用户责任和服务限制。'
+    ? t('common.了解使用period')
     : 'Learn about the terms and conditions for using periodhub.health, including user responsibilities and service limitations.';
 
   return {
@@ -39,22 +39,13 @@ export default async function TermsOfServicePage({
   unstable_setRequestLocale(locale);
 
   const content = locale === 'zh' ? {
-    title: '服务条款',
-    lastUpdated: '最后更新：2024年4月1日',
-    intro: '欢迎使用periodhub.health。通过访问和使用我们的网站，您同意遵守以下服务条款。请仔细阅读这些条款，如果您不同意任何条款，请不要使用我们的服务。',
+    title: t('common.服务条款'),
+    lastUpdated: t('common.最后更新2024年4'),
+    intro: t('common.欢迎使用period'),
     sections: [
       {
         title: '1. 服务描述',
-        content: `
-          <p>periodhub.health是一个提供月经健康信息和教育资源的平台。我们的服务包括：</p>
-          <ul>
-            <li><strong>教育内容：</strong>关于月经健康、疼痛管理和女性健康的文章和指南</li>
-            <li><strong>交互工具：</strong>症状评估工具、疼痛追踪器和个性化建议系统</li>
-            <li><strong>资源库：</strong>传统疗法、自然缓解方法和生活方式建议</li>
-            <li><strong>社区支持：</strong>安全的信息分享和支持环境</li>
-          </ul>
-          
-          <div class="bg-red-50 border-l-4 border-red-500 p-4 my-4">
+        content: t('common.pperiodhub')bg-red-50 border-l-4 border-red-500 p-4 my-4">
             <p class="text-red-800"><strong>重要医疗声明：</strong>我们的服务仅供教育和信息目的，不构成医疗建议、诊断或治疗。我们不是医疗保健专业人员，本网站信息不能替代专业医疗建议。使用本网站不会在您与periodhub.health之间建立医患关系。如遇紧急情况，请立即寻求医疗救助。</p>
           </div>
 
@@ -64,29 +55,8 @@ export default async function TermsOfServicePage({
         `
       },
       {
-        title: '2. 医疗免责声明',
-        content: `
-          <h3>2.1 非医疗服务</h3>
-          <p>periodhub.health不是医疗服务提供者。我们提供的所有信息：</p>
-          <ul>
-            <li>仅供一般教育和信息目的</li>
-            <li>不能替代专业医疗建议、诊断或治疗</li>
-            <li>不应用于医疗紧急情况</li>
-            <li>可能不适用于您的具体情况</li>
-          </ul>
-          
-          <h3>2.2 寻求专业医疗建议</h3>
-          <p>您应该：</p>
-          <ul>
-            <li>在开始任何治疗前咨询合格的医疗专业人士</li>
-            <li>对于严重或持续的症状立即寻求医疗帮助</li>
-            <li>不要因为我们网站上的信息而忽视或延迟寻求医疗建议</li>
-            <li>在停止或改变现有治疗前咨询您的医生</li>
-          </ul>
-          
-          <h3>2.3 紧急情况</h3>
-          <p>如果您遇到医疗紧急情况，请立即拨打当地紧急服务电话或前往最近的急诊科。</p>
-        `
+        title: t('common.2医疗免责声明'),
+        content: t('common.h321非医疗服务')
       },
       {
         title: '3. 用户责任',
@@ -113,16 +83,7 @@ export default async function TermsOfServicePage({
       },
       {
         title: '4. 知识产权',
-        content: `
-          <p>periodhub.health的所有内容，包括但不限于：</p>
-          <ul>
-            <li>文本、图像、视频和音频内容</li>
-            <li>网站设计和布局</li>
-            <li>软件和代码</li>
-            <li>商标和标识</li>
-          </ul>
-          <p>均受版权法和其他知识产权法保护。未经明确书面许可，您不得复制、分发、修改或创建衍生作品。</p>
-        `
+        content: t('common.pperiodhub')
       }
     ]
   } : {
@@ -258,11 +219,11 @@ export default async function TermsOfServicePage({
           <div className="max-w-4xl mx-auto">
             <div className="bg-yellow-100 border-l-4 border-yellow-500 p-6 rounded-r-lg">
               <h3 className="text-lg font-semibold text-yellow-800 mb-2">
-                {locale === 'zh' ? '重要提醒' : 'Important Reminder'}
+                {locale === 'zh' ? t('common.重要提醒') : 'Important Reminder'}
               </h3>
               <p className="text-yellow-700">
                 {locale === 'zh' 
-                  ? '这些服务条款可能会不时更新。继续使用我们的服务即表示您接受任何修改。'
+                  ? t('common.这些服务条款可能会不')
                   : 'These Terms of Service may be updated from time to time. Continued use of our services indicates your acceptance of any modifications.'
                 }
               </p>
@@ -276,11 +237,11 @@ export default async function TermsOfServicePage({
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-neutral-800 mb-4">
-              {locale === 'zh' ? '有疑问？' : 'Questions?'}
+              {locale === 'zh' ? t('common.有疑问') : 'Questions?'}
             </h2>
             <p className="text-neutral-600 mb-6">
               {locale === 'zh' 
-                ? '如果您对我们的服务条款有任何疑问，请随时联系我们。'
+                ? t('common.如果您对我们的服务条')
                 : 'If you have any questions about our Terms of Service, please feel free to contact us.'
               }
             </p>
@@ -288,7 +249,7 @@ export default async function TermsOfServicePage({
               href="mailto:tiyibaofu@outlook.com"
               className="btn-primary"
             >
-              {locale === 'zh' ? '联系我们' : 'Contact Us'}
+              {locale === 'zh' ? t('common.联系我们') : 'Contact Us'}
             </a>
           </div>
         </div>

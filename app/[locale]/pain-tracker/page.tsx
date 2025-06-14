@@ -106,11 +106,11 @@ export default function PainTrackerPage() {
       <header className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 mb-6">
-            {locale === 'zh' ? '疼痛追踪器' : 'Pain Tracker'}
+            {locale === 'zh' ? t('common.疼痛追踪器') : 'Pain Tracker'}
           </h1>
           <p className="text-neutral-600 mb-8">
             {locale === 'zh' 
-              ? '记录您的疼痛模式，帮助识别触发因素和有效的治疗方法'
+              ? t('common.记录您的疼痛模式帮助')
               : 'Track your pain patterns to help identify triggers and effective treatments'
             }
           </p>
@@ -126,7 +126,7 @@ export default function PainTrackerPage() {
                 {entries.length}
               </div>
               <p className="text-neutral-600">
-                {locale === 'zh' ? '总记录数' : 'Total Entries'}
+                {locale === 'zh' ? t('common.总记录数') : 'Total Entries'}
               </p>
             </div>
             
@@ -135,7 +135,7 @@ export default function PainTrackerPage() {
                 {getAverageIntensity()}
               </div>
               <p className="text-neutral-600">
-                {locale === 'zh' ? '平均疼痛强度' : 'Average Pain Intensity'}
+                {locale === 'zh' ? t('common.平均疼痛强度') : 'Average Pain Intensity'}
               </p>
             </div>
             
@@ -149,7 +149,7 @@ export default function PainTrackerPage() {
                  getRecentTrend() === 'decreasing' ? '↘' : '→'}
               </div>
               <p className="text-neutral-600">
-                {locale === 'zh' ? '最近趋势' : 'Recent Trend'}
+                {locale === 'zh' ? t('common.最近趋势') : 'Recent Trend'}
               </p>
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function PainTrackerPage() {
               onClick={() => setShowForm(true)}
               className="btn-primary"
             >
-              {locale === 'zh' ? '添加新记录' : 'Add New Entry'}
+              {locale === 'zh' ? t('common.添加新记录') : 'Add New Entry'}
             </button>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function PainTrackerPage() {
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-neutral-800">
-                  {locale === 'zh' ? '添加疼痛记录' : 'Add Pain Entry'}
+                  {locale === 'zh' ? t('common.添加疼痛记录') : 'Add Pain Entry'}
                 </h2>
                 <button
                   onClick={() => setShowForm(false)}
@@ -187,7 +187,7 @@ export default function PainTrackerPage() {
                 {/* Date */}
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
-                    {locale === 'zh' ? '日期' : 'Date'}
+                    {locale === 'zh' ? t('common.日期') : 'Date'}
                   </label>
                   <input
                     type="date"
@@ -200,7 +200,7 @@ export default function PainTrackerPage() {
                 {/* Pain Intensity */}
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
-                    {locale === 'zh' ? '疼痛强度' : 'Pain Intensity'} ({currentEntry.intensity}/10)
+                    {locale === 'zh' ? t('common.疼痛强度') : 'Pain Intensity'} ({currentEntry.intensity}/10)
                   </label>
                   <input
                     type="range"
@@ -215,34 +215,34 @@ export default function PainTrackerPage() {
                 {/* Menstrual Status */}
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
-                    {locale === 'zh' ? '月经状态' : 'Menstrual Status'}
+                    {locale === 'zh' ? t('common.月经状态') : 'Menstrual Status'}
                   </label>
                   <select
                     value={currentEntry.menstrualStatus}
                     onChange={(e) => updateEntry('menstrualStatus', e.target.value)}
                     className="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-purple-500"
                   >
-                    <option value="">{locale === 'zh' ? '请选择' : 'Please select'}</option>
-                    <option value="before">{locale === 'zh' ? '月经前' : 'Before period'}</option>
-                    <option value="during">{locale === 'zh' ? '月经期间' : 'During period'}</option>
-                    <option value="after">{locale === 'zh' ? '月经后' : 'After period'}</option>
-                    <option value="none">{locale === 'zh' ? '非月经期' : 'Not related to period'}</option>
+                    <option value="">{locale === 'zh' ? t('common.请选择') : 'Please select'}</option>
+                    <option value="before">{locale === 'zh' ? t('common.月经前') : 'Before period'}</option>
+                    <option value="during">{locale === 'zh' ? t('common.月经期间') : 'During period'}</option>
+                    <option value="after">{locale === 'zh' ? t('common.月经后') : 'After period'}</option>
+                    <option value="none">{locale === 'zh' ? t('common.非月经期') : 'Not related to period'}</option>
                   </select>
                 </div>
 
                 {/* Symptoms */}
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
-                    {locale === 'zh' ? '伴随症状' : 'Associated Symptoms'}
+                    {locale === 'zh' ? t('common.伴随症状') : 'Associated Symptoms'}
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {[
-                      { value: 'nausea', label: locale === 'zh' ? '恶心' : 'Nausea' },
-                      { value: 'headache', label: locale === 'zh' ? '头痛' : 'Headache' },
-                      { value: 'fatigue', label: locale === 'zh' ? '疲劳' : 'Fatigue' },
-                      { value: 'bloating', label: locale === 'zh' ? '腹胀' : 'Bloating' },
-                      { value: 'mood_changes', label: locale === 'zh' ? '情绪变化' : 'Mood changes' },
-                      { value: 'back_pain', label: locale === 'zh' ? '背痛' : 'Back pain' }
+                      { value: 'nausea', label: locale === 'zh' ? t('common.恶心') : 'Nausea' },
+                      { value: 'headache', label: locale === 'zh' ? t('common.头痛') : 'Headache' },
+                      { value: 'fatigue', label: locale === 'zh' ? t('common.疲劳') : 'Fatigue' },
+                      { value: 'bloating', label: locale === 'zh' ? t('common.腹胀') : 'Bloating' },
+                      { value: 'mood_changes', label: locale === 'zh' ? t('common.情绪变化') : 'Mood changes' },
+                      { value: 'back_pain', label: locale === 'zh' ? t('common.背痛') : 'Back pain' }
                     ].map((symptom) => (
                       <label key={symptom.value} className="flex items-center">
                         <input
@@ -260,14 +260,14 @@ export default function PainTrackerPage() {
                 {/* Notes */}
                 <div>
                   <label className="block text-sm font-medium text-neutral-700 mb-2">
-                    {locale === 'zh' ? '备注' : 'Notes'}
+                    {locale === 'zh' ? t('common.备注') : 'Notes'}
                   </label>
                   <textarea
                     value={currentEntry.notes}
                     onChange={(e) => updateEntry('notes', e.target.value)}
                     rows={3}
                     className="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-purple-500"
-                    placeholder={locale === 'zh' ? '记录任何额外信息...' : 'Record any additional information...'}
+                    placeholder={locale === 'zh' ? t('common.记录任何额外信息') : 'Record any additional information...'}
                   />
                 </div>
 
@@ -277,13 +277,13 @@ export default function PainTrackerPage() {
                     onClick={() => setShowForm(false)}
                     className="px-6 py-2 border border-neutral-300 rounded-lg text-neutral-600 hover:bg-neutral-50"
                   >
-                    {locale === 'zh' ? '取消' : 'Cancel'}
+                    {locale === 'zh' ? t('common.cancel') : 'Cancel'}
                   </button>
                   <button
                     onClick={saveEntry}
                     className="btn-primary"
                   >
-                    {locale === 'zh' ? '保存' : 'Save'}
+                    {locale === 'zh' ? t('common.save') : 'Save'}
                   </button>
                 </div>
               </div>
@@ -296,13 +296,13 @@ export default function PainTrackerPage() {
       <section className="container-custom">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-neutral-800 mb-6">
-            {locale === 'zh' ? '最近记录' : 'Recent Entries'}
+            {locale === 'zh' ? t('common.最近记录') : 'Recent Entries'}
           </h2>
           
           {entries.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-neutral-600">
-                {locale === 'zh' ? '还没有记录，开始添加您的第一条记录吧！' : 'No entries yet. Start by adding your first entry!'}
+                {locale === 'zh' ? t('common.还没有记录开始添加您') : 'No entries yet. Start by adding your first entry!'}
               </p>
             </div>
           ) : (
@@ -317,7 +317,7 @@ export default function PainTrackerPage() {
                     <div className="text-right">
                       <div className="text-2xl font-bold text-red-600">{entry.intensity}/10</div>
                       <p className="text-sm text-neutral-600">
-                        {locale === 'zh' ? '疼痛强度' : 'Pain Intensity'}
+                        {locale === 'zh' ? t('common.疼痛强度') : 'Pain Intensity'}
                       </p>
                     </div>
                   </div>
@@ -325,7 +325,7 @@ export default function PainTrackerPage() {
                   {entry.symptoms.length > 0 && (
                     <div className="mb-2">
                       <span className="text-sm font-medium text-neutral-700">
-                        {locale === 'zh' ? '症状：' : 'Symptoms: '}
+                        {locale === 'zh' ? t('common.症状') : 'Symptoms: '}
                       </span>
                       <span className="text-sm text-neutral-600">
                         {entry.symptoms.join(', ')}
