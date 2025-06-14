@@ -35,9 +35,9 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
         url: baseUrl,
         logo: {
           '@type': 'ImageObject',
-          url: `${baseUrl}/logo.png`,
-          width: 200,
-          height: 60
+          url: `${baseUrl}/images/logo.png`,
+          width: 250,
+          height: 80
         }
       }
     }
