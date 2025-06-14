@@ -99,8 +99,8 @@ export default async function InteractiveToolsPage({
               <ImagePlaceholder
                 filename="assessment-illustration.jpg"
                 alt="Woman using digital health assessment tool on tablet in comfortable home setting"
-                width={300}
-                height={225}
+                width={400}
+                height={300}
                 description="Woman using digital health assessment tool, modern tablet interface, comfortable home setting, soft lighting"
                 className="w-full max-w-sm sm:max-w-md"
               />
