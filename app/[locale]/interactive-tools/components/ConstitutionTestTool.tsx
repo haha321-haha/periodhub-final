@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useInteractiveToolTranslations } from '../shared/hooks/useAppTranslations';
+import { useSafeTranslations } from '@/hooks/useSafeTranslations';
 import {
   Play,
   ArrowLeft,
