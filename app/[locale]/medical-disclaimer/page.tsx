@@ -8,7 +8,7 @@ export default function MedicalDisclaimerPage() {
   const content = locale === 'zh' ? {
     title: '医疗免责声明',
     lastUpdated: '最后更新：2024年4月1日',
-    intro: 'periodhub.health网站（以下简称"本网站"）提供的信息仅供一般信息和教育目的。本网站上的所有信息均本着善意提供，但我们对本网站上任何信息的准确性、充分性、有效性、可靠性、可用性或完整性不作任何明示或暗示的陈述或保证。',
+    intro: 'periodhub.health（"本网站"）提供的信息仅供一般信息和教育目的。本网站上的所有信息均本着善意提供，但我们对网站上任何信息的准确性、充分性、有效性、可靠性、可用性或完整性不作任何明示或暗示的陈述或保证。',
     sections: [
       {
         title: '非专业医疗建议',
@@ -25,18 +25,11 @@ export default function MedicalDisclaimerPage() {
       },
       {
         title: '无医患关系',
-        content: `
-          <p>使用本网站不会在您与periodhub.health或其运营者之间建立医患关系。</p>
-        `
+        content: '<p>使用本网站不会在您与periodhub.health或其运营者之间建立医患关系。</p>'
       },
       {
         title: '准确性和完整性',
-        content: `
-          <p>
-            虽然我们努力提供准确和最新的信息，但我们不能保证所有信息都是完全准确、可靠、
-            最新或完整的。您对在periodhub.health上找到的信息的任何依赖都完全由您自己承担风险。
-          </p>
-        `
+        content: '<p>虽然我们努力提供准确和最新的信息，但我们不能保证所有信息都是完全准确、可靠、最新或完整的。您对periodhub.health上找到的信息的任何依赖都完全由您自己承担风险。</p>'
       },
       {
         title: '无背书声明',
@@ -61,13 +54,7 @@ export default function MedicalDisclaimerPage() {
       },
       {
         title: '责任限制',
-        content: `
-          <p>
-            在任何情况下，periodhub.health或其运营者都不对因使用或依赖本网站提供的信息而产生的
-            任何损失或损害承担责任。这包括但不限于间接或后果性损失或损害，或因数据丢失或利润损失
-            而产生的任何损失或损害，无论是否与使用本网站有关。
-          </p>
-        `
+        content: '<p>在任何情况下，periodhub.health或其运营者均不对因使用或依赖网站上提供的信息而产生的任何损失或损害承担责任。这包括但不限于间接或后果性损失或损害，或因数据或利润损失而产生的任何损失或损害，无论是否与使用本网站有关。</p>'
       },
       {
         title: 'MVP性质说明',
@@ -84,11 +71,7 @@ export default function MedicalDisclaimerPage() {
       },
       {
         title: '条款同意',
-        content: `
-          <p>
-            通过使用本网站，您特此同意本免责声明并同意其条款。
-          </p>
-        `
+        content: '<p>使用本网站即表示您同意本免责声明并同意其条款。</p>'
       }
     ]
   } : {
@@ -233,13 +216,13 @@ export default function MedicalDisclaimerPage() {
               {locale === 'zh' ? '有疑问？' : 'Questions?'}
             </h2>
             <p className="text-neutral-600 mb-6">
-              {locale === 'zh' 
+              {locale === 'zh'
                 ? '如果您对我们的医疗免责声明有任何疑问，请随时联系我们。'
                 : 'If you have any questions about our Medical Disclaimer, please feel free to contact us.'
               }
             </p>
-            <a 
-              href="mailto:legal@periodhub.health" 
+            <a
+              href="mailto:legal@periodhub.health"
               className="btn-primary"
             >
               {locale === 'zh' ? '联系我们' : 'Contact Us'}
