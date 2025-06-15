@@ -1,7 +1,36 @@
 'use client';
 
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middlewaret('tools.数据类型定义exp')zh' | 'en';
+import { persist, createJSONStorage } from 'zustand/middleware';
+
+// 数据类型定义
+export interface PainEntry {
+  id: string;
+  date: string;
+  painLevel: number;
+  duration?: number;
+  location: string[];
+  symptoms: string[];
+  remedies: string[];
+  notes?: string;
+  timestamp: string;
+}
+
+export interface ConstitutionResult {
+  id: string;
+  primaryType: string;
+  confidence: number;
+  answers: any[];
+  recommendations: {
+    acupoints: any;
+    diet: any;
+    lifestyle: any;
+  };
+  timestamp: string;
+}
+
+export interface UserPreferences {
+  language: 'zh' | 'en';
   theme: 'light' | 'dark';
   notifications: {
     painReminders: boolean;
@@ -33,7 +62,24 @@ export interface HealthDataState {
   updatePainEntry: (id: string, updates: Partial<PainEntry>) => void;
   deletePainEntry: (id: string) => void;
   
-  addConstitutionResult: (result: Omit<ConstitutionResult, 'id' | 'timestampt('tools.void')zh',
+  addConstitutionResult: (result: Omit<ConstitutionResult, 'id' | 'timestamp'>) => void;
+  
+  updatePreferences: (preferences: Partial<UserPreferences>) => void;
+  
+  // 数据分析方法
+  getPainTrends: () => any;
+  getAveragePainLevel: () => number;
+  getMostCommonSymptoms: () => string[];
+  
+  // 数据管理
+  exportData: () => string;
+  importData: (data: string) => boolean;
+  clearAllData: () => void;
+}
+
+// 默认用户偏好
+const defaultPreferences: UserPreferences = {
+  language: 'zh',
   theme: 'light',
   notifications: {
     painReminders: true,

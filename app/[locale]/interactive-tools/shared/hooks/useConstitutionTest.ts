@@ -138,7 +138,7 @@ export function useConstitutionTest(): UseConstitutionTestReturn {
   const completeTest = useCallback((): ConstitutionResult | null => {
     if (!currentSession || currentSession.answers.length !== questions.length) {
       const isEnglish = currentSession?.locale === 'en';
-      setError(isEnglish ? 'Test incomplete, please answer all questions' : t('tools.测试未完成请回答所有'));
+      setError(isEnglish ? 'Test incomplete, please answer all questions' : '测试未完成，请回答所有问题');
       return null;
     }
 
@@ -178,7 +178,7 @@ export function useConstitutionTest(): UseConstitutionTestReturn {
       return testResult;
     } catch (err) {
       const isEnglish = currentSession?.locale === 'en';
-      setError(isEnglish ? 'Error calculating results, please try again' : t('tools.计算结果时出错请重试'));
+      setError(isEnglish ? 'Error calculating results, please try again' : '计算结果时出错，请重试');
       return null;
     } finally {
       setIsLoading(false);

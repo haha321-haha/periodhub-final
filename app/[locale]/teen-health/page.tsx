@@ -42,62 +42,62 @@ export default async function TeenHealthPage({
   const features = [
     {
       id: 'campus-guide',
-      title: locale === 'zh' ? t('common.校园应急指南') : 'Campus Emergency Guide',
+      title: locale === 'zh' ? '校园应急指南' : 'Campus Emergency Guide',
       description: locale === 'zh' 
-        ? t('common.在学校突然痛起来怎么')
+        ? '在学校突然痛起来怎么办？课堂应急、宿舍管理、体育课应对，全方位校园生存指南。'
         : 'What to do when pain strikes at school? Classroom emergencies, dorm management, PE class strategies - comprehensive campus survival guide.',
       icon: <School className="w-8 h-8" />,
       color: 'bg-blue-50 text-blue-600',
       href: '/teen-health/campus-guide',
       highlights: [
-        locale === 'zh' ? t('common.课堂悄悄自救技巧') : 'Classroom self-help techniques',
-        locale === 'zh' ? t('common.宿舍疼痛管理') : 'Dorm pain management',
-        locale === 'zh' ? t('common.体育课应对策略') : 'PE class strategies'
+        locale === 'zh' ? '课堂悄悄自救技巧' : 'Classroom self-help techniques',
+        locale === 'zh' ? '宿舍疼痛管理' : 'Dorm pain management',
+        locale === 'zh' ? '体育课应对策略' : 'PE class strategies'
       ]
     },
     {
       id: 'development-pain',
-      title: locale === 'zh' ? t('common.发育期疼痛管理') : 'Developmental Pain Management',
+      title: locale === 'zh' ? '发育期疼痛管理' : 'Developmental Pain Management',
       description: locale === 'zh'
-        ? t('common.1216岁专属疼痛管')
+        ? '12-16岁专属疼痛管理建议，了解青春期痛经特点，掌握科学缓解方法。'
         : 'Specialized pain management advice for ages 12-16, understanding adolescent period pain characteristics and scientific relief methods.',
       icon: <Heart className="w-8 h-8" />,
       color: 'bg-pink-50 text-pink-600',
       href: '/teen-health/development-pain',
       highlights: [
-        locale === 'zh' ? t('common.青春期痛经特点') : 'Adolescent period pain characteristics',
-        locale === 'zh' ? t('common.科学缓解方法') : 'Scientific relief methods',
-        locale === 'zh' ? t('common.何时需要就医') : 'When to seek medical help'
+        locale === 'zh' ? '青春期痛经特点' : 'Adolescent period pain characteristics',
+        locale === 'zh' ? '科学缓解方法' : 'Scientific relief methods',
+        locale === 'zh' ? '何时需要就医' : 'When to seek medical help'
       ]
     },
     {
       id: 'emotional-support',
-      title: locale === 'zh' ? t('common.情绪支持与心理健康') : 'Emotional Support & Mental Health',
+      title: locale === 'zh' ? '情绪支持与心理健康' : 'Emotional Support & Mental Health',
       description: locale === 'zh'
-        ? t('common.经期焦虑情绪低落如何')过山车"。'
+        ? '经期焦虑、情绪低落如何应对？放松技巧、同龄人经验分享，陪你度过情绪"过山车"。'
         : 'How to cope with period anxiety and mood swings? Relaxation techniques, peer experience sharing to help you through emotional "roller coasters".',
       icon: <Brain className="w-8 h-8" />,
       color: 'bg-purple-50 text-purple-600',
       href: '/teen-health/emotional-support',
       highlights: [
-        locale === 'zh' ? t('common.情绪调节技巧') : 'Emotional regulation techniques',
-        locale === 'zh' ? t('common.焦虑缓解方法') : 'Anxiety relief methods',
-        locale === 'zh' ? t('common.同龄人经验分享') : 'Peer experience sharing'
+        locale === 'zh' ? '情绪调节技巧' : 'Emotional regulation techniques',
+        locale === 'zh' ? '焦虑缓解方法' : 'Anxiety relief methods',
+        locale === 'zh' ? '同龄人经验分享' : 'Peer experience sharing'
       ]
     },
     {
       id: 'communication-guide',
-      title: locale === 'zh' ? t('common.沟通指导') : 'Communication Guide',
+      title: locale === 'zh' ? '沟通指导' : 'Communication Guide',
       description: locale === 'zh'
-        ? t('common.如何与家长老师医生有')
+        ? '如何与家长、老师、医生有效沟通？提供对话模板和沟通技巧，让你勇敢表达需求。'
         : 'How to effectively communicate with parents, teachers, and doctors? Conversation templates and communication skills to help you express your needs confidently.',
       icon: <MessageCircle className="w-8 h-8" />,
       color: 'bg-green-50 text-green-600',
       href: '/teen-health/communication-guide',
       highlights: [
-        locale === 'zh' ? t('common.家长沟通模板') : 'Parent communication templates',
-        locale === 'zh' ? t('common.老师协作指南') : 'Teacher collaboration guide',
-        locale === 'zh' ? t('common.医生沟通技巧') : 'Doctor communication skills'
+        locale === 'zh' ? '家长沟通模板' : 'Parent communication templates',
+        locale === 'zh' ? '老师协作指南' : 'Teacher collaboration guide',
+        locale === 'zh' ? '医生沟通技巧' : 'Doctor communication skills'
       ]
     }
   ];
@@ -114,17 +114,17 @@ export default async function TeenHealthPage({
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            {locale === 'zh' ? t('common.青少年经期健康专区') : '🌸 Teen Menstrual Health Zone 🌸'}
+            {locale === 'zh' ? '🌸 青少年经期健康专区 🌸' : '🌸 Teen Menstrual Health Zone 🌸'}
           </h1>
           <p className="text-xl text-gray-700 mb-4 max-w-3xl mx-auto">
             {locale === 'zh' 
-              ? t('common.专为1218岁的你打')
+              ? '专为12-18岁的你打造的私密空间'
               : 'A private space designed especially for you, ages 12-18'
             }
           </p>
           <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
             {locale === 'zh'
-              ? t('common.青春期有太多烦恼而每t('common.那几天t('common.更是让人担心疼痛情绪')
+              ? '青春期有太多烦恼，而每个月的"那几天"更是让人担心。疼痛、情绪波动、身体变化……别担心，你不是一个人在战斗。在这里，你会找到科学、贴心、好懂的经期知识和应对方法。无论你在学校、在家，还是感觉焦虑不安，我们都会陪你一起度过。'
               : 'Adolescence brings many worries, and "those days" each month can be especially concerning. Pain, mood swings, body changes... Don\'t worry, you\'re not fighting alone. Here, you\'ll find scientific, caring, and easy-to-understand period knowledge and coping methods. Whether you\'re at school, at home, or feeling anxious, we\'ll be with you through it all.'
             }
           </p>
@@ -140,12 +140,12 @@ export default async function TeenHealthPage({
                 <Star className="w-6 h-6 text-red-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">
-                {locale === 'zh' ? t('common.现在就需要帮助') : '🚨 Need Help Right Now?'}
+                {locale === 'zh' ? '🚨 现在就需要帮助？' : '🚨 Need Help Right Now?'}
               </h2>
             </div>
             <p className="text-gray-700 mb-6">
               {locale === 'zh'
-                ? t('common.如果你现在正在经历疼')
+                ? '如果你现在正在经历疼痛或感到困扰，这里有一些立即可以尝试的方法。'
                 : 'If you\'re experiencing pain or distress right now, here are some immediate methods you can try.'
               }
             </p>
@@ -154,28 +154,28 @@ export default async function TeenHealthPage({
                 href={`/${locale}/teen-health/campus-guide`}
                 className="inline-flex items-center bg-red-600 text-white px-6 py-3 rounded-full font-medium hover:bg-red-700 transition-colors"
               >
-                {locale === 'zh' ? t('common.校园应急指南') : 'Campus Emergency Guide'}
+                {locale === 'zh' ? '校园应急指南' : 'Campus Emergency Guide'}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link 
                 href={`/${locale}/scenario-solutions/emergency-kit`}
                 className="inline-flex items-center bg-white text-red-600 px-6 py-3 rounded-full font-medium border-2 border-red-200 hover:bg-red-50 transition-colors"
               >
-                {locale === 'zh' ? t('common.应急包清单') : 'Emergency Kit List'}
+                {locale === 'zh' ? '应急包清单' : 'Emergency Kit List'}
               </Link>
             </div>
           </div>
           <div className="md:w-1/3">
             <div className="bg-white rounded-xl p-6 shadow-lg">
               <h3 className="font-semibold text-gray-900 mb-4">
-                {locale === 'zh' ? t('common.立即可用的方法') : 'Immediate Methods'}
+                {locale === 'zh' ? '立即可用的方法' : 'Immediate Methods'}
               </h3>
               <div className="space-y-2">
                 {[
-                  locale === 'zh' ? t('common.热敷小腹或腰部') : 'Apply heat to abdomen or lower back',
-                  locale === 'zh' ? t('common.深呼吸放松练习') : 'Deep breathing relaxation',
-                  locale === 'zh' ? t('common.轻柔按摩腹部') : 'Gentle abdominal massage',
-                  locale === 'zh' ? t('common.寻求老师或朋友帮助') : 'Seek help from teachers or friends'
+                  locale === 'zh' ? '热敷小腹或腰部' : 'Apply heat to abdomen or lower back',
+                  locale === 'zh' ? '深呼吸放松练习' : 'Deep breathing relaxation',
+                  locale === 'zh' ? '轻柔按摩腹部' : 'Gentle abdominal massage',
+                  locale === 'zh' ? '寻求老师或朋友帮助' : 'Seek help from teachers or friends'
                 ].map((method, index) => (
                   <div key={index} className="flex items-center text-sm text-gray-600">
                     <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
@@ -192,11 +192,11 @@ export default async function TeenHealthPage({
       <section className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {locale === 'zh' ? t('common.痛经快速自测') : '🎯 Quick Pain Assessment'}
+            {locale === 'zh' ? '🎯 痛经快速自测' : '🎯 Quick Pain Assessment'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             {locale === 'zh'
-              ? t('common.不确定自己的痛经程度')
+              ? '不确定自己的痛经程度？通过简单的问题，快速了解你的情况并获得个性化建议。'
               : 'Not sure about your pain level? Through simple questions, quickly understand your situation and get personalized advice.'
             }
           </p>
@@ -209,7 +209,7 @@ export default async function TeenHealthPage({
         <div className="text-center mt-6">
           <p className="text-sm text-gray-500 mb-4">
             {locale === 'zh'
-              ? t('common.想要更详细的评估')
+              ? '想要更详细的评估？'
               : 'Want a more detailed assessment?'
             }
           </p>
@@ -217,7 +217,7 @@ export default async function TeenHealthPage({
             href={`/${locale}/interactive-tools/period-pain-assessment`}
             className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
           >
-            {locale === 'zh' ? t('common.使用完整版评估工具') : 'Use Full Assessment Tool'}
+            {locale === 'zh' ? '使用完整版评估工具' : 'Use Full Assessment Tool'}
             <ArrowRight className="w-4 h-4 ml-1" />
           </Link>
         </div>
@@ -226,11 +226,11 @@ export default async function TeenHealthPage({
       {/* Main Features Grid */}
       <section>
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
-          {locale === 'zh' ? t('common.我们能帮你什么') : 'How Can We Help You?'}
+          {locale === 'zh' ? '我们能帮你什么？' : 'How Can We Help You?'}
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
           {locale === 'zh'
-            ? t('common.从校园应急到情绪支持')
+            ? '从校园应急到情绪支持，从疼痛管理到沟通技巧，全方位陪伴你的青春期经期健康之旅。'
             : 'From campus emergencies to emotional support, from pain management to communication skills - comprehensive support for your adolescent period health journey.'
           }
         </p>
@@ -266,7 +266,7 @@ export default async function TeenHealthPage({
                 href={`/${locale}${feature.href}`}
                 className="flex items-center text-primary-600 font-medium group-hover:text-primary-700 transition-colors"
               >
-                <span className="mr-2">{locale === 'zh' ? t('common.learnMore') : 'Learn More'}</span>
+                <span className="mr-2">{locale === 'zh' ? '了解更多' : 'Learn More'}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -278,11 +278,11 @@ export default async function TeenHealthPage({
       <section className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {locale === 'zh' ? t('common.专属资源库') : '📚 Exclusive Resource Library'}
+            {locale === 'zh' ? '📚 专属资源库' : '📚 Exclusive Resource Library'}
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             {locale === 'zh'
-              ? t('common.我们为你准备了丰富的')
+              ? '我们为你准备了丰富的学习资源，包括推荐书单、营养食谱、沟通模板等，帮助你成为自己的经期健康专家。'
               : 'We\'ve prepared rich learning resources for you, including recommended reading lists, nutrition recipes, communication templates, and more to help you become your own period health expert.'
             }
           </p>
@@ -293,17 +293,17 @@ export default async function TeenHealthPage({
             <div className="flex items-center mb-4">
               <BookOpen className="w-6 h-6 text-blue-600 mr-2" />
               <h3 className="font-semibold text-gray-900">
-                {locale === 'zh' ? t('common.推荐书单') : 'Reading List'}
+                {locale === 'zh' ? '推荐书单' : 'Reading List'}
               </h3>
             </div>
             <p className="text-sm text-gray-600 mb-4">
-              {locale === 'zh' ? t('common.精选适合青少年的经期') : 'Curated period health books for teens'}
+              {locale === 'zh' ? '精选适合青少年的经期健康书籍' : 'Curated period health books for teens'}
             </p>
             <Link
               href={`/${locale}/articles/recommended-reading-list`}
               className="text-blue-600 text-sm font-medium hover:text-blue-700"
             >
-              {locale === 'zh' ? t('common.查看书单') : 'View List'} →
+              {locale === 'zh' ? '查看书单' : 'View List'} →
             </Link>
           </div>
 
@@ -311,17 +311,17 @@ export default async function TeenHealthPage({
             <div className="flex items-center mb-4">
               <Heart className="w-6 h-6 text-pink-600 mr-2" />
               <h3 className="font-semibold text-gray-900">
-                {locale === 'zh' ? t('common.营养食谱') : 'Nutrition Recipes'}
+                {locale === 'zh' ? '营养食谱' : 'Nutrition Recipes'}
               </h3>
             </div>
             <p className="text-sm text-gray-600 mb-4">
-              {locale === 'zh' ? t('common.经期友好的营养搭配和') : 'Period-friendly nutrition and recipes'}
+              {locale === 'zh' ? '经期友好的营养搭配和食谱' : 'Period-friendly nutrition and recipes'}
             </p>
             <Link 
               href={`/${locale}/articles/period-friendly-recipes`}
               className="text-pink-600 text-sm font-medium hover:text-pink-700"
             >
-              {locale === 'zh' ? t('common.查看食谱') : 'View Recipes'} →
+              {locale === 'zh' ? '查看食谱' : 'View Recipes'} →
             </Link>
           </div>
 
@@ -329,17 +329,17 @@ export default async function TeenHealthPage({
             <div className="flex items-center mb-4">
               <Users className="w-6 h-6 text-purple-600 mr-2" />
               <h3 className="font-semibold text-gray-900">
-                {locale === 'zh' ? t('common.沟通模板') : 'Communication Templates'}
+                {locale === 'zh' ? '沟通模板' : 'Communication Templates'}
               </h3>
             </div>
             <p className="text-sm text-gray-600 mb-4">
-              {locale === 'zh' ? t('common.与家长老师沟通的实用') : 'Practical templates for talking with parents and teachers'}
+              {locale === 'zh' ? '与家长、老师沟通的实用模板' : 'Practical templates for talking with parents and teachers'}
             </p>
             <Link 
               href={`/${locale}/teen-health/communication-guide`}
               className="text-purple-600 text-sm font-medium hover:text-purple-700"
             >
-              {locale === 'zh' ? t('common.获取模板') : 'Get Templates'} →
+              {locale === 'zh' ? '获取模板' : 'Get Templates'} →
             </Link>
           </div>
         </div>
@@ -348,11 +348,11 @@ export default async function TeenHealthPage({
       {/* Call to Action */}
       <section className="text-center bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-2xl p-12">
         <h2 className="text-3xl font-bold mb-4">
-          {locale === 'zh' ? t('common.开始你的健康之旅') : 'Start Your Health Journey'}
+          {locale === 'zh' ? '开始你的健康之旅' : 'Start Your Health Journey'}
         </h2>
         <p className="text-xl mb-8 opacity-90">
           {locale === 'zh'
-            ? t('common.让我们一起学习自信地')
+            ? '让我们一起学习，自信地面对经期，不再让疼痛和烦恼影响你的生活！'
             : 'Let\'s learn together and face your period with confidence, no longer letting pain and worries affect your life!'
           }
         </p>
@@ -360,7 +360,7 @@ export default async function TeenHealthPage({
           href={`/${locale}/teen-health/campus-guide`}
           className="inline-flex items-center bg-white text-pink-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition-colors"
         >
-          {locale === 'zh' ? t('common.开始探索') : 'Start Exploring'}
+          {locale === 'zh' ? '开始探索' : 'Start Exploring'}
           <ArrowRight className="w-6 h-6 ml-2" />
         </Link>
       </section>

@@ -43,7 +43,67 @@ interface ConstitutionTestToolProps {
 }
 
 export default function ConstitutionTestTool({ locale }: ConstitutionTestToolProps) {
-  const { t } = useInteractiveToolTranslations('constitutionTestt('tools.constsele')以上都没有"选项的逻辑
+  const { t } = useInteractiveToolTranslations('constitutionTest');
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string | string[]>>({});
+
+  const {
+    currentSession,
+    currentQuestion,
+    currentQuestionIndex,
+    totalQuestions,
+    progress,
+    isComplete,
+    result,
+    isLoading,
+    error,
+    startTest,
+    answerQuestion,
+    goToPreviousQuestion,
+    goToNextQuestion,
+    completeTest,
+    resetTest
+  } = useConstitutionTest();
+
+  const {
+    notifications,
+    removeNotification,
+    addSuccessNotification,
+    addErrorNotification
+  } = useNotifications();
+
+  const handleStartTest = () => {
+    startTest(locale);
+    setSelectedAnswers({});
+  };
+
+  // 处理单选答案
+  const handleAnswerSelect = (questionId: string, value: string | number) => {
+    const stringValue = String(value);
+    setSelectedAnswers(prev => ({
+      ...prev,
+      [questionId]: stringValue
+    }));
+
+    const answer: ConstitutionAnswer = {
+      questionId,
+      selectedValues: [stringValue],
+      timestamp: new Date().toISOString()
+    };
+
+    answerQuestion(answer);
+  };
+
+  // 处理多选答案
+  const handleMultipleAnswerSelect = (questionId: string, value: string) => {
+    const currentValues = Array.isArray(selectedAnswers[questionId])
+      ? selectedAnswers[questionId] as string[]
+      : selectedAnswers[questionId]
+        ? [selectedAnswers[questionId] as string]
+        : [];
+
+    let newValues: string[];
+
+    // 处理"以上都没有"选项的逻辑
     const isNoneOption = value === 'none';
     const hasNoneSelected = currentValues.includes('none');
 
@@ -106,14 +166,38 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
     const answer = getCurrentAnswer();
 
     // 对于多选题，检查是否有选择（可以为空数组，因为有些多选题不是必填的）
-    if (currentQuestion.type === 'multiplet('tools.returntru')';
+    if (currentQuestion.type === 'multiple') {
+      return true; // 多选题允许不选择任何选项
+    }
+
+    // 对于单选题和滑块题，必须有选择
+    return answer !== undefined && answer !== null && answer !== '';
   };
 
   // 检查是否有痛经症状
   const hasMenstrualPainSymptoms = (answers: ConstitutionAnswer[]): boolean => {
     return answers.some(answer =>
       answer.questionId === 'menstrual_pain_severity' &&
-      answer.selectedValues.some(value => value !== 'no_paint('tools.获取痛经穴位建议')max-w-4xl mx-auto">
+      answer.selectedValues.some(value => value !== 'no_pain')
+    );
+  };
+
+  // 获取痛经穴位建议
+  const getMenstrualPainAcupoints = (constitutionType: ConstitutionType, locale: string): any[] => {
+    const localeData = (menstrualPainAcupoints as any)[locale] || menstrualPainAcupoints.zh;
+    return localeData[constitutionType] || [];
+  };
+
+  // 获取痛经生活方式建议
+  const getMenstrualPainLifestyleTips = (constitutionType: ConstitutionType, locale: string): any[] => {
+    const localeData = (menstrualPainLifestyleTips as any)[locale] || menstrualPainLifestyleTips.zh;
+    return localeData[constitutionType] || [];
+  };
+
+  // 如果没有开始测试，显示介绍页面
+  if (!currentSession) {
+    return (
+      <div className="max-w-4xl mx-auto">
         <NotificationContainer 
           notifications={notifications}
           onRemove={removeNotification}
@@ -128,7 +212,12 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
             {t('title')}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            {t('subtitlet('tools.p')grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {t('subtitle')}
+          </p>
+        </div>
+
+        {/* 测试特点 - 紫色主题卡片 */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-purple-100">
             <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
               <Clock className="w-6 h-6 text-purple-600" />
@@ -170,7 +259,13 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
               {t('features.practical.title')}
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              {t('features.practical.descriptiont('tools.p')bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg shadow-sm">
+              {t('features.practical.description')}
+            </p>
+          </div>
+        </div>
+
+        {/* 测试说明 - 紫色主题 */}
+        <div className="bg-gradient-to-r from-purple-50 to-purple-100 border-l-4 border-purple-500 p-6 mb-8 rounded-r-lg shadow-sm">
           <h3 className="font-semibold text-purple-800 mb-3 flex items-center">
             <AlertCircle className="w-5 h-5 mr-2" />
             {t('instructions.title')}
@@ -190,13 +285,31 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
             </li>
             <li className="flex items-start">
               <span className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-              {t('instructions.item4t('tools.li')text-center">
+              {t('instructions.item4')}
+            </li>
+          </ul>
+        </div>
+
+        {/* 开始按钮 - 紫色渐变 */}
+        <div className="text-center">
           <button
             onClick={handleStartTest}
             className="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-purple-700 text-white text-lg px-10 py-4 rounded-xl font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl shadow-lg"
           >
             <Play className="w-6 h-6 mr-3 flex-shrink-0" />
-            <span>{t('navigation.startTestt('tools.span')max-w-6xl mx-auto">
+            <span>{t('navigation.startTest')}</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // 如果测试完成，显示结果
+  if (result) {
+    const typeInfo = constitutionTypeInfo[locale]?.[result.primaryType] || constitutionTypeInfo.zh[result.primaryType];
+    
+    return (
+      <div className="max-w-6xl mx-auto">
         <NotificationContainer 
           notifications={notifications}
           onRemove={removeNotification}
@@ -211,7 +324,12 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
             {t('result.title')}
           </h1>
           <p className="text-lg text-neutral-600">
-            {t('result.subtitlet('tools.p')bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-xl mb-8">
+            {t('result.subtitle')}
+          </p>
+        </div>
+
+        {/* 体质类型结果 */}
+        <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-xl mb-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-green-700 mb-2">
               {typeInfo.name}
@@ -223,7 +341,12 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
               <span className="text-sm text-neutral-600 mr-2">
                 {t('result.match')}
               </span>
-              <span className="font-semibold text-green-600t('tools.resultconf')grid md:grid-cols-3 gap-6">
+              <span className="font-semibold text-green-600">{result.confidence}%</span>
+            </div>
+          </div>
+
+          {/* 体质特征 */}
+          <div className="grid md:grid-cols-3 gap-6">
             <div>
               <h3 className="font-semibold text-neutral-800 mb-3 flex items-center">
                 <User className="w-5 h-5 mr-2 text-blue-600" />
@@ -253,7 +376,15 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
               </h3>
               <ul className="space-y-1">
                 {typeInfo.menstrualFeatures.map((feature, index) => (
-                  <li key={index} className="text-sm text-neutral-700t('tools.featureli')grid lg:grid-cols-2 gap-8 mb-8">
+                  <li key={index} className="text-sm text-neutral-700">• {feature}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* 个性化建议 */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-8">
           {/* 穴位建议 */}
           <div className="card">
             <h3 className="text-xl font-semibold text-neutral-800 mb-4 flex items-center">
@@ -296,7 +427,14 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                 {result.recommendations.acupoints.frequency}
               </p>
               <p className="text-sm text-neutral-600">
-                <strong>{t('recommendations.acupoints.durationt('tools.strong')card">
+                <strong>{t('recommendations.acupoints.duration')}</strong>
+                {result.recommendations.acupoints.duration}
+              </p>
+            </div>
+          </div>
+
+          {/* 饮食建议 */}
+          <div className="card">
             <h3 className="text-xl font-semibold text-neutral-800 mb-4 flex items-center">
               <Utensils className="w-6 h-6 mr-2 text-orange-600" />
               {t('recommendations.dietary.title')}
@@ -335,7 +473,16 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                 </h4>
                 <ul className="space-y-1">
                   {result.recommendations.diet.principles.map((principle, index) => (
-                    <li key={index} className="text-sm text-neutral-600t('tools.principlel')bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-xl mb-8">
+                    <li key={index} className="text-sm text-neutral-600">• {principle}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 场景化生活建议 */}
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-xl mb-8">
           <h3 className="text-2xl font-semibold text-emerald-800 mb-6 flex items-center">
             <MapPin className="w-7 h-7 mr-3 text-green-600" />
             {t('recommendations.lifestyle.title')}
@@ -368,13 +515,22 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
           <div className="mt-6 p-4 bg-green-100 rounded-lg">
             <p className="text-sm text-green-800">
               <strong>{t('recommendations.lifestyle.reminder')}</strong>
-              {t('recommendations.lifestyle.reminderTextt('tools.p')bg-gradient-to-br from-pink-50 to-purple-50 p-8 rounded-xl mb-8">
+              {t('recommendations.lifestyle.reminderText')}
+            </p>
+          </div>
+        </div>
+
+        {/* 痛经专项建议 */}
+        {hasMenstrualPainSymptoms(currentSession?.answers || []) && (
+          <div className="bg-gradient-to-br from-pink-50 to-purple-50 p-8 rounded-xl mb-8">
             <h3 className="text-2xl font-semibold text-purple-800 mb-6 flex items-center">
               <Heart className="w-7 h-7 mr-3 text-pink-600" />
               {t('recommendations.menstrualPain.title')}
             </h3>
 
-            <div className="grid lg:grid-cols-2 gap-6t('tools.基于体质的痛经建议')bg-white p-6 rounded-lg shadow-sm">
+            <div className="grid lg:grid-cols-2 gap-6">
+              {/* 基于体质的痛经建议 */}
+              <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h4 className="font-semibold text-purple-700 mb-4 flex items-center">
                   <MapPin className="w-5 h-5 mr-2" />
                   {t('recommendations.menstrualPain.acupointTherapy')}
@@ -382,7 +538,13 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                 {getMenstrualPainAcupoints(result.primaryType, locale).map((point: any, index: number) => (
                   <div key={index} className="mb-3 p-3 bg-purple-50 rounded-lg">
                     <h5 className="font-medium text-purple-800">{point.name}</h5>
-                    <p className="text-sm text-purple-700t('tools.pointdescr')bg-white p-6 rounded-lg shadow-sm">
+                    <p className="text-sm text-purple-700">{point.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* 生活方式建议 */}
+              <div className="bg-white p-6 rounded-lg shadow-sm">
                 <h4 className="font-semibold text-purple-700 mb-4 flex items-center">
                   <Lightbulb className="w-5 h-5 mr-2" />
                   {t('recommendations.menstrualPain.lifestyleAdjustments')}
@@ -390,7 +552,19 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                 <ul className="space-y-2">
                   {getMenstrualPainLifestyleTips(result.primaryType, locale).map((tip: any, index: number) => (
                     <li key={index} className="text-sm text-purple-700 flex items-start">
-                      <span className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0t('tools.span')bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-xl mb-8">
+                      <span className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      {tip}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 个性化应急包推荐 */}
+        {hasMenstrualPainSymptoms(currentSession?.answers || []) && (
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-xl mb-8">
             <h3 className="text-2xl font-semibold text-orange-800 mb-6 flex items-center">
               <Package className="w-7 h-7 mr-3 text-orange-600" />
               {t('emergencyKit.title')}
@@ -441,7 +615,14 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
             <div className="mt-6 p-4 bg-orange-100 rounded-lg">
               <p className="text-sm text-orange-800">
                 <strong>{t('emergencyKit.packingTips')}</strong>
-                {t('emergencyKit.packingAdvicet('tools.p')bg-white p-8 rounded-xl shadow-sm mb-8">
+                {t('emergencyKit.packingAdvice')}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* 相关文章推荐 */}
+        <div className="bg-white p-8 rounded-xl shadow-sm mb-8">
           <h3 className="text-2xl font-semibold text-neutral-800 mb-6 flex items-center">
             <BookOpen className="w-7 h-7 mr-3 text-blue-600" />
             {t('articles.title')}
@@ -469,7 +650,16 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                   className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
                 >
                   {t('articles.readMore')}
-                  <ArrowRight className="w-4 h-4 ml-1t('tools.a')bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl mb-8">
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 社交沟通模板 */}
+        {hasMenstrualPainSymptoms(currentSession?.answers || []) && (
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl mb-8">
             <h3 className="text-2xl font-semibold text-indigo-800 mb-6 flex items-center">
               <MessageCircle className="w-7 h-7 mr-3 text-blue-600" />
               {t('communication.title')}
@@ -504,7 +694,15 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                         </div>
 
                         <p className="text-sm text-indigo-600 mb-3 leading-relaxed">
-                          "{template.content}t('tools.p')flex items-center text-xs text-indigo-600 hover:text-indigo-800 transition-colors"
+                          "{template.content}"
+                        </p>
+
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(template.content);
+                            // 可以添加复制成功的提示
+                          }}
+                          className="flex items-center text-xs text-indigo-600 hover:text-indigo-800 transition-colors"
                         >
                           <Copy className="w-3 h-3 mr-1" />
                           {t('communication.copyText')}
@@ -519,12 +717,28 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
             <div className="mt-6 p-4 bg-blue-100 rounded-lg">
               <p className="text-sm text-blue-800">
                 <strong>{t('communication.usageTips')}</strong>
-                {t('communication.usageAdvicet('tools.p')text-center">
+                {t('communication.usageAdvice')}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* 重新测试按钮 */}
+        <div className="text-center">
           <button
             onClick={resetTest}
             className="btn-secondary"
           >
-            {t('navigation.retakeTestt('tools.button')max-w-4xl mx-auto">
+            {t('navigation.retakeTest')}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // 显示问题
+  return (
+    <div className="max-w-4xl mx-auto">
       <NotificationContainer 
         notifications={notifications}
         onRemove={removeNotification}
@@ -542,7 +756,7 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
             }
           </span>
           <span className="text-sm font-medium text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
-            {Math.round(progress)}% {locale === 'zh' ? t('common.finish') : 'Complete'}
+            {Math.round(progress)}% {locale === 'zh' ? '完成' : 'Complete'}
           </span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
@@ -554,12 +768,21 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
       </div>
 
       {currentQuestion && (
-        <div className="bg-white rounded-xl shadow-lg border border-purple-100 p-8 animate-fade-int('tools.问题标题紫色主题')mb-8">
+        <div className="bg-white rounded-xl shadow-lg border border-purple-100 p-8 animate-fade-in">
+          {/* 问题标题 - 紫色主题 */}
+          <div className="mb-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-3 leading-tight">
               {currentQuestion.title}
             </h2>
             {currentQuestion.description && (
-              <p className="text-gray-600 text-lg leading-relaxedt('tools.currentQue')mb-8">
+              <p className="text-gray-600 text-lg leading-relaxed">
+                {currentQuestion.description}
+              </p>
+            )}
+          </div>
+
+          {/* 选项 */}
+          <div className="mb-8">
             {currentQuestion.type === 'scale' ? (
               // 滑块类型问题
               <div className="space-y-6">
@@ -577,13 +800,26 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                     <span className="text-xs sm:text-sm">{t('painScale.levels.mild')}</span>
                     <span className="text-xs sm:text-sm">{t('painScale.levels.moderate')}</span>
                     <span className="text-xs sm:text-sm">{t('painScale.levels.severe')}</span>
-                    <span className="text-xs sm:text-sm">{t('painScale.levels.extremet('tools.span')text-center">
+                    <span className="text-xs sm:text-sm">{t('painScale.levels.extreme')}</span>
+                  </div>
+                </div>
+
+                {/* 当前选择的值显示 - 增强紫色主题 */}
+                <div className="text-center">
                   <div className="inline-flex items-center bg-gradient-to-r from-purple-100 via-purple-50 to-pink-100 px-8 py-4 rounded-2xl shadow-lg border border-purple-200">
                     <Heart className="w-6 h-6 text-purple-600 mr-3" />
                     <span className="text-xl font-bold text-purple-800">
                       {t('painScale.title')}
                       <span className="text-3xl font-extrabold text-purple-600 mx-2">{selectedAnswers[currentQuestion.id] || 0}</span>
-                      <span className="text-base font-medium text-purple-700 ml-2t('tools.currentQue')bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl overflow-hidden border border-purple-200 shadow-sm">
+                      <span className="text-base font-medium text-purple-700 ml-2">
+                        ({currentQuestion.options.find(opt => opt.value == (selectedAnswers[currentQuestion.id] || 0))?.label})
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* 疼痛程度说明 - 紫色主题 */}
+                <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-6 rounded-xl overflow-hidden border border-purple-200 shadow-sm">
                   <h4 className="font-semibold text-purple-800 mb-4 flex items-center">
                     <BookOpen className="w-5 h-5 mr-2" />
                     {t('painScale.reference')}
@@ -608,7 +844,9 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                   </div>
                 </div>
               </div>
-            ) : currentQuestion.type === 'multiplet('tools.多选问题紫色主题')space-y-4">
+            ) : currentQuestion.type === 'multiple' ? (
+              // 多选问题 - 紫色主题
+              <div className="space-y-4">
                 {currentQuestion.options.map((option) => {
                   const currentValues = Array.isArray(selectedAnswers[currentQuestion.id])
                     ? selectedAnswers[currentQuestion.id] as string[]
@@ -642,7 +880,15 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                             <CheckCircle className="w-3 h-3 text-white" />
                           )}
                         </div>
-                        <span className="text-gray-800 font-mediumt('tools.optionlabe')space-y-4">
+                        <span className="text-gray-800 font-medium">{option.label}</span>
+                      </div>
+                    </label>
+                  );
+                })}
+              </div>
+            ) : (
+              // 普通单选问题 - 紫色主题
+              <div className="space-y-4">
                 {currentQuestion.options.map((option) => (
                   <label
                     key={option.value}
@@ -670,7 +916,16 @@ export default function ConstitutionTestTool({ locale }: ConstitutionTestToolPro
                           <div className="w-2 h-2 bg-white rounded-full"></div>
                         )}
                       </div>
-                      <span className="text-gray-800 font-mediumt('tools.optionlabe')flex justify-between items-center pt-6">
+                      <span className="text-gray-800 font-medium">{option.label}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 导航按钮 - 紫色主题 */}
+          <div className="flex justify-between items-center pt-6">
             <button
               onClick={handlePrevious}
               disabled={currentQuestionIndex === 0}

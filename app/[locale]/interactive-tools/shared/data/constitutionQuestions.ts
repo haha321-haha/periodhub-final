@@ -7,31 +7,31 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'basic',
       weight: 2,
-      title: t('tools.您平时的精力状态如何'),
-      description: t('tools.选择最符合您日常状态'),
+      title: '您平时的精力状态如何？',
+      description: '选择最符合您日常状态的选项',
       validation: { required: true },
       options: [
         { 
           value: 'energetic', 
-          label: t('tools.精力充沛很少感到疲劳'), 
+          label: '精力充沛，很少感到疲劳', 
           weight: 3,
           constitutionType: 'balanced'
         },
         { 
           value: 'moderate', 
-          label: t('tools.精力一般偶尔感到疲劳'), 
+          label: '精力一般，偶尔感到疲劳', 
           weight: 2,
           constitutionType: 'qi_deficiency'
         },
         { 
           value: 'tired', 
-          label: t('tools.经常感到疲劳精力不足'), 
+          label: '经常感到疲劳，精力不足', 
           weight: 3,
           constitutionType: 'qi_deficiency'
         },
         { 
           value: 'exhausted', 
-          label: t('tools.总是感到疲惫不堪'), 
+          label: '总是感到疲惫不堪', 
           weight: 4,
           constitutionType: 'yang_deficiency'
         }
@@ -42,31 +42,31 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'temperature',
       weight: 2,
-      title: t('tools.您对寒冷的耐受性如何'),
-      description: t('tools.比较您与同龄人的耐寒'),
+      title: '您对寒冷的耐受性如何？',
+      description: '比较您与同龄人的耐寒能力',
       validation: { required: true },
       options: [
         { 
           value: 'very_tolerant', 
-          label: t('tools.很耐寒手脚总是温暖'), 
+          label: '很耐寒，手脚总是温暖', 
           weight: 3,
           constitutionType: 'balanced'
         },
         { 
           value: 'normal', 
-          label: t('tools.一般与大多数人差不多'), 
+          label: '一般，与大多数人差不多', 
           weight: 2,
           constitutionType: 'balanced'
         },
         { 
           value: 'sensitive', 
-          label: t('tools.比较怕冷手脚容易凉'), 
+          label: '比较怕冷，手脚容易凉', 
           weight: 3,
           constitutionType: 'yang_deficiency'
         },
         { 
           value: 'very_sensitive', 
-          label: t('tools.非常怕冷即使夏天也手'), 
+          label: '非常怕冷，即使夏天也手脚冰凉', 
           weight: 4,
           constitutionType: 'yang_deficiency'
         }
@@ -77,31 +77,31 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'digestion',
       weight: 2,
-      title: t('tools.您的消化功能如何'),
-      description: t('tools.选择最符合您消化状况'),
+      title: '您的消化功能如何？',
+      description: '选择最符合您消化状况的描述',
       validation: { required: true },
       options: [
         { 
           value: 'excellent', 
-          label: t('tools.消化很好食欲正常很少'), 
+          label: '消化很好，食欲正常，很少腹胀', 
           weight: 3,
           constitutionType: 'balanced'
         },
         { 
           value: 'good', 
-          label: t('tools.消化一般偶尔腹胀或消'), 
+          label: '消化一般，偶尔腹胀或消化不良', 
           weight: 2,
           constitutionType: 'qi_deficiency'
         },
         { 
           value: 'poor', 
-          label: t('tools.经常腹胀消化不良食欲'), 
+          label: '经常腹胀、消化不良，食欲不振', 
           weight: 3,
           constitutionType: 'phlegm_dampness'
         },
         { 
           value: 'very_poor', 
-          label: t('tools.消化很差经常腹泻或便'), 
+          label: '消化很差，经常腹泻或便秘', 
           weight: 4,
           constitutionType: 'phlegm_dampness'
         }
@@ -112,31 +112,31 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'sleep',
       weight: 2,
-      title: t('tools.您的睡眠质量如何'),
-      description: t('tools.评估您的整体睡眠状况'),
+      title: '您的睡眠质量如何？',
+      description: '评估您的整体睡眠状况',
       validation: { required: true },
       options: [
         { 
           value: 'excellent', 
-          label: t('tools.睡眠很好容易入睡睡得'), 
+          label: '睡眠很好，容易入睡，睡得深沉', 
           weight: 3,
           constitutionType: 'balanced'
         },
         { 
           value: 'light_sleep', 
-          label: t('tools.睡眠较浅容易醒多梦'), 
+          label: '睡眠较浅，容易醒，多梦', 
           weight: 3,
           constitutionType: 'yin_deficiency'
         },
         { 
           value: 'insomnia', 
-          label: t('tools.经常失眠难以入睡'), 
+          label: '经常失眠，难以入睡', 
           weight: 4,
           constitutionType: 'qi_stagnation'
         },
         { 
           value: 'drowsy', 
-          label: t('tools.总是感到困倦睡不够'), 
+          label: '总是感到困倦，睡不够', 
           weight: 3,
           constitutionType: 'phlegm_dampness'
         }
@@ -147,31 +147,31 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'emotion',
       weight: 2,
-      title: t('tools.您的情绪状态通常如何'),
-      description: t('tools.选择最符合您情绪特点'),
+      title: '您的情绪状态通常如何？',
+      description: '选择最符合您情绪特点的描述',
       validation: { required: true },
       options: [
         { 
           value: 'stable', 
-          label: t('tools.情绪稳定心情愉快'), 
+          label: '情绪稳定，心情愉快', 
           weight: 3,
           constitutionType: 'balanced'
         },
         { 
           value: 'anxious', 
-          label: t('tools.容易焦虑心情烦躁'), 
+          label: '容易焦虑，心情烦躁', 
           weight: 3,
           constitutionType: 'qi_stagnation'
         },
         { 
           value: 'depressed', 
-          label: t('tools.经常感到抑郁情绪低落'), 
+          label: '经常感到抑郁，情绪低落', 
           weight: 4,
           constitutionType: 'qi_stagnation'
         },
         { 
           value: 'irritable', 
-          label: t('tools.容易发脾气情绪波动大'), 
+          label: '容易发脾气，情绪波动大', 
           weight: 3,
           constitutionType: 'damp_heat'
         }
@@ -182,37 +182,37 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'menstruation',
       weight: 3,
-      title: t('tools.您的月经特点是'),
-      description: t('tools.选择最符合您月经情况'),
+      title: '您的月经特点是？',
+      description: '选择最符合您月经情况的描述',
       validation: { required: true },
       options: [
         { 
           value: 'regular_normal', 
-          label: t('tools.周期规律量适中颜色正'), 
+          label: '周期规律，量适中，颜色正常', 
           weight: 3,
           constitutionType: 'balanced'
         },
         { 
           value: 'light_delayed', 
-          label: t('tools.量少周期延后颜色淡'), 
+          label: '量少，周期延后，颜色淡', 
           weight: 3,
           constitutionType: 'qi_deficiency'
         },
         { 
           value: 'heavy_early', 
-          label: t('tools.量多周期提前颜色深红'), 
+          label: '量多，周期提前，颜色深红', 
           weight: 3,
           constitutionType: 'damp_heat'
         },
         { 
           value: 'clots_dark', 
-          label: t('tools.有血块颜色暗红或紫黑'), 
+          label: '有血块，颜色暗红或紫黑', 
           weight: 4,
           constitutionType: 'blood_stasis'
         },
         { 
           value: 'irregular', 
-          label: t('tools.周期不规律时多时少'), 
+          label: '周期不规律，时多时少', 
           weight: 3,
           constitutionType: 'qi_stagnation'
         }
@@ -223,31 +223,31 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'physical',
       weight: 2,
-      title: t('tools.您的体型特点是'),
-      description: t('tools.选择最符合您体型的描'),
+      title: '您的体型特点是？',
+      description: '选择最符合您体型的描述',
       validation: { required: true },
       options: [
         { 
           value: 'normal', 
-          label: t('tools.体型匀称不胖不瘦'), 
+          label: '体型匀称，不胖不瘦', 
           weight: 3,
           constitutionType: 'balanced'
         },
         { 
           value: 'thin', 
-          label: t('tools.偏瘦不容易长胖'), 
+          label: '偏瘦，不容易长胖', 
           weight: 3,
           constitutionType: 'yin_deficiency'
         },
         { 
           value: 'overweight', 
-          label: t('tools.偏胖容易水肿'), 
+          label: '偏胖，容易水肿', 
           weight: 3,
           constitutionType: 'phlegm_dampness'
         },
         { 
           value: 'muscular', 
-          label: t('tools.体格健壮肌肉结实'), 
+          label: '体格健壮，肌肉结实', 
           weight: 2,
           constitutionType: 'balanced'
         }
@@ -258,42 +258,48 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'appearance',
       weight: 1,
-      title: t('tools.您的皮肤状态如何'),
-      description: t('tools.选择最符合您皮肤特点'),
+      title: '您的皮肤状态如何？',
+      description: '选择最符合您皮肤特点的描述',
       validation: { required: true },
       options: [
         {
           value: 'healthy',
-          label: t('tools.皮肤润泽有光泽很少长'),
+          label: '皮肤润泽，有光泽，很少长痘',
           weight: 3,
           constitutionType: 'balanced'
         },
         {
           value: 'dry',
-          label: t('tools.皮肤干燥缺乏光泽'),
+          label: '皮肤干燥，缺乏光泽',
           weight: 3,
           constitutionType: 'yin_deficiency'
         },
         {
           value: 'oily_acne',
-          label: t('tools.皮肤油腻容易长痘'),
+          label: '皮肤油腻，容易长痘',
           weight: 3,
           constitutionType: 'damp_heat'
         },
         {
           value: 'dull',
-          label: t('tools.皮肤暗沉色斑较多'),
+          label: '皮肤暗沉，色斑较多',
           weight: 3,
-          constitutionType: 'blood_stasist('tools.新增痛经相关问题')menstrual_pain_severity',
+          constitutionType: 'blood_stasis'
+        }
+      ]
+    },
+    // 新增痛经相关问题
+    {
+      id: 'menstrual_pain_severity',
       type: 'scale',
       category: 'menstrual',
       weight: 3,
-      title: t('tools.您经期疼痛的程度如何'),
-      description: t('tools.请在滑块上选择您的疼'),
+      title: '您经期疼痛的程度如何？',
+      description: '请在滑块上选择您的疼痛程度（0=无痛，10=剧烈疼痛）',
       validation: { required: true, min: 0, max: 10 },
       options: Array.from({ length: 11 }, (_, i) => ({
         value: i,
-        label: i === 0 ? t('assessment.noPain') : i <= 3 ? t('tools.轻微') : i <= 6 ? t('tools.中等') : i <= 8 ? t('tools.严重') : t('tools.剧烈'),
+        label: i === 0 ? '无痛' : i <= 3 ? '轻微' : i <= 6 ? '中等' : i <= 8 ? '严重' : '剧烈',
         weight: i <= 2 ? 3 : i <= 4 ? 2 : i <= 7 ? 3 : 4,
         constitutionType: i <= 2 ? 'balanced' : i <= 4 ? 'qi_deficiency' : i <= 7 ? 'blood_stasis' : 'qi_stagnation'
       }))
@@ -303,31 +309,31 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'single',
       category: 'menstrual',
       weight: 2,
-      title: t('tools.您的经期疼痛性质主要'),
-      description: t('tools.选择最符合您疼痛感受'),
+      title: '您的经期疼痛性质主要是？',
+      description: '选择最符合您疼痛感受的描述',
       validation: { required: true },
       options: [
         {
           value: 'cramping',
-          label: t('tools.绞痛一阵一阵的收缩感'),
+          label: '绞痛，一阵一阵的收缩感',
           weight: 3,
           constitutionType: 'qi_stagnation'
         },
         {
           value: 'dull_ache',
-          label: t('tools.钝痛持续的隐隐作痛'),
+          label: '钝痛，持续的隐隐作痛',
           weight: 3,
           constitutionType: 'qi_deficiency'
         },
         {
           value: 'sharp_pain',
-          label: t('tools.刺痛像针扎一样'),
+          label: '刺痛，像针扎一样',
           weight: 4,
           constitutionType: 'blood_stasis'
         },
         {
           value: 'cold_pain',
-          label: t('tools.冷痛遇冷加重喜温喜按'),
+          label: '冷痛，遇冷加重，喜温喜按',
           weight: 3,
           constitutionType: 'yang_deficiency'
         }
@@ -338,55 +344,55 @@ export const constitutionQuestions: Record<string, ConstitutionQuestion[]> = {
       type: 'multiple',
       category: 'menstrual',
       weight: 2,
-      title: t('tools.您在经期还有哪些伴随'),
-      description: t('tools.可以选择多个症状'),
+      title: '您在经期还有哪些伴随症状？',
+      description: '可以选择多个症状',
       validation: { required: false },
       options: [
         {
           value: 'bloating',
-          label: t('tools.腹胀'),
+          label: '腹胀',
           weight: 2,
           constitutionType: 'phlegm_dampness'
         },
         {
           value: 'nausea',
-          label: t('tools.恶心呕吐'),
+          label: '恶心呕吐',
           weight: 3,
           constitutionType: 'damp_heat'
         },
         {
           value: 'headache',
-          label: t('tools.头痛'),
+          label: '头痛',
           weight: 2,
           constitutionType: 'qi_stagnation'
         },
         {
           value: 'mood_swings',
-          label: t('tools.情绪波动大'),
+          label: '情绪波动大',
           weight: 3,
           constitutionType: 'qi_stagnation'
         },
         {
           value: 'fatigue',
-          label: t('tools.极度疲劳'),
+          label: '极度疲劳',
           weight: 2,
           constitutionType: 'qi_deficiency'
         },
         {
           value: 'back_pain',
-          label: t('tools.腰痛'),
+          label: '腰痛',
           weight: 2,
           constitutionType: 'yang_deficiency'
         },
         {
           value: 'breast_tenderness',
-          label: t('tools.乳房胀痛'),
+          label: '乳房胀痛',
           weight: 2,
           constitutionType: 'qi_stagnation'
         },
         {
           value: 'none',
-          label: t('tools.以上都没有'),
+          label: '以上都没有',
           weight: 1,
           constitutionType: 'balanced'
         }

@@ -68,7 +68,74 @@ const PainEntryForm: React.FC<PainEntryFormProps> = ({
     }
   };
 
-  const handleMultiSelect = (field: 'location' | 'symptoms' | 'remediest('tools.valuestri')other',
+  const handleMultiSelect = (field: 'location' | 'symptoms' | 'remedies', value: string) => {
+    const currentValues = formData[field] as string[];
+    const newValues = currentValues.includes(value)
+      ? currentValues.filter(v => v !== value)
+      : [...currentValues, value];
+    
+    handleInputChange(field, newValues);
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    // Date validation
+    if (!formData.date) {
+      newErrors.date = errorMessages.required;
+    } else {
+      const selectedDate = new Date(formData.date);
+      const today = new Date();
+      // 设置今天的时间为23:59:59，允许选择今天
+      today.setHours(23, 59, 59, 999);
+      if (selectedDate > today) {
+        newErrors.date = errorMessages.futureDate;
+      }
+    }
+
+    // Pain level validation
+    if (formData.painLevel < 1 || formData.painLevel > 10) {
+      newErrors.painLevel = errorMessages.painLevelRange;
+    }
+
+    // Duration validation
+    if (formData.duration !== undefined && (formData.duration < 0 || formData.duration > 1440)) {
+      newErrors.duration = errorMessages.durationRange;
+    }
+
+    // Effectiveness validation
+    if (formData.effectiveness !== undefined && (formData.effectiveness < 1 || formData.effectiveness > 5)) {
+      newErrors.effectiveness = errorMessages.effectivenessRange;
+    }
+
+    // Notes validation
+    if (formData.notes && formData.notes.length > 500) {
+      newErrors.notes = errorMessages.notesLength;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent, overwrite = false) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    try {
+      const submitData = overwrite ? { ...formData, overwrite: true } : formData;
+      const result = await onSubmit(submitData);
+
+      if (result.success) {
+        // Reset form on success
+        setFormData({
+          date: formatDateShort(new Date()),
+          painLevel: 1,
+          duration: undefined,
+          location: [],
+          menstrualStatus: 'other',
           symptoms: [],
           remedies: [],
           effectiveness: undefined,
@@ -137,11 +204,11 @@ const PainEntryForm: React.FC<PainEntryFormProps> = ({
               </div>
               <div className="ml-3 flex-1">
                 <h3 className="text-sm font-medium text-yellow-800">
-                  {locale === 'zh' ? t('tools.该日期已有记录') : 'Entry exists for this date'}
+                  {locale === 'zh' ? '该日期已有记录' : 'Entry exists for this date'}
                 </h3>
                 <p className="mt-1 text-sm text-yellow-700">
                   {locale === 'zh'
-                    ? t('tools.该日期已经有疼痛记录')
+                    ? '该日期已经有疼痛记录了。您想要覆盖现有记录吗？'
                     : 'There is already a pain entry for this date. Do you want to overwrite the existing entry?'
                   }
                 </p>
@@ -151,14 +218,14 @@ const PainEntryForm: React.FC<PainEntryFormProps> = ({
                     onClick={handleOverwriteConfirm}
                     className="bg-yellow-600 text-white px-3 py-1 rounded text-sm hover:bg-yellow-700 transition-colors"
                   >
-                    {locale === 'zh' ? t('tools.覆盖') : 'Overwrite'}
+                    {locale === 'zh' ? '覆盖' : 'Overwrite'}
                   </button>
                   <button
                     type="button"
                     onClick={handleOverwriteCancel}
                     className="bg-gray-300 text-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-400 transition-colors"
                   >
-                    {locale === 'zh' ? t('common.cancel') : 'Cancel'}
+                    {locale === 'zh' ? '取消' : 'Cancel'}
                   </button>
                 </div>
               </div>
@@ -192,7 +259,9 @@ const PainEntryForm: React.FC<PainEntryFormProps> = ({
           {currentPainLevel && (
             <div className="text-center">
               <div className="inline-flex items-center bg-gradient-to-r from-pink-100 via-pink-50 to-purple-100 px-6 py-3 rounded-xl shadow-lg border border-pink-200">
-                <span className="text-lg font-bold text-pink-800t('tools.疼痛程度')text-2xl font-extrabold text-pink-600 mx-2">{formData.painLevel}</span>
+                <span className="text-lg font-bold text-pink-800">
+                  疼痛程度：
+                  <span className="text-2xl font-extrabold text-pink-600 mx-2">{formData.painLevel}</span>
                   <span className="text-base font-medium text-pink-700">
                     ({currentPainLevel.label})
                   </span>
@@ -273,7 +342,15 @@ const PainEntryForm: React.FC<PainEntryFormProps> = ({
               }`}
             >
               <span className="text-lg mr-2">{status.icon}</span>
-              <span className="text-smt('tools.statuslabe')flex items-center text-sm font-medium text-gray-700 mb-3">
+              <span className="text-sm">{status.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Symptoms - 移动端优化 */}
+      <div>
+        <label className="flex items-center text-sm font-medium text-gray-700 mb-3">
           <Activity className="w-4 h-4 mr-2" />
           {t('form.symptoms')} ({t('form.optional')})
         </label>
@@ -289,7 +366,16 @@ const PainEntryForm: React.FC<PainEntryFormProps> = ({
                   : 'border-gray-300 hover:border-gray-400 active:bg-gray-50'
               }`}
             >
-              <span className="text-base mr-2t('tools.symptomico')flex items-center text-sm font-medium text-gray-700 mb-3">
+              <span className="text-base mr-2">{symptom.icon}</span>
+              <span>{symptom.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Remedies - 移动端优化 */}
+      <div>
+        <label className="flex items-center text-sm font-medium text-gray-700 mb-3">
           <Heart className="w-4 h-4 mr-2" />
           {t('form.remedies')} ({t('form.optional')})
         </label>
@@ -362,7 +448,14 @@ const PainEntryForm: React.FC<PainEntryFormProps> = ({
           {errors.notes && (
             <p className="text-sm text-red-600">{errors.notes}</p>
           )}
-          <p className="text-xs text-gray-500 ml-autot('tools.formDatano')flex flex-col sm:flex-row gap-3 sm:space-x-3 pt-4">
+          <p className="text-xs text-gray-500 ml-auto">
+            {formData.notes?.length || 0}/500
+          </p>
+        </div>
+      </div>
+
+      {/* Submit and Cancel Buttons - 移动端优化 */}
+      <div className="flex flex-col sm:flex-row gap-3 sm:space-x-3 pt-4">
         <button
           type="submit"
           disabled={isLoading}

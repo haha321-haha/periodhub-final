@@ -23,7 +23,15 @@ export interface ConstitutionOption {
 }
 
 export type ConstitutionType = 
-  | 'qi_deficiencyt('tools.气虚质')yang_deficiencyt('tools.阳虚质')yin_deficiencyt('tools.阴虚质')phlegm_dampnesst('tools.痰湿质')damp_heatt('tools.湿热质')blood_stasist('tools.血瘀质')qi_stagnationt('tools.气郁质')special_diathesist('tools.特禀质')balanced';          // 平和质
+  | 'qi_deficiency'      // 气虚质
+  | 'yang_deficiency'    // 阳虚质
+  | 'yin_deficiency'     // 阴虚质
+  | 'phlegm_dampness'    // 痰湿质
+  | 'damp_heat'          // 湿热质
+  | 'blood_stasis'       // 血瘀质
+  | 'qi_stagnation'      // 气郁质
+  | 'special_diathesis'  // 特禀质
+  | 'balanced';          // 平和质
 
 export interface ConstitutionAnswer {
   questionId: string;

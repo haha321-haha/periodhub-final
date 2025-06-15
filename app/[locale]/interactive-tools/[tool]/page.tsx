@@ -55,17 +55,18 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
     {
       slug: 'symptom-assessment',
       frontmatter: {
-        title: locale === 'zh' ? t('tools.症状评估工具') : 'Symptom Assessment Tool',
+        title: locale === 'zh' ? '症状评估工具' : 'Symptom Assessment Tool',
         description: locale === 'zh'
-          ? t('tools.通过专业问卷快速识别')
+          ? '通过专业问卷快速识别疼痛类型，为您提供精准的个性化建议。'
           : 'Quickly identify pain types through professional questionnaires and receive precise personalized recommendations.',
-        category: locale === 'zh' ? t('tools.评估工具') : 'Assessment',
-        difficulty: locale === 'zh' ? t('tools.简单') : 'Easy',
-        estimatedTime: locale === 'zh' ? t('tools.510分钟') : '5-10 minutes',
+        category: locale === 'zh' ? '评估工具' : 'Assessment',
+        difficulty: locale === 'zh' ? '简单' : 'Easy',
+        estimatedTime: locale === 'zh' ? '5-10分钟' : '5-10 minutes',
       },
       content: locale === 'zh' ? `
         <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
-          <h3 class="text-lg font-semibold text-blue-800 mb-2t('tools.开始评估前h3')text-blue-700">请确保您在一个安静、私密的环境中，可以专心回答问题。这个评估将帮助您更好地了解自己的症状模式。</p>
+          <h3 class="text-lg font-semibold text-blue-800 mb-2">开始评估前</h3>
+          <p class="text-blue-700">请确保您在一个安静、私密的环境中，可以专心回答问题。这个评估将帮助您更好地了解自己的症状模式。</p>
         </div>
         
         <h2>症状评估问卷</h2>
@@ -73,35 +74,90 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
         
         <div class="space-y-6 mt-6">
           <div class="bg-white p-6 rounded-lg shadow-sm border">
-            <h3 class="font-semibold mb-4t('tools.1疼痛强度h3')text-gray-600 mb-3">请评估您经期疼痛的平均强度（1-10分，10分为最痛）：</p>
+            <h3 class="font-semibold mb-4">1. 疼痛强度</h3>
+            <p class="text-gray-600 mb-3">请评估您经期疼痛的平均强度（1-10分，10分为最痛）：</p>
             <div class="grid grid-cols-5 gap-2">
-              <button class="p-3 border rounded hover:bg-primary-50 transition-colorst('tools.12分brspan')text-xs text-gray-500t('tools.轻微spanbutt')p-3 border rounded hover:bg-primary-50 transition-colorst('tools.34分brspan')text-xs text-gray-500t('tools.轻度spanbutt')p-3 border rounded hover:bg-primary-50 transition-colorst('tools.56分brspan')text-xs text-gray-500t('tools.中度spanbutt')p-3 border rounded hover:bg-primary-50 transition-colorst('tools.78分brspan')text-xs text-gray-500t('tools.重度spanbutt')p-3 border rounded hover:bg-primary-50 transition-colorst('tools.910分brspan')text-xs text-gray-500t('tools.极重spanbutt')bg-white p-6 rounded-lg shadow-sm border">
-            <h3 class="font-semibold mb-4t('tools.2疼痛类型h3')text-gray-600 mb-3">您的疼痛主要表现为：</p>
+              <button class="p-3 border rounded hover:bg-primary-50 transition-colors">1-2分<br><span class="text-xs text-gray-500">轻微</span></button>
+              <button class="p-3 border rounded hover:bg-primary-50 transition-colors">3-4分<br><span class="text-xs text-gray-500">轻度</span></button>
+              <button class="p-3 border rounded hover:bg-primary-50 transition-colors">5-6分<br><span class="text-xs text-gray-500">中度</span></button>
+              <button class="p-3 border rounded hover:bg-primary-50 transition-colors">7-8分<br><span class="text-xs text-gray-500">重度</span></button>
+              <button class="p-3 border rounded hover:bg-primary-50 transition-colors">9-10分<br><span class="text-xs text-gray-500">极重</span></button>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm border">
+            <h3 class="font-semibold mb-4">2. 疼痛类型</h3>
+            <p class="text-gray-600 mb-3">您的疼痛主要表现为：</p>
             <div class="space-y-2">
               <label class="flex items-center">
-                <input type="checkbox" class="mr-3t('tools.痉挛性疼痛抽筋样')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.胀痛腹部胀满')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.刺痛针扎样')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.钝痛持续性隐痛')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.放射痛向腰背部扩散')bg-white p-6 rounded-lg shadow-sm border">
+                <input type="checkbox" class="mr-3"> 痉挛性疼痛（抽筋样）
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 胀痛（腹部胀满）
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 刺痛（针扎样）
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 钝痛（持续性隐痛）
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 放射痛（向腰背部扩散）
+              </label>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm border">
             <h3 class="font-semibold mb-4">3. 伴随症状</h3>
-            <p class="text-gray-600 mb-3t('tools.除了腹痛您还有以下症')grid grid-cols-2 gap-2">
+            <p class="text-gray-600 mb-3">除了腹痛，您还有以下症状吗？</p>
+            <div class="grid grid-cols-2 gap-2">
               <label class="flex items-center">
-                <input type="checkbox" class="mr-3t('tools.头痛')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.恶心呕吐')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.腰痛')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.乳房胀痛')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.情绪波动')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.疲劳乏力')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.失眠')flex items-center">
-                <input type="checkbox" class="mr-3t('tools.食欲改变')bg-white p-6 rounded-lg shadow-sm border">
+                <input type="checkbox" class="mr-3"> 头痛
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 恶心呕吐
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 腰痛
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 乳房胀痛
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 情绪波动
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 疲劳乏力
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 失眠
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="mr-3"> 食欲改变
+              </label>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm border">
             <h3 class="font-semibold mb-4">4. 疼痛时间</h3>
-            <p class="text-gray-600 mb-3t('tools.疼痛通常在什么时候开')space-y-2">
+            <p class="text-gray-600 mb-3">疼痛通常在什么时候开始？</p>
+            <div class="space-y-2">
               <label class="flex items-center">
-                <input type="radio" name="pain-timing" class="mr-3t('tools.月经前12天')flex items-center">
-                <input type="radio" name="pain-timing" class="mr-3t('tools.月经第一天')flex items-center">
-                <input type="radio" name="pain-timing" class="mr-3t('tools.月经期间持续')flex items-center">
-                <input type="radio" name="pain-timing" class="mr-3t('tools.排卵期也有疼痛')text-center">
+                <input type="radio" name="pain-timing" class="mr-3"> 月经前1-2天
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="pain-timing" class="mr-3"> 月经第一天
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="pain-timing" class="mr-3"> 月经期间持续
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="pain-timing" class="mr-3"> 排卵期也有疼痛
+              </label>
+            </div>
+          </div>
+          
+          <div class="text-center">
             <button class="btn-primary px-8 py-3">
               提交评估
             </button>
@@ -109,7 +165,10 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
         </div>
         
         <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-8">
-          <h3 class="text-lg font-semibold text-yellow-800 mb-2t('tools.重要提醒h3')text-yellow-700t('tools.此评估仅供参考不能替') : `
+          <h3 class="text-lg font-semibold text-yellow-800 mb-2">重要提醒</h3>
+          <p class="text-yellow-700">此评估仅供参考，不能替代专业医疗诊断。如果您的症状严重或持续恶化，请及时就医。</p>
+        </div>
+      ` : `
         <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
           <h3 class="text-lg font-semibold text-blue-800 mb-2">Before Starting</h3>
           <p class="text-blue-700">Please ensure you're in a quiet, private environment where you can focus on answering the questions. This assessment will help you better understand your symptom patterns.</p>
@@ -170,24 +229,38 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
     {
       slug: 'pain-tracker',
       frontmatter: {
-        title: locale === 'zh' ? t('tools.疼痛追踪器') : 'Pain Tracker',
+        title: locale === 'zh' ? '疼痛追踪器' : 'Pain Tracker',
         description: locale === 'zh' 
-          ? t('tools.记录疼痛模式分析趋势')
+          ? '记录疼痛模式，分析趋势变化，优化治疗效果。'
           : 'Track pain patterns, analyze trends, and optimize treatment effectiveness.',
-        category: locale === 'zh' ? t('tools.追踪工具') : 'Tracking',
-        difficulty: locale === 'zh' ? t('tools.简单') : 'Easy',
-        estimatedTime: locale === 'zh' ? t('tools.每日23分钟') : '2-3 minutes daily',
+        category: locale === 'zh' ? '追踪工具' : 'Tracking',
+        difficulty: locale === 'zh' ? '简单' : 'Easy',
+        estimatedTime: locale === 'zh' ? '每日2-3分钟' : '2-3 minutes daily',
       },
-      content: locale === 'zh' ? t('tools.h2疼痛追踪工具h2')bg-green-50 border-l-4 border-green-500 p-6 mb-8">
-          <h3 class="text-lg font-semibold text-green-800 mb-2t('tools.使用建议h3')text-green-700">建议每天在固定时间记录，持续至少3个月经周期，以获得更准确的模式分析。</p>
+      content: locale === 'zh' ? `
+        <h2>疼痛追踪工具</h2>
+        <p>通过每日记录，帮助您识别疼痛模式，为医生提供准确的症状信息。</p>
+        
+        <div class="bg-green-50 border-l-4 border-green-500 p-6 mb-8">
+          <h3 class="text-lg font-semibold text-green-800 mb-2">使用建议</h3>
+          <p class="text-green-700">建议每天在固定时间记录，持续至少3个月经周期，以获得更准确的模式分析。</p>
         </div>
         
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-white p-6 rounded-lg shadow-sm border">
-            <h3 class="font-semibold mb-4t('tools.今日记录h3')space-y-4">
+            <h3 class="font-semibold mb-4">今日记录</h3>
+            <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium mb-2t('tools.疼痛强度010la')range" min="0" max="10" class="w-full">
-                <div class="flex justify-between text-xs text-gray-500 mt-1t('tools.span无痛span')block text-sm font-medium mb-2">月经状态</label>
+                <label class="block text-sm font-medium mb-2">疼痛强度 (0-10)</label>
+                <input type="range" min="0" max="10" class="w-full">
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                  <span>无痛</span>
+                  <span>极痛</span>
+                </div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium mb-2">月经状态</label>
                 <select class="w-full p-2 border rounded">
                   <option>请选择</option>
                   <option>月经期</option>
@@ -199,29 +272,55 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
               </div>
               
               <div>
-                <label class="block text-sm font-medium mb-2t('tools.使用的缓解方法lab')space-y-1">
+                <label class="block text-sm font-medium mb-2">使用的缓解方法</label>
+                <div class="space-y-1">
                   <label class="flex items-center text-sm">
-                    <input type="checkbox" class="mr-2t('tools.热敷')flex items-center text-sm">
-                    <input type="checkbox" class="mr-2t('tools.药物')flex items-center text-sm">
-                    <input type="checkbox" class="mr-2t('tools.运动')flex items-center text-sm">
-                    <input type="checkbox" class="mr-2t('tools.休息')w-full btn-primary">保存今日记录</button>
+                    <input type="checkbox" class="mr-2"> 热敷
+                  </label>
+                  <label class="flex items-center text-sm">
+                    <input type="checkbox" class="mr-2"> 药物
+                  </label>
+                  <label class="flex items-center text-sm">
+                    <input type="checkbox" class="mr-2"> 运动
+                  </label>
+                  <label class="flex items-center text-sm">
+                    <input type="checkbox" class="mr-2"> 休息
+                  </label>
+                </div>
+              </div>
+              
+              <button class="w-full btn-primary">保存今日记录</button>
             </div>
           </div>
           
           <div class="bg-white p-6 rounded-lg shadow-sm border">
-            <h3 class="font-semibold mb-4t('tools.趋势分析h3')space-y-4">
+            <h3 class="font-semibold mb-4">趋势分析</h3>
+            <div class="space-y-4">
               <div class="bg-gray-100 p-4 rounded">
-                <h4 class="font-medium mb-2t('tools.本月平均疼痛强度h4')text-2xl font-bold text-primary-600">6.2/10</div>
-                <p class="text-sm text-gray-600t('tools.比上月下降08分')bg-gray-100 p-4 rounded">
-                <h4 class="font-medium mb-2t('tools.疼痛天数h4')text-2xl font-bold text-secondary-600t('tools.4天div')text-sm text-gray-600t('tools.本周期疼痛持续时间p')bg-gray-100 p-4 rounded">
-                <h4 class="font-medium mb-2t('tools.最有效缓解方法h4')text-lg font-semibold text-accent-600t('tools.热敷休息div')text-sm text-gray-600">基于您的记录分析</p>
+                <h4 class="font-medium mb-2">本月平均疼痛强度</h4>
+                <div class="text-2xl font-bold text-primary-600">6.2/10</div>
+                <p class="text-sm text-gray-600">比上月下降 0.8 分</p>
+              </div>
+              
+              <div class="bg-gray-100 p-4 rounded">
+                <h4 class="font-medium mb-2">疼痛天数</h4>
+                <div class="text-2xl font-bold text-secondary-600">4天</div>
+                <p class="text-sm text-gray-600">本周期疼痛持续时间</p>
+              </div>
+              
+              <div class="bg-gray-100 p-4 rounded">
+                <h4 class="font-medium mb-2">最有效缓解方法</h4>
+                <div class="text-lg font-semibold text-accent-600">热敷 + 休息</div>
+                <p class="text-sm text-gray-600">基于您的记录分析</p>
               </div>
             </div>
           </div>
         </div>
         
         <div class="mt-8 bg-purple-50 border-l-4 border-purple-500 p-6">
-          <h3 class="text-lg font-semibold text-purple-800 mb-2t('tools.数据导出h3')text-purple-700 mb-4t('tools.您可以导出疼痛记录在')btn-outline">导出PDF报告</button>
+          <h3 class="text-lg font-semibold text-purple-800 mb-2">数据导出</h3>
+          <p class="text-purple-700 mb-4">您可以导出疼痛记录，在就医时提供给医生参考。</p>
+          <button class="btn-outline">导出PDF报告</button>
         </div>
       ` : `
         <h2>Pain Tracking Tool</h2>
@@ -284,13 +383,13 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
     {
       slug: 'constitution-test',
       frontmatter: {
-        title: locale === 'zh' ? t('tools.中医体质测试') : 'TCM Constitution Test',
+        title: locale === 'zh' ? '中医体质测试' : 'TCM Constitution Test',
         description: locale === 'zh'
-          ? t('tools.通过8个问题了解您的')
+          ? '通过8个问题了解您的中医体质类型，获得个性化的穴位、饮食和生活方式建议。'
           : 'Discover your TCM constitution type through 8 questions and get personalized acupoint, diet, and lifestyle recommendations.',
-        category: locale === 'zh' ? t('tools.体质评估') : 'Constitution Assessment',
-        difficulty: locale === 'zh' ? t('tools.简单') : 'Easy',
-        estimatedTime: locale === 'zh' ? t('tools.58分钟') : '5-8 minutes',
+        category: locale === 'zh' ? '体质评估' : 'Constitution Assessment',
+        difficulty: locale === 'zh' ? '简单' : 'Easy',
+        estimatedTime: locale === 'zh' ? '5-8分钟' : '5-8 minutes',
       },
       content: '', // Content will be handled by the ConstitutionTestTool component
       locale,
@@ -298,13 +397,13 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
     {
       slug: 'period-pain-assessment',
       frontmatter: {
-        title: locale === 'zh' ? t('tools.痛经速测小工具') : 'Period Pain Assessment Tool',
+        title: locale === 'zh' ? '痛经速测小工具' : 'Period Pain Assessment Tool',
         description: locale === 'zh'
-          ? t('tools.回答几个简单问题初步')
+          ? '回答几个简单问题，初步了解你的痛经类型和严重程度，获得个性化的健康建议。'
           : 'Answer a few simple questions to understand your period pain type and severity, and get personalized health recommendations.',
-        category: locale === 'zh' ? t('tools.健康评估') : 'Health Assessment',
-        difficulty: locale === 'zh' ? t('tools.简单') : 'Easy',
-        estimatedTime: locale === 'zh' ? t('tools.35分钟') : '3-5 minutes',
+        category: locale === 'zh' ? '健康评估' : 'Health Assessment',
+        difficulty: locale === 'zh' ? '简单' : 'Easy',
+        estimatedTime: locale === 'zh' ? '3-5分钟' : '3-5 minutes',
       },
       content: '', // Content will be handled by the PeriodPainAssessmentTool component
       locale,
@@ -312,13 +411,13 @@ const getToolBySlug = async (slug: string, locale: Locale): Promise<Tool | null>
     {
       slug: 'period-pain-assessment',
       frontmatter: {
-        title: locale === 'zh' ? t('tools.痛经速测小工具') : 'Period Pain Assessment Tool',
+        title: locale === 'zh' ? '痛经速测小工具' : 'Period Pain Assessment Tool',
         description: locale === 'zh'
-          ? t('tools.回答几个简单问题初步')
+          ? '回答几个简单问题，初步了解你的痛经类型和严重程度，获得个性化的健康建议。'
           : 'Answer a few simple questions to understand your period pain type and severity, and get personalized health recommendations.',
-        category: locale === 'zh' ? t('tools.健康评估') : 'Health Assessment',
-        difficulty: locale === 'zh' ? t('tools.简单') : 'Easy',
-        estimatedTime: locale === 'zh' ? t('tools.35分钟') : '3-5 minutes',
+        category: locale === 'zh' ? '健康评估' : 'Health Assessment',
+        difficulty: locale === 'zh' ? '简单' : 'Easy',
+        estimatedTime: locale === 'zh' ? '3-5分钟' : '3-5 minutes',
       },
       content: '', // Content will be handled by the PeriodPainAssessmentTool component
       locale,

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
@@ -6,7 +7,6 @@ import ImagePlaceholder from '@/components/ImagePlaceholder';
 import SearchBox from '@/components/SearchBox';
 import { getAllArticles } from '@/lib/articles';
 import StructuredData from '@/components/StructuredData';
-import ClientImage from '@/components/ClientImage';
 
 // Lazy load non-critical components
 const UserSuccessStories = dynamic(() => import('@/components/UserSuccessStories'), {
@@ -28,7 +28,7 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     keywords: locale === 'zh'
-      ? t('common.痛经缓解月经疼痛经期')
+      ? '痛经缓解,月经疼痛,经期健康,女性健康,痛经治疗,月经周期,生理期,痛经管理,自然疗法,热敷疗法'
       : 'menstrual pain relief,period pain,menstrual health,women health,dysmenorrhea treatment,menstrual cycle,period management,natural therapy,heat therapy',
     openGraph: {
       title: t('title'),
@@ -87,7 +87,13 @@ export default async function HomePage({
   // Get all articles for search functionality
   const articles = getAllArticles(locale);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://period-hub.com'
-  const homeUrl = `${baseUrl}/${locale}t('common.return')website"
+  const homeUrl = `${baseUrl}/${locale}`
+
+  return (
+    <>
+      {/* SEO结构化数据 */}
+      <StructuredData
+        type="website"
         data={{
           title: siteT('title'),
           description: siteT('description'),
@@ -95,13 +101,26 @@ export default async function HomePage({
           locale: locale,
         }}
       />
-    <div className="space-y-8 md:space-y-12 lg:space-y-16 py-2 md:py-4t('common.移动端优化Hero')py-8 md:py-12 lg:py-20 gradient-purple-pink text-white rounded-xl md:rounded-2xl">
+    <div className="space-y-8 md:space-y-12 lg:space-y-16 py-2 md:py-4">
+      {/* 📱 移动端优化 Hero Section */}
+      <section className="py-8 md:py-12 lg:py-20 gradient-purple-pink text-white rounded-xl md:rounded-2xl">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-            <div className="space-y-4 md:space-y-6 text-center md:text-leftt('common.移动端优化标题')text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                {t('hero.headlinet('common.h1')text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
-                {t('hero.subheadlinet('common.p')text-sm sm:text-base text-white/80 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                {t('hero.bodyCopyt('common.p')max-w-md mx-auto md:mx-0 mb-4 md:mb-6">
+            <div className="space-y-4 md:space-y-6 text-center md:text-left">
+              {/* 移动端优化标题 */}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                {t('hero.headline')}
+              </h1>
+              {/* 移动端优化副标题 */}
+              <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
+                {t('hero.subheadline')}
+              </p>
+              {/* 移动端优化描述文本 */}
+              <p className="text-sm sm:text-base text-white/80 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                {t('hero.bodyCopy')}
+              </p>
+              {/* 📱 移动端优化搜索框 */}
+              <div className="max-w-md mx-auto md:mx-0 mb-4 md:mb-6">
                 <SearchBox
                   articles={articles}
                   locale={locale}
@@ -110,8 +129,12 @@ export default async function HomePage({
                 />
                 <p className="text-xs sm:text-sm text-white/70 mt-2 text-center md:text-left leading-relaxed">
                   {locale === 'en' ? '💡 Try searching "5-minute relief", "heat therapy", "prostaglandins"' : '💡 试试搜索"5分钟缓解"、"热敷"、"前列腺素"'}
-                </p>flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-                <Link href={`/${locale}/scenario-solutions`} className="btn-primary w-full sm:w-auto mobile-touch-target">
+                </p>
+              </div>
+
+              {/* 📱 移动端优化按钮组 */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+                <Link href={`/${locale}/immediate-relief`} className="btn-primary w-full sm:w-auto mobile-touch-target">
                   {t('hero.ctaExplore')}
                 </Link>
                 <Link href={`/${locale}/interactive-tools`} className="btn-outline w-full sm:w-auto mobile-touch-target">
@@ -119,25 +142,34 @@ export default async function HomePage({
                 </Link>
               </div>
             </div>
-
-            {/* Hero Image - Optimized for 800x450 aspect ratio */}
-            <div className="relative w-full aspect-[16/9] rounded-lg md:rounded-xl overflow-hidden shadow-lg order-first md:order-last">
-              {/* Hero image - with fallback for better reliability */}
-              <ClientImage
+            {/* 📱 移动端优化图片区域 */}
+            <div className="relative h-48 sm:h-56 md:h-80 lg:h-96 rounded-lg md:rounded-xl overflow-hidden shadow-lg order-first md:order-last">
+              {/* Hero image placeholder - shows required image specifications */}
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-100 to-secondary-100">
+                <ImagePlaceholder
+                  filename="hero-main-banner.jpg"
+                  alt="Professional healthcare illustration showing diverse women in comfortable poses, conveying comfort and medical trust"
+                  width={800}
+                  height={450}
+                  className="w-full h-full border-0"
+                  description="Warm and professional healthcare illustration, young diverse women in comfortable poses, soft pink and blue gradient background, modern minimalist style"
+                />
+              </div>
+              {/* TODO: Replace with actual image when available */}
+              {/* <Image
                 src="/images/hero/hero-main-banner.jpg"
-                alt="Professional healthcare illustration showing diverse women in comfortable poses, conveying comfort and medical trust"
+                alt={t('hero.imageAlt')}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
                 className="object-cover"
-                fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=450&q=80"
-              />
+              /> */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Data-Driven Results Section */}
+      {/* 📱 移动端优化统计数据部分 */}
       <section className="py-8 md:py-12 bg-gradient-to-br from-primary-50 to-secondary-50">
         <div className="container-custom">
           <div className="text-center mb-8 md:mb-12">
@@ -145,8 +177,12 @@ export default async function HomePage({
               {locale === 'en' ? 'Data-Driven Results' : '数据说话，效果可见'}
             </h2>
             <p className="text-neutral-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed px-4">
-              {locale === 'en' ? 'Statistics based on real user feedback and scientific research' : '基于真实用户反馈和科学研究的统计数据'}
-            </p>grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12">
+              {locale === 'en' ? 'Statistics based on real user feedback and scientific research' : '基于真实用户反馈和科学研究的数据统计'}
+            </p>
+          </div>
+
+          {/* 📱 移动端优化数据网格 */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12">
             <div className="text-center animate-slide-up bg-white/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 md:p-6 shadow-lg mobile-touch-target">
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-1 md:mb-2 text-primary-600">92%</div>
               <p className="text-neutral-600 text-xs sm:text-sm md:text-base leading-tight">
@@ -177,16 +213,14 @@ export default async function HomePage({
 
           {/* Statistics Infographic */}
           <div className="flex justify-center">
-            <div className="relative w-full max-w-4xl bg-white/90 backdrop-blur-sm shadow-lg rounded-lg overflow-hidden">
-              <ClientImage
-                src="/images/infographics/stats-infographic.svg"
-                alt="Medical statistics infographic showing women's health data with clean data visualization"
-                width={800}
-                height={400}
-                className="w-full h-auto"
-                fallbackSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80"
-              />
-            </div>
+            <ImagePlaceholder
+              filename="stats-infographic.svg"
+              alt="Medical statistics infographic showing women's health data with clean data visualization"
+              width={800}
+              height={400}
+              className="bg-white/90 backdrop-blur-sm shadow-lg rounded-lg"
+              description="Medical statistics infographic, clean data visualization, pink and blue color scheme, professional charts and graphs"
+            />
           </div>
         </div>
       </section>
@@ -250,10 +284,10 @@ export default async function HomePage({
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-neutral-800 mb-2">
-                {locale === 'en' ? 'Health Guide' : t('pages.healthGuide.title')}
+                {locale === 'en' ? 'Health Guide' : '痛经健康指南'}
               </h3>
               <p className="text-neutral-600 mb-4 flex-grow">
-                {locale === 'en' ? 'Comprehensive menstrual health knowledge system, from basic understanding to advanced management strategies.' : t('common.全面的痛经健康知识体')}
+                {locale === 'en' ? 'Comprehensive menstrual health knowledge system, from basic understanding to advanced management strategies.' : '全面的痛经健康知识体系，从基础理解到高级管理策略，助您掌握经期健康。'}
               </p>
               <Link href={`/${locale}/health-guide`} className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
                 {commonT('learnMore')}
@@ -291,7 +325,7 @@ export default async function HomePage({
               </h3>
               <p className="text-neutral-600 mb-4 sm:mb-6 flex-grow text-sm sm:text-base leading-relaxed">
                 {locale === 'zh'
-                  ? '通过专业问卷快速识别疼痛类型，获得精准的个性化建议。只需回答5个简单问题，即可获得针对您具体情况的缓解方案。'
+                  ? '通过专业问卷快速识别疼痛类型，为您提供精准的个性化建议。只需回答5个简单问题，获取针对您特定情况的缓解方案。'
                   : 'Quickly identify pain types through professional questionnaires and receive precise personalized recommendations. Just answer 5 simple questions to get relief solutions tailored to your specific situation.'
                 }
               </p>
@@ -312,7 +346,7 @@ export default async function HomePage({
               </h3>
               <p className="text-neutral-600 mb-4 sm:mb-6 flex-grow text-sm sm:text-base leading-relaxed">
                 {locale === 'zh'
-                  ? '回答几个简单问题，初步了解您的痛经类型和严重程度，获得个性化的健康建议和医疗指导。'
+                  ? '回答几个简单问题，初步了解你的痛经类型和严重程度，获得个性化的健康建议和就医指导。'
                   : 'Answer a few simple questions to understand your period pain type and severity, and get personalized health recommendations and medical guidance.'
                 }
               </p>
@@ -333,7 +367,7 @@ export default async function HomePage({
               </h3>
               <p className="text-neutral-600 mb-4 sm:mb-6 flex-grow text-sm sm:text-base leading-relaxed">
                 {locale === 'zh'
-                  ? '记录疼痛模式，分析趋势变化，优化治疗效果。通过可视化图表了解您的经期健康，发现规律，调整方案。'
+                  ? '记录疼痛模式，分析趋势变化，优化治疗效果。通过可视化图表了解您的经期健康状况，发现规律，调整方案。'
                   : 'Record pain patterns, analyze trend changes, and optimize treatment effectiveness. Understand your menstrual health through visual charts, discover patterns, and adjust your approach.'
                 }
               </p>
@@ -361,7 +395,7 @@ export default async function HomePage({
                 </h3>
                 <p className="text-neutral-600 mb-4">
                   {locale === 'zh'
-                    ? '学习月经周期的基础知识、各个阶段，以及激素如何在您的月度健康中发挥关键作用。'
+                    ? '学习月经周期的基础知识、各个阶段以及激素如何在您的每月健康中发挥关键作用。'
                     : 'Learn the basics of the menstrual cycle, its phases, and how hormones play a key role in your monthly health.'
                   }
                 </p>
@@ -378,7 +412,7 @@ export default async function HomePage({
                 </h3>
                 <p className="text-neutral-600 mb-4">
                   {locale === 'zh'
-                    ? '针对不同场景的专业解决方案，包括工作、学习、运动等各种生活情况下的痛经管理策略。'
+                    ? '针对不同场景的专业解决方案，包括工作、学习、运动等各种情况下的痛经应对策略。'
                     : 'Professional solutions for different scenarios, including menstrual pain management strategies for work, study, exercise, and various life situations.'
                   }
                 </p>
@@ -388,14 +422,14 @@ export default async function HomePage({
               </article>
             </Link>
             
-            <Link href={`/${locale}/articles/anti-inflammatory-diet-period-pain`} className="card group block">
+            <Link href={`/${locale}/articles/nutrition-and-periods`} className="card group block">
               <article>
                 <h3 className="text-xl font-semibold text-primary-600 group-hover:text-primary-700 mb-2">
                   {locale === 'zh' ? '营养与经期健康' : 'Nutrition & Menstrual Health'}
                 </h3>
                 <p className="text-neutral-600 mb-4">
                   {locale === 'zh'
-                    ? '饮食如何影响经期症状，哪些食物可以帮助减少炎症和不适感。'
+                    ? '饮食如何影响经期症状，以及哪些食物可以帮助减轻炎症和不适。'
                     : 'How diet affects menstrual symptoms and which foods can help reduce inflammation and discomfort.'
                   }
                 </p>
@@ -431,7 +465,7 @@ export default async function HomePage({
               </h3>
               <p className="text-neutral-600 mb-4">
                 {locale === 'zh'
-                  ? '长期调理是预防痛经的关键。通过科学的饮食、运动和生活方式调整，从根源减少疼痛发生。'
+                  ? '长期调理是预防痛经的关键。通过饮食、运动和生活方式的科学调整，从根源减少疼痛发生。'
                   : 'Long-term conditioning is key to preventing menstrual pain. Through scientific adjustments in diet, exercise, and lifestyle, reduce pain occurrence from the source.'
                 }
               </p>
@@ -442,7 +476,7 @@ export default async function HomePage({
                 <li>{locale === 'zh' ? '中医调理与草本疗法' : 'Traditional Chinese medicine & herbal therapies'}</li>
               </ul>
               <Link href={`/${locale}/natural-therapies`} className="text-primary-600 hover:text-primary-700 font-medium">
-                {locale === 'zh' ? '了解详情' : 'Learn More →'}
+                {locale === 'zh' ? '了解详情 →' : 'Learn More →'}
               </Link>
             </div>
             
@@ -452,7 +486,7 @@ export default async function HomePage({
               </h3>
               <p className="text-neutral-600 mb-4">
                 {locale === 'zh'
-                  ? '基于WHO、Mayo诊所等权威机构的最新研究，深入分析痛经成因和治疗机制。'
+                  ? '基于WHO、Mayo Clinic等权威机构的最新研究，深度解析痛经成因与治疗机制。'
                   : 'Based on the latest research from authoritative institutions like WHO and Mayo Clinic, providing in-depth analysis of menstrual pain causes and treatment mechanisms.'
                 }
               </p>
@@ -463,7 +497,7 @@ export default async function HomePage({
                 <li>{locale === 'zh' ? '最新临床研究进展' : 'Latest clinical research developments'}</li>
               </ul>
               <Link href={`/${locale}/articles`} className="text-primary-600 hover:text-primary-700 font-medium">
-                {locale === 'zh' ? '阅读研究' : 'Read Research →'}
+                {locale === 'zh' ? '阅读研究 →' : 'Read Research →'}
               </Link>
             </div>
             
@@ -484,7 +518,7 @@ export default async function HomePage({
                 <li>{locale === 'zh' ? '青少年经期健康指导' : 'Teen menstrual health guidance'}</li>
               </ul>
               <Link href={`/${locale}/articles`} className="text-primary-600 hover:text-primary-700 font-medium">
-                {locale === 'zh' ? '浏览文章' : 'Browse Articles →'}
+                {locale === 'zh' ? '浏览文章 →' : 'Browse Articles →'}
               </Link>
             </div>
           </div>

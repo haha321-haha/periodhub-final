@@ -158,23 +158,23 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
 
     // Emergency recommendations
     if (percentage >= 80) {
-      const titleRaw = t ? t('recommendations.emergencyMedical.title') : (isEnglish ? 'Seek Immediate Medical Care' : t('tools.建议立即就医'));
-      const descriptionRaw = t ? t('recommendations.emergencyMedical.description') : (isEnglish ? 'Your symptoms may require professional medical evaluation and treatment' : t('tools.您的症状可能需要专业'));
-      const timeframeRaw = t ? t('recommendations.emergencyMedical.timeframe') : (isEnglish ? 'Immediately' : t('tools.立即'));
+      const titleRaw = t ? t('recommendations.emergencyMedical.title') : (isEnglish ? 'Seek Immediate Medical Care' : '建议立即就医');
+      const descriptionRaw = t ? t('recommendations.emergencyMedical.description') : (isEnglish ? 'Your symptoms may require professional medical evaluation and treatment' : '您的症状可能需要专业医疗评估和治疗');
+      const timeframeRaw = t ? t('recommendations.emergencyMedical.timeframe') : (isEnglish ? 'Immediately' : '立即');
       const actionStepsRaw = t ? t('recommendations.emergencyMedical.actionSteps') : (isEnglish ? [
         'Contact your gynecologist',
         'If pain is severe, consider emergency care',
         'Keep a detailed symptom diary'
       ] : [
-        t('tools.联系您的妇科医生'),
-        t('tools.如果疼痛剧烈考虑急诊'),
-        t('tools.记录详细的症状日志')
+        '联系您的妇科医生',
+        '如果疼痛剧烈，考虑急诊就医',
+        '记录详细的症状日志'
       ]);
 
       // Use fallback if translation returns the key itself (indicating translation failed)
-      const title = (titleRaw && !titleRaw.includes('recommendations.')) ? titleRaw : (isEnglish ? 'Seek Immediate Medical Care' : t('tools.建议立即就医'));
-      const description = (descriptionRaw && !descriptionRaw.includes('recommendations.')) ? descriptionRaw : (isEnglish ? 'Your symptoms may require professional medical evaluation and treatment' : t('tools.您的症状可能需要专业'));
-      const timeframe = (timeframeRaw && !timeframeRaw.includes('recommendations.')) ? timeframeRaw : (isEnglish ? 'Immediately' : t('tools.立即'));
+      const title = (titleRaw && !titleRaw.includes('recommendations.')) ? titleRaw : (isEnglish ? 'Seek Immediate Medical Care' : '建议立即就医');
+      const description = (descriptionRaw && !descriptionRaw.includes('recommendations.')) ? descriptionRaw : (isEnglish ? 'Your symptoms may require professional medical evaluation and treatment' : '您的症状可能需要专业医疗评估和治疗');
+      const timeframe = (timeframeRaw && !timeframeRaw.includes('recommendations.')) ? timeframeRaw : (isEnglish ? 'Immediately' : '立即');
       const actionSteps = (Array.isArray(actionStepsRaw) && actionStepsRaw.length > 0 && !actionStepsRaw[0]?.includes?.('recommendations.'))
         ? actionStepsRaw
         : (isEnglish ? [
@@ -182,9 +182,9 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
             'If pain is severe, consider emergency care',
             'Keep a detailed symptom diary'
           ] : [
-            t('tools.联系您的妇科医生'),
-            t('tools.如果疼痛剧烈考虑急诊'),
-            t('tools.记录详细的症状日志')
+            '联系您的妇科医生',
+            '如果疼痛剧烈，考虑急诊就医',
+            '记录详细的症状日志'
           ]);
 
 
@@ -202,23 +202,23 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
 
     // Pain management recommendations
     if (percentage >= 40) {
-      const titleRaw = t ? t('recommendations.painManagement.title') : (isEnglish ? 'Pain Management Strategies' : t('tools.疼痛管理策略'));
-      const descriptionRaw = t ? t('recommendations.painManagement.description') : (isEnglish ? 'Multiple methods can help relieve menstrual pain' : t('tools.多种方法可以帮助缓解'));
-      const timeframeRaw = t ? t('recommendations.painManagement.timeframe') : (isEnglish ? 'Immediately available' : t('tools.立即可用'));
+      const titleRaw = t ? t('recommendations.painManagement.title') : (isEnglish ? 'Pain Management Strategies' : '疼痛管理策略');
+      const descriptionRaw = t ? t('recommendations.painManagement.description') : (isEnglish ? 'Multiple methods can help relieve menstrual pain' : '多种方法可以帮助缓解经期疼痛');
+      const timeframeRaw = t ? t('recommendations.painManagement.timeframe') : (isEnglish ? 'Immediately available' : '立即可用');
       const actionStepsRaw = t ? t('recommendations.painManagement.actionSteps') : (isEnglish ? [
         'Use heating pads or hot water bottles',
         'Try light exercise like walking',
         'Consider over-the-counter pain relievers (follow instructions)'
       ] : [
-        t('tools.使用热敷垫或热水袋'),
-        t('tools.尝试轻度运动如散步'),
-        t('tools.考虑非处方止痛药按说')
+        '使用热敷垫或热水袋',
+        '尝试轻度运动如散步',
+        '考虑非处方止痛药（按说明使用）'
       ]);
 
       // Use fallback if translation returns the key itself
-      const title = (titleRaw && !titleRaw.includes('recommendations.')) ? titleRaw : (isEnglish ? 'Pain Management Strategies' : t('tools.疼痛管理策略'));
-      const description = (descriptionRaw && !descriptionRaw.includes('recommendations.')) ? descriptionRaw : (isEnglish ? 'Multiple methods can help relieve menstrual pain' : t('tools.多种方法可以帮助缓解'));
-      const timeframe = (timeframeRaw && !timeframeRaw.includes('recommendations.')) ? timeframeRaw : (isEnglish ? 'Immediately available' : t('tools.立即可用'));
+      const title = (titleRaw && !titleRaw.includes('recommendations.')) ? titleRaw : (isEnglish ? 'Pain Management Strategies' : '疼痛管理策略');
+      const description = (descriptionRaw && !descriptionRaw.includes('recommendations.')) ? descriptionRaw : (isEnglish ? 'Multiple methods can help relieve menstrual pain' : '多种方法可以帮助缓解经期疼痛');
+      const timeframe = (timeframeRaw && !timeframeRaw.includes('recommendations.')) ? timeframeRaw : (isEnglish ? 'Immediately available' : '立即可用');
       const actionSteps = (Array.isArray(actionStepsRaw) && actionStepsRaw.length > 0 && !actionStepsRaw[0]?.includes?.('recommendations.'))
         ? actionStepsRaw
         : (isEnglish ? [
@@ -226,9 +226,9 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
             'Try light exercise like walking',
             'Consider over-the-counter pain relievers (follow instructions)'
           ] : [
-            t('tools.使用热敷垫或热水袋'),
-            t('tools.尝试轻度运动如散步'),
-            t('tools.考虑非处方止痛药按说')
+            '使用热敷垫或热水袋',
+            '尝试轻度运动如散步',
+            '考虑非处方止痛药（按说明使用）'
           ]);
 
 
@@ -245,25 +245,25 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
     }
 
     // Lifestyle recommendations
-    const lifestyleTitleRaw = t ? t('recommendations.lifestyleChanges.title') : (isEnglish ? 'Lifestyle Adjustments' : t('tools.生活方式调整'));
-    const lifestyleDescriptionRaw = t ? t('recommendations.lifestyleChanges.description') : (isEnglish ? 'Long-term lifestyle changes can significantly improve symptoms' : t('tools.长期的生活方式改变可'));
-    const lifestyleTimeframeRaw = t ? t('recommendations.lifestyleChanges.timeframe') : (isEnglish ? '2-3 months to see effects' : t('tools.23个月见效'));
+    const lifestyleTitleRaw = t ? t('recommendations.lifestyleChanges.title') : (isEnglish ? 'Lifestyle Adjustments' : '生活方式调整');
+    const lifestyleDescriptionRaw = t ? t('recommendations.lifestyleChanges.description') : (isEnglish ? 'Long-term lifestyle changes can significantly improve symptoms' : '长期的生活方式改变可以显著改善症状');
+    const lifestyleTimeframeRaw = t ? t('recommendations.lifestyleChanges.timeframe') : (isEnglish ? '2-3 months to see effects' : '2-3个月见效');
     const lifestyleActionStepsRaw = t ? t('recommendations.lifestyleChanges.actionSteps') : (isEnglish ? [
       'Maintain regular exercise habits',
       'Ensure adequate sleep',
       'Learn stress management techniques',
       'Maintain a balanced diet'
     ] : [
-      t('tools.保持规律的运动习惯'),
-      t('tools.确保充足的睡眠'),
-      t('tools.学习压力管理技巧'),
-      t('tools.保持均衡饮食')
+      '保持规律的运动习惯',
+      '确保充足的睡眠',
+      '学习压力管理技巧',
+      '保持均衡饮食'
     ]);
 
     // Use fallback if translation returns the key itself
-    const lifestyleTitle = (lifestyleTitleRaw && !lifestyleTitleRaw.includes('recommendations.')) ? lifestyleTitleRaw : (isEnglish ? 'Lifestyle Adjustments' : t('tools.生活方式调整'));
-    const lifestyleDescription = (lifestyleDescriptionRaw && !lifestyleDescriptionRaw.includes('recommendations.')) ? lifestyleDescriptionRaw : (isEnglish ? 'Long-term lifestyle changes can significantly improve symptoms' : t('tools.长期的生活方式改变可'));
-    const lifestyleTimeframe = (lifestyleTimeframeRaw && !lifestyleTimeframeRaw.includes('recommendations.')) ? lifestyleTimeframeRaw : (isEnglish ? '2-3 months to see effects' : t('tools.23个月见效'));
+    const lifestyleTitle = (lifestyleTitleRaw && !lifestyleTitleRaw.includes('recommendations.')) ? lifestyleTitleRaw : (isEnglish ? 'Lifestyle Adjustments' : '生活方式调整');
+    const lifestyleDescription = (lifestyleDescriptionRaw && !lifestyleDescriptionRaw.includes('recommendations.')) ? lifestyleDescriptionRaw : (isEnglish ? 'Long-term lifestyle changes can significantly improve symptoms' : '长期的生活方式改变可以显著改善症状');
+    const lifestyleTimeframe = (lifestyleTimeframeRaw && !lifestyleTimeframeRaw.includes('recommendations.')) ? lifestyleTimeframeRaw : (isEnglish ? '2-3 months to see effects' : '2-3个月见效');
     const lifestyleActionSteps = (Array.isArray(lifestyleActionStepsRaw) && lifestyleActionStepsRaw.length > 0 && !lifestyleActionStepsRaw[0]?.includes?.('recommendations.'))
       ? lifestyleActionStepsRaw
       : (isEnglish ? [
@@ -272,10 +272,10 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
           'Learn stress management techniques',
           'Maintain a balanced diet'
         ] : [
-          t('tools.保持规律的运动习惯'),
-          t('tools.确保充足的睡眠'),
-          t('tools.学习压力管理技巧'),
-          t('tools.保持均衡饮食')
+          '保持规律的运动习惯',
+          '确保充足的睡眠',
+          '学习压力管理技巧',
+          '保持均衡饮食'
         ]);
 
 
@@ -291,25 +291,25 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
     });
 
     // Self-care recommendations
-    const selfcareTitleRaw = t ? t('recommendations.selfcarePractices.title') : (isEnglish ? 'Self-Care Practices' : t('tools.自我护理实践'));
-    const selfcareDescriptionRaw = t ? t('recommendations.selfcarePractices.description') : (isEnglish ? 'Daily self-care can help you better manage symptoms' : t('tools.日常的自我护理可以帮'));
-    const selfcareTimeframeRaw = t ? t('recommendations.selfcarePractices.timeframe') : (isEnglish ? 'Ongoing' : t('tools.持续进行'));
+    const selfcareTitleRaw = t ? t('recommendations.selfcarePractices.title') : (isEnglish ? 'Self-Care Practices' : '自我护理实践');
+    const selfcareDescriptionRaw = t ? t('recommendations.selfcarePractices.description') : (isEnglish ? 'Daily self-care can help you better manage symptoms' : '日常的自我护理可以帮助您更好地管理症状');
+    const selfcareTimeframeRaw = t ? t('recommendations.selfcarePractices.timeframe') : (isEnglish ? 'Ongoing' : '持续进行');
     const selfcareActionStepsRaw = t ? t('recommendations.selfcarePractices.actionSteps') : (isEnglish ? [
       'Practice deep breathing and meditation',
       'Use pain tracker to record symptoms',
       'Build a support network',
       'Learn relaxation techniques'
     ] : [
-      t('tools.练习深呼吸和冥想'),
-      t('tools.使用疼痛追踪器记录症'),
-      t('tools.建立支持网络'),
-      t('tools.学习放松技巧')
+      '练习深呼吸和冥想',
+      '使用疼痛追踪器记录症状',
+      '建立支持网络',
+      '学习放松技巧'
     ]);
 
     // Use fallback if translation returns the key itself
-    const selfcareTitle = (selfcareTitleRaw && !selfcareTitleRaw.includes('recommendations.')) ? selfcareTitleRaw : (isEnglish ? 'Self-Care Practices' : t('tools.自我护理实践'));
-    const selfcareDescription = (selfcareDescriptionRaw && !selfcareDescriptionRaw.includes('recommendations.')) ? selfcareDescriptionRaw : (isEnglish ? 'Daily self-care can help you better manage symptoms' : t('tools.日常的自我护理可以帮'));
-    const selfcareTimeframe = (selfcareTimeframeRaw && !selfcareTimeframeRaw.includes('recommendations.')) ? selfcareTimeframeRaw : (isEnglish ? 'Ongoing' : t('tools.持续进行'));
+    const selfcareTitle = (selfcareTitleRaw && !selfcareTitleRaw.includes('recommendations.')) ? selfcareTitleRaw : (isEnglish ? 'Self-Care Practices' : '自我护理实践');
+    const selfcareDescription = (selfcareDescriptionRaw && !selfcareDescriptionRaw.includes('recommendations.')) ? selfcareDescriptionRaw : (isEnglish ? 'Daily self-care can help you better manage symptoms' : '日常的自我护理可以帮助您更好地管理症状');
+    const selfcareTimeframe = (selfcareTimeframeRaw && !selfcareTimeframeRaw.includes('recommendations.')) ? selfcareTimeframeRaw : (isEnglish ? 'Ongoing' : '持续进行');
     const selfcareActionSteps = (Array.isArray(selfcareActionStepsRaw) && selfcareActionStepsRaw.length > 0 && !selfcareActionStepsRaw[0]?.includes?.('recommendations.'))
       ? selfcareActionStepsRaw
       : (isEnglish ? [
@@ -318,10 +318,10 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
           'Build a support network',
           'Learn relaxation techniques'
         ] : [
-          t('tools.练习深呼吸和冥想'),
-          t('tools.使用疼痛追踪器记录症'),
-          t('tools.建立支持网络'),
-          t('tools.学习放松技巧')
+          '练习深呼吸和冥想',
+          '使用疼痛追踪器记录症状',
+          '建立支持网络',
+          '学习放松技巧'
         ]);
 
 
@@ -375,23 +375,23 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
       if (percentage >= 80) {
         severity = 'emergency';
         type = 'emergency';
-        message = t ? t('resultMessages.emergency') : (isEnglish ? 'Your symptoms are quite severe. We recommend consulting a healthcare professional as soon as possible.' : t('tools.您的症状较为严重建议'));
-        summary = t ? t('resultMessages.emergencySummary') : (isEnglish ? 'Assessment indicates you may need professional medical attention.' : t('tools.评估显示您可能需要专'));
+        message = t ? t('resultMessages.emergency') : (isEnglish ? 'Your symptoms are quite severe. We recommend consulting a healthcare professional as soon as possible.' : '您的症状较为严重，建议尽快咨询医疗专业人士。');
+        summary = t ? t('resultMessages.emergencySummary') : (isEnglish ? 'Assessment indicates you may need professional medical attention.' : '评估显示您可能需要专业医疗关注。');
       } else if (percentage >= 60) {
         severity = 'severe';
         type = 'severe';
-        message = t ? t('resultMessages.severe') : (isEnglish ? 'Your symptoms are quite serious. We recommend adopting comprehensive management strategies.' : t('tools.您的症状比较严重建议'));
-        summary = t ? t('resultMessages.severeSummary') : (isEnglish ? 'Your symptoms require active management and possible medical intervention.' : t('tools.您的症状需要积极的管'));
+        message = t ? t('resultMessages.severe') : (isEnglish ? 'Your symptoms are quite serious. We recommend adopting comprehensive management strategies.' : '您的症状比较严重，建议采取综合管理策略。');
+        summary = t ? t('resultMessages.severeSummary') : (isEnglish ? 'Your symptoms require active management and possible medical intervention.' : '您的症状需要积极的管理和可能的医疗干预。');
       } else if (percentage >= 40) {
         severity = 'moderate';
         type = 'moderate';
-        message = t ? t('resultMessages.moderate') : (isEnglish ? 'You have moderate symptoms that can be managed through various methods.' : t('tools.您有中等程度的症状可'));
-        summary = t ? t('resultMessages.moderateSummary') : (isEnglish ? 'Your symptoms are manageable with recommended relief strategies.' : t('tools.您的症状是可以管理的'));
+        message = t ? t('resultMessages.moderate') : (isEnglish ? 'You have moderate symptoms that can be managed through various methods.' : '您有中等程度的症状，可以通过多种方法进行管理。');
+        summary = t ? t('resultMessages.moderateSummary') : (isEnglish ? 'Your symptoms are manageable with recommended relief strategies.' : '您的症状是可以管理的，建议采用多种缓解策略。');
       } else {
         severity = 'mild';
         type = 'mild';
-        message = t ? t('resultMessages.mild') : (isEnglish ? 'Your symptoms are relatively mild and can be well managed through simple self-care.' : t('tools.您的症状相对较轻通过'));
-        summary = t ? t('resultMessages.mildSummary') : (isEnglish ? 'Your symptoms are mild and can be improved through lifestyle adjustments.' : t('tools.您的症状较轻可以通过'));
+        message = t ? t('resultMessages.mild') : (isEnglish ? 'Your symptoms are relatively mild and can be well managed through simple self-care.' : '您的症状相对较轻，通过简单的自我护理就能很好地管理。');
+        summary = t ? t('resultMessages.mildSummary') : (isEnglish ? 'Your symptoms are mild and can be improved through lifestyle adjustments.' : '您的症状较轻，可以通过生活方式调整来改善。');
       }
 
       const recommendations = generateRecommendations(score, percentage, currentSession.answers, t, currentSession.locale);
@@ -413,17 +413,17 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
           '/articles/when-to-see-a-doctor'
         ],
         nextSteps: t ? [
-          t('result.nextSteps.trackSymptoms') || (isEnglish ? 'Use pain tracker to record symptoms' : t('tools.使用疼痛追踪器记录症')),
-          t('result.nextSteps.tryRecommendations') || (isEnglish ? 'Try recommended relief methods' : t('tools.尝试推荐的缓解方法')),
-          t('result.nextSteps.consultDoctor') || (isEnglish ? 'Consult a doctor if symptoms persist or worsen' : t('tools.如果症状持续或恶化请'))
+          t('result.nextSteps.trackSymptoms') || (isEnglish ? 'Use pain tracker to record symptoms' : '使用疼痛追踪器记录症状'),
+          t('result.nextSteps.tryRecommendations') || (isEnglish ? 'Try recommended relief methods' : '尝试推荐的缓解方法'),
+          t('result.nextSteps.consultDoctor') || (isEnglish ? 'Consult a doctor if symptoms persist or worsen' : '如果症状持续或恶化，请咨询医生')
         ] : (isEnglish ? [
           'Use pain tracker to record symptoms',
           'Try recommended relief methods',
           'Consult a doctor if symptoms persist or worsen'
         ] : [
-          t('tools.使用疼痛追踪器记录症'),
-          t('tools.尝试推荐的缓解方法'),
-          t('tools.如果症状持续或恶化请')
+          '使用疼痛追踪器记录症状',
+          '尝试推荐的缓解方法',
+          '如果症状持续或恶化，请咨询医生'
         ]),
         createdAt: new Date().toISOString()
       };
@@ -449,7 +449,7 @@ export const useSymptomAssessment = (userId?: string): UseSymptomAssessmentRetur
     } catch (err) {
       console.error('Failed to complete assessment:', err);
       const isEnglish = currentSession?.locale === 'en';
-      setError(t ? t('messages.assessmentFailed') : (isEnglish ? 'An error occurred while completing the assessment. Please try again.' : t('tools.评估完成时出现错误请')));
+      setError(t ? t('messages.assessmentFailed') : (isEnglish ? 'An error occurred while completing the assessment. Please try again.' : '评估完成时出现错误，请重试。'));
       return null;
     } finally {
       setIsLoading(false);

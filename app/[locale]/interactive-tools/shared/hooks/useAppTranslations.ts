@@ -1,6 +1,18 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intlt('tools.统一的翻译Hook提')zh',
+import { useTranslations, useLocale } from 'next-intl';
+
+/**
+ * 统一的翻译Hook，提供翻译函数和语言相关工具
+ */
+export const useAppTranslations = (namespace?: string) => {
+  const t = useTranslations(namespace);
+  const locale = useLocale();
+  
+  return {
+    t,
+    locale,
+    isZh: locale === 'zh',
     isEn: locale === 'en'
   };
 };
@@ -17,7 +29,20 @@ export const useInteractiveToolTranslations = (toolName?: string) => {
     t: toolName ? (key: string) => t(`${toolName}.${key}`) : t,
     locale,
     isZh: locale === 'zh',
-    isEn: locale === 'ent('tools.获取多语言选项的工具')${optionsKey}.${option}`)
+    isEn: locale === 'en'
+  };
+};
+
+/**
+ * 获取多语言选项的工具函数
+ */
+export const useTranslatedOptions = (namespace: string, optionsKey: string) => {
+  const { t } = useAppTranslations(namespace);
+  
+  return (options: string[]) => {
+    return options.map(option => ({
+      value: option,
+      label: t(`${optionsKey}.${option}`)
     }));
   };
 };

@@ -2,10 +2,9 @@ import Link from 'next/link';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import ImagePlaceholder from '@/components/ImagePlaceholder';
-import ClientImage from '@/components/ClientImage';
 import BreathingExercise from '@/components/BreathingExercise';
 import { BarChart3, ClipboardCheck, Lightbulb, Search, User } from 'lucide-react'; // Icons for cards
-import { Locale, locales } from '@/i18n';
+import { Locale, locales } from '@/i18n/request';
 
 // Generate metadata for the page
 export async function generateMetadata({
@@ -76,12 +75,19 @@ export default async function InteractiveToolsPage({
   ];
 
   return (
-    <div className="space-y-8 sm:space-y-12 mobile-safe-areat('tools.PageHeade')text-center px-4 sm:px-0">
+    <div className="space-y-8 sm:space-y-12 mobile-safe-area">
+      {/* Page Header - 移动端优化 */}
+      <header className="text-center px-4 sm:px-0">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-700 mb-3 sm:mb-4 leading-tight">
           {t('title')}
         </h1>
         <p className="text-base sm:text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-          {t('descriptiont('tools.phe')bg-gradient-to-br from-primary-50 to-neutral-50 p-4 sm:p-6 md:p-8 rounded-xl mx-4 sm:mx-0">
+          {t('description')}
+        </p>
+      </header>
+
+      {/* Tools Introduction Section - 移动端优化 */}
+      <section className="bg-gradient-to-br from-primary-50 to-neutral-50 p-4 sm:p-6 md:p-8 rounded-xl mx-4 sm:mx-0">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
             <div>
@@ -90,23 +96,20 @@ export default async function InteractiveToolsPage({
               </p>
             </div>
             <div className="flex justify-center order-first md:order-last">
-              <div className="relative w-full max-w-sm sm:max-w-md">
-                <ClientImage
-                  src="/images/tools/assessment-illustration.jpg"
-                  alt="Woman using digital health assessment tool on tablet in comfortable home setting"
-                  width={400}
-                  height={300}
-                  quality={95}
-                  className="w-full h-auto rounded-lg shadow-md"
-                  fallbackSrc="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=95"
-                />
-              </div>
+              <ImagePlaceholder
+                filename="assessment-illustration.jpg"
+                alt="Woman using digital health assessment tool on tablet in comfortable home setting"
+                width={300}
+                height={225}
+                description="Woman using digital health assessment tool, modern tablet interface, comfortable home setting, soft lighting"
+                className="w-full max-w-sm sm:max-w-md"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Interactive Tools Grid */}
+      {/* Tools Grid - 移动端优化 */}
       <section className="container-custom">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {tools.map((tool) => (
@@ -123,7 +126,7 @@ export default async function InteractiveToolsPage({
               {tool.href === "#" ? (
                  <span className="btn-disabled w-full mobile-touch-target text-sm sm:text-base px-4 py-3">{tool.cta}</span>
               ) : (
-                <Link href={tool.href} className={`w-full mobile-touch-target text-sm sm:text-base px-4 py-3 text-center ${tool.title.includes("Symptom") || tool.title.includes(t('health.symptoms')) ? 'btn-primary' : 'btn-secondary'}`}>
+                <Link href={tool.href} className={`w-full mobile-touch-target text-sm sm:text-base px-4 py-3 text-center ${tool.title.includes("Symptom") || tool.title.includes("症状") ? 'btn-primary' : 'btn-secondary'}`}>
                   {tool.cta}
                 </Link>
               )}
@@ -132,7 +135,7 @@ export default async function InteractiveToolsPage({
         </div>
       </section>
 
-      {/* Breathing Exercise Section */}
+      {/* Breathing Exercise Section - 移动端优化 */}
       <section id="breathing-exercise" className="container-custom">
         <div className="space-y-4 sm:space-y-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8">
         <div className="text-center">

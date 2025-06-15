@@ -131,7 +131,30 @@ export default async function ArticlePage({
   const articleUrl = `${baseUrl}/${locale}/articles/${slug}`
 
   return (
-    <div className="min-h-screen bg-neutral-50 space-y-6 sm:space-y-8">
+    <div className="min-h-screen bg-neutral-50">
+      {/* SEO结构化数据 */}
+      <StructuredData
+        type="medicalWebPage"
+        data={{
+          title,
+          description: summary || '',
+          url: articleUrl,
+          image: article.featured_image,
+          author: article.author,
+          datePublished: article.date,
+          dateModified: article.date,
+          locale: locale,
+          keywords: (locale === 'zh' ? article.tags_zh : article.tags),
+        }}
+      />
+
+      {/* 阅读进度条和返回顶部 */}
+      <ReadingProgress locale={locale} />
+
+      {/* Load NSAID interactive components if needed */}
+      {isNSAIDArticle && <NSAIDInteractive locale={locale} />}
+
+      <div className="space-y-6 sm:space-y-8">
         {/* Back to Articles */}
         <div className="container-custom">
           <Link
@@ -320,7 +343,7 @@ export default async function ArticlePage({
                 </h4>
                 <p className="text-xs sm:text-sm text-red-700 leading-relaxed">
                   {locale === 'zh'
-                    ? '本文内容仅供教育和信息目的，不能替代专业医疗建议、诊断或治疗。如有任何健康问题或疑虑，请咨询合格的医疗专业人员。在做出任何健康相关决定之前，请务必寻求医疗建议。'
+                    ? '本文内容仅供教育和信息目的，不能替代专业医疗建议、诊断或治疗。如有任何健康问题或疑虑，请咨询合格的医疗专业人员。在做出任何健康相关决定之前，请务必寻求医生的建议。'
                     : 'This content is for educational and informational purposes only and should not replace professional medical advice, diagnosis, or treatment. If you have any health concerns or questions, please consult with a qualified healthcare professional. Always seek medical advice before making any health-related decisions.'
                   }
                 </p>
@@ -410,6 +433,7 @@ export default async function ArticlePage({
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }

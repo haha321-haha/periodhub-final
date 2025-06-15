@@ -80,7 +80,37 @@ export const usePainTracker = (userId?: string): UsePainTrackerReturn => {
     if (!isLoading && entries.length >= 0) {
       const success = saveToStorage(storageKey, entries);
       if (!success) {
-        setError('Failed to save data. Please try again.t('tools.entriesst')date',
+        setError('Failed to save data. Please try again.');
+      }
+    }
+  }, [entries, storageKey, isLoading]);
+
+  // Recalculate statistics when entries change
+  useEffect(() => {
+    setStatistics(calculateStatistics(entries));
+  }, [entries]);
+
+  const addEntry = useCallback(async (data: PainEntryFormData): Promise<{ success: boolean; errors?: ValidationError[] }> => {
+    try {
+      setError(null);
+      
+      // Validate the entry
+      const validationErrors = validatePainEntry(data);
+      if (validationErrors.length > 0) {
+        return { success: false, errors: validationErrors };
+      }
+
+      // Check for duplicate dates - 允许用户选择是否覆盖
+      const existingEntry = entries.find(entry => entry.date === data.date);
+      if (existingEntry) {
+        // 如果用户明确表示要覆盖，则删除旧记录
+        if ((data as any).overwrite === true) {
+          setEntries(prev => prev.filter(entry => entry.date !== data.date));
+        } else {
+          return {
+            success: false,
+            errors: [{
+              field: 'date',
               message: 'An entry for this date already exists. Do you want to overwrite it?',
               code: 'DUPLICATE_DATE'
             }]

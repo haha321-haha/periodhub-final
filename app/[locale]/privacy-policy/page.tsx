@@ -10,9 +10,9 @@ export async function generateMetadata({
 }: {
   params: { locale: Locale }
 }): Promise<Metadata> {
-  const title = locale === 'zh' ? t('common.隐私政策') : 'Privacy Policy';
+  const title = locale === 'zh' ? '隐私政策' : 'Privacy Policy';
   const description = locale === 'zh' 
-    ? t('common.了解我们如何收集使用')
+    ? '了解我们如何收集、使用和保护您的个人信息。'
     : 'Learn how we collect, use, and protect your personal information.';
 
   return {
@@ -34,12 +34,20 @@ export default async function PrivacyPolicyPage({
   unstable_setRequestLocale(locale);
 
   const content = locale === 'zh' ? {
-    title: t('common.隐私政策'),
-    lastUpdated: t('common.最后更新2024年4'),
+    title: '隐私政策',
+    lastUpdated: '最后更新：2024年4月1日',
     sections: [
       {
-        title: t('common.1信息收集'),
-        content: t('common.p我们可能收集以下类')
+        title: '1. 信息收集',
+        content: `
+          <p>我们可能收集以下类型的信息：</p>
+          <ul>
+            <li><strong>个人信息：</strong>当您注册账户或使用我们的服务时，我们可能收集您的姓名、电子邮件地址等信息。</li>
+            <li><strong>健康信息：</strong>您在使用我们的症状追踪工具时提供的健康相关信息。</li>
+            <li><strong>使用数据：</strong>关于您如何使用我们网站的信息，包括访问时间、页面浏览等。</li>
+            <li><strong>技术信息：</strong>您的IP地址、浏览器类型、设备信息等。</li>
+          </ul>
+        `
       },
       {
         title: '2. 信息使用',
@@ -56,7 +64,15 @@ export default async function PrivacyPolicyPage({
       },
       {
         title: '3. 信息共享',
-        content: t('common.p我们不会出售交易或')
+        content: `
+          <p>我们不会出售、交易或转让您的个人信息给第三方，除非：</p>
+          <ul>
+            <li>获得您的明确同意</li>
+            <li>法律要求或法院命令</li>
+            <li>保护我们的权利、财产或安全</li>
+            <li>与可信的第三方服务提供商合作（他们同意保密）</li>
+          </ul>
+        `
       },
       {
         title: '4. 数据安全',
@@ -71,7 +87,9 @@ export default async function PrivacyPolicyPage({
           <p>但请注意，没有任何互联网传输或存储方法是100%安全的。</p>
 
           <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-4">
-            <p class="text-blue-800t('common.strongMVP阶')
+            <p class="text-blue-800"><strong>MVP阶段说明：</strong>请注意，periodhub.health目前处于最小可行产品(MVP)阶段。我们以有限的资源运营，专注于最小化基础设施和成本，旨在实现接近零的个人信息收集。</p>
+          </div>
+        `
       },
       {
         title: '5. Cookie使用',
@@ -87,8 +105,17 @@ export default async function PrivacyPolicyPage({
         `
       },
       {
-        title: t('common.6您的权利'),
-        content: t('common.p您有权p')
+        title: '6. 您的权利',
+        content: `
+          <p>您有权：</p>
+          <ul>
+            <li>访问我们持有的关于您的信息</li>
+            <li>要求更正不准确的信息</li>
+            <li>要求删除您的个人信息</li>
+            <li>反对处理您的个人信息</li>
+            <li>数据可携带权</li>
+          </ul>
+        `
       },
       {
         title: '7. 联系我们',
@@ -236,11 +263,11 @@ export default async function PrivacyPolicyPage({
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-neutral-800 mb-4">
-              {locale === 'zh' ? t('common.有疑问') : 'Questions?'}
+              {locale === 'zh' ? '有疑问？' : 'Questions?'}
             </h2>
             <p className="text-neutral-600 mb-6">
               {locale === 'zh' 
-                ? t('common.如果您对我们的隐私政')
+                ? '如果您对我们的隐私政策有任何疑问，请随时联系我们。'
                 : 'If you have any questions about our Privacy Policy, please feel free to contact us.'
               }
             </p>
@@ -248,7 +275,7 @@ export default async function PrivacyPolicyPage({
               href="mailto:tiyibaofu@outlook.com"
               className="btn-primary"
             >
-              {locale === 'zh' ? t('common.联系我们') : 'Contact Us'}
+              {locale === 'zh' ? '联系我们' : 'Contact Us'}
             </a>
           </div>
         </div>
