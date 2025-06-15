@@ -1,43 +1,15 @@
-import { notFound } from 'next/navigation';
-import { getRequestConfig } from 'next-intl/server';
+// i18n configuration for Period Hub
+export const locales = ['zh', 'en'] as const;
+export type Locale = typeof locales[number];
 
-// Can be imported from a shared config
-export const locales = ['en', 'zh'] as const;
-export type Locale = (typeof locales)[number];
+export const defaultLocale: Locale = 'zh';
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  // This typically corresponds to the `[locale]` segment
-  let locale = await requestLocale;
+// Locale labels for UI
+export const localeLabels: Record<Locale, string> = {
+  zh: '中文',
+  en: 'English'
+};
 
-  // Ensure that a valid locale is used
-  if (!locale || !locales.includes(locale as any)) {
-    locale = 'zh';
-  }
-
-  return {
-    locale,
-    messages: (await import(`./messages/${locale}.json`)).default,
-    timeZone: 'Asia/Shanghai',
-    now: new Date(),
-    formats: {
-      dateTime: {
-        short: {
-          day: 'numeric',
-          month: 'short',
-          year: 'numeric'
-        }
-      },
-      number: {
-        precise: {
-          maximumFractionDigits: 5
-        }
-      },
-      list: {
-        enumeration: {
-          style: 'long',
-          type: 'conjunction'
-        }
-      }
-    }
-  };
-});
+// Locale detection configuration
+export const localeDetection = true;
+export const localePrefix = 'always' as const;
