@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useHealthDataStore } from '../stores/healthDataStore';
-import { useSafeTranslations } from '@/hooks/useSafeTranslations';
+import { useInteractiveToolTranslations } from '../hooks/useAppTranslations';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -19,7 +19,7 @@ interface HealthDataDashboardProps {
 }
 
 export default function HealthDataDashboard({ locale }: HealthDataDashboardProps) {
-  const { t } = useSafeTranslations('tools');
+  const { t } = useInteractiveToolTranslations();
   
   const {
     painEntries,

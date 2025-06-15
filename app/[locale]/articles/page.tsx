@@ -7,7 +7,7 @@ import { Download, FileText, Users, GraduationCap, Heart, CheckCircle, Clipboard
 import DownloadButton from '@/components/DownloadButton';
 import NavigationTabs from '@/components/NavigationTabs';
 import ImagePlaceholder from '@/components/ImagePlaceholder';
-import ClientImage from '@/components/ClientImage';
+// import ClientImage from '@/components/ClientImage'; // Component not found
 import SearchBox from '@/components/SearchBox';
 
 import { Locale, locales } from '@/i18n';
@@ -83,13 +83,22 @@ interface PDFResource {
   titleKey: string;
   descriptionKey: string;
   filename: string;
-  category: 'management-tools' | 'health-management' | 'communication-guidancet('articles.iconReact')pain-tracking-form',
+  category: 'management-tools' | 'health-management' | 'communication-guidance';
+  icon: any;
+  size: string;
+  pages: number;
+}
+
+// PDF Resources Data
+const pdfResources: PDFResource[] = [
+  {
+    id: 'pain-tracking-form',
     titleKey: 'resources.painTrackingForm.title',
     descriptionKey: 'resources.painTrackingForm.description',
     filename: 'pain-tracking-form.html',
     category: 'management-tools',
     icon: ClipboardList,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -99,7 +108,7 @@ interface PDFResource {
     filename: 'menstrual-cycle-nutrition-plan.html',
     category: 'management-tools',
     icon: Calendar,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -109,7 +118,7 @@ interface PDFResource {
     filename: 'natural-therapy-assessment.html',
     category: 'management-tools',
     icon: BarChart3,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -119,13 +128,17 @@ interface PDFResource {
     filename: 'healthy-habits-checklist.html',
     category: 'management-tools',
     icon: CheckCircle,
-    size: t('common.mobileFriendlyt('articles.pages1')specific-menstrual-pain-management-guide',
+    size: 'Mobile Friendly',
+    pages: 1
+  },
+  {
+    id: 'specific-menstrual-pain-management-guide',
     titleKey: 'resources.specificPainManagement.title',
     descriptionKey: 'resources.specificPainManagement.description',
     filename: 'specific-menstrual-pain-management-guide.html',
     category: 'health-management',
     icon: Heart,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -135,7 +148,7 @@ interface PDFResource {
     filename: 'menstrual-pain-complications-management.html',
     category: 'health-management',
     icon: Heart,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -145,7 +158,7 @@ interface PDFResource {
     filename: 'magnesium-gut-health-menstrual-pain-guide.html',
     category: 'health-management',
     icon: Heart,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -155,13 +168,17 @@ interface PDFResource {
     filename: 'zhan-zhuang-baduanjin-illustrated-guide.html',
     category: 'health-management',
     icon: Heart,
-    size: t('common.mobileFriendlyt('articles.pages1')campus-emergency-checklist',
+    size: 'Mobile Friendly',
+    pages: 1
+  },
+  {
+    id: 'campus-emergency-checklist',
     titleKey: 'resources.campusEmergency.title',
     descriptionKey: 'resources.campusEmergency.description',
     filename: 'campus-emergency-checklist.html',
     category: 'communication-guidance',
     icon: CheckCircle,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -171,7 +188,7 @@ interface PDFResource {
     filename: 'parent-communication-guide.html',
     category: 'communication-guidance',
     icon: Users,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -181,7 +198,7 @@ interface PDFResource {
     filename: 'teacher-health-manual.html',
     category: 'communication-guidance',
     icon: GraduationCap,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   },
   {
@@ -191,7 +208,7 @@ interface PDFResource {
     filename: 'teacher-collaboration-handbook.html',
     category: 'communication-guidance',
     icon: GraduationCap,
-    size: t('common.mobileFriendly'),
+    size: 'Mobile Friendly',
     pages: 1
   }
 ];
@@ -609,9 +626,7 @@ export default function ArticlesPage({
                   <div className="p-6">
                     {/* Article Category Cover Image */}
                     <div className="w-full h-48 rounded-lg mb-4 overflow-hidden">
-                      <ClientImage
-                        src={getCategoryImageUrl(article.category || 'medical-guide', article.slug)}
-                        alt={`Cover image for ${article.title}`}
+                      <ImagePlaceholder
                         width={400}
                         height={200}
                         className="w-full h-full object-cover border-0"

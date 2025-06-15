@@ -12,7 +12,8 @@ export default function TestAssessment() {
       <h1 className="text-2xl font-bold mb-4">Assessment Questions Test</h1>
       
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-2t('tools.中文问题zhQue')list-decimal list-inside space-y-2">
+        <h2 className="text-xl font-semibold mb-2">中文问题 ({zhQuestions.length} 题)</h2>
+        <ol className="list-decimal list-inside space-y-2">
           {zhQuestions.map((q, index) => (
             <li key={q.id} className="text-sm">
               {index + 1}. {q.title} (ID: {q.id})
@@ -22,7 +23,8 @@ export default function TestAssessment() {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-2t('tools.EnglishQu')list-decimal list-inside space-y-2">
+        <h2 className="text-xl font-semibold mb-2">English Questions ({enQuestions.length} 题)</h2>
+        <ol className="list-decimal list-inside space-y-2">
           {enQuestions.map((q, index) => (
             <li key={q.id} className="text-sm">
               {index + 1}. {q.title} (ID: {q.id})
