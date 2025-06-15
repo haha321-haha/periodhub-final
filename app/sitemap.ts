@@ -1,5 +1,9 @@
 import { MetadataRoute } from 'next'
-import { locales } from '@/i18nt('common.文章数据从实际文')quick-menstrual-pain-relief-guide',
+import { locales } from '@/i18n/request'
+
+// 文章数据 - 从实际文章文件中获取
+const articles = [
+  'quick-menstrual-pain-relief-guide',
   'anti-inflammatory-diet-menstrual-pain',
   'heat-therapy-complete-guide',
   'natural-physical-therapy-menstrual-pain',
@@ -9,10 +13,20 @@ import { locales } from '@/i18nt('common.文章数据从实际文')quick-menstru
   'menstrual-pain-content-evaluation-report',
   'comprehensive-menstrual-pain-research-summary',
   'global-traditional-menstrual-pain-relief',
-  'nsaid-menstrual-pain-professional-guidet('common.交互工具页面con')symptom-assessment',
-  'period-pain-assessment', 
+  'nsaid-menstrual-pain-professional-guide'
+];
+
+// 交互工具页面
+const interactiveTools = [
+  'symptom-assessment',
+  'period-pain-assessment',
   'pain-tracker',
-  'constitution-testt('common.主要页面const')',
+  'constitution-test'
+];
+
+// 主要页面
+const mainPages = [
+  '',
   'articles',
   'interactive-tools',
   'teen-health',

@@ -210,12 +210,23 @@ export default function ImageRequirementsPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4t('common.PeriodHub')text-lg text-gray-600 max-w-3xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            🎨 PeriodHub Health 图片需求清单
+          </h1>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             以下是网站所需的所有图片资源，包含详细的规格要求、提示词和存放路径。
             每个占位符展示了图片的具体要求和设计指导。
           </p>
           <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-blue-800t('common.strong总计需求')space-y-12">
+            <p className="text-sm text-blue-800">
+              <strong>总计需求:</strong> 约80-100张图片 |
+              <strong>预估制作时间:</strong> 2-4周 |
+              <strong>优先级:</strong> 高优先级图片已标注
+            </p>
+          </div>
+        </header>
+
+        <div className="space-y-12">
           {imageRequirements.map((category, categoryIndex) => (
             <section key={categoryIndex} className="bg-white rounded-xl shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-200 pb-3">
@@ -256,9 +267,13 @@ export default function ImageRequirementsPage() {
 
         <footer className="mt-16 text-center">
           <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-8">
-            <h3 className="text-xl font-bold text-gray-800 mb-4t('common.下一步行动')grid md:grid-cols-3 gap-6 text-sm">
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              📋 下一步行动
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6 text-sm">
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-pink-600 mb-2t('common.高优先级立即需要h')text-gray-600 space-y-1">
+                <h4 className="font-semibold text-pink-600 mb-2">高优先级 (立即需要)</h4>
+                <ul className="text-gray-600 space-y-1">
                   <li>• Hero主视觉图片</li>
                   <li>• 核心功能图标</li>
                   <li>• 文章分类封面</li>
@@ -266,7 +281,8 @@ export default function ImageRequirementsPage() {
                 </ul>
               </div>
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-blue-600 mb-2t('common.中优先级12周内h')text-gray-600 space-y-1">
+                <h4 className="font-semibold text-blue-600 mb-2">中优先级 (1-2周内)</h4>
+                <ul className="text-gray-600 space-y-1">
                   <li>• 情景解决方案图片</li>
                   <li>• 中医疗法图解</li>
                   <li>• 解剖结构图</li>
