@@ -123,20 +123,20 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
         const scenes = [
           {
             id: 1,
-            title: t('common.场景1开场表现痛'),
+            title: "场景1：开场 - 表现痛经的不适感",
             videoUrl: "https://v3.fal.media/files/monkey/OMrBMAEeA1my97zJzH64q_output.mp4",
-            text: t('common.很多女性每个月都会经')
+            text: "很多女性每个月都会经历痛经，那种痉挛、疼痛的感觉让人非常不适。"
           },
           {
             id: 2,
-            title: t('common.场景2解释痛经原因'),
-            text: t('common.月经期间子宫内膜会释t('common.前列腺素t('common.的物质前列腺素会引起'),
+            title: '场景2：解释痛经原因 - 前列腺素',
+            text: '月经期间，子宫内膜会释放一种叫做"前列腺素"的物质。前列腺素会引起子宫肌肉剧烈收缩，导致疼痛。',
             videoUrl: 'https://v3.fal.media/files/panda/DJlINSBKErKOTTRW4scwG_output.mp4'
           },
           {
             id: 3,
-            title: t('common.场景3引出NSAID'),
-            text: t('common.而非甾体抗炎药简称N'),
+            title: '场景3：引出NSAIDs',
+            text: '而非甾体抗炎药，简称NSAID，是缓解痛经的常用药物。它们能从源头减少前列腺素的产生。',
             videoUrl: 'https://v3.fal.media/files/monkey/sRVoOWjzmaoyzF7cure1m_output.mp4'
           }
         ];
@@ -195,7 +195,7 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
           videoPlayer.addEventListener('ended', playNextScene);
           videoPlayer.addEventListener('error', (e) => {
             console.error('Video error:', e);
-            if (narrationText) narrationText.textContent = t('common.抱歉视频加载失败请检');
+            if (narrationText) narrationText.textContent = '抱歉，视频加载失败。请检查您的网络连接或稍后再试。';
           });
         }
 

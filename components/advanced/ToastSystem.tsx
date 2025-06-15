@@ -3,7 +3,32 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { X, CheckCircle, AlertCircle, AlertTriangle, Info } from 'lucide-react';
-import { useAppStore, useToasts } from '../../lib/stores/appStoret('common.Toast类型ex')success' | 'error' | 'warning' | 'infot('common.Toast配置ex')action'];
+import { useAppStore, useToasts } from '../../lib/stores/appStore';
+
+// Toast类型
+export type ToastType = 'success' | 'error' | 'warning' | 'info';
+
+// Toast配置
+export interface ToastConfig {
+  type: ToastType;
+  message: string;
+  title?: string;
+  duration?: number; // 0 表示不自动关闭
+  action?: {
+    label: string;
+    onClick: () => void;
+  };
+  closable?: boolean;
+}
+
+// 单个Toast组件
+interface ToastProps {
+  id: string;
+  type: ToastType;
+  message: string;
+  title?: string;
+  duration?: number;
+  action?: ToastConfig['action'];
   closable?: boolean;
   onClose: (id: string) => void;
 }
@@ -100,7 +125,9 @@ const Toast: React.FC<ToastProps> = ({
         max-w-sm w-full ${getBackgroundColor()} border rounded-lg shadow-lg p-4 mb-3
       `}
     >
-      <div className="flex items-start space-x-3t('common.图标')flex-shrink-0 mt-0.5">
+      <div className="flex items-start space-x-3">
+        {/* 图标 */}
+        <div className="flex-shrink-0 mt-0.5">
           {getIcon()}
         </div>
 
@@ -111,13 +138,32 @@ const Toast: React.FC<ToastProps> = ({
               {title}
             </h4>
           )}
-          <p className={`text-sm ${getTextColor()}t('common.message')
+          <p className={`text-sm ${getTextColor()}`}>
+            {message}
+          </p>
+
+          {/* 操作按钮 */}
+          {action && (
+            <button
+              onClick={action.onClick}
+              className={`
                 mt-2 text-xs font-medium underline hover:no-underline
                 ${type === 'success' ? 'text-green-700 hover:text-green-800' : ''}
                 ${type === 'error' ? 'text-red-700 hover:text-red-800' : ''}
                 ${type === 'warning' ? 'text-yellow-700 hover:text-yellow-800' : ''}
                 ${type === 'info' ? 'text-blue-700 hover:text-blue-800' : ''}
-              t('common.actionlabe')
+              `}
+            >
+              {action.label}
+            </button>
+          )}
+        </div>
+
+        {/* 关闭按钮 */}
+        {closable && (
+          <button
+            onClick={handleClose}
+            className={`
               flex-shrink-0 p-1 rounded-md hover:bg-white/50 transition-colors
               ${getTextColor()}
             `}
@@ -140,7 +186,29 @@ const Toast: React.FC<ToastProps> = ({
             `}
             style={{
               width: '100%',
-              animation: `shrink ${duration}ms lineart('common.div')fixed top-4 right-4 z-50 space-y-2">
+              animation: `shrink ${duration}ms linear`,
+            }}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Toast容器组件
+export const ToastContainer: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
+  const toasts = useToasts();
+  const removeToast = useAppStore(state => state.removeToast);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  const container = (
+    <div className="fixed top-4 right-4 z-50 space-y-2">
       {toasts.map((toast) => (
         <Toast
           key={toast.id}
@@ -174,7 +242,16 @@ export const useToast = () => {
 
     error: (message: string, options?: Partial<ToastConfig>) => {
       return addToast({
-        type: 'errort('common.message')warning',
+        type: 'error',
+        message,
+        duration: 0, // 错误消息默认不自动关闭
+        ...options,
+      });
+    },
+
+    warning: (message: string, options?: Partial<ToastConfig>) => {
+      return addToast({
+        type: 'warning',
         message,
         ...options,
       });
@@ -214,7 +291,10 @@ const toastStyles = `
       width: 0%;
     }
   }
-t('common.注入样式ifty')undefined') {
+`;
+
+// 注入样式
+if (typeof document !== 'undefined') {
   const styleElement = document.createElement('style');
   styleElement.textContent = toastStyles;
   document.head.appendChild(styleElement);

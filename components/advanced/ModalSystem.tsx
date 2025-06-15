@@ -3,7 +3,17 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { X, AlertTriangle, CheckCircle, Info } from 'lucide-react';
-import { useAppStore } from '../../lib/stores/appStoret('common.模态框类型expo')default' | 'confirm' | 'alert' | 'customt('common.模态框配置expo')sm' | 'md' | 'lg' | 'xl' | 'full';
+import { useAppStore } from '../../lib/stores/appStore';
+
+// 模态框类型
+export type ModalType = 'default' | 'confirm' | 'alert' | 'custom';
+
+// 模态框配置
+export interface ModalConfig {
+  type?: ModalType;
+  title?: string;
+  content?: React.ReactNode;
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
   closable?: boolean;
   maskClosable?: boolean;
   showFooter?: boolean;
@@ -21,7 +31,22 @@ export interface ConfirmConfig {
   content: React.ReactNode;
   confirmText?: string;
   cancelText?: string;
-  type?: 'warning' | 'danger' | 'infot('common.onConfirm')default',
+  type?: 'warning' | 'danger' | 'info';
+  onConfirm?: () => void | Promise<void>;
+  onCancel?: () => void;
+}
+
+// 模态框组件
+interface ModalProps extends ModalConfig {
+  isOpen: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
+}
+
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  type = 'default',
   title,
   content,
   children,
@@ -116,10 +141,21 @@ export interface ConfirmConfig {
 
   const modalContent = (
     <div
-      className={`fixed inset-0 flex items-center justify-center p-4t('common.stylezInd')
+      className={`fixed inset-0 flex items-center justify-center p-4`}
+      style={{ zIndex }}
+      onClick={handleMaskClick}
+    >
+      {/* 背景遮罩 */}
+      <div
+        className={`
           absolute inset-0 bg-black transition-opacity duration-200
           ${isAnimating ? 'opacity-50' : 'opacity-0'}
-        t('common.模态框内容')
+        `}
+      />
+
+      {/* 模态框内容 */}
+      <div
+        className={`
           relative bg-white rounded-lg shadow-xl w-full ${getSizeClasses()}
           transform transition-all duration-200
           ${isAnimating 
@@ -127,7 +163,11 @@ export interface ConfirmConfig {
             : 'scale-95 opacity-0'
           }
           ${className}
-        t('common.头部')flex items-center justify-between p-6 border-b border-gray-200">
+        `}
+      >
+        {/* 头部 */}
+        {(title || closable) && (
+          <div className="flex items-center justify-between p-6 border-b border-gray-200">
             <div className="flex items-center space-x-3">
               {getTypeIcon()}
               {title && (
@@ -141,7 +181,14 @@ export interface ConfirmConfig {
                 onClick={onClose}
                 className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
               >
-                <X className="w-5 h-5t('common.button')p-6">
+                <X className="w-5 h-5" />
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* 内容 */}
+        <div className="p-6">
           {content || children}
         </div>
 
@@ -156,7 +203,41 @@ export interface ConfirmConfig {
             </button>
             <button
               onClick={handleConfirm}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 transition-colorst('common.confirmTex')custom', config);
+              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 transition-colors"
+            >
+              {confirmText}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return createPortal(modalContent, document.body);
+};
+
+// 模态框管理器
+export const ModalManager: React.FC = () => {
+  const modal = useAppStore(state => state.ui.modal);
+  const closeModal = useAppStore(state => state.closeModal);
+
+  return (
+    <Modal
+      isOpen={modal.isOpen}
+      onClose={closeModal}
+      {...(modal.data as ModalConfig)}
+    />
+  );
+};
+
+// 模态框Hook
+export const useModal = () => {
+  const openModal = useAppStore(state => state.openModal);
+  const closeModal = useAppStore(state => state.closeModal);
+
+  const modal = {
+    open: (config: ModalConfig) => {
+      openModal('custom', config);
     },
 
     close: () => {
@@ -194,20 +275,27 @@ export interface ConfirmConfig {
       return new Promise((resolve) => {
         const modalConfig: ModalConfig = {
           type: 'alert',
-          title: title || t('common.提示'),
+          title: title || '提示',
           content,
           showFooter: true,
-          confirmText: t('common.确定'),
+          confirmText: '确定',
           onConfirm: () => {
             resolve();
           },
         };
 
-        openModal('alertt('common.modalConfi')flex items-center space-x-3">
+        openModal('alert', modalConfig);
+      });
+    },
+
+    // 便捷方法
+    success: (content: React.ReactNode, title?: string) => {
+      return modal.alert(
+        <div className="flex items-center space-x-3">
           <CheckCircle className="w-6 h-6 text-green-500" />
           <div>{content}</div>
         </div>,
-        title || t('common.success')
+        title || '成功'
       );
     },
 
@@ -217,13 +305,13 @@ export interface ConfirmConfig {
           <AlertTriangle className="w-6 h-6 text-red-500" />
           <div>{content}</div>
         </div>,
-        title || t('common.error')
+        title || '错误'
       );
     },
 
     warning: (content: React.ReactNode, title?: string) => {
       return modal.confirm({
-        title: title || t('common.warning'),
+        title: title || '警告',
         content: (
           <div className="flex items-center space-x-3">
             <AlertTriangle className="w-6 h-6 text-yellow-500" />

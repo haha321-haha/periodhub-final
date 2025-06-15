@@ -1,7 +1,38 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-reactt('common.数据点类型expo')',
+import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-react';
+
+// 数据点类型
+export interface DataPoint {
+  label: string;
+  value: number;
+  color?: string;
+  date?: string;
+}
+
+// 图表配置
+export interface ChartConfig {
+  width?: number;
+  height?: number;
+  showGrid?: boolean;
+  showLabels?: boolean;
+  showLegend?: boolean;
+  colors?: string[];
+  animate?: boolean;
+}
+
+// 线性图表组件
+interface LineChartProps {
+  data: DataPoint[];
+  config?: ChartConfig;
+  className?: string;
+}
+
+export const LineChart: React.FC<LineChartProps> = ({
+  data,
+  config = {},
+  className = '',
 }) => {
   const {
     width = 400,
@@ -32,7 +63,10 @@ import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-reactt('co
 
   return (
     <div className={`bg-white rounded-lg border p-4 ${className}`}>
-      <svg width={width} height={height} className="w-full h-autot('common.网格线')opacity-20">
+      <svg width={width} height={height} className="w-full h-auto">
+        {/* 网格线 */}
+        {showGrid && (
+          <g className="opacity-20">
             {[0, 0.25, 0.5, 0.75, 1].map((ratio) => (
               <line
                 key={ratio}
@@ -41,7 +75,16 @@ import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-reactt('co
                 x2={width - 20}
                 y2={20 + ratio * (height - 40)}
                 stroke="currentColor"
-                strokeWidth="1t('common.g')none"
+                strokeWidth="1"
+              />
+            ))}
+          </g>
+        )}
+
+        {/* 数据线 */}
+        <polyline
+          points={points}
+          fill="none"
           stroke={colors[0]}
           strokeWidth="2"
           className="transition-all duration-300"
@@ -61,9 +104,34 @@ import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-reactt('co
               fill={colors[0]}
               className="hover:r-6 transition-all duration-200 cursor-pointer"
             >
-              <title>{`${point.label}: ${point.value}t('common.title')text-xs fill-current text-gray-600">
+              <title>{`${point.label}: ${point.value}`}</title>
+            </circle>
+          );
+        })}
+
+        {/* 标签 */}
+        {showLabels && (
+          <g className="text-xs fill-current text-gray-600">
             <text x={20} y={15} textAnchor="start">{maxValue}</text>
-            <text x={20} y={height - 5} textAnchor="startt('common.minValuete')',
+            <text x={20} y={height - 5} textAnchor="start">{minValue}</text>
+          </g>
+        )}
+      </svg>
+    </div>
+  );
+};
+
+// 柱状图组件
+interface BarChartProps {
+  data: DataPoint[];
+  config?: ChartConfig;
+  className?: string;
+}
+
+export const BarChart: React.FC<BarChartProps> = ({
+  data,
+  config = {},
+  className = '',
 }) => {
   const {
     width = 400,
@@ -78,7 +146,23 @@ import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-reactt('co
 
   return (
     <div className={`bg-white rounded-lg border p-4 ${className}`}>
-      <svg width={width} height={height} className="w-full h-autot('common.datamapite')hover:opacity-80 transition-opacity duration-200 cursor-pointer"
+      <svg width={width} height={height} className="w-full h-auto">
+        {data.map((item, index) => {
+          const barHeight = (item.value / maxValue) * (height - 40);
+          const x = 20 + index * (barWidth + barSpacing);
+          const y = height - 20 - barHeight;
+          const color = item.color || colors[index % colors.length];
+
+          return (
+            <g key={index}>
+              {/* 柱子 */}
+              <rect
+                x={x}
+                y={y}
+                width={barWidth}
+                height={barHeight}
+                fill={color}
+                className="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
               >
                 <title>{`${item.label}: ${item.value}`}</title>
               </rect>
@@ -100,7 +184,29 @@ import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-reactt('co
                 x={x + barWidth / 2}
                 y={y - 5}
                 textAnchor="middle"
-                className="text-xs fill-current text-gray-800 font-mediumt('common.itemvalue')',
+                className="text-xs fill-current text-gray-800 font-medium"
+              >
+                {item.value}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+};
+
+// 饼图组件
+interface PieChartProps {
+  data: DataPoint[];
+  config?: ChartConfig;
+  className?: string;
+}
+
+export const PieChart: React.FC<PieChartProps> = ({
+  data,
+  config = {},
+  className = '',
 }) => {
   const {
     width = 300,
@@ -161,14 +267,39 @@ import { TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-reactt('co
               fill={slice.color}
               className="hover:opacity-80 transition-opacity duration-200 cursor-pointer"
             >
-              <title>{`${slice.label}: ${slice.value} (${slice.percentage}%)t('common.title')space-y-2">
+              <title>{`${slice.label}: ${slice.value} (${slice.percentage}%)`}</title>
+            </path>
+          ))}
+        </svg>
+
+        {/* 图例 */}
+        {showLegend && (
+          <div className="space-y-2">
             {slices.map((slice, index) => (
               <div key={index} className="flex items-center space-x-2 text-sm">
                 <div
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: slice.color }}
                 />
-                <span className="text-gray-700t('common.slicelabel')blue' | 'green' | 'yellow' | 'red' | 'purple';
+                <span className="text-gray-700">
+                  {slice.label} ({slice.percentage}%)
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// 统计卡片组件
+interface StatCardProps {
+  title: string;
+  value: string | number;
+  change?: number;
+  icon?: React.ReactNode;
+  color?: 'blue' | 'green' | 'yellow' | 'red' | 'purple';
   className?: string;
 }
 

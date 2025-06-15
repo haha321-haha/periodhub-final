@@ -138,7 +138,293 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
 
     // Add CSS styles to head
     const style = document.createElement('style');
-    style.textContent = t('common.nsaidanima')Courier New', monospace;
+    style.textContent = `
+      .nsaid-animation-player {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: #f8fafc;
+        border-radius: 0.75rem;
+        border: 1px solid #e2e8f0;
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      .animation-container {
+        max-width: 100%;
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+      }
+      .video-player-container {
+        margin-bottom: 1rem;
+        display: block !important;
+        visibility: visible !important;
+        position: relative !important;
+        min-height: 300px !important;
+        background: #000 !important;
+        border-radius: 0.5rem !important;
+      }
+      .animation-video {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 250px !important;
+        border-radius: 0.5rem !important;
+        background: #000000 !important;
+        filter: none !important;
+        opacity: 1 !important;
+        -webkit-filter: none !important;
+        -moz-filter: none !important;
+        -ms-filter: none !important;
+        -o-filter: none !important;
+        position: relative !important;
+        z-index: 10 !important;
+        display: block !important;
+        visibility: visible !important;
+        object-fit: contain !important;
+      }
+
+      .animation-video::before,
+      .animation-video::after {
+        display: none !important;
+        content: none !important;
+      }
+
+      .video-player-container {
+        position: relative !important;
+        background: transparent !important;
+        filter: none !important;
+        opacity: 1 !important;
+      }
+
+      .video-player-container::before,
+      .video-player-container::after {
+        display: none !important;
+        content: none !important;
+      }
+
+      /* Remove any potential overlay effects */
+      .video-player-container > *:not(.animation-video) {
+        display: none !important;
+      }
+
+      /* Ensure video is always visible and clear */
+      video, .animation-video {
+        filter: none !important;
+        opacity: 1 !important;
+        background: #000 !important;
+        position: relative !important;
+        z-index: 100 !important;
+      }
+      .animation-video::-webkit-media-controls {
+        display: flex !important;
+        opacity: 1 !important;
+      }
+      .animation-video::-webkit-media-controls-panel {
+        display: flex !important;
+        opacity: 1 !important;
+        background: rgba(0, 0, 0, 0.8) !important;
+      }
+      .animation-video::-webkit-media-controls-play-button {
+        display: block !important;
+        opacity: 1 !important;
+        background-color: #3b82f6 !important;
+        border-radius: 50% !important;
+      }
+      .narration-section {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: white;
+        border-radius: 0.5rem;
+        border: 1px solid #e2e8f0;
+      }
+      .scene-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+      }
+      .narration-text {
+        color: #6b7280;
+        line-height: 1.5;
+      }
+      .navigation-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      .nav-button {
+        padding: 0.5rem 1rem !important;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 0.375rem !important;
+        cursor: pointer !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3) !important;
+      }
+      .nav-button:hover:not(:disabled) {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4) !important;
+      }
+      .nav-button:disabled {
+        background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%) !important;
+        cursor: not-allowed !important;
+        opacity: 0.6 !important;
+        transform: none !important;
+        box-shadow: 0 1px 2px rgba(156, 163, 175, 0.3) !important;
+      }
+      .nav-button:not(:disabled) {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+      }
+      .scene-indicator {
+        color: #6b7280;
+        font-size: 0.875rem;
+      }
+      .nsaid-calculator {
+        margin: 2rem auto;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 0.75rem;
+        border: 1px solid #e2e8f0;
+        max-width: 480px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .calculator-container {
+        width: 100%;
+      }
+      .calculator-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .calculator-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+      }
+      .form-group {
+        margin-bottom: 0.25rem;
+      }
+      .form-label {
+        display: block;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+      }
+      .form-select, .form-input {
+        width: 100%;
+        padding: 0.625rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 0.9375rem;
+        box-sizing: border-box;
+      }
+      .form-select:focus, .form-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .calculate-button {
+        width: 100% !important;
+        padding: 0.875rem 1.5rem !important;
+        background: #1e40af !important;
+        background-color: #1e40af !important;
+        background-image: none !important;
+        color: #ffffff !important;
+        border: 3px solid #1d4ed8 !important;
+        border-radius: 0.5rem !important;
+        font-weight: 800 !important;
+        cursor: pointer !important;
+        margin: 0.75rem 0 1rem 0 !important;
+        transition: all 0.3s ease !important;
+        display: block !important;
+        text-align: center !important;
+        font-size: 1.125rem !important;
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        letter-spacing: 0.05em !important;
+        position: relative !important;
+        overflow: hidden !important;
+        text-transform: uppercase !important;
+        z-index: 10 !important;
+      }
+      .calculate-button:hover {
+        background: #1e3a8a !important;
+        background-color: #1e3a8a !important;
+        background-image: none !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5) !important;
+        border-color: #1e3a8a !important;
+        color: #ffffff !important;
+      }
+      .calculate-button:active {
+        background: #1e3a8a !important;
+        background-color: #1e3a8a !important;
+        background-image: none !important;
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 8px rgba(30, 64, 175, 0.4) !important;
+        color: #ffffff !important;
+      }
+      .dose-result {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 0.5rem;
+        border: 1px solid #e2e8f0;
+      }
+      .dose-result.hidden {
+        display: none;
+      }
+      .result-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 0.75rem;
+      }
+      .result-content p {
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+      .result-notes {
+        font-size: 0.875rem;
+        color: #6b7280;
+        font-style: italic;
+      }
+      .disclaimer {
+        margin-top: 0.5rem;
+        padding: 1rem;
+        background: #fef3c7;
+        border: 1px solid #f59e0b;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        color: #92400e;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .disclaimer i {
+        flex-shrink: 0;
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0.125rem;
+      }
+
+      /* 机制图表样式 */
+      .mechanism-diagram {
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        font-family: 'Courier New', monospace;
       }
       .mechanism-diagram p {
         margin: 0.25rem 0;
@@ -409,20 +695,20 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
         },
         {
           id: 9,
-          title: t('common.场景9疼痛缓解'),
-          text: t('common.随着前列腺素减少子宫'),
+          title: '场景9：疼痛缓解',
+          text: '随着前列腺素减少，子宫收缩变得温和，疼痛感明显减轻。',
           videoUrl: 'https://v3.fal.media/files/monkey/OMrBMAEeA1my97zJzH64q_output.mp4'
         },
         {
           id: 10,
-          title: t('common.场景10药物代谢'),
-          text: t('common.完成任务后NSAID'),
+          title: '场景10：药物代谢',
+          text: '完成任务后，NSAID药物会被肝脏代谢，最终通过肾脏排出体外。',
           videoUrl: 'https://v3.fal.media/files/panda/DJlINSBKErKOTTRW4scwG_output.mp4'
         },
         {
           id: 11,
-          title: t('common.场景11总结'),
-          text: t('common.这就是NSAID缓解'),
+          title: '场景11：总结',
+          text: '这就是NSAID缓解痛经的完整过程：从服用到吸收，从作用到代谢，科学而有效。',
           videoUrl: 'https://v3.fal.media/files/monkey/sRVoOWjzmaoyzF7cure1m_output.mp4'
         }
       ];
@@ -485,8 +771,8 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
         // Video error handling
         videoPlayer.addEventListener('error', (e) => {
           console.error('Video error:', e);
-          if (narrationText) narrationText.textContent = t('common.抱歉视频加载失败请检');
-          if (sceneTitle) sceneTitle.textContent = t('common.视频加载错误');
+          if (narrationText) narrationText.textContent = '抱歉，视频加载失败。请检查您的网络连接或稍后再试。';
+          if (sceneTitle) sceneTitle.textContent = '视频加载错误';
         });
       }
 
@@ -507,11 +793,11 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
       if (scenes.length > 0) {
         loadScene(0);
       } else {
-        if (sceneTitle) sceneTitle.textContent = t('common.没有可播放的场景');
-        if (narrationText) narrationText.textContent = t('common.请检查数据配置');
+        if (sceneTitle) sceneTitle.textContent = "没有可播放的场景";
+        if (narrationText) narrationText.textContent = "请检查数据配置。";
         if (prevButton) (prevButton as HTMLButtonElement).disabled = true;
         if (nextButton) (nextButton as HTMLButtonElement).disabled = true;
-        if (sceneIndicator) sceneIndicator.textContent = t('common.场景00');
+        if (sceneIndicator) sceneIndicator.textContent = "场景 0 / 0";
       }
 
       // Enhanced video player setup with debugging
@@ -551,7 +837,28 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
         const allVideos = document.querySelectorAll('video');
         console.log('🔍 All video elements found:', allVideos.length);
         allVideos.forEach((video, index) => {
-          console.log(`Video ${index}:t('common.idvideoid')
+          console.log(`Video ${index}:`, {
+            id: video.id,
+            className: video.className,
+            src: video.src,
+            parentElement: video.parentElement
+          });
+        });
+      }
+
+
+
+    }, 100); // Small delay to ensure DOM is ready
+
+    return () => {
+      clearTimeout(timer);
+      // styleInterval会在组件卸载时自动清理
+    };
+  }, []);
+
+  return (
+    <>
+      <style jsx>{`
         :global(.nsaid-active-button) {
           background: #1e40af !important;
           color: #ffffff !important;
@@ -659,7 +966,78 @@ export default function NSAIDContent({ content }: NSAIDContentProps) {
         :global(.nsaid-controls button),
         :global(.nsaid-controls .btn),
         :global(button[class*="nsaid"]),
-        :global(.btn[class*="nsaidt('common.globalcalc')scene"]),
+        :global(.btn[class*="nsaid"]),
+        :global(#calculate-dose-button),
+        :global(button#calculate-dose-button) {
+          background: #1e40af !important;
+          background-color: #1e40af !important;
+          background-image: none !important;
+          color: #ffffff !important;
+          border: 2px solid #1d4ed8 !important;
+          border-radius: 0.5rem !important;
+          padding: 0.625rem 1.25rem !important;
+          font-weight: 700 !important;
+          cursor: pointer !important;
+          transition: all 0.2s !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+          letter-spacing: 0.025em !important;
+          box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3) !important;
+          z-index: 10 !important;
+          position: relative !important;
+          display: inline-block !important;
+          text-decoration: none !important;
+        }
+
+        /* 特别针对计算按钮的强制样式 */
+        :global(#calculate-dose-button) {
+          background: #1e40af !important;
+          background-color: #1e40af !important;
+          background-image: none !important;
+          color: #ffffff !important;
+          border: 2px solid #1d4ed8 !important;
+          border-radius: 0.5rem !important;
+          padding: 0.5rem 1rem !important;
+          font-weight: 700 !important;
+          cursor: pointer !important;
+          transition: all 0.2s !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+          letter-spacing: 0.025em !important;
+          box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3) !important;
+          z-index: 100 !important;
+          position: relative !important;
+          display: inline-block !important;
+          text-decoration: none !important;
+          width: 100% !important;
+        }
+
+        /* 按钮悬停效果 */
+        :global(.nsaid-controls button:hover),
+        :global(.nsaid-controls .btn:hover) {
+          background: #1e3a8a !important;
+          transform: translateY(-1px) !important;
+          box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4) !important;
+        }
+
+        /* 禁用状态按钮 */
+        :global(.nsaid-controls button:disabled),
+        :global(.nsaid-controls .btn:disabled) {
+          background: #374151 !important;
+          color: #ffffff !important;
+          cursor: not-allowed !important;
+          opacity: 0.7 !important;
+          pointer-events: none !important;
+          border: 2px solid #4b5563 !important;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        /* 场景描述区域背景修复 */
+        :global(.nsaid-scene-description),
+        :global([class*="scene"]),
         :global([class*="description"]) {
           background: white !important;
           background-color: white !important;

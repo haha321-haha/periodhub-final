@@ -5,7 +5,62 @@ import { ErrorBoundary } from './ErrorBoundary';
 import { ToastContainer } from './ToastSystem';
 import { ModalManager } from './ModalSystem';
 import { useAppStore } from '../../lib/stores/appStore';
-import { performanceMonitor } from '../../lib/performance/monitort('common.interface')critical">
+import { performanceMonitor } from '../../lib/performance/monitor';
+
+interface AppProviderProps {
+  children: ReactNode;
+}
+
+// 应用级别的Provider组件
+export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
+  const preferences = useAppStore(state => state.preferences);
+  const recordPageLoadTime = useAppStore(state => state.recordPageLoadTime);
+
+  // 初始化应用
+  useEffect(() => {
+    // 记录页面加载时间
+    const loadTime = performance.now();
+    recordPageLoadTime(loadTime);
+
+    // 应用主题
+    applyTheme(preferences.theme);
+
+    // 应用字体大小
+    applyFontSize(preferences.fontSize);
+
+    // 应用可访问性设置
+    applyAccessibilitySettings(preferences.accessibility);
+
+    // 启用性能监控
+    if (preferences.privacy.analytics) {
+      performanceMonitor.setEnabled(true);
+    }
+
+    // 清理函数
+    return () => {
+      performanceMonitor.cleanup();
+    };
+  }, []);
+
+  // 监听偏好设置变化
+  useEffect(() => {
+    applyTheme(preferences.theme);
+  }, [preferences.theme]);
+
+  useEffect(() => {
+    applyFontSize(preferences.fontSize);
+  }, [preferences.fontSize]);
+
+  useEffect(() => {
+    applyAccessibilitySettings(preferences.accessibility);
+  }, [preferences.accessibility]);
+
+  useEffect(() => {
+    performanceMonitor.setEnabled(preferences.privacy.analytics);
+  }, [preferences.privacy.analytics]);
+
+  return (
+    <ErrorBoundary level="critical">
       <div className="app-container">
         {children}
         <ToastContainer />
@@ -64,11 +119,42 @@ function applyAccessibilitySettings(accessibility: {
   if (accessibility.highContrast) {
     root.classList.add('high-contrast');
   } else {
-    root.classList.remove('high-contrastt('common.减少动画if')reduce-motion');
+    root.classList.remove('high-contrast');
+  }
+  
+  // 减少动画
+  if (accessibility.reducedMotion) {
+    root.classList.add('reduce-motion');
   } else {
-    root.classList.remove('reduce-motiont('common.屏幕阅读器优化')screen-reader-optimized');
+    root.classList.remove('reduce-motion');
+  }
+  
+  // 屏幕阅读器优化
+  if (accessibility.screenReader) {
+    root.classList.add('screen-reader-optimized');
   } else {
-    root.classList.remove('screen-reader-optimizedt('common.页面级别的Provi')${title} - Period Hub Health`;
+    root.classList.remove('screen-reader-optimized');
+  }
+}
+
+// 页面级别的Provider
+interface PageProviderProps {
+  children: ReactNode;
+  title?: string;
+  description?: string;
+  keywords?: string[];
+}
+
+export const PageProvider: React.FC<PageProviderProps> = ({
+  children,
+  title,
+  description,
+  keywords = [],
+}) => {
+  useEffect(() => {
+    // 更新页面标题
+    if (title) {
+      document.title = `${title} - Period Hub Health`;
     }
 
     // 更新meta描述
@@ -89,7 +175,27 @@ function applyAccessibilitySettings(accessibility: {
   }, [title, description, keywords]);
 
   return (
-    <ErrorBoundary level="paget('common.children')component" 
+    <ErrorBoundary level="page">
+      {children}
+    </ErrorBoundary>
+  );
+};
+
+// 组件级别的Provider
+interface ComponentProviderProps {
+  children: ReactNode;
+  name?: string;
+  fallback?: ReactNode;
+}
+
+export const ComponentProvider: React.FC<ComponentProviderProps> = ({
+  children,
+  name,
+  fallback,
+}) => {
+  return (
+    <ErrorBoundary 
+      level="component" 
       fallback={fallback}
       onError={(error, errorInfo) => {
         console.error(`Component error in ${name}:`, error, errorInfo);
@@ -106,7 +212,14 @@ export const usePagePerformance = (pageName: string) => {
     const startTime = performance.now();
     
     // 记录页面访问
-    performanceMonitor.recordCustomInteraction('navigationt('common.pageName')navigation', `${pageName}_duration`, duration);
+    performanceMonitor.recordCustomInteraction('navigation', pageName);
+    
+    return () => {
+      const endTime = performance.now();
+      const duration = endTime - startTime;
+      
+      // 记录页面停留时间
+      performanceMonitor.recordCustomInteraction('navigation', `${pageName}_duration`, duration);
     };
   }, [pageName]);
 };
