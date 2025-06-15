@@ -14,11 +14,12 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/private/',
           '*.json',
-          '/zh/interactive-tools/constitution-test',
+          '/zh/interactive-tools/constitution-test', // 暂时禁用未完成的功能
         ],
       },
       {
         userAgent: 'GPTBot',
+        disallow: '/',
       },
       {
         userAgent: 'ChatGPT-User',
