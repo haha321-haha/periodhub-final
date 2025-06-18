@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // 基础配置
     "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -13,29 +14,45 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    
+    // Next.js 插件
     "plugins": [
       {
         "name": "next"
       }
     ],
+    
+    // 路径映射
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/app/*": ["./app/*"],
+      "@/messages/*": ["./messages/*"],
+      "@/types/*": ["./types/*"]
     },
+    
+    // 其他配置
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
+    
+    // 类型定义
     "types": ["node", "react", "react-dom", "next-intl"]
   },
+  
+  // 包含的文件
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/**/*.ts",
-    "app/**/*.tsx",
-    "components/**/*.ts",
-    "components/**/*.tsx",
-    "lib/**/*.ts",
-    "lib/**/*.tsx"
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", ".next", "out"]
+  
+  // 排除的文件
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist"
+  ]
 }
