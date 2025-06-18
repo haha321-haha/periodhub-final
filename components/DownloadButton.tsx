@@ -1,7 +1,8 @@
 'use client';
 
 import { Download } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 interface DownloadButtonProps {
   filename: string;
