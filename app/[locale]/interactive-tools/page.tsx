@@ -1,203 +1,154 @@
+'use client';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-import type { Metadata } from 'next';
-import ImagePlaceholder from '@/components/ImagePlaceholder';
-import BreathingExercise from '@/components/BreathingExercise';
-import { BarChart3, ClipboardCheck, Lightbulb, Search, User } from 'lucide-react'; // Icons for cards
-import { Locale, locales } from '@/i18n/request';
 
-// Generate metadata for the page
-export async function generateMetadata({
-  params: { locale }
-}: {
-  params: { locale: Locale }
-}): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'interactiveToolsPage' });
-  
-  return {
-    title: t('title'),
-    description: t('description'),
-  };
-}
-
-// Generate static params for all supported locales
-export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
-
-export default async function InteractiveToolsPage({
-  params: { locale }
-}: {
-  params: { locale: Locale }
-}) {
-  // Enable static rendering
-  unstable_setRequestLocale(locale);
-
-  const t = await getTranslations({ locale, namespace: 'interactiveToolsPage' });
-  const commonT = await getTranslations({ locale, namespace: 'common' });
-  
-  const tools = [
-    {
-      title: t('symptomAssessment.title'),
-      description: t('symptomAssessment.description'),
-      href: `/${locale}/interactive-tools/symptom-assessment`,
-      icon: <ClipboardCheck className="w-8 h-8 text-primary-600" />,
-      cta: t('symptomAssessment.startButton'),
-    },
-    {
-      title: t('periodPainAssessment.title'),
-      description: t('periodPainAssessment.description'),
-      href: `/${locale}/interactive-tools/period-pain-assessment`,
-      icon: <Search className="w-8 h-8 text-pink-600" />,
-      cta: t('periodPainAssessment.cta'),
-    },
-    {
-      title: t('painTracker.title'),
-      description: t('painTracker.description'),
-      href: `/${locale}/interactive-tools/pain-tracker`,
-      icon: <BarChart3 className="w-8 h-8 text-secondary-600" />,
-      cta: t('painTracker.startButton'),
-    },
-    {
-      title: t('constitutionTest.title'),
-      description: t('constitutionTest.description'),
-      href: `/${locale}/interactive-tools/constitution-test`,
-      icon: <User className="w-8 h-8 text-green-600" />,
-      cta: t('constitutionTest.cta'),
-    },
-    {
-      title: t('personalizedInsights.title'),
-      description: t('personalizedInsights.description'),
-      href: "#", // No link yet
-      icon: <Lightbulb className="w-8 h-8 text-accent-600" />,
-      cta: commonT('comingSoon'),
-    }
-  ];
+export default function InteractiveToolsPage({ params: { locale } }: { params: { locale: string } }) {
+  const t = useTranslations();
 
   return (
-    <div className="space-y-8 sm:space-y-12 mobile-safe-area">
-      {/* Page Header - 移动端优化 */}
-      <header className="text-center px-4 sm:px-0">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-700 mb-3 sm:mb-4 leading-tight">
-          {t('title')}
-        </h1>
-        <p className="text-base sm:text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-          {t('description')}
-        </p>
-      </header>
-
-      {/* Tools Introduction Section - 移动端优化 */}
-      <section className="bg-gradient-to-br from-primary-50 to-neutral-50 p-4 sm:p-6 md:p-8 rounded-xl mx-4 sm:mx-0">
+    <div className="container mx-auto px-4 py-8">
+      {/* Header */}
+      <section className="text-center py-12">
         <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-            <div>
-              <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
-                {t('toolsIntroduction')}
-              </p>
-            </div>
-            <div className="flex justify-center order-first md:order-last">
-              <ImagePlaceholder
-                filename="assessment-illustration.jpg"
-                alt="Woman using digital health assessment tool on tablet in comfortable home setting"
-                width={300}
-                height={225}
-                description="Woman using digital health assessment tool, modern tablet interface, comfortable home setting, soft lighting"
-                className="w-full max-w-sm sm:max-w-md"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tools Grid - 移动端优化 */}
-      <section className="container-custom">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
-          {tools.map((tool) => (
-            <div key={tool.title} className="card flex flex-col items-center text-center h-full p-4 sm:p-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-full bg-neutral-100 mb-4 sm:mb-6">
-                {tool.icon}
-              </div>
-              <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-neutral-800 mb-2 sm:mb-3 leading-tight">
-                {tool.title}
-              </h2>
-              <p className="text-sm sm:text-base text-neutral-600 mb-4 sm:mb-6 flex-grow leading-relaxed">
-                {tool.description}
-              </p>
-              {tool.href === "#" ? (
-                 <span className="btn-disabled w-full mobile-touch-target text-sm sm:text-base px-4 py-3">{tool.cta}</span>
-              ) : (
-                <Link href={tool.href} className={`w-full mobile-touch-target text-sm sm:text-base px-4 py-3 text-center ${tool.title.includes("Symptom") || tool.title.includes("症状") ? 'btn-primary' : 'btn-secondary'}`}>
-                  {tool.cta}
-                </Link>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Breathing Exercise Section - 移动端优化 */}
-      <section id="breathing-exercise" className="container-custom">
-        <div className="space-y-4 sm:space-y-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 sm:p-6 lg:p-8">
-        <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-blue-100 rounded-full mb-4 sm:mb-6">
-            <span className="text-2xl sm:text-3xl">🫁</span>
-          </div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-700 mb-3 sm:mb-4 leading-tight">
-            {t('breathingExercise.title')}
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-            {t('breathingExercise.description')}
+          <h1 className="text-3xl md:text-5xl font-bold mb-6 gradient-text">
+            {t('tools.title')}
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+            {t('tools.subtitle')}
           </p>
         </div>
+      </section>
 
-        <div className="max-w-2xl mx-auto">
-          <BreathingExercise locale={locale} />
-        </div>
-
-        <div className="bg-blue-50 rounded-lg p-6 max-w-4xl mx-auto">
-          <h3 className="text-lg font-semibold text-blue-800 mb-3">
-            {t('breathingExercise.usageTips.title')}
-          </h3>
-          <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
-            <div>
-              <h4 className="font-medium mb-2">
-                {t('breathingExercise.usageTips.bestTiming.title')}
-              </h4>
-              <ul className="space-y-1">
-                {t.raw('breathingExercise.usageTips.bestTiming.items').map((item: string, index: number) => (
-                  <li key={index}>• {item}</li>
-                ))}
-              </ul>
+      {/* Tools Grid */}
+      <section className="py-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            {/* 痛经评估工具 */}
+            <div className="glass-effect rounded-xl p-6 hover:shadow-purple transition-all duration-300 transform hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">🩺</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-800 text-center">
+                {t('tools.periodPainAssessment.title')}
+              </h3>
+              <p className="text-gray-600 mb-6 text-center leading-relaxed">
+                {t('tools.periodPainAssessment.subtitle')}
+              </p>
+              <div className="text-center">
+                <Link
+                  href={`/${locale}/interactive-tools/period-pain-assessment`}
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg touch-target inline-block"
+                >
+                  {t('tools.startTool')}
+                </Link>
+              </div>
             </div>
-            <div>
-              <h4 className="font-medium mb-2">
-                {t('breathingExercise.usageTips.precautions.title')}
-              </h4>
-              <ul className="space-y-1">
-                {t.raw('breathingExercise.usageTips.precautions.items').map((item: string, index: number) => (
-                  <li key={index}>• {item}</li>
-                ))}
-              </ul>
+
+            {/* 周期追踪器 */}
+            <div className="glass-effect rounded-xl p-6 hover:shadow-purple transition-all duration-300 transform hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">📅</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-800 text-center">
+                智能周期追踪器
+              </h3>
+              <p className="text-gray-600 mb-6 text-center leading-relaxed">
+                智能记录和预测您的月经周期，获得个性化健康建议
+              </p>
+              <div className="text-center">
+                <Link
+                  href={`/${locale}/interactive-tools/cycle-tracker`}
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg touch-target inline-block"
+                >
+                  {t('tools.startTool')}
+                </Link>
+              </div>
+            </div>
+
+            {/* 症状记录器 */}
+            <div className="glass-effect rounded-xl p-6 hover:shadow-purple transition-all duration-300 transform hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">📝</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-800 text-center">
+                智能症状记录器
+              </h3>
+              <p className="text-gray-600 mb-6 text-center leading-relaxed">
+                详细记录和分析经期症状，发现健康模式
+              </p>
+              <div className="text-center">
+                <Link
+                  href={`/${locale}/interactive-tools/symptom-tracker`}
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-lg touch-target inline-block"
+                >
+                  {t('tools.startTool')}
+                </Link>
+              </div>
+            </div>
+
+            {/* 健康计划制定 - 即将推出 */}
+            <div className="glass-effect rounded-xl p-6 opacity-75">
+              <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">📋</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-800 text-center">
+                健康计划制定
+              </h3>
+              <p className="text-gray-600 mb-6 text-center leading-relaxed">
+                根据您的具体情况制定个性化健康管理计划
+              </p>
+              <div className="text-center">
+                <button
+                  disabled
+                  className="bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed touch-target"
+                >
+                  即将推出
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Info Section */}
+      <section className="py-12">
+        <div className="max-w-4xl mx-auto glass-effect rounded-xl p-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">
+            为什么选择我们的工具？
+          </h2>
+          <p className="text-gray-600 mb-8 leading-relaxed">
+            基于最新医学研究，结合人工智能技术，为您提供最专业的健康管理体验
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-white text-xl">🔒</span>
+              </div>
+              <h4 className="font-semibold mb-2">隐私保护</h4>
+              <p className="text-sm text-gray-600">所有数据本地存储，绝不泄露</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-white text-xl">⚡</span>
+              </div>
+              <h4 className="font-semibold mb-2">即时反馈</h4>
+              <p className="text-sm text-gray-600">实时分析，立即获得结果</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-white text-xl">🎯</span>
+              </div>
+              <h4 className="font-semibold mb-2">个性化定制</h4>
+              <p className="text-sm text-gray-600">根据您的情况量身定制</p>
             </div>
           </div>
         </div>
-        </div>
       </section>
-
-      {/* Call to action / Note */}
-      <section className="text-center py-8">
-        <p className="text-neutral-700">
-          {t('developmentNote')}
-        </p>
-      </section>
-
-      {/* Medical Disclaimer */}
-      <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 my-8 rounded-r-lg" role="alert">
-        <p className="font-bold">{commonT('importantNote')}</p>
-        <p className="text-sm">
-          {commonT('medicalDisclaimer')}
-        </p>
-      </div>
     </div>
   );
 }
